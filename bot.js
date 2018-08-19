@@ -7,7 +7,7 @@ var commands = require("./systems/commands.js");
 var game = require("./systems/game.js");
 
 // Console command handler
-var readline = require("./readline.js");
+var readline = require("./auxils/readline.js");
 
 client.on("ready", function () {
   console.log("Bedlam Mafia ready.");
@@ -30,7 +30,7 @@ client.on("message", function (message) {
   var content = message.content;
 
   if (content.startsWith(config["command-prefix"])) {
-    var edited = content.substring(config["command-prefix"].length, content.length).split(" ");;
+    var edited = content.substring(config["command-prefix"].length, content.length).split(/[ ]/g);
 
     var command = edited[0].toLowerCase();
     edited.splice(0, 1);

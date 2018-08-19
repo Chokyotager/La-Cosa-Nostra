@@ -18,7 +18,7 @@ module.exports = async function (client, config, roles) {
 
     // Regex remove square brackets
     // Don't forget double escapes!
-    name.replace(new RegExp("^\\[[A-z|0-9]{1,2}\\]", "g"), "");
+    name = name.replace(new RegExp("^(\[[A-z|0-9]{1,2}\] )*", "g"), "");
 
     try {
       await member.addRole(alive_role);

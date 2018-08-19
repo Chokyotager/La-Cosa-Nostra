@@ -100,16 +100,17 @@ module.exports = class {
     this.status = {
       "alive": true,
       "roleblocked": false,
-      "controlled": false
+      "controlled": false,
+      "silenced": false
     };
 
-    this.temp = new Object();
+    this.misc = new Object();
 
     this.visiting = new Array();
 
     this.will = undefined;
 
-    this.display_role = role;
+    this.display_role = undefined;
 
     this.instantiateRole();
 
@@ -149,6 +150,11 @@ module.exports = class {
     this.will = will;
   }
 
+  getTrueWill () {
+    // Gets the vanilla will
+    return this.will;
+  }
+
   lynch () {
     // Set the player to be lynched
 
@@ -176,7 +182,7 @@ module.exports = class {
 
   getDisplayRole () {
     // Show display role first
-    return this.display_role !== null ? this.display_role : this.role_identifier;
+    return this.display_role !== undefined ? this.display_role : this.role["role-name"];
   }
 
   assignChannel (channel) {
@@ -216,6 +222,11 @@ module.exports = class {
     this.role = executable.roles.getRole(this.role_identifier);
 
   }
+
+  isSame (player) {
+    // Compare identifiers
+    return this.identifier === player.identifier;
+  };
 
   __routines (game) {
 

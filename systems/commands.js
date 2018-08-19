@@ -49,7 +49,7 @@ for (var i = 0; i < roles.length; i++) {
             var result = propertyEnumerator(game, message, properties[i]);
 
             if (result.outcome) {
-              properties[i].runnable(game, message, params);
+              properties[i].runnable(...arguments);
               break;
             } else {
               fails.push(result.reason);
@@ -65,12 +65,12 @@ for (var i = 0; i < roles.length; i++) {
                 message.channel.send(":x: You cannot use that command!");
                 break;
 
-              case "DEAD_CAN_USE":
-                message.channel.send(":x: That command can only be used by the dead!");
+              case "DEAD_CANNOT_USE":
+                message.channel.send(":x: You are dead and cannot use that command!");
                 break;
 
-              case "ALIVE_CAN_USE":
-                message.channel.send(":x: You are dead and cannot use that command!");
+              case "ALIVE_CANNOT_USE":
+                message.channel.send(":x: That command can only be used by the dead!");
                 break;
 
               case "PRIVATE_ONLY":
@@ -131,8 +131,8 @@ function propertyEnumerator (game, message, property) {
   var enumerated = [
     {name: "PRIVATE_ONLY", condition: private_channel, a: true, b: false},
     {name: "ALLOW_NONSPECIFIC", condition: same_role, a: false, b: false},
-    {name: "DEAD_CAN_USE", condition: !alive, a: false, b: true},
-    {name: "ALIVE_CAN_USE", condition: alive, a: false, b: true},
+    {name: "DEAD_CANNOT_USE", condition: !alive, a: true, b: true},
+    {name: "ALIVE_CANNOT_USE", condition: alive, a: true, b: true},
     {name: "DISALLOW_NIGHT", condition: !day, a: true, b: true},
     {name: "DISALLOW_DAY", condition: day, a: true, b: true}
   ];

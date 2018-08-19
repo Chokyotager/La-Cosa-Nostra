@@ -10,6 +10,7 @@ module.exports = function (game, message, params) {
 
 module.exports.ALLOW_NONSPECIFIC = false;
 module.exports.PRIVATE_ONLY = true;
-module.exports.DEAD_CAN_USE = false;
-module.exports.ALIVE_CAN_USE = true;
+module.exports.DEAD_CANNOT_USE = true;
+module.exports.ALIVE_CANNOT_USE = false;
 module.exports.DISALLOW_DAY = true;
+module.exports.DISALLOW_NIGHT = false;

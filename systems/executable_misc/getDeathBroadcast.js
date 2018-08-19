@@ -10,12 +10,12 @@ module.exports = function (game, role, reason) {
 
   message = message.replace(new RegExp("{;player}", "g"), member.displayName);
   message = message.replace(new RegExp("{;reason}", "g"), reason);
-  message = message.replace(new RegExp("{;role}", "g"), role.display_role);
+  message = message.replace(new RegExp("{;role}", "g"), role.getDisplayRole());
 
   var will = "We could not find a last will.";
 
   if (role.will !== undefined) {
-    will = role.will;
+    will = "We found a will next to their body:\n```fix\n" + role.will + "```";
   };
 
   message = message.replace(new RegExp("{;will_message}", "g"), will);
