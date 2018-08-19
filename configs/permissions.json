@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "admin": "Host",
+    "alive": "Alive",
+    "dead": "Dead",
+    "spectator": "Spectator",
+    "aftermath": "",
+    "pre": "Player"
+  }
+}

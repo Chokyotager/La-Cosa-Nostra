@@ -1,0 +1,27 @@
+{
+
+  "encode-logs": true,
+  "game": {
+
+    "mafia": {
+      "has-chat": true,
+      "chat-name": "mafia",
+      "night-only": false
+    },
+
+    "town": {
+      "night-chat": true
+    },
+
+    "day-zero": true,
+    "lynch-ratio-floored": 0.125
+
+  },
+
+  "time": {
+    "timezone": 8,
+    "day": 12,
+    "night": 12
+  }
+
+}

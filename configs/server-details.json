@@ -1,0 +1,29 @@
+{
+  "base-perms": {
+
+    "read": {
+      "READ_MESSAGES": true,
+      "READ_MESSAGE_HISTORY": true,
+      "SEND_MESSAGES": false,
+      "ADD_REACTIONS": false,
+      "USE_EXTERNAL_EMOJIS": false,
+      "MENTION_EVERYONE": false,
+      "EMBED_LINKS": false,
+      "ATTACH_FILES": false,
+      "SEND_TTS_MESSAGES": false
+    },
+
+    "post": {
+      "READ_MESSAGES": true,
+      "READ_MESSAGE_HISTORY": true,
+      "SEND_MESSAGES": true,
+      "ADD_REACTIONS": false,
+      "USE_EXTERNAL_EMOJIS": false,
+      "MENTION_EVERYONE": false,
+      "EMBED_LINKS": false,
+      "ATTACH_FILES": false,
+      "SEND_TTS_MESSAGES": false
+    }
+
+  }
+}

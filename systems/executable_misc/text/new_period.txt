@@ -1,0 +1,12 @@
+~~                                ~~   **{!game_chronos}**   ~~                                ~~
+*({!utc_formatted})*
+
+It is now {!cycle}. There are __{!alive}__ players alive.
+
+**A summary of __{!game_chronos_last}__'s events:**
+
+{;summary}
+
+`{!game_chronos_next} will begin on {!next_utc_formatted}`
+
+{@alive}

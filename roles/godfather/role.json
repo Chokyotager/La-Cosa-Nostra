@@ -1,0 +1,25 @@
+{
+  "role-name": "Godfather",
+
+  "alignment": "mafia",
+  "class": "killing",
+
+  "night-action": "night",
+  "day-action": null,
+
+  "see-mafia-chat": true,
+
+  "win-condition": "mafia",
+
+  "stats": {
+    "basic-defense": 1,
+    "roleblock-immunity": 0,
+    "detection-immunity": 1,
+    "control-immunity": 0,
+    "priority": 5,
+    "vote-offset": 0
+  },
+
+  "investigation": ["Bodyguard", "Godfather", "Arsonist"],
+  "secondary-roles": null
+}

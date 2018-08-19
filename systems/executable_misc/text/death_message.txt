@@ -1,0 +1,5 @@
+:skull_crossbones: You {;reason}!
+
+:skull_crossbones: **You have died.**
+
+{@player}

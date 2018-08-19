@@ -1,0 +1,7 @@
+You are a skilled surgeon trained in trauma care.
+
+Every night, you may choose to heal a player. This will provide them with a Powerful defence for that night.
+
+Moreover, if your target was poisoned, you will cure them of the poison.
+
+You may, however, only heal yourself once.

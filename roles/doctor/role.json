@@ -1,0 +1,20 @@
+{
+  "role-name": "Doctor",
+
+  "alignment": "town",
+  "class": "support",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+    "priority": 3,
+    "vote-offset": 0
+  },
+
+  "investigation": ["Doctor", "Disguiser", "Serial Killer"],
+  "secondary-roles": null
+}

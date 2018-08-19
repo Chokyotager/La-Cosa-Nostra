@@ -1,0 +1,16 @@
+{
+  "channels": {
+    "log": "logbook",
+    "voting": "trial",
+    "main": "city-hall",
+    "whisper-log": "post-office",
+    "roles": "yellow-pages",
+    "verbose": "_",
+
+    "welcome-channel": "cinema"
+  },
+
+  "categories": {
+    "private": "Private"
+  }
+}

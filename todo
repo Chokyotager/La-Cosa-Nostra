@@ -1,0 +1,21 @@
+TODO
+
+Actionable system:
+- Killed/Nightkilled/Lynched 3p param (for matchmaking)
+- Mafia promotions can go into this by default
+
+Doctor role:
+- Poison cures
+
+General:
+- Command aliases;
+  - Same command, shared by different classes
+    - Make command handler process roles first;
+    - Unequipped roles will not be able to execute command
+    - (subject to change)
+
+Roles:
+- Refer to role list and description
+
+Win conditions:
+- Housed within gamesystem

@@ -1,0 +1,9 @@
+**{!game_chronos} TRIAL**
+
+{;public_votes}
+
+With __{!alive}__ players alive, __{!votes_required}__ votes are required to lynch.
+To abstain, refrain from voting.
+You may uncheck on your vote.
+
+The vote has ended. Refer to {#log} for the outcomes of the vote.

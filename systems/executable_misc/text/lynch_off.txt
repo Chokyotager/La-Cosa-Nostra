@@ -1,0 +1,1 @@
+:books: The vote count of **{;player}** has dropped below __{;votes}__ votes and they are now off the hook.
