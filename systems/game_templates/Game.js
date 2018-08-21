@@ -598,12 +598,12 @@ module.exports = class {
 
     this.state = "playing";
 
-    executable.misc.postGameStart(this);
-    executable.misc.openMainChats(this);
-
     for (var i = 0; i < this.players.length; i++) {
       this.players[i].start();
     };
+
+    executable.misc.postGameStart(this);
+    executable.misc.openMainChats(this);
 
   }
 

@@ -25,7 +25,7 @@ module.exports = function (name) {
   role_obj.role_card = attemptReadStream(directory + "/" + name + "/role_card.png");
 
   role_obj.routine = attemptRequiring(directory + "/" + name + "/general/routines.js");
-  role_obj.start = attemptRequiring(directory + "/" + name + "/general/initial.js");
+  role_obj.start = attemptRequiring(directory + "/" + name + "/general/start.js");
 
   // Returns a 2-tuple of role obj and description
   return role_obj;
