@@ -1,6 +1,7 @@
 // IMPORTANT: assigning
 
 var Player = require("../game_templates/Player.js");
+var auxils = require("../auxils.js");
 
 module.exports = function (client, config) {
   // Role alphabets are assigned in order
@@ -8,7 +9,7 @@ module.exports = function (client, config) {
 
   // players mapped by IDs
   var players = config["playing"]["players"];
-  var roles = config["playing"]["shuffle"] ? shuffle(config["playing"]["roles"]) : config["playing"]["roles"];
+  var roles = config["playing"]["shuffle"] ? auxils.cryptographicShuffle(config["playing"]["roles"]) : config["playing"]["roles"];
 
   if (roles.length !== players.length) {
     var err = "Role length should be equal to number of players!";
@@ -37,20 +38,4 @@ module.exports = function (client, config) {
 
   return ret;
 
-};
-
-function shuffle (x) {
-  // Using standard Fisher-Yates shuffling
-  // Copied from CAH :P
-
-  // Array is duplicated
-  ret = Array.from(x);
-
-  for (var i = 0; i < ret.length; i++) {
-    var jumble = Math.floor(Math.random() * i);
-    var cache = ret[i];
-    ret[i] = ret[jumble];
-    ret[jumble] = cache;
-  };
-  return ret;
 };

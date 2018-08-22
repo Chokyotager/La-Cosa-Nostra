@@ -1,4 +1,4 @@
-:skull_crossbones: You {;reason}!
+:skull_crossbones: You were {;reason}!
 
 :skull_crossbones: **You have died.**
 

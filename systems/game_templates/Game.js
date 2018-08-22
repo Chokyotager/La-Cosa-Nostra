@@ -9,6 +9,8 @@ var alphabets = require("../alpha_table.js");
 
 var Actions = require("./Actions.js");
 
+var auxils = require("../auxils.js");
+
 module.exports = class {
 
   constructor (client, config) {
@@ -197,7 +199,7 @@ module.exports = class {
       return null;
     };
 
-    var reversed = flipObject(alphabets);
+    var reversed = auxils.flipObject(alphabets);
     var emote = reaction.emoji;
 
     var alphabet = reversed[emote];
@@ -347,7 +349,8 @@ module.exports = class {
 
       // Offset the broadcast by -1 since period
       // has already been added
-      executable.misc.postNewPeriod(this, this.getBroadcast(-1));
+      var broadcast = this.getBroadcast(-1, true);
+      executable.misc.postNewPeriod(this, broadcast);
 
     } else {
 
@@ -490,29 +493,82 @@ module.exports = class {
 
   lynch (role) {
 
-    var success = executable.misc.lynch(this, role.id);
+    var success = executable.misc.lynch(this, role);
 
     // Add lynch summary
     if (success) {
-      this.addDeathBroadcast(role, "was __lynched__");
-      this.addDeathMessage(role, "were __lynched__");
+      this.primeDeathMessages(role, "__lynched__");
     };
 
     return success;
 
   }
 
-  addDeathBroadcast (role, reason) {
+  modkill (role) {
 
-    // Set reason
-    var broadcast = executable.misc.getDeathBroadcast(this, role, reason);
+    executable.misc.kill(this, role);
 
-    this.addBroadcastSummary(broadcast);
+    this.primeDeathMessages(role, "__killed__ by a moderator");
 
   }
 
-  addBroadcastSummary (message) {
+  primeDeathMessages (role, reason, secondary) {
+    this.addDeathBroadcast(role, reason);
+
+    if (secondary !== undefined) {
+      this.addDeathMessage(role, secondary);
+    } else {
+      this.addDeathMessage(role, reason);
+    };
+
+  }
+
+  enterDeathBroadcasts (offset=0) {
+    // Enters in from log.death_broadcasts
+    var log = this.getPeriodLog(offset);
+
+    var registers = log.death_broadcasts;
+
+    var unique = new Array();
+
+    for (var i = 0; i < registers.length; i++) {
+      if (!unique.includes(registers[i].role)) {
+        unique.push(registers[i].role);
+      };
+    };
+
+    for (var i = 0; i < unique.length; i++) {
+
+      var role = this.getPlayerById(unique[i]);
+
+      var reasons = new Array();
+
+      for (var j = 0; j < registers.length; j++) {
+        if (registers[j].role === unique[i]) {
+          reasons.push(registers[j].reason);
+        };
+      };
+
+      var reason = auxils.pettyFormat(reasons);
+
+      var message = executable.misc.getDeathBroadcast(this, role, reason);
+
+      this.addBroadcastSummary(message, offset);
+
+    };
+
+  }
+
+  addDeathBroadcast (role, reason) {
+
     var log = this.getPeriodLog();
+
+    log.death_broadcasts.push({role: role.id, reason: reason});
+
+  }
+
+  addBroadcastSummary (message, offset=0) {
+    var log = this.getPeriodLog(offset);
 
     log.summary.push({message: message, time: new Date()});
   }
@@ -529,7 +585,11 @@ module.exports = class {
     log.messages.push({message: message, recipient: role.id, time: new Date()});
   }
 
-  getBroadcast (offset=0) {
+  getBroadcast (offset=0, enter=false) {
+
+    if (enter) {
+      this.enterDeathBroadcasts(offset);
+    };
 
     // Get the summary broadcast
 
@@ -615,6 +675,7 @@ module.exports = class {
     this.period_log[this.period.toString()] = {
       "trials": Math.ceil(this.config["game"]["lynch-ratio-floored"] * this.getAlive()),
       "summary": new Array(),
+      "death_broadcasts": new Array(),
       "messages": new Array(),
       "trial_vote": null,
       "period": this.period,
@@ -650,10 +711,6 @@ module.exports = class {
     var id = this.getPlayerByAlphabet(alphabet);
 
     return this.client.users.get(id);
-  }
-
-  modkill (alphabet) {
-    // TODO: modkill systems, + announcement
   }
 
   getFormattedDay (offset=0) {
@@ -726,8 +783,8 @@ module.exports = class {
         // Calculate Levenshtein Distance
         // Ratio'd
 
-        var s_username = levenshteinDistance(name.toLowerCase(), username.toLowerCase()) / username.length;
-        var s_nickname = levenshteinDistance(name.toLowerCase(), nickname.toLowerCase()) / nickname.length;
+        var s_username = auxils.levenshteinDistance(name.toLowerCase(), username.toLowerCase()) / username.length;
+        var s_nickname = auxils.levenshteinDistance(name.toLowerCase(), nickname.toLowerCase()) / nickname.length;
 
         var distance = Math.min(s_username, s_nickname);
         distances.push(distance);
@@ -749,68 +806,5 @@ module.exports = class {
     return {"score": score, "player": player};
 
   }
-
-};
-
-function levenshteinDistance (s, t) {
-    var d = []; //2d matrix
-
-    // Step 1
-    var n = s.length;
-    var m = t.length;
-
-    if (n == 0) return m;
-    if (m == 0) return n;
-
-    //Create an array of arrays in javascript (a descending loop is quicker)
-    for (var i = n; i >= 0; i--) d[i] = [];
-
-    // Step 2
-    for (var i = n; i >= 0; i--) d[i][0] = i;
-    for (var j = m; j >= 0; j--) d[0][j] = j;
-
-    // Step 3
-    for (var i = 1; i <= n; i++) {
-        var s_i = s.charAt(i - 1);
-
-        // Step 4
-        for (var j = 1; j <= m; j++) {
-
-            //Check the jagged ld total so far
-            if (i == j && d[i][j] > 4) return n;
-
-            var t_j = t.charAt(j - 1);
-            var cost = (s_i == t_j) ? 0 : 1; // Step 5
-
-            //Calculate the minimum
-            var mi = d[i - 1][j] + 1;
-            var b = d[i][j - 1] + 1;
-            var c = d[i - 1][j - 1] + cost;
-
-            if (b < mi) mi = b;
-            if (c < mi) mi = c;
-
-            d[i][j] = mi; // Step 6
-
-            //Damerau transposition
-            if (i > 1 && j > 1 && s_i == t.charAt(j - 2) && s.charAt(i - 2) == t_j) {
-                d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + cost);
-            };
-        };
-    };
-
-    // Step 7
-    return d[n][m];
-};
-
-function flipObject (object) {
-  var entries = Object.entries(object);
-  var ret = new Object();
-
-  for (var i = 0; i < entries.length; i++) {
-    ret[entries[i][1]] = entries[i][0];
-  };
-
-  return ret;
 
 };

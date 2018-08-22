@@ -155,14 +155,16 @@ module.exports = class {
     return this.will;
   }
 
-  lynch () {
+  lynchable () {
     // Set the player to be lynched
 
     // Future special functions may go here
 
-    this.status.alive = false;
-
     return true;
+  }
+
+  kill () {
+    this.status.alive = false;
   }
 
   start () {

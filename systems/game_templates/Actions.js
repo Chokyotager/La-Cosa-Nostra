@@ -4,6 +4,8 @@ var actionables = require("../actionables.js"); // for now
 var crypto = require("crypto");
 var Player = require("./Player.js");
 
+var auxils = require("../auxils.js");
+
 module.exports = class {
 
   constructor () {
@@ -71,7 +73,7 @@ module.exports = class {
   sortByPriority (shuffle_first=false) {
 
     if (shuffle_first) {
-      this.actions = shuffle(this.actions);
+      this.actions = auxils.shuffle(this.actions);
     };
 
     this.actions.sort(function (a, b) {
@@ -140,23 +142,5 @@ module.exports = class {
       };
     };
   }
-
-};
-
-function shuffle (x) {
-  // Using standard Fisher-Yates shuffling
-  // Copied from CAH :P
-
-  // Array is duplicated
-  ret = Array.from(x);
-
-  for (var i = 0; i < ret.length; i++) {
-    var jumble = Math.floor(Math.random() * i);
-    var cache = ret[i];
-    ret[i] = ret[jumble];
-    ret[jumble] = cache;
-  };
-
-  return ret;
 
 };

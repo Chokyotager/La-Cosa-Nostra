@@ -1,5 +1,7 @@
 // Broadcast the lynch to the main channel
 
+var auxils = require("./../auxils.js");
+
 module.exports = async function (game, roles) {
 
   var client = game.client;
@@ -36,19 +38,13 @@ module.exports = async function (game, roles) {
 
   function formatRoleMessage (roles) {
 
-    var ret = new String();
-
     for (var i = 0; i < roles.length; i++) {
 
-      ret += guild.members.get(roles[i].id).displayName;
-
-      if (i < roles.length - 1) {
-        ret += "**, **";
-      } else if (i === roles.length) {
-        ret += "** and **";
-      };
+      roles[i] = "**" + roles[i] + "**";
 
     };
+
+    var ret = auxils.pettyFormat(roles);
 
     return ret;
 

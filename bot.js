@@ -2,17 +2,16 @@ var Discord = require("Discord.js");
 var client = new Discord.Client();
 var fs = require("fs");
 
-var config = require("./auxils/config_handler.js")();
+var auxils = require("./systems/auxils.js");
+
+var config = auxils.config_handler();
 var commands = require("./systems/commands.js");
 var game = require("./systems/game.js");
-
-// Console command handler
-var readline = require("./auxils/readline.js");
 
 client.on("ready", function () {
   console.log("Bedlam Mafia ready.");
 
-  readline(client, config, commands);
+  auxils.readline(client, config, commands);
 
   client.user.setPresence({
     status: 'online',

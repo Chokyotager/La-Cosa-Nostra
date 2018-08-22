@@ -1,11 +1,11 @@
 var readline = require("readline");
 
-var rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 module.exports = function (client, config, commands) {
+
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
 
   createRl();
 

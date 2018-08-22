@@ -1,5 +1,6 @@
 var texts = require("./text/texts.js");
 var format = require("./__formatter.js");
+var auxils = require("./../auxils.js");
 
 module.exports = async function (game, ended=false) {
 
@@ -33,26 +34,22 @@ module.exports = async function (game, ended=false) {
 
         // Get people voting against
         var voting_against = roles[i].votes;
-        var concat = new String();
+        var concat = new Array();
 
         // Get their display names
         for (var j = 0; j < voting_against.length; j++) {
 
           // Mapped by IDs
           var member = game.getGuildMember(voting_against[j]);
-          concat += member.displayName;
-
-          if (j < voting_against.length - 1) {
-            concat += ", ";
-          } else if (j === voting_against.length) {
-            concat += " and ";
-          };
+          concat.push(member.displayName);
 
         };
 
-        concat = voting_against.length > 0 ? ": " + concat : "";
+        var names = auxils.pettyFormat(concat);
 
-        displays.push("<@" + roles[i].id + "> (" + voting_against.length + "/{!votes_required})" + concat);
+        names = voting_against.length > 0 ? ": " + names : "";
+
+        displays.push("<@" + roles[i].id + "> (" + voting_against.length + "/{!votes_required})" + names);
       } else {
         displays.push("[" + roles[i].alphabet + " - dead, **" + roles[i].getDisplayRole() + "**]");
       };
