@@ -14,8 +14,8 @@ client.on("ready", function () {
   auxils.readline(client, config, commands);
 
   client.user.setPresence({
-    status: 'online',
-    game: {name: "La Cosa Nostra v0.1", type: 'PLAYING'}
+    status: "online",
+    game: {name: "La Cosa Nostra v0.1", type: "PLAYING"}
   });
 
   if (config["automatically-load-saves"]) {

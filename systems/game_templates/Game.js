@@ -735,6 +735,10 @@ module.exports = class {
     this.save();
   }
 
+  format (string) {
+    return executable.misc.__formatter(string);
+  }
+
   reinstantiate (timer, players) {
     this.timer = timer;
     this.players = players;

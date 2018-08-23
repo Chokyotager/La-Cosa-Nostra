@@ -1,5 +1,19 @@
 // format messages
 
+/*
+
+LEGEND:
+
+# - channel
+@ - ping role
+! - special
++ - vocab {+[term]|[key]} followed by special
+; - do not use
+
+*/
+
+var auxils = require("../auxils.js");
+
 module.exports = function (game, message) {
   // Ping roles
 
@@ -41,10 +55,28 @@ module.exports = function (game, message) {
 
   };
 
+  // Specials
+
   var misc = Object.keys(parameters);
 
   for (var i = 0; i < misc.length; i++) {
-    message = message.replace(new RegExp("{" + misc[i] + "}", "g"), parameters[misc[i]]);
+    message = message.replace(new RegExp("{!" + misc[i] + "}", "g"), parameters[misc[i]]);
+
+  };
+
+  // Vocabulary
+  var regex = new RegExp("{\\+([A-z]+)\\|(.*?)}", "g");
+  var matches = message.match(regex) || new Array();
+
+  for (var i = 0; i < matches.length; i++) {
+    regex = new RegExp("{\\+([A-z]+)\\|(.*?)}", "g");
+
+    var catches = regex.exec(matches[i]);
+
+    var grammar = catches[1];
+    var param = parameters[catches[2]];
+
+    message = message.replace(matches[i], auxils.vocab(grammar, param));
   };
 
   var quotes = Object.keys(config["messages"]);
@@ -61,18 +93,18 @@ function getParameters (game) {
 
   var config = game.config;
   var ret = {
-    "!alive": game.getAlive(),
-    "!day_hours": config.time.day,
-    "!night_hours": config.time.night,
-    "!utc_formatted": formatDate(game.current_time),
-    "!next_utc_formatted": formatDate(game.next_action),
-    "!game_chronos": game.getFormattedDay().toUpperCase(),
-    "!game_chronos_next": game.getFormattedDay(1),
-    "!game_chronos_last": game.getFormattedDay(-1),
-    "!cycle": game.period % 2 === 0 ? "daytime" : "nighttime",
-    "!trials_left": game.getPeriodLog().trials,
-    "!votes_required": game.getVotesRequired(),
-    "!veto_time": config.game["veto-time"]
+    "alive": game.getAlive(),
+    "day_hours": config.time.day,
+    "night_hours": config.time.night,
+    "utc_formatted": formatDate(game.current_time),
+    "next_utc_formatted": formatDate(game.next_action),
+    "game_chronos": game.getFormattedDay().toUpperCase(),
+    "game_chronos_next": game.getFormattedDay(1),
+    "game_chronos_last": game.getFormattedDay(-1),
+    "cycle": game.period % 2 === 0 ? "daytime" : "nighttime",
+    "trials_left": game.getPeriodLog().trials,
+    "votes_required": game.getVotesRequired(),
+    "veto_time": config.game["veto-time"]
   };
 
   return ret;

@@ -3,6 +3,8 @@
 
 // Function should be synchronous
 
+var auxils = require("../../../systems/auxils.js");
+
 module.exports = function (player) {
 
   var game = player.game;
@@ -26,6 +28,6 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = guild.channels.get(player.channel.id);
 
-  channel.send(":pill: You may choose to heal a player tonight.\n\nYou have __" + player.misc.doc_self_heals + "__ self-heals left.\n\nUse `!heal <alphabet/name>` to select your target.");
+  channel.send(":pill: You may choose to heal a player tonight.\n\nYou have __" + player.misc.doc_self_heals + "__ self-heal" + auxils.vocab("s", player.misc.doc_self_heals) + " left.\n\nUse `!heal <alphabet/name>` to select your target.");
 
 };

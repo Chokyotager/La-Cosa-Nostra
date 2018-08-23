@@ -1,7 +1,7 @@
 ~~                                ~~   **{!game_chronos}**   ~~                                ~~
 *({!utc_formatted})*
 
-It is now {!cycle}. There are __{!alive}__ players alive.
+It is now {!cycle}. There {+is|alive} __{!alive}__ player{+s|alive} alive.
 
 **A summary of __{!game_chronos_last}__'s events:**
 

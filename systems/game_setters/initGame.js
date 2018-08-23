@@ -11,6 +11,11 @@ var setRolePermissions = require("./setRolePermissions.js");
 
 module.exports = async function (client, config) {
 
+  await client.user.setPresence({
+    status: "dnd",
+    game: {name: "setting up...", type: "PLAYING"}
+  });
+
   // Destroy previous timer
   if (process.timer) {
     process.timer.destroy();
@@ -49,6 +54,11 @@ module.exports = async function (client, config) {
   timer.save();
 
   process.timer = timer;
+
+  await client.user.setPresence({
+    status: "online",
+    game: {name: "readying...", type: "PLAYING"}
+  });
 
   return timer;
 

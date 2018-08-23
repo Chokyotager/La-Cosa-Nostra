@@ -1,10 +1,10 @@
 ~~                                ~~   **{!game_chronos}**   ~~                                ~~
 *({!utc_formatted})*
 
-Days last for __{!day_hours}__ hours.
-Nights last for __{!night_hours}__ hours.
+Days last for __{!day_hours}__ hour{+s|day_hours}.
+Nights last for __{!night_hours}__ hour{+s|night_hours}.
 
-The game has started. There are __{!alive}__ players alive.
+The game has started. There {+is|alive} __{!alive}__ player{+s|alive} alive.
 
 {#opening-quote}
 

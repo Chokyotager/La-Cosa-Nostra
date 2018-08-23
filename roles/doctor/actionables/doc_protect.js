@@ -1,7 +1,7 @@
 var protBase = require("../../../rolesystem/prototypes/increase_immunity.js");
 
 module.exports = function (actionable, game, params) {
-  protBase(arguments);
+  protBase(...arguments);
 
   var from = game.getPlayerByAlphabet(actionable.from);
   var to = game.getPlayerByAlphabet(actionable.to);
