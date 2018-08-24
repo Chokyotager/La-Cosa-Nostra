@@ -7,6 +7,6 @@ It is now {!cycle}. There {+is|alive} __{!alive}__ player{+s|alive} alive.
 
 {;summary}
 
-`{!game_chronos_next} will begin on {!next_utc_formatted}`
+`{!game_chronos_next} will begin on {!next_utc_formatted}.`
 
 {@alive}

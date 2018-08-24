@@ -23,3 +23,6 @@ PLANNED: kick/ban check
 START WORK:
 - Doctor heals
   - Implicit queue?
+
+Merge tick system with autosave
+- Similar to T4-root tick system

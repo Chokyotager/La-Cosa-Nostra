@@ -713,6 +713,10 @@ module.exports = class {
     return this.client.users.get(id);
   }
 
+  setPresence (presence) {
+    executable.misc.updatePresence(this, presence);
+  }
+
   getFormattedDay (offset=0) {
 
     var period = this.period + offset;

@@ -55,11 +55,6 @@ module.exports = async function (client, config) {
 
   process.timer = timer;
 
-  await client.user.setPresence({
-    status: "online",
-    game: {name: "readying...", type: "PLAYING"}
-  });
-
   return timer;
 
 };

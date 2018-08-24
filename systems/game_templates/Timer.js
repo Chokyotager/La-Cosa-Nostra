@@ -6,7 +6,9 @@ var fs = require("fs");
 
 var Game = require("./Game.js");
 var Player = require("./Player.js");
-var Actions = require("./Actions.js")
+var Actions = require("./Actions.js");
+
+var auxils = require("../auxils.js");
 
 module.exports = class {
 
@@ -24,11 +26,15 @@ module.exports = class {
     this.game = game;
     this.game.timer = this;
 
+    this.ticks = 0;
+
     this.prime();
 
     this.game.timer_identifier = this.identifier;
 
-    this.createAutosave();
+    this.createTick();
+
+    this.updatePresence();
 
     return this;
 
@@ -38,6 +44,12 @@ module.exports = class {
 
     this.game = game;
     game.timer = this;
+
+    // Reprime
+    this.prime();
+    this.createTick();
+
+    this.updatePresence();
 
     return this;
 
@@ -51,6 +63,9 @@ module.exports = class {
     var delta = designated.getTime() - current.getTime();
     console.log("Primer: set D/N mediator delta to: %s", delta);
 
+    this.designated = designated;
+    this.primed = current;
+
     var run_as = this;
 
     this.day_night_mediator = setTimeout(function () {
@@ -58,6 +73,8 @@ module.exports = class {
     }, 10000);
 
     // IMPORTANT: Substitute time for delta
+
+    this.updatePresence();
 
   }
 
@@ -78,25 +95,120 @@ module.exports = class {
 
   }
 
-  createAutosave () {
+  tick () {
 
-    var timer = this;
+    var config = this.game.config;
 
-    this.autosave = setInterval(async function () {
+    this.ticks++;
+
+    // Autosave
+
+    if (this.ticks % config["ticks"]["autosave-ticks"] === 0) {
       console.log("Autosaving...");
-      timer.save();
-    }, 5*60*1000);
+      this.save();
+    };
+
+    // Tick to update small things
+    this.checkPresenceUpdate();
+
+  }
+
+  checkPresenceUpdate () {
+
+    var current = new Date();
+
+    var delta = this.designated.getTime() - current.getTime();
+
+    var days = delta / (24*60*60*1000);
+    var hours = delta / (60*60*1000);
+    var minutes = delta / (60*1000);
+
+    if (minutes < 1) {
+      // Update frequently
+      var amount = Math.ceil(1000 / this.tick_time);
+    } else {
+      var amount = Math.ceil(5*60*1000 / this.tick_time);
+    };
+
+    if (this.ticks % amount === 0) {
+      this.updatePresence();
+    };
+
+  }
+
+  updatePresence () {
+
+    var current = new Date();
+
+    // In milliseconds
+    var delta = this.designated.getTime() - current.getTime();
+
+    if (delta < 0) {
+      return null;
+    };
+
+    if (this.game.state === "pre-game") {
+
+      var display = "Pre-game: " + formatDate(delta) + " left";
+
+      this.game.setPresence({
+        status: "online",
+        game: {name: display, type: "PLAYING"}
+      });
+
+    } else if (this.game.state === "playing") {
+
+      var display = this.game.getFormattedDay() + ": " + formatDate(delta) + " left";
+
+      this.game.setPresence({
+        status: "online",
+        game: {name: display, type: "PLAYING"}
+      });
+
+    } else {
+
+      var display = this.game.getFormattedDay() + ": game ended";
+
+      this.game.setPresence({
+        status: "online",
+        game: {name: display, type: "PLAYING"}
+      });
+
+    };
+
+  }
+
+  createTick (time) {
+
+    var config = this.game.config;
+
+    this.clearTick();
+
+    if (time === undefined) {
+      time = config["ticks"]["time"];
+    };
+
+    var run_as = this;
+
+    this.tick_time = time;
+    this.tick_interval = setInterval(async function () {
+      run_as.tick();
+    }, time);
 
   }
 
   destroy () {
+
     this.clearDayNightMediator();
-    this.clearAutosave();
+    this.clearTick();
+
   }
 
-  clearAutosave () {
+  clearTick () {
 
-    clearInterval(this.autosave);
+    if (this.tick_interval !== undefined) {
+      clearInterval(this.tick_interval);
+    };
 
   }
 
@@ -138,6 +250,7 @@ module.exports = class {
 
       // Guess what, I needed it after all
       delete player.game;
+      delete player.role;
 
       var string = JSON.stringify(player);
 
@@ -149,7 +262,7 @@ module.exports = class {
 
     function encode (string) {
       if (config["encode-cache"]) {
-        string = "encoded_base64\n" + atob(string);
+        string = "encoded_base64\n" + auxils.atob(string);
       };
       return string;
     };
@@ -205,10 +318,6 @@ module.exports.load = function (client, config) {
 
   var timer = new module.exports().reinstantiate(game);
 
-  // Reprime
-  timer.prime();
-  timer.createAutosave();
-
   return timer;
 
   function charCounter (string) {
@@ -225,13 +334,45 @@ module.exports.load = function (client, config) {
 
 };
 
+function formatDate (epoch) {
+  // Format into d, h, m, s
+
+  var days = epoch / (24*60*60*1000);
+  var hours = epoch / (60*60*1000);
+  var minutes = epoch / (60*1000);
+  var seconds = epoch / 1000;
+
+  if (days >= 1) {
+
+    var ret = Math.ceil(days);
+    return ret + " day" + auxils.vocab("s", ret);
+
+  } else if (hours >= 1) {
+
+    var ret = Math.ceil(hours);
+    return ret + " hour" + auxils.vocab("s", ret);
+
+  } else if (minutes >= 1) {
+
+    var ret = Math.ceil(minutes);
+    return ret + " minute" + auxils.vocab("s", ret);
+
+  } else if (seconds >= 1) {
+
+    var ret = Math.ceil(seconds);
+    return ret + " second" + auxils.vocab("s", ret);
+
+  };
+
+}
+
 function decode (string) {
   var enc_test = /^encoded_base64\n/gm;
 
   if (enc_test.test(string)) {
     // Encoded in base64
     string = string.replace(enc_test, "");
-    string = btoa(string);
+    string = auxils.btoa(string);
   };
 
   return JSON.parse(string, dateTimeReviver);
@@ -249,12 +390,4 @@ function decode (string) {
 
   };
 
-};
-
-function atob (string) {
-  return Buffer.from(string).toString("base64");
-};
-
-function btoa (string) {
-  return Buffer.from(string, "base64").toString("utf8");
 };
