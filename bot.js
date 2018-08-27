@@ -49,7 +49,7 @@ client.on("message", function (message) {
       // Check permissions
       var member = message.member;
 
-      if (member.roles.exists(x => x.name === config["permissions"]["admin"])) {
+      if (member.roles.some(x => x.name === config["permissions"]["admin"])) {
         commands.admin[command](message, edited, config);
       } else {
         message.channel.send(":x: You do not have permissions to use this command!");
