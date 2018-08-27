@@ -66,7 +66,7 @@ module.exports = class {
     this.alphabet = alphabet;
     this.role_identifier = role;
 
-    this.identifier = crypto.randomBytes(8).toString("hex");
+    this.identifier = crypto.randomBytes(8).toString("hex") + "-" + this.id;
 
     this.channel = null;
 
@@ -118,6 +118,17 @@ module.exports = class {
 
   }
 
+  resetTemporaryStats () {
+    this.game_stats = {
+      "basic-defense": 0,
+      "roleblock-immunity": 0,
+      "detection-immunity": 0,
+      "control-immunity": 0,
+      "priority": 0,
+      "vote-offset": 0
+    };
+  }
+
   setGameStat (key, amount, modifier) {
 
     if (modifier === undefined) {
@@ -146,6 +157,32 @@ module.exports = class {
 
   }
 
+  getPrivateChannel () {
+    var guild = this.game.client.guilds.get(this.game.config["server-id"]);
+
+    var channel = guild.channels.get(this.channel.id);
+
+    return channel;
+  }
+
+  getStat (key, modifier) {
+
+    if (modifier === undefined) {
+      modifier = (a, b) => a + b;
+    };
+
+    var a = this.game_stats[key];
+    var b = this.permanent_stats[key];
+    var c = this.role.stats[key];
+
+    return modifier(modifier(a, b), c);
+
+  }
+
+  getStatus (key) {
+    return this.status[key];
+  }
+
   setWill (will) {
     this.will = will;
   }
@@ -153,6 +190,30 @@ module.exports = class {
   getTrueWill () {
     // Gets the vanilla will
     return this.will;
+  }
+
+  getGuildMember () {
+
+    var client = this.game.client;
+    var config = this.game.config;
+
+    var guild = client.guilds.get(config["server-id"]);
+
+    var member = guild.members.get(this.id);
+
+    return member;
+
+  }
+
+  getDisplayName () {
+    var member = this.getGuildMember();
+
+    if (member === undefined) {
+      return "undef'd player";
+    } else {
+      return member.displayName;
+    };
+
   }
 
   lynchable () {
@@ -219,6 +280,10 @@ module.exports = class {
     this.game = game;
   }
 
+  isAlive () {
+    return this.getStatus("alive");
+  }
+
   instantiateRole () {
 
     this.role = executable.roles.getRole(this.role_identifier);
@@ -230,11 +295,13 @@ module.exports = class {
     return this.identifier === player.identifier;
   };
 
-  __routines (game) {
+  __routines () {
 
     if (this.role.routine === undefined) {
       return null;
     };
+
+    this.resetTemporaryStats();
 
     return this.role.routine(this);
 

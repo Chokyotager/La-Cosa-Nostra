@@ -8,6 +8,9 @@ var roles_dir = __dirname + "/../roles";
 // Add extra role game commands
 var roles = fs.readdirSync(roles_dir);
 
+// Build framework properties
+main.role = new Object();
+
 for (var i = 0; i < roles.length; i++) {
   // Role commands should be unique
 
@@ -16,9 +19,6 @@ for (var i = 0; i < roles.length; i++) {
   };
 
   var commands = fs.readdirSync(roles_dir + "/" + roles[i] + "/game_commands/");
-
-  // Build framework properties
-  main.role = new Object();
 
   for (var j = 0; j < commands.length; j++) {
     if (commands[j].endsWith(".js")) {
@@ -38,7 +38,7 @@ for (var i = 0; i < roles.length; i++) {
 
           // Check properties
 
-          var properties = main.role[key].properties;
+          var properties = arguments.callee.properties;
 
           var fails = new Array();
 

@@ -45,6 +45,8 @@ module.exports = class {
     this.game = game;
     game.timer = this;
 
+    this.ticks = 0;
+
     // Reprime
     this.prime();
     this.createTick();
@@ -70,7 +72,7 @@ module.exports = class {
 
     this.day_night_mediator = setTimeout(function () {
       run_as.step();
-    }, 10000);
+    }, 15000);
 
     // IMPORTANT: Substitute time for delta
 
@@ -221,6 +223,12 @@ module.exports = class {
 
     // Clone Game instance to savable
     var savable = Object.assign({}, this.game);
+
+    /* This one line of code below here \/ cost me TWO hours of my life
+    Honestly if only Object.assign() would clone an object in its whole
+    and not do a half-***ed job I would be a happier person.
+    */
+    savable.actions = Object.assign({}, this.game.actions);
 
     var players = savable.players;
     var config = savable.config;

@@ -1,7 +1,7 @@
 {
   "playing": {
-    "players": ["108153479830241280", "11111", "22222", "333333", "333333", "333333", "333333", "333333"],
-    "roles": ["doctor", "godfather", "doctor", "doctor", "doctor", "doctor", "doctor", "doctor"],
-    "shuffle": true
+    "players": ["108153479830241280", "11111", "22222", "333333", "444444", "555555", "666666", "777777", "480536441760382976"],
+    "roles": ["doctor", "godfather", "doctor", "doctor", "doctor", "doctor", "doctor", "serial_killer", "serial_killer"],
+    "shuffle": false
   }
 }

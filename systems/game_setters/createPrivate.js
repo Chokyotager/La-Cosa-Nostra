@@ -20,7 +20,7 @@ module.exports = async function (client, config, roles) {
 
   // If mafia has rendezvous chat
   if (config["game"]["mafia"]["has-chat"]) {
-    var mafia = await createPrivateChannel(config["game"]["mafia"]["chat-name"]);
+    var mafia = createPrivateChannel(config["game"]["mafia"]["chat-name"]);
   } else {
     var mafia = null;
   };
@@ -31,6 +31,14 @@ module.exports = async function (client, config, roles) {
   // Create A-Z chats
   for (var i = 0; i < roles.length; i++) {
     resolvables.push(assignChannel(roles[i]));
+
+    // Short hiatus to prevent ENOTFOUND connection error
+    // Critical, apparently
+    await new Promise(function(resolve, reject) {
+      setTimeout(function () {
+        resolve();
+      }, 500);
+    });
   };
 
   return await Promise.all([mafia, Promise.all(resolvables)]);

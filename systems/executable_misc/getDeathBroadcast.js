@@ -6,9 +6,7 @@ var texts = require("./text/texts.js");
 module.exports = function (game, role, reason) {
   var message = texts.death_broadcast;
 
-  var member = game.getGuildMember(role.id);
-
-  message = message.replace(new RegExp("{;player}", "g"), member.displayName);
+  message = message.replace(new RegExp("{;player}", "g"), role.getDisplayName());
   message = message.replace(new RegExp("{;reason}", "g"), reason);
   message = message.replace(new RegExp("{;role}", "g"), role.getDisplayRole());
 

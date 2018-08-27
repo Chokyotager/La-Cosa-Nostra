@@ -33,6 +33,8 @@ module.exports = async function (player) {
   var message = await channel.send(send);
   await pinMessage(message);
 
+  channel.send("~~                                              ~~    **" + player.game.getFormattedDay() + "**         [*game start*]");
+
 };
 
 function cpl (string) {

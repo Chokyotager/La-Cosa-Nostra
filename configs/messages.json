@@ -8,8 +8,8 @@
     "nighttime-quote": ":full_moon: The sky purples into darkness. It is now nighttime.\n*Be sure to submit your night actions!*",
     "no-summary": "*Nothing of interest happened.*",
 
-    "singular-lynch": ":skull_crossbones: The trapdoors forcefully clang open below **{;player}**. In an instant, the previously loose rope turns taut and the last gasp of breath escapes the wretched. May there be mercy on your soul.",
-    "plural-lynch": ":skull_crossbones: The trapdoors forcefully clang open below **{;players}**. In an instant, the previously loose ropes turn taut and the last gasps of breath escape the wretched as their world fades into darkness. May there be mercy on their soul.",
+    "singular-lynch": ":skull_crossbones: The trapdoors forcefully clang open below {;player}. In an instant, the previously loose rope turns taut and the last gasp of breath escapes the wretched. May there be mercy on your soul.",
+    "plural-lynch": ":skull_crossbones: The trapdoors forcefully clang open below {;players}. In an instant, the previously loose ropes turn taut and the last gasps of breath escape the wretched as their world fades into darkness. May there be mercy on their soul.",
     "abstain-lynch": ":dove: The Town has abstained on lynches for the day.",
 
     "log": {

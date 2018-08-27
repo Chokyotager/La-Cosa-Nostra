@@ -1,18 +1,17 @@
 var rs = require("../../../rolesystem/rolesystem.js");
 
 module.exports = function (actionable, game, params) {
+
   rs.prototypes.increaseImmunity(...arguments);
   var poisoned = rs.prototypes.removePoison(...arguments);
 
-  var from = game.getPlayerByIdentifier(actionable.from);
-  var to = game.getPlayerByIdentifier(actionable.to);
+  var self = game.getPlayerByIdentifier(actionable.from);
 
   if (poisoned) {
-    var from = game.getPlayerByIdentifier(actionable.from);
-    game.addMessage(from, ":exclamation: You cured your target of poison!");
+    game.addMessage(self, ":exclamation: You cured yourself of poison!");
   };
 
-  if (from.status.roleblocked) {
+  if (self.status.roleblocked) {
     return null;
   };
 
@@ -23,5 +22,7 @@ module.exports = function (actionable, game, params) {
     to: actionable.to,
     expiry: 1
   });
+
+  self.misc.doc_self_heals--;
 
 };

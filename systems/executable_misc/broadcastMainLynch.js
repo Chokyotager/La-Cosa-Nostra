@@ -40,7 +40,7 @@ module.exports = async function (game, roles) {
 
     for (var i = 0; i < roles.length; i++) {
 
-      roles[i] = "**" + roles[i] + "**";
+      roles[i] = "**" + roles[i].getDisplayName() + "**";
 
     };
 

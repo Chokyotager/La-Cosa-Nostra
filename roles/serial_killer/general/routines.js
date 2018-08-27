@@ -28,6 +28,6 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = guild.channels.get(player.channel.id);
 
-  channel.send(":pill: You may choose to heal a player tonight.\n\nYou have __" + player.misc.doc_self_heals + "__ self-heal" + auxils.vocab("s", player.misc.doc_self_heals) + " left.\n\nUse `" + config["command-prefix"] + "heal <alphabet/name>` to select your target.");
+  channel.send(":knife: You may attack a player tonight.\n\nUse `" + config["command-prefix"] + "attack <alphabet/name>` to select your target.");
 
 };

@@ -6,11 +6,11 @@ var texts = require("./text/texts.js");
 module.exports = function (game, role, reason) {
   var message = texts.death_message;
 
-  var member = game.getGuildMember(role.id);
+  var member = role.getGuildMember();
 
-  message = message.replace(new RegExp("{;player}", "g"), member.displayName);
+  message = message.replace(new RegExp("{;player}", "g"), role.getDisplayName());
   message = message.replace(new RegExp("{;reason}", "g"), reason);
-  message = message.replace(new RegExp("{;role}", "g"), role.display_role);
+  message = message.replace(new RegExp("{;role}", "g"), role.getDisplayRole());
 
   var will = "We could not find a last will.";
 

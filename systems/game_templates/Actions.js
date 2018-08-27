@@ -13,11 +13,13 @@ module.exports = class {
   }
 
   init (game) {
+
     this.actions = new Array();
     this.previous = new Array();
     this.game = game;
 
     return this;
+
   }
 
   add (identifier, triggers, options) {
@@ -39,15 +41,17 @@ module.exports = class {
     actionable.identifier = identifier;
     actionable.triggers = triggers;
 
-    actionable.priority = actionable.priority || 0;
+    actionable.tags = actionable.tags || new Array();
 
-    if (actionable.from instanceof Player) {
-      actionable.from = actionable.from.id;
-    };
+    var from = this.game.getPlayer(actionable.from);
+    var to = this.game.getPlayer(actionable.to);
 
-    if (actionable.to instanceof Player) {
-      actionable.to = actionable.to.id;
-    };
+    actionable.from = from.identifier;
+    actionable.to = to.identifier;
+
+    var implicit_priority = from.getStat("priority", Math.max);
+
+    actionable.priority = actionable.priority || implicit_priority;
 
     /*
     var actionable = {
@@ -81,6 +85,112 @@ module.exports = class {
     });
   }
 
+  findAllTagged (tag) {
+
+    var ret = new Array();
+
+    for (var i = 0; i < this.actions.length; i++) {
+      if (this.actions[i].tags.includes(tag)) {
+        ret.push(this.actions[i]);
+      };
+    };
+
+    return ret;
+
+  }
+
+  find (key, value) {
+
+    for (var i = 0; i < this.actions.length; i++) {
+
+      if (typeof key === "function") {
+        var condition = key(this.actions[i]);
+
+        if (condition) {
+          return this.actions[i];
+        };
+
+      } else {
+
+        if (this.actions[i][key] === value) {
+          return this.actions[i];
+        };
+
+      };
+
+    };
+
+    return undefined;
+
+  }
+
+  findAll (key, value) {
+
+    var ret = new Array();
+
+    for (var i = 0; i < this.actions.length; i++) {
+
+      if (typeof key === "function") {
+        var condition = key(this.actions[i]);
+
+        if (condition) {
+
+          ret.push(condition);
+
+        };
+
+      } else if (this.actions[i][key] === value) {
+
+          ret.push(this.actions[i]);
+
+        };
+
+    };
+
+    return ret;
+
+  }
+
+  delete (key, value) {
+
+    var ret = new Array();
+
+    for (var i = this.actions.length - 1; i >= 0; i--) {
+
+      if (typeof key === "function") {
+
+        var condition = key(this.actions[i]);
+
+        if (condition) {
+          ret.push(this.actions[i]);
+          this.actions.splice(i, 1);
+        };
+
+      } else {
+
+        if (this.actions[i][key] === value) {
+          ret.push(this.actions[i]);
+          this.actions.splice(i, 1);
+        };
+
+      };
+
+    };
+
+    return ret;
+
+  }
+
+  exists (key, value) {
+
+    return this.find(key, value) !== undefined;
+
+  }
+
+  get () {
+    return this.actions;
+  }
+
   step () {
     // Iterate through actions
     this.execute("cycle");
@@ -96,6 +206,8 @@ module.exports = class {
 
     this.sortByPriority(true);
 
+    var game = this.game;
+
     for (var i = 0; i < this.actions.length; i++) {
 
       var action = this.actions[i];
@@ -105,26 +217,55 @@ module.exports = class {
         var run = actionables[action.identifier];
 
         if (run === undefined) {
-          console.warn("Bad function in actions!");
+          console.warn("Bad undefined function in actions!");
           continue;
         };
 
-        var result = run(action, this.game, params);
+        // Non-routine triggers
+        if (["chat", "lynch", "nightkill", "attacked", "killed"].includes(type)) {
+          var target = action.target || action.to;
 
-        if (result && ["chat", "lynch", "nightkill", "attacked", "killed"].includes(type)) {
-          // Decrement
-          action.expiry--;
+          if (params.target === target) {
+            var result = execute();
+
+            if (!result) {
+              action.expiry--;
+            };
+
+          };
+
+        };
+
+        // Periodic-triggers
+        if (["cycle"].includes(type)) {
+
+          var result = execute();
+
+        };
+
+        function execute () {
+
+          try {
+            var result = run(action, game, params);
+            return false;
+          } catch (err) {
+            console.log(err);
+            return false;
+          };
+
         };
 
       };
 
-      if (check_expiries) {
-        this.expiration();
+      if (type === "cycle") {
+        action.expiry--;
       };
-
 
     };
 
+    if (check_expiries) {
+      this.expiration(type);
+    };
 
   }
 
@@ -132,10 +273,11 @@ module.exports = class {
     this.game = game;
   }
 
-  expiration () {
+  // IMPORTANT: trigger WIP
+  expiration (trigger=null) {
     // Check expiries, remove
-    for (var i = 0; i < this.actions.length; i++) {
-      if (this.actions[i].expiry <= 0) {
+    for (var i = this.actions.length - 1; i >= 0; i--) {
+      if (this.actions[i].expiry < 1 && (this.actions[i].triggers.includes(trigger) || trigger === null)) {
         // Remove
         this.previous.push(this.actions[i]);
         this.actions.splice(i, 1);

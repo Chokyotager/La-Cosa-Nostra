@@ -8,6 +8,7 @@ var executable = require("../executable.js");
 var alphabets = require("../alpha_table.js");
 
 var Actions = require("./Actions.js");
+var Player = require("./Player.js");
 
 var auxils = require("../auxils.js");
 
@@ -83,6 +84,29 @@ module.exports = class {
       };
     };
     return null;
+  }
+
+  getPlayerByIdentifier (identifier) {
+    for (var i = 0; i < this.players.length; i++) {
+      if (this.players[i].identifier === identifier) {
+        return this.players[i];
+      };
+    };
+    return null;
+  }
+
+  getPlayer (argument) {
+    // Flexible
+
+    if (argument instanceof Player) {
+      return argument;
+    };
+
+    var id = this.getPlayerById(argument);
+    var identifier = this.getPlayerByIdentifier(argument);
+
+    return id || identifier;
+
   }
 
   getPlayerByAlphabet (alphabet) {
@@ -336,9 +360,15 @@ module.exports = class {
       this.__routines();
       this.__start();
 
+      // Periodic updates are handled in roles/postRoleIntroduction
+      // because of async issues
+
       this.cycle();
 
     } else if (this.state === "playing") {
+
+      // Print period in private channel
+      this.messagePeriodicUpdate(1);
 
       await this.precycle();
 
@@ -384,6 +414,7 @@ module.exports = class {
 
   async precycle () {
 
+    this.actions.execute("cycle", {period: this.period});
     this.clearPeriodPins();
 
     if (this.period % 2 === 0) {
@@ -405,6 +436,19 @@ module.exports = class {
       this.sendMessages();
 
 
+    };
+
+  }
+
+  messagePeriodicUpdate (offset=0) {
+    this.messageAll("~~                                              ~~    **" + this.getFormattedDay(offset) + "**");
+  }
+
+  messageAll (message) {
+    for (var i = 0; i < this.players.length; i++) {
+      if (this.players[i].isAlive()) {
+        this.players[i].getPrivateChannel().send(message);
+      };
     };
   }
 
@@ -501,6 +545,17 @@ module.exports = class {
     };
 
     return success;
+
+  }
+
+  kill (role, reason, secondary_reason) {
+
+    // Secondary reason is what the player sees
+    // Can be used to mask death but show true
+    // reason of death to the player killed
+
+    executable.misc.kill(this, role);
+    this.primeDeathMessages(role, reason, secondary_reason);
 
   }
 
@@ -764,6 +819,10 @@ module.exports = class {
   addAction () {
     // Inherits
     return this.actions.add(...arguments);
+  }
+
+  execute () {
+    this.actions.execute(...arguments);
   }
 
   getPlayerMatch (name) {

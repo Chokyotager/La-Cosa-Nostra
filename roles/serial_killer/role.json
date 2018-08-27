@@ -1,0 +1,20 @@
+{
+  "role-name": "Serial Killer",
+
+  "alignment": "neutral",
+  "class": "killing",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 1,
+    "roleblock-immunity": 0,
+    "detection-immunity": 1,
+    "control-immunity": 1,
+    "priority": 5,
+    "vote-offset": 0
+  },
+
+  "investigation": ["Doctor", "Disguiser", "Serial Killer"],
+  "secondary-roles": null
+}
