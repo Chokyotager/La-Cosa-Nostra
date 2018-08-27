@@ -7,8 +7,8 @@ module.exports = async function (game, broadcast) {
   var config = game.config;
   var guild = game.client.guilds.get(config["server-id"]);
 
-  var log = guild.channels.find("name", config["channels"]["log"]);
-  var main = guild.channels.find("name", config["channels"]["main"]);
+  var log = guild.channels.find(x => x.name === config["channels"]["log"]);
+  var main = guild.channels.find(x => x.name === config["channels"]["main"]);
 
   if (broadcast === undefined) {
     broadcast = "{#no-summary}";

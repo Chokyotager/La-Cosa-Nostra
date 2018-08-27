@@ -4,7 +4,7 @@ Set the nickname and the roles here
 
 module.exports = async function (client, config, roles) {
   var guild = client.guilds.get(config["server-id"]);
-  var alive_role = guild.roles.find("name", config["permissions"]["alive"]);
+  var alive_role = guild.roles.find(x => x.name === config["permissions"]["alive"]);
 
   for (var i = 0; i < roles.length; i++) {
     var member = guild.members.get(roles[i].id);

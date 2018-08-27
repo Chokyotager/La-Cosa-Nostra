@@ -8,8 +8,8 @@ module.exports = async function (game, role) {
   // Remove alive role
   var guild = client.guilds.get(config["server-id"]);
 
-  var alive_role = guild.roles.find("name", config["permissions"]["alive"]);
-  var dead_role = guild.roles.find("name", config["permissions"]["dead"]);
+  var alive_role = guild.roles.find(x => x.name === config["permissions"]["alive"]);
+  var dead_role = guild.roles.find(x => x.name === config["permissions"]["dead"]);
 
   var member = guild.members.get(role.id);
 

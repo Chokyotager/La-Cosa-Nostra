@@ -4,15 +4,15 @@ module.exports = async function (client, config) {
   var guild = client.guilds.get(config["server-id"]);
 
   // Should only be set once
-  var spectator = guild.roles.find("name", config["permissions"]["spectator"]);
-  var alive = guild.roles.find("name", config["permissions"]["alive"]);
-  var dead = guild.roles.find("name", config["permissions"]["dead"]);
+  var spectator = guild.roles.find(x => x.name === config["permissions"]["spectator"]);
+  var alive = guild.roles.find(x => x.name === config["permissions"]["alive"]);
+  var dead = guild.roles.find(x => x.name === config["permissions"]["dead"]);
 
-  var log_channel = guild.channels.find("name", config["channels"]["log"]);
-  var vote_channel = guild.channels.find("name", config["channels"]["voting"]);
-  var main_channel = guild.channels.find("name", config["channels"]["main"]);
-  var whisper_channel = guild.channels.find("name", config["channels"]["whisper-log"]);
-  var roles_channel = guild.channels.find("name", config["channels"]["roles"]);
+  var log_channel = guild.channels.find(x => x.name === config["channels"]["log"]);
+  var vote_channel = guild.channels.find(x => x.name === config["channels"]["voting"]);
+  var main_channel = guild.channels.find(x => x.name === config["channels"]["main"]);
+  var whisper_channel = guild.channels.find(x => x.name === config["channels"]["whisper-log"]);
+  var roles_channel = guild.channels.find(x => x.name === config["channels"]["roles"]);
 
   var all = [log_channel, vote_channel, main_channel, whisper_channel, roles_channel];
 

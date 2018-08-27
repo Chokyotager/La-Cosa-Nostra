@@ -8,7 +8,7 @@ module.exports = async function (game, roles) {
   var config = game.config;
 
   var guild = client.guilds.get(config["server-id"]);
-  var channel = guild.channels.find("name", config["channels"]["main"]);
+  var channel = guild.channels.find(x => x.name === config["channels"]["main"]);
 
   if (roles.length === 0) {
     // Nobody lynched

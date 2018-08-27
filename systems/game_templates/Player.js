@@ -165,6 +165,18 @@ module.exports = class {
     return channel;
   }
 
+  getRoleStats () {
+    return this.role.stats;
+  }
+
+  getPermanentStats () {
+    return this.role.permanent_stats;
+  }
+
+  getTemporaryStats () {
+    return this.game_stats;
+  }
+
   getStat (key, modifier) {
 
     if (modifier === undefined) {

@@ -17,9 +17,9 @@ module.exports = async function (game) {
 
   var guild = game.client.guilds.get(config["server-id"]);
 
-  var log = guild.channels.find("name", config["channels"]["log"]);
-  var main = guild.channels.find("name", config["channels"]["main"]);
-  var post = guild.channels.find("name", config["channels"]["whisper-log"]);
+  var log = guild.channels.find(x => x.name === config["channels"]["log"]);
+  var main = guild.channels.find(x => x.name === config["channels"]["main"]);
+  var post = guild.channels.find(x => x.name === config["channels"]["whisper-log"]);
 
   // Send the start message
   var attachment = new Discord.Attachment(assets[config["assets"]["game-start"]], config["assets"]["game-start"]);

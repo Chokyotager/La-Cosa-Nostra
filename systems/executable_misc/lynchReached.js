@@ -10,7 +10,7 @@ module.exports = async function (game, role) {
 
   var guild = client.guilds.get(config["server-id"]);
 
-  var main_channel = guild.channels.find("name", config["channels"]["main"]);
+  var main_channel = guild.channels.find(x => x.name === config["channels"]["main"]);
 
   var member = main_channel.members.get(role.id);
 

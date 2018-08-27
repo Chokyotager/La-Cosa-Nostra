@@ -49,7 +49,7 @@ client.on("message", function (message) {
       // Check permissions
       var member = message.member;
 
-      if (member.roles.exists("name", config["permissions"]["admin"])) {
+      if (member.roles.exists(x => x.name === config["permissions"]["admin"])) {
         commands.admin[command](message, edited, config);
       } else {
         message.channel.send(":x: You do not have permissions to use this command!");
@@ -95,7 +95,7 @@ client.on("message", function (message) {
 client.on("guildMemberAdd", function (member) {
 
   var guild = client.guilds.get(config["server-id"]);
-  var welcome = guild.channels.find("name", config["channels"]["welcome-channel"]);
+  var welcome = guild.channels.find(x => x.name === config["channels"]["welcome-channel"]);
 
   if (welcome === undefined) {
     return null;

@@ -16,7 +16,7 @@ module.exports = async function (game, id) {
 
   var period_log = game.getPeriodLog();
 
-  var guild = client.guilds.find("name", config["server-id"]);
+  var guild = client.guilds.find(x => x.name === config["server-id"]);
   var trial = guild.channels.get(period_log.trial_vote.channel);
 
   var messages = period_log.trial_vote.messages;

@@ -11,7 +11,7 @@ module.exports = async function (game) {
   var config = game.config;
 
   var guild = client.guilds.get(config["server-id"]);
-  var vote = guild.channels.find("name", config["channels"]["voting"]);
+  var vote = guild.channels.find(x => x.name === config["channels"]["voting"]);
 
   var message = texts.public_vote;
 

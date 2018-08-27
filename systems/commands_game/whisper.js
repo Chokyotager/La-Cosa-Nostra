@@ -64,7 +64,7 @@ module.exports = async function (game, message, params) {
 
   var target_channel = guild.channels.get(player.channel.id);
   var sender_channel = guild.channels.get(sender.channel.id);
-  var whisper_log = guild.channels.find("name", config["channels"]["whisper-log"]);
+  var whisper_log = guild.channels.find(x => x.name === config["channels"]["whisper-log"]);
 
   var d_player = game.getGuildMember(player.id) || {displayName: "undef'd-player", user: {username: "undef'd-player"}};
   var d_sender = game.getGuildMember(sender.id) || {displayName: "undef'd-player", user: {username: "undef'd-player"}};

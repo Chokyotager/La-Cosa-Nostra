@@ -32,7 +32,7 @@ module.exports = function (game, message) {
     var search = "{@" + roles[i] + "}";
 
     if (message.includes(search)) {
-      var role = guild.roles.find("name", config["permissions"][roles[i]]);
+      var role = guild.roles.find(x => x.name === config["permissions"][roles[i]]);
 
       if (role !== null) {
         // Set the ping
@@ -47,7 +47,7 @@ module.exports = function (game, message) {
 
   for (var i = 0; i < channels.length; i++) {
     var search = "{#" + channels[i] + "}";
-    var channel = guild.channels.find("name", config["channels"][channels[i]]);
+    var channel = guild.channels.find(x => x.name === config["channels"][channels[i]]);
 
     if (channel !== null) {
       message = message.replace(new RegExp(search, "g"), "<#" + channel.id + ">");

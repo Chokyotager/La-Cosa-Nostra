@@ -7,10 +7,10 @@ module.exports = async function (game) {
   var guild = client.guilds.get(config["server-id"]);
 
   // Should only be set once
-  var alive = guild.roles.find("name", config["permissions"]["alive"]);
+  var alive = guild.roles.find(x => x.name === config["permissions"]["alive"]);
 
-  var main_channel = guild.channels.find("name", config["channels"]["main"]);
-  var whisper_channel = guild.channels.find("name", config["channels"]["whisper-log"]);
+  var main_channel = guild.channels.find(x => x.name === config["channels"]["main"]);
+  var whisper_channel = guild.channels.find(x => x.name === config["channels"]["whisper-log"]);
 
   var post_perms = config["base-perms"]["post"];
 

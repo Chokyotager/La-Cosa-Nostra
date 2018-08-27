@@ -3,7 +3,7 @@ module.exports = async function (message) {
   if (message.pinnable && !message.pinned) {
 
     // Create collector
-    message.channel.createMessageCollector(pinFunction, {maxMatches: 1, time: 1000});
+    message.channel.createMessageCollector(pinFunction, {maxMatches: 3, time: 1000});
 
     await message.pin();
 

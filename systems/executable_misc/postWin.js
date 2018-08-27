@@ -10,8 +10,8 @@ module.exports = async function (game, faction) {
 
   var guild = game.client.guilds.get(config["server-id"]);
 
-  var log = guild.channels.find("name", config["channels"]["log"]);
-  var main = guild.channels.find("name", config["channels"]["main"]);
+  var log = guild.channels.find(x => x.name === config["channels"]["log"]);
+  var main = guild.channels.find(x => x.name === config["channels"]["main"]);
 
   await log.send(format(game, config["messages"]["log"][faction + "-wins"]));
 

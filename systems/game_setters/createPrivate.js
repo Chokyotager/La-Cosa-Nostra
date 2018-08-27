@@ -5,7 +5,7 @@ module.exports = async function (client, config, roles) {
   var category = config["categories"]["private"];
 
   // Bug with Discord.js
-  var cat_channel = client.channels.find(x => x.name === category && x.type === null);
+  var cat_channel = client.channels.find(x => x.name === category && x.type === "category");
 
   // Check if category configuration is correct
   if (cat_channel === null) {
@@ -13,8 +13,8 @@ module.exports = async function (client, config, roles) {
     throw new Error(err);
   };
 
-  var everyone = cat_channel.guild.roles.find("name", "@everyone");
-  var spectator = cat_channel.guild.roles.find("name", config["permissions"]["spectator"]);
+  var everyone = cat_channel.guild.roles.find(x => x.name === "@everyone");
+  var spectator = cat_channel.guild.roles.find(x => x.name === config["permissions"]["spectator"]);
 
   var guild = client.guilds.get(config["server-id"]);
 
