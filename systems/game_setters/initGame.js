@@ -39,7 +39,7 @@ module.exports = async function (client, config) {
   // Create private channels
   var [mafia_channel, private_channels] = await createPrivate(client, config, roles);
 
-  nicknameAndRole(client, config, roles);
+  await nicknameAndRole(client, config, roles);
   await setPermissions(client, config, roles);
   await setRolePermissions(client, config);
 

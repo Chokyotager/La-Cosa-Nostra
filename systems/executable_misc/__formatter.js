@@ -96,8 +96,8 @@ function getParameters (game) {
     "alive": game.getAlive(),
     "day_hours": config.time.day,
     "night_hours": config.time.night,
-    "utc_formatted": formatDate(game.current_time),
-    "next_utc_formatted": formatDate(game.next_action),
+    "utc_formatted": auxils.formatUTCDate(game.current_time),
+    "next_utc_formatted": auxils.formatUTCDate(game.next_action),
     "game_chronos": game.getFormattedDay().toUpperCase(),
     "game_chronos_next": game.getFormattedDay(1),
     "game_chronos_last": game.getFormattedDay(-1),
@@ -108,21 +108,5 @@ function getParameters (game) {
   };
 
   return ret;
-
-  function formatDate (date) {
-
-    date = new Date(date);
-
-    var day = date.getUTCDate();
-    var month = date.toLocaleString("en-gb", { month: "long" });
-    var year = date.getUTCFullYear();
-
-    var hours = date.getUTCHours() < 10 ? "0" + date.getUTCHours() : date.getUTCHours();
-    var minutes = date.getUTCMinutes() < 10 ? "0" + date.getUTCMinutes() : date.getUTCMinutes();
-
-    var formatted = day + " " + month + " " + year + " UTC " + hours + ":" + minutes;
-
-    return formatted;
-  };
 
 };

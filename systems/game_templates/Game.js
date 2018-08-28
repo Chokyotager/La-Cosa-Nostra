@@ -414,7 +414,7 @@ module.exports = class {
 
   async precycle () {
 
-    this.actions.execute("cycle", {period: this.period});
+    this.execute("cycle", {period: this.period});
     this.clearPeriodPins();
 
     if (this.period % 2 === 0) {

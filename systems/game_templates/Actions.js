@@ -22,7 +22,7 @@ module.exports = class {
 
   }
 
-  add (identifier, triggers, options) {
+  add (identifier, triggers, options, rearrange=true) {
 
     // Actions are calculated relative to the step
 
@@ -52,6 +52,7 @@ module.exports = class {
     var implicit_priority = from.getStat("priority", Math.max);
 
     actionable.priority = actionable.priority || implicit_priority;
+    actionable._scan = new Array();
 
     /*
     var actionable = {
@@ -70,6 +71,10 @@ module.exports = class {
 
     this.actions.push(actionable);
 
+    if (rearrange) {
+      this.sortByPriority(true);
+    };
+
     return actionable;
 
   }
@@ -81,6 +86,11 @@ module.exports = class {
     };
 
     this.actions.sort(function (a, b) {
+
+      if (a === undefined || b === undefined) {
+        return -1;
+      };
+
       return a.priority - b.priority;
     });
   }
@@ -204,67 +214,96 @@ module.exports = class {
     // If true for chat, lynch, nightkilled types, subtract one
     // from expiration
 
-    this.sortByPriority(true);
+    // Create loop identifier
+    var loop_id = crypto.randomBytes(8).toString("hex");
 
     var game = this.game;
 
-    for (var i = 0; i < this.actions.length; i++) {
+    var i = 0;
+    while (i < this.actions.length) {
 
       var action = this.actions[i];
 
-      if (action.triggers.includes(type)) {
-        // Execute action
-        var run = actionables[action.identifier];
+      if (action === undefined) {
+        i++;
+        continue;
+      };
 
-        if (run === undefined) {
-          console.warn("Bad undefined function in actions!");
-          continue;
-        };
+      if (action._scan.includes(loop_id) || !action.triggers.includes(type)) {
+        i++;
+        continue;
+      };
 
-        // Non-routine triggers
-        if (["chat", "lynch", "nightkill", "attacked", "killed"].includes(type)) {
-          var target = action.target || action.to;
+      action._scan.push(loop_id);
+      var run = actionables[action.identifier];
 
-          if (params.target === target) {
-            var result = execute();
+      if (run === undefined) {
+        console.warn("Bad undefined function in actions!");
+        i++;
+        continue;
+      };
 
-            if (!result) {
-              action.expiry--;
-            };
+      var rerun = false;
 
-          };
+      // Non-routine triggers
+      if (["chat", "lynch", "nightkill", "attacked", "killed"].includes(type)) {
+        var target = action.target || action.to;
 
-        };
-
-        // Periodic-triggers
-        if (["cycle"].includes(type)) {
-
+        if (params.target === target) {
           var result = execute();
 
-        };
-
-        function execute () {
-
-          try {
-            var result = run(action, game, params);
-            return false;
-          } catch (err) {
-            console.log(err);
-            return false;
+          if (!result) {
+            action.expiry--;
           };
 
         };
 
       };
+
+      // Periodic-triggers
+      if (["cycle"].includes(type)) {
+
+        var result = execute();
+
+      };
+
+      function execute () {
+
+        rerun = true;
+
+        try {
+          var result = run(action, game, params);
+          return result;
+        } catch (err) {
+          console.log(err);
+          return false;
+        };
+
+      };
+
+      /* Had to shift this in;
+      yes, yes, I know it slows stuff down;
+      but dang it there's no easier way out */
 
       if (type === "cycle") {
         action.expiry--;
       };
 
+      if (check_expiries) {
+        this.nullExpiries(type);
+      };
+
+      if (rerun) {
+        i = 0;
+      } else {
+        i++;
+      };
+
     };
 
-    if (check_expiries) {
-      this.expiration(type);
+    // Remove loop ID
+    for (var i = 0; i < this.actions.length; i++) {
+      this.actions[i]._scan = this.actions[i]._scan.filter(x => x !== loop_id);
     };
 
   }
@@ -273,10 +312,14 @@ module.exports = class {
     this.game = game;
   }
 
-  // IMPORTANT: trigger WIP
-  expiration (trigger=null) {
+  nullExpiries (trigger=null) {
     // Check expiries, remove
     for (var i = this.actions.length - 1; i >= 0; i--) {
+
+      if (this.actions[i] === undefined) {
+        continue;
+      };
+
       if (this.actions[i].expiry < 1 && (this.actions[i].triggers.includes(trigger) || trigger === null)) {
         // Remove
         this.previous.push(this.actions[i]);

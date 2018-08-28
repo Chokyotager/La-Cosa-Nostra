@@ -170,7 +170,7 @@ module.exports = class {
   }
 
   getPermanentStats () {
-    return this.role.permanent_stats;
+    return this.permanent_stats;
   }
 
   getTemporaryStats () {

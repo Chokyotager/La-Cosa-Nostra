@@ -2,6 +2,8 @@ module.exports = function (actionable, game, params) {
 
   var attacked = game.getPlayerByIdentifier(actionable.to);
 
+  console.log("basic attack executed");
+
   game.execute("attacked", {attacker: actionable.from,
     target: actionable.to,
     priority: actionable.priority,
