@@ -5,6 +5,9 @@ Set the nickname and the roles here
 module.exports = async function (client, config, roles) {
   var guild = client.guilds.get(config["server-id"]);
   var alive_role = guild.roles.find(x => x.name === config["permissions"]["alive"]);
+  var pre_role = guild.roles.find(x => x.name === config["permissions"]["pre"]);
+  var dead_role = guild.roles.find(x => x.name === config["permissions"]["dead"]);
+  var aftermath_role = guild.roles.find(x => x.name === config["permissions"]["aftermath"]);
 
   for (var i = 0; i < roles.length; i++) {
     var member = guild.members.get(roles[i].id);
@@ -21,6 +24,9 @@ module.exports = async function (client, config, roles) {
     name = name.replace(new RegExp("^(\[[A-z|0-9]{1,2}\] )*", "g"), "");
 
     try {
+
+      await removeRole(member, [pre_role, dead_role, aftermath_role]);
+
       await member.addRole(alive_role);
       await member.setNickname("[" + roles[i].alphabet + "] " + name);
     } catch (err) {
@@ -29,4 +35,17 @@ module.exports = async function (client, config, roles) {
 
   };
 
+};
+
+async function removeRole (member, roles) {
+  for (var i = 0; i < roles.length; i++) {
+
+    if (!roles[i]) {
+      continue;
+    };
+
+    if (member.roles.has(roles[i].id)) {
+      await member.removeRole(roles[i]);
+    };
+  };
 };

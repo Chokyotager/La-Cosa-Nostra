@@ -1,10 +1,17 @@
 var Discord = require("Discord.js");
 var pinMessage = require("../executable_misc/pinMessage.js");
 
-module.exports = async function (player) {
+module.exports = async function (player, stagger=200) {
 
   var client = player.game.client;
   var config = player.game.config;
+
+  // Staggering prevents overload
+  await new Promise(function(resolve, reject) {
+    setTimeout(function () {
+      resolve();
+    }, Math.random() * stagger*player.game.players.length);
+  });
 
   var role = player.role;
 
