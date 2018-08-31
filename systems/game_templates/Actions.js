@@ -26,7 +26,7 @@ module.exports = class {
 
     // Actions are calculated relative to the step
 
-    var allowed = ["cycle", "chat", "lynch", "nightkilled", "attacked", "killed"];
+    var allowed = ["cycle", "chat", "lynch", "nightkilled", "attacked", "killed", "visit"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -52,6 +52,12 @@ module.exports = class {
     var implicit_priority = from.getStat("priority", Math.max);
 
     actionable.priority = actionable.priority || implicit_priority;
+
+    // Number of "hits" before execution
+    // Defaults to zero - immediately execute when hit
+    actionable.execution = actionable.execution || 0;
+    actionable.cycles = 0;
+
     actionable._scan = new Array();
 
     /*
@@ -145,7 +151,7 @@ module.exports = class {
 
         if (condition) {
 
-          ret.push(condition);
+          ret.push(this.actions[i]);
 
         };
 
@@ -246,14 +252,20 @@ module.exports = class {
       var rerun = false;
 
       // Non-routine triggers
-      if (["chat", "lynch", "nightkill", "attacked", "killed"].includes(type)) {
+      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit"].includes(type)) {
         var target = action.target || action.to;
 
         if (params.target === target) {
-          var result = execute();
 
-          if (!result) {
-            action.expiry--;
+          action.execution--;
+
+          if (action.execution <= 0) {
+            var result = execute();
+
+            if (result === true) {
+              // Immediately mark for deletion
+              action.expiry = 0;
+            };
           };
 
         };
@@ -263,7 +275,11 @@ module.exports = class {
       // Periodic-triggers
       if (["cycle"].includes(type)) {
 
-        var result = execute();
+        action.execution--;
+
+        if (action.execution <= 0) {
+          var result = execute();
+        };
 
       };
 
@@ -285,8 +301,9 @@ module.exports = class {
       yes, yes, I know it slows stuff down;
       but dang it there's no easier way out */
 
-      if (type === "cycle") {
+      if (["cycle"].includes(type)) {
         action.expiry--;
+        action.cycles++;
       };
 
       if (check_expiries) {
@@ -303,7 +320,22 @@ module.exports = class {
 
     // Remove loop ID
     for (var i = 0; i < this.actions.length; i++) {
-      this.actions[i]._scan = this.actions[i]._scan.filter(x => x !== loop_id);
+
+      var action = this.actions[i];
+
+      action._scan = this.actions[i]._scan.filter(x => x !== loop_id);
+
+      // Decrement those outside cycle
+      if (!["cycle"].includes(type)) {
+        action.expiry--;
+        action.cycles++;
+
+        if (check_expiries) {
+          this.nullExpiries();
+        };
+
+      };
+
     };
 
   }

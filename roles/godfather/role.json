@@ -4,12 +4,7 @@
   "alignment": "mafia",
   "class": "killing",
 
-  "night-action": "night",
-  "day-action": null,
-
   "see-mafia-chat": true,
-
-  "win-condition": "mafia",
 
   "stats": {
     "basic-defense": 1,
@@ -21,5 +16,7 @@
   },
 
   "investigation": ["Bodyguard", "Godfather", "Arsonist"],
-  "secondary-roles": null
+  "secondary-roles": null,
+
+  "win-condition": "mafia"
 }

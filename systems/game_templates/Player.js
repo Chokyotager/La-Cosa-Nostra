@@ -101,7 +101,9 @@ module.exports = class {
       "alive": true,
       "roleblocked": false,
       "controlled": false,
-      "silenced": false
+      "silenced": false,
+
+      "won": false
     };
 
     this.misc = new Object();
@@ -315,8 +317,25 @@ module.exports = class {
 
     this.resetTemporaryStats();
 
+    // Check if dead
+    if (!this.isAlive() && !this.role.routine.ALLOW_DEAD) {
+      return null;
+    };
+
+    if (this.game.isDay() && !this.role.routine.ALLOW_DAY) {
+      return null;
+    };
+
+    if (!this.game.isDay() && !this.role.routine.ALLOW_NIGHT) {
+      return null;
+    };
+
     return this.role.routine(this);
 
+  }
+
+  setWin () {
+    this.status.won = true;
   }
 
 };

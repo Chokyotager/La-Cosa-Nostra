@@ -154,6 +154,8 @@ module.exports = class {
       period_log.trial_vote.messages.push(messages[i].id);
     };
 
+    this.save();
+
     this.instantiateTrialVoteCollector();
 
   }
@@ -370,17 +372,33 @@ module.exports = class {
       // Print period in private channel
       this.messagePeriodicUpdate(1);
 
+      // Handles actions,
+      // closes trial votes, etc.
+      // i.e. dawn/dusk time
       await this.precycle();
 
       this.period += 1;
 
+      // Create period log
       this.__routines();
+
+      // Broadcast
+      var broadcast = this.getBroadcast(-1, true);
+      await executable.misc.postNewPeriod(this, broadcast);
+
+      // Win check
+      this.checkWin();
+
+      if (this.state === "ended") {
+        this.save();
+        return null;
+      };
+
+      // Open Mafia chat, create votes, routine stuff
       this.cycle();
 
-      // Offset the broadcast by -1 since period
-      // has already been added
-      var broadcast = this.getBroadcast(-1, true);
-      executable.misc.postNewPeriod(this, broadcast);
+      // Player routines - configurable
+      this.__playerRoutines();
 
     } else {
 
@@ -640,6 +658,12 @@ module.exports = class {
     log.messages.push({message: message, recipient: role.id, time: new Date()});
   }
 
+  addMessages (roles, message) {
+    for (var i = 0; i < roles.length; i++) {
+      this.addMessage(roles[i], message);
+    };
+  }
+
   getBroadcast (offset=0, enter=false) {
 
     if (enter) {
@@ -705,10 +729,6 @@ module.exports = class {
 
   }
 
-  __win (faction) {
-    executable.misc.postWin(this, faction);
-  }
-
   __start () {
 
     this.state = "playing";
@@ -737,10 +757,12 @@ module.exports = class {
       "pins": new Array()
     };
 
+  }
+
+  __playerRoutines () {
     for (var i = 0; i < this.players.length; i++) {
       this.players[i].__routines();
     };
-
   }
 
   getLynchesAvailable (offset=0) {
@@ -872,6 +894,108 @@ module.exports = class {
 
     return {"score": score, "player": player};
 
+  }
+
+  find (key, value) {
+
+    for (var i = 0; i < this.players.length; i++) {
+
+      if (typeof key === "function") {
+        var condition = key(this.players[i]);
+
+        if (condition) {
+          return this.players[i];
+        };
+
+      } else {
+
+        if (this.players[i][key] === value) {
+          return this.players[i];
+        };
+
+      };
+
+    };
+
+    return undefined;
+
+  }
+
+  findAll (key, value) {
+
+    var ret = new Array();
+
+    for (var i = 0; i < this.players.length; i++) {
+
+      if (typeof key === "function") {
+        var condition = key(this.players[i]);
+
+        if (condition) {
+
+          ret.push(this.players[i]);
+
+        };
+
+      } else if (this.players[i][key] === value) {
+
+          ret.push(this.players[i]);
+
+        };
+
+    };
+
+    return ret;
+
+  }
+
+  exists (key, value) {
+    return this.find(key, value) !== undefined;
+  }
+
+  checkWin () {
+    executable.wins.checkWin(this);
+  }
+
+  endGame () {
+
+    console.log("Game ended!");
+
+    // End the game
+    this.state = "ended";
+
+    this.timer.updatePresence();
+
+  }
+
+  getGuild () {
+    return this.client.guilds.get(this.config["server-id"]);
+  }
+
+  getLogChannel () {
+    return this.getGuild().channels.find(x => x.name === this.config["channels"]["log"]);
+  }
+
+  getMainChannel () {
+    return this.getGuild().channels.find(x => x.name === this.config["channels"]["main"]);
+  }
+
+  getPeriod () {
+    return this.period;
+  }
+
+  isDay () {
+    return this.getPeriod() % 2 === 0;
+  }
+
+  setWin (role) {
+    executable.misc.postWinMessage(role);
+    role.setWin();
+  }
+
+  setWins (roles) {
+    for (var i = 0; i < roles.length; i++) {
+      this.setWin(roles[i]);
+    };
   }
 
 };

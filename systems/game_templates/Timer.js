@@ -62,6 +62,11 @@ module.exports = class {
     var current = new Date();
     var designated = this.game.next_action;
 
+    if (this.game.state === "ended") {
+      console.log("Did not prime as game has ended.");
+      return null;
+    };
+
     var delta = designated.getTime() - current.getTime();
     console.log("Primer: set D/N mediator delta to: %s", delta);
 
@@ -110,8 +115,10 @@ module.exports = class {
       this.save();
     };
 
-    // Tick to update small things
-    this.checkPresenceUpdate();
+    if (this.game.state === "pre-game" || this.game.state === "playing") {
+      // Tick to update small things
+      this.checkPresenceUpdate();
+    };
 
   }
 
@@ -119,7 +126,7 @@ module.exports = class {
 
     var current = new Date();
 
-    var delta = this.designated.getTime() - current.getTime();
+    var delta = (this.designated || current).getTime() - current.getTime();
 
     var days = delta / (24*60*60*1000);
     var hours = delta / (60*60*1000);
@@ -138,22 +145,30 @@ module.exports = class {
 
   }
 
-  updatePresence () {
+  async updatePresence (stagger=400) {
 
     var current = new Date();
 
     // In milliseconds
-    var delta = this.designated.getTime() - current.getTime();
+    var delta = (this.designated || current).getTime() - current.getTime();
 
     if (delta < 0) {
       return null;
+    };
+
+    if (stagger) {
+      await new Promise(function(resolve, reject) {
+        setTimeout(function () {
+          resolve();
+        }, stagger);
+      });
     };
 
     if (this.game.state === "pre-game") {
 
       var display = "Pre-game: " + formatDate(delta) + " left";
 
-      this.game.setPresence({
+      await this.game.setPresence({
         status: "online",
         game: {name: display, type: "PLAYING"}
       });
@@ -162,7 +177,7 @@ module.exports = class {
 
       var display = this.game.getFormattedDay() + ": " + formatDate(delta) + " left";
 
-      this.game.setPresence({
+      await this.game.setPresence({
         status: "online",
         game: {name: display, type: "PLAYING"}
       });
@@ -171,7 +186,7 @@ module.exports = class {
 
       var display = this.game.getFormattedDay() + ": game ended";
 
-      this.game.setPresence({
+      await this.game.setPresence({
         status: "online",
         game: {name: display, type: "PLAYING"}
       });

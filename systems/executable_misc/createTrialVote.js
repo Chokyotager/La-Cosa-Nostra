@@ -80,7 +80,7 @@ module.exports = async function (game) {
 
         names = voting_against.length > 0 ? ": " + names : "";
 
-        displays.push("<@" + roles[i].id + "> (" + voting_against.length + "/{!votes_required})" + names);
+        displays.push("<@" + roles[i].id + "> (" + voting_against.length + ")" + names);
       } else {
         displays.push("[" + roles[i].alphabet + " - dead, **" + roles[i].getDisplayRole() + "**]");
       };

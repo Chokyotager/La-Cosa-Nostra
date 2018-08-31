@@ -5,7 +5,9 @@ module.exports = function (client, config, roles, mafia_channel) {
   var game = new Game(client, config).init(roles);
 
   // IMPORTANT!
-  game.setChannel("mafia", mafia_channel);
+  if (mafia_channel) {
+    game.setChannel("mafia", mafia_channel);
+  };
 
   var timer = new Timer().init(game);
   return [game, timer];
