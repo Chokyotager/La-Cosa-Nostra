@@ -1,0 +1,22 @@
+{
+  "role-name": "Firefighter",
+
+  "alignment": "town",
+  "class": "support",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+    "priority": 4,
+    "vote-offset": 0
+  },
+
+  "investigation": ["Bodyguard", "Firefighter", "Arsonist"],
+  "secondary-roles": null,
+
+  "win-condition": "town"
+}

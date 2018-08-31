@@ -1,9 +1,9 @@
 module.exports = function (game) {
 
-  game.getLogChannel().send("**Serial Killer wins.**");
+  game.getLogChannel().send("**Arsonist wins.**");
 
   // Have to manually set the win
-  var winners = game.findAll(x => x.role_identifier === "serial_killer" && x.isAlive());
+  var winners = game.findAll(x => x.role_identifier === "arsonist" && x.isAlive());
 
   game.setWins(winners);
 
@@ -21,7 +21,7 @@ module.exports.FACTIONAL = false;
 
 // Accepts function
 // Should key in wrt to player
-module.exports.ELIMINATED = ["town", "mafia"];
-module.exports.SURVIVING = ["serial_killer"];
+module.exports.ELIMINATED = ["town", "mafia", "serial_killer", "revolutionary"];
+module.exports.SURVIVING = ["arsonist"];
 
 module.exports.DESCRIPTION = "Kill everyone who can oppose you.";

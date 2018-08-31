@@ -1,0 +1,5 @@
+"Fire, fire, fiyaah! Douse, douse, ignite! Watch them all burn."
+
+Every night, you may choose to douse a player with gasoline. Doused targets will not be informed that they have been doused.
+
+Alternatively, you may also choose to ignite. This will deal an Unstoppable attack to all doused players.

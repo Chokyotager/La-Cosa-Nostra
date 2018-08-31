@@ -960,6 +960,8 @@ module.exports = class {
 
     console.log("Game ended!");
 
+    executable.conclusion.endGame(this);
+
     // End the game
     this.state = "ended";
 

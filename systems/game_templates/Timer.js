@@ -131,10 +131,10 @@ module.exports = class {
     var days = delta / (24*60*60*1000);
     var hours = delta / (60*60*1000);
     var minutes = delta / (60*1000);
+    var seconds = delta / 1000;
 
-    if (minutes < 1) {
-      // Update frequently
-      var amount = Math.ceil(1000 / this.tick_time);
+    if (hours < 1) {
+      var amount = Math.ceil(30*1000 / this.tick_time);
     } else {
       var amount = Math.ceil(5*60*1000 / this.tick_time);
     };
@@ -145,7 +145,7 @@ module.exports = class {
 
   }
 
-  async updatePresence (stagger=400) {
+  async updatePresence (stagger=800) {
 
     var current = new Date();
 
@@ -375,15 +375,10 @@ function formatDate (epoch) {
     var ret = Math.ceil(hours);
     return ret + " hour" + auxils.vocab("s", ret);
 
-  } else if (minutes >= 1) {
+  } else {
 
     var ret = Math.ceil(minutes);
     return ret + " minute" + auxils.vocab("s", ret);
-
-  } else if (seconds >= 1) {
-
-    var ret = Math.ceil(seconds);
-    return ret + " second" + auxils.vocab("s", ret);
 
   };
 

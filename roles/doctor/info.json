@@ -1,0 +1,11 @@
+{
+
+  "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/9/98/Red_Cross_Icon_Reworked.jpg",
+
+  "abilities": ["Protect a Town member at night"],
+
+  "attributes": ["Grants a Powerful defense",
+                "Removes poison",
+                "Can only protect self once"]
+
+}

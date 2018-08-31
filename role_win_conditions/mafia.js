@@ -12,7 +12,10 @@ module.exports = function (game) {
 
   if (mafia.length >= (alive.length / 2)) {
     // Parity reached
-    game.setWins(mafia);
+
+    var winners = game.findAll(x => x.role.alignment === "mafia");
+
+    game.setWins(winners);
     game.getLogChannel().send("**Mafia wins.**");
 
     return true;
@@ -31,3 +34,5 @@ module.exports.FACTIONAL = true;
 // Should key in wrt to player
 module.exports.ELIMINATED = ["neutral-killing", "revolutionary"];
 module.exports.SURVIVING = ["mafia"];
+
+module.exports.DESCRIPTION = "Destroy anybody who would not submit to the Mafia.";

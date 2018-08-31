@@ -1,16 +1,12 @@
 TODO
 
-Actionable system:
-- Mafia promotions can go into this by default
-
 General:
-Win conditions:
-- Housed within gamesystem
-- Custom role win-conditions; shared systems;
-  - Allow for unique win-conditions (mainly for 3p)
 
 PLANNED: modkill feature
 PLANNED: hard reset system
 PLANNED: kick/ban check
 
 Substitutions
+
+Firefighter:
+- Role card has wrong description

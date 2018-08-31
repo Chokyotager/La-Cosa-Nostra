@@ -17,7 +17,7 @@
     "lynch-ratio-floored": 0.125,
 
     "whispers": {
-      "allow": true,
+      "allow": false,
 
       "night": true,
       "day": true,
@@ -30,7 +30,7 @@
   },
 
   "time": {
-    "timezone": 8,
+    "timezone": 9,
     "day": 12,
     "night": 12
   }

@@ -1,4 +1,4 @@
-:star: You have __fulfilled__ your win condition.
+:star: Your win condition has been __fulfilled__.
 
 :star: **You have won.**
 

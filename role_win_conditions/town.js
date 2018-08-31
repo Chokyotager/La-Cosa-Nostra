@@ -13,3 +13,5 @@ module.exports.FACTIONAL = true;
 // Should key in wrt to player
 module.exports.ELIMINATED = ["mafia", "neutral-killing", "revolutionary"];
 module.exports.SURVIVING = ["town"];
+
+module.exports.DESCRIPTION = "Eliminate all threats to the Town.";

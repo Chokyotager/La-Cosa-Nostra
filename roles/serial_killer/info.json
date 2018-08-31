@@ -1,0 +1,9 @@
+{
+
+  "thumbnail": "https://image.freepik.com/free-icon/meat-cleaver_318-56018.jpg",
+
+  "abilities": ["Attack a player at night"],
+
+  "attributes": ["If roleblocked, will attack roleblocker instead"]
+
+}

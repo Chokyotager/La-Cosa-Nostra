@@ -52,7 +52,7 @@ client.on("message", function (message) {
       if (member.roles.some(x => x.name === config["permissions"]["admin"])) {
         commands.admin[command](message, edited, config);
       } else {
-        message.channel.send(":x: You do not have permissions to use this command!");
+        message.channel.send(":x: You do not have sufficient permissions to use this command!");
       };
 
       return null;

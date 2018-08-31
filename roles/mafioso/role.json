@@ -1,0 +1,22 @@
+{
+  "role-name": "Mafioso",
+
+  "alignment": "mafia",
+  "class": "killing",
+
+  "see-mafia-chat": true,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+    "priority": 6,
+    "vote-offset": 0
+  },
+
+  "investigation": ["Veteran", "Mafioso", "Vigilante"],
+  "secondary-roles": null,
+
+  "win-condition": "mafia"
+}
