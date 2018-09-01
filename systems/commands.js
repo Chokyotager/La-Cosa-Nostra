@@ -57,37 +57,34 @@ for (var i = 0; i < roles.length; i++) {
 
           };
 
-          if (fails.length > 0) {
+          if (fails.length === properties.length) {
             // Broadcast fail message
 
-            switch (fails[fails.length - 1]) {
-              case "ALLOW_NONSPECIFIC":
-                message.channel.send(":x: You cannot use that command!");
-                break;
+            /* Post the most liberal (lowest on list);
+            deliberately conflicts enumeration order;
+            allows for correct error message */
+            var reasons = [
+              {"key": "ALLOW_NONSPECIFIC", "reason": ":x: You cannot use that command!"},
 
-              case "DEAD_CANNOT_USE":
-                message.channel.send(":x: You are dead and cannot use that command!");
-                break;
+              {"key": "DISALLOW_DAY", "reason": ":x: That command cannot be used during the day!"},
+              {"key": "DISALLOW_NIGHT", "reason": ":x: That command cannot be used during the night!"},
+              {"key": "DEAD_CANNOT_USE", "reason": ":x: You are dead and cannot use that command!"},
+              {"key": "ALIVE_CANNOT_USE", "reason": ":x: That command can only be used by the dead!"},
 
-              case "ALIVE_CANNOT_USE":
-                message.channel.send(":x: That command can only be used by the dead!");
-                break;
+              // Should reveal as little information as possible
+              {"key": "PRIVATE_ONLY", "reason": ":x: That command cannot be used here."}
+            ];
 
-              case "PRIVATE_ONLY":
-                message.channel.send(":x: That command cannot be used here.");
-                break;
+            var index = -1;
+            for (var i = 0; i < fails.length; i++) {
+              var value = reasons.findIndex(x => x.key === fails[i]);
+              index = Math.max(value, index);
+            };
 
-              case "DISALLOW_DAY":
-                message.channel.send(":x: That command cannot be used during the day!");
-                break;
-
-              case "DISALLOW_NIGHT":
-                message.channel.send(":x: That command cannot be used during the night!");
-                break;
-
-              default:
-                message.channel.send(":x: Cannot execute the command!");
-                break;
+            if (index < 0) {
+              message.channel.send(":x: Cannot execute the command!");
+            } else {
+              message.channel.send(reasons[index].reason);
             };
 
           };
