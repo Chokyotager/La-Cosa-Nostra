@@ -302,8 +302,13 @@ module.exports = class {
       but dang it there's no easier way out */
 
       if (["cycle"].includes(type)) {
-        action.expiry--;
+
+        if (action.expirty === Infinity || action.tags.includes["permanent"]) {
+          action.expiry--;
+        };
+
         action.cycles++;
+        
       };
 
       if (check_expiries) {

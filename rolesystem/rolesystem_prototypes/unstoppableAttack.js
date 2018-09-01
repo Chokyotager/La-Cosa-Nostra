@@ -6,7 +6,7 @@ module.exports = function (actionable, game, params, astral=false) {
     game.execute("attacked", {attacker: actionable.from,
       target: actionable.to,
       priority: actionable.priority,
-      strength: 1,
+      strength: 3,
       reason: module.exports.reason,
       secondary_reason: module.exports.secondary_reason});
 
@@ -19,7 +19,7 @@ module.exports = function (actionable, game, params, astral=false) {
 
   var stat = attacked.getStat("basic-defense", Math.max);
 
-  if (stat < 1) {
+  if (stat < 3) {
     // Kill the player
     game.kill(attacked, module.exports.reason, module.exports.secondary_reason);
     return true;

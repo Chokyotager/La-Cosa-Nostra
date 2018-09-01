@@ -11,7 +11,7 @@
     "roleblock-immunity": 0,
     "detection-immunity": 0,
     "control-immunity": 0,
-    "priority": 4,
+    "priority": 6,
     "vote-offset": 0
   },
 

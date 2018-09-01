@@ -12,7 +12,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  channel.send(":pill: You may choose to heal a player tonight.\n\nYou have __" + player.misc.doc_self_heals + "__ self-heal" + auxils.vocab("s", player.misc.doc_self_heals) + " left.\n\nUse `" + config["command-prefix"] + "heal <alphabet/name>` to select your target.");
+  channel.send(":pill: You may choose to heal a player tonight.\n\nYou have __" + player.misc.doc_self_heals + "__ self-heal" + auxils.vocab("s", player.misc.doc_self_heals) + " left.\n\nUse `" + config["command-prefix"] + "heal <alphabet/name/nobody>` to select your target.");
 
 };
 

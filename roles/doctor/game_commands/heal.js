@@ -15,8 +15,9 @@ module.exports = function (game, message, params) {
 
   var to = game.getPlayerMatch(params[0]);
 
-  if (to.score > 3 || params[0].toLowerCase() === "nobody") {
-    actions.delete(x => x.from === message.author.id && (x.identifier === "doctor/doc_protect" || x.identifier === "doctor/doc_protect_self"));
+  actions.delete(x => x.from === message.author.id && (x.identifier === "doctor/doc_protect" || x.identifier === "doctor/doc_protect_self"));
+
+  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":syringe: You have decided to protect nobody tonight.");
     return null;
   };
@@ -27,8 +28,6 @@ module.exports = function (game, message, params) {
     message.channel.send(":x: You cannot heal a dead player!" + rs.misc.sarcasm(true));
     return null;
   };
-
-  actions.delete(x => x.from === message.author.id && (x.identifier === "doctor/doc_protect" || x.identifier === "doctor/doc_protect_self"));
 
   if (to.id === message.author.id) {
     // Do stuff

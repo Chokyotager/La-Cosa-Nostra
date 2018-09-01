@@ -10,36 +10,36 @@ module.exports = function (game, message, params) {
   // Run checks, etc
 
   if (params[0] === undefined) {
-    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "attack <alphabet/username/nobody>` instead!");
+    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "douse <alphabet/username/nobody>` instead!");
     return null;
   };
 
   var to = game.getPlayerMatch(params[0]);
 
-  actions.delete(x => x.from === message.author.id && x.identifier === "serial_killer/attack");
+  actions.delete(x => x.from === message.author.id && (x.identifier === "arsonist/douse" || x.identifier === "arsonist/ignite"));
 
   if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
-    message.channel.send(":knife: You have decided not to attack anyone tonight.");
+    message.channel.send(":oil: You have decided not to douse anyone tonight nor ignite.");
     return null;
   };
 
   to = to.player;
 
   if (!to.isAlive()) {
-    message.channel.send(":x: You cannot attack a dead player!" + rs.misc.sarcasm(true));
+    message.channel.send(":x: You cannot douse a dead player!" + rs.misc.sarcasm(true));
     return null;
   };
 
   if (to.id === message.author.id) {
 
-    message.channel.send(":x: You cannot attack yourself!" + rs.misc.sarcasm(true));
+    message.channel.send(":x: You cannot douse yourself!" + rs.misc.sarcasm(true));
 
     return null;
 
   } else {
 
-    game.addAction("serial_killer/attack", ["cycle"], {
-      name: "SK-attack",
+    game.addAction("arsonist/douse", ["cycle"], {
+      name: "Arsonist-douse",
       expiry: 1,
       from: message.author.id,
       to: to.id
@@ -49,7 +49,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  message.channel.send(":knife: You have decided to attack **" + mention + "** tonight.");
+  message.channel.send(":oil: You have decided to douse **" + mention + "** tonight.");
 
 };
 
