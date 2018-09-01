@@ -18,5 +18,7 @@
   "investigation": ["Doctor", "Disguiser", "Serial Killer"],
   "secondary-roles": null,
 
+  "reveal-role-on-interrogation": true,
+
   "win-condition": "serial_killer"
 }

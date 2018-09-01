@@ -13,7 +13,7 @@ module.exports = function (actionable, game, params) {
 
   for (var i = 0; i < doused.length; i++) {
 
-    rs.prototypes.unstoppableAttack.reason = "__annihilated__ in an Arsonist's fire";
+    rs.prototypes.unstoppableAttack.reason = "annihilated in an __Arsonist__'s fire";
     var outcome = rs.prototypes.unstoppableAttack({to: doused[i].identifier, from: actionable.from, tags:["astral"]}, game, params, true);
 
     if (!outcome) {

@@ -77,7 +77,7 @@ module.exports = class {
 
     this.day_night_mediator = setTimeout(function () {
       run_as.step();
-    }, 15000);
+    }, 10000);
 
     // IMPORTANT: Substitute time for delta
 

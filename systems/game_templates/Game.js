@@ -881,7 +881,7 @@ module.exports = class {
       };
 
       // Compare distances
-      var best_match_index = distances.indexOf(Math.min.apply(null, distances));
+      var best_match_index = distances.indexOf(Math.min(...distances));
 
       var score = distances[best_match_index];
       player = this.players[best_match_index];
@@ -961,6 +961,8 @@ module.exports = class {
     console.log("Game ended!");
 
     executable.conclusion.endGame(this);
+
+    this.getMainChannel().send(":sunrise_over_mountains: **GAME OVER**");
 
     // End the game
     this.state = "ended";

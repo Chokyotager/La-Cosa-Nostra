@@ -22,6 +22,11 @@ module.exports = function (game, message, params) {
 
   to = to.player;
 
+  if (!to.isAlive()) {
+    message.channel.send(":x: You cannot extinguish a dead player!" + rs.misc.sarcasm(true));
+    return null;
+  };
+
   if (to.id === message.author.id) {
     message.channel.send(":fire_engine: You have decided to extinguish **yourself** tonight.");
   } else {

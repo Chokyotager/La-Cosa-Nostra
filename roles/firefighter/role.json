@@ -18,5 +18,7 @@
   "investigation": ["Bodyguard", "Firefighter", "Arsonist"],
   "secondary-roles": null,
 
+  "reveal-role-on-interrogation": false,
+
   "win-condition": "town"
 }

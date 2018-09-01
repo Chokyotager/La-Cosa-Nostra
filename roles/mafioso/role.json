@@ -18,5 +18,7 @@
   "investigation": ["Veteran", "Mafioso", "Vigilante"],
   "secondary-roles": null,
 
+  "reveal-role-on-interrogation": false,
+
   "win-condition": "mafia"
 }

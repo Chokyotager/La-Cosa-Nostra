@@ -11,12 +11,14 @@
     "roleblock-immunity": 0,
     "detection-immunity": 1,
     "control-immunity": 0,
-    "priority": 5,
+    "priority": 4,
     "vote-offset": 0
   },
 
   "investigation": ["Bodyguard", "Godfather", "Arsonist"],
   "secondary-roles": null,
+
+  "reveal-role-on-interrogation": false,
 
   "win-condition": "mafia"
 }

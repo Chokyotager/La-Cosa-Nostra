@@ -1,0 +1,5 @@
+You are a militant cop who takes justice into your own hands with your trusty pistol.
+
+On any night, you may shoot a player, dealing them a Powerful attack.
+
+This can only be done once.

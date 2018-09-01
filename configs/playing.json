@@ -1,7 +1,7 @@
 {
   "playing": {
-    "players": ["108153479830241280", "11111", "480536441760382976"],
-    "roles": ["arsonist", "godfather", "firefighter"],
+    "players": ["108153479830241280", "11111", "22222", "480536441760382976", "33333"],
+    "roles": ["godfather", "doctor", "firefighter", "mafioso", "serial_killer"],
     "shuffle": false
   }
 }
