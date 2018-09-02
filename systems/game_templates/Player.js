@@ -74,6 +74,8 @@ module.exports = class {
 
     this.votes = new Array();
 
+    this.intro_messages = new Array();
+
     // Initialise stats
     // A more than value will cause
     // the action to fire
@@ -242,19 +244,20 @@ module.exports = class {
     this.status.alive = false;
   }
 
-  start () {
+  async start () {
 
     if (this.role.start !== undefined) {
       this.role.start(this);
     };
 
-    this.postIntro();
+    await this.postIntro();
+    this.__routines();
 
   }
 
-  postIntro () {
+  async postIntro () {
     // Post intro
-    executable.roles.postRoleIntroduction(this);
+    await executable.roles.postRoleIntroduction(this);
   }
 
   getDisplayRole () {
@@ -336,6 +339,10 @@ module.exports = class {
 
   setWin () {
     this.status.won = true;
+  }
+
+  addIntroMessage (message) {
+    this.intro_messages.push(message);
   }
 
 };

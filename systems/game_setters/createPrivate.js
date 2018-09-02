@@ -18,13 +18,6 @@ module.exports = async function (client, config, roles) {
 
   var guild = client.guilds.get(config["server-id"]);
 
-  // If mafia has rendezvous chat
-  if (config["game"]["mafia"]["has-chat"]) {
-    var mafia = createPrivateChannel(config["game"]["mafia"]["chat-name"]);
-  } else {
-    var mafia = null;
-  };
-
   // Create resolvables so channel creation is quicker
   var resolvables = new Array();
 
@@ -41,6 +34,13 @@ module.exports = async function (client, config, roles) {
     });
   };
 
+  // If mafia has rendezvous chat
+  if (config["game"]["mafia"]["has-chat"]) {
+    var mafia = createPrivateChannel(config["game"]["mafia"]["chat-name"]);
+  } else {
+    var mafia = null;
+  };
+
   return await Promise.all([mafia, Promise.all(resolvables)]);
 
   async function assignChannel (role) {
@@ -51,11 +51,13 @@ module.exports = async function (client, config, roles) {
   };
 
   async function createPrivateChannel (name) {
-    var channel = await guild.createChannel(name, "text");
+    var channel = await guild.createChannel(name, "text", [
+      {id: guild.id, deny: ["READ_MESSAGES"]}
+    ]);
 
     var read_perms = config["base-perms"]["read"];
 
-    await channel.overwritePermissions(everyone, {READ_MESSAGES: false, SEND_MESSAGES: false});
+    //await channel.overwritePermissions(everyone, {READ_MESSAGES: false, SEND_MESSAGES: false});
     await channel.overwritePermissions(spectator, read_perms);
     await channel.setParent(cat_channel.id);
 

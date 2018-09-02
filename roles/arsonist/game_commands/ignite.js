@@ -7,14 +7,16 @@ module.exports = function (game, message, params) {
   var actions = game.actions;
   var config = game.config;
 
-  actions.delete(x => x.from === message.author.id && (x.identifier === "arsonist/douse" || x.identifier === "arsonist/ignite"));
+  var from = game.getPlayerById(message.author.id);
+
+  actions.delete(x => x.from === from.identifier && (x.identifier === "arsonist/douse" || x.identifier === "arsonist/ignite"));
 
   message.channel.send(":fire: You have decided to ignite tonight.");
 
   /*Ignition runs at a much higher priority
   - this is to allow Firefighter to possibly extinguish target
   first */
-  
+
   game.addAction("arsonist/ignite", ["cycle"], {
     name: "Arsonist-ignition",
     expiry: 1,

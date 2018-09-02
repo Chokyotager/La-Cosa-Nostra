@@ -30,14 +30,16 @@ module.exports = function (actionable, game, params) {
     });
 
     // Notifications
-    game.addMessage(from, ":gun: You have ordered a __Mafioso__ to attack your target.");
+    game.addMessage(from, ":exclamation: You have ordered a __Mafioso__ to attack your target.");
     game.addMessage(mafioso, ":exclamation: The __Godfather__ has ordered you to attack his target, " + to.getDisplayName() + ".");
 
   } else {
     // Mafioso is not available or dead
     // Godfather will attack target himself
 
-    rs.prototypes.basicAttack.reason = "shot by a member of the __Mafia__.";
+    game.addMessage(from, ":exclamation: You have personally attacked your own target.");
+
+    rs.prototypes.basicAttack.reason = "shot by a member of the __Mafia__";
 
     var outcome = rs.prototypes.basicAttack(...arguments);
 

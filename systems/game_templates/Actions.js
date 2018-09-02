@@ -308,7 +308,7 @@ module.exports = class {
         };
 
         action.cycles++;
-        
+
       };
 
       if (check_expiries) {

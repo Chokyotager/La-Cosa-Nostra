@@ -36,6 +36,7 @@ module.exports = class {
     this.period_log = new Object();
 
     this.period = this.config["game"]["day-zero"] ? 0 : 1;
+    this.steps = 0;
     this.state = "pre-game";
 
     // Timezone is GMT relative
@@ -76,6 +77,16 @@ module.exports = class {
     this.channels[name] = {id: channel.id, name: channel.name, created_at: channel.createdAt};
 
   };
+
+  getChannel(name) {
+    var guild = this.getGuild();
+
+    if (!this.channels[name]) {
+      return undefined;
+    };
+
+    return guild.channels.get(this.channels[name].id);
+  }
 
   getPlayerById (id) {
     for (var i = 0; i < this.players.length; i++) {
@@ -360,12 +371,14 @@ module.exports = class {
     if (this.state === "pre-game") {
 
       this.__routines();
+      this.cycle();
       this.__start();
 
       // Periodic updates are handled in roles/postRoleIntroduction
       // because of async issues
 
-      this.cycle();
+      // Player routines in start
+      //this.__playerRoutines();
 
     } else if (this.state === "playing") {
 
@@ -377,6 +390,7 @@ module.exports = class {
       // i.e. dawn/dusk time
       await this.precycle();
 
+      this.steps += 1;
       this.period += 1;
 
       // Create period log
@@ -571,7 +585,7 @@ module.exports = class {
     // Secondary reason is what the player sees
     // Can be used to mask death but show true
     // reason of death to the player killed
-
+    this.execute("killed", {target: role.identifier});
     executable.misc.kill(this, role);
     this.primeDeathMessages(role, reason, secondary_reason);
 
@@ -779,7 +793,7 @@ module.exports = class {
     var alive = this.getAlive();
 
     // Ceiled of alive
-    return 1;
+    //return 1;
     return Math.max(2, Math.ceil(alive / 2));
 
   }
@@ -987,6 +1001,10 @@ module.exports = class {
     return this.period;
   }
 
+  getStep () {
+    return this.step;
+  }
+
   isDay () {
     return this.getPeriod() % 2 === 0;
   }
@@ -1000,6 +1018,10 @@ module.exports = class {
     for (var i = 0; i < roles.length; i++) {
       this.setWin(roles[i]);
     };
+  }
+
+  async createPrivateChannel () {
+    return await executable.misc.createPrivateChannel(this, ...arguments);
   }
 
 };

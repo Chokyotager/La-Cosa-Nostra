@@ -1,4 +1,12 @@
+var auxils = require("../systems/auxils.js");
+
 module.exports = function (game) {
+
+  var winners = game.findAll(x => x.role.alignment === "town");
+
+  game.setWins(winners);
+
+  game.getLogChannel().send(auxils.getAssetAttachment("town-wins.png"));
 
   return true;
 

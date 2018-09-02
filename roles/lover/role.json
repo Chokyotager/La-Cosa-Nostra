@@ -1,0 +1,24 @@
+{
+  "role-name": "Lover",
+
+  "alignment": "town",
+  "class": "support",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+    "priority": 5,
+    "vote-offset": 0
+  },
+
+  "investigation": ["Lover", "Retributionist", "Lawyer"],
+  "secondary-roles": null,
+
+  "reveal-role-on-interrogation": false,
+
+  "win-condition": "town"
+}

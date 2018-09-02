@@ -1,3 +1,5 @@
+var auxils = require("../systems/auxils.js");
+
 module.exports = function (game) {
 
   var players = game.players;
@@ -16,7 +18,7 @@ module.exports = function (game) {
     var winners = game.findAll(x => x.role.alignment === "mafia");
 
     game.setWins(winners);
-    game.getLogChannel().send("**Mafia wins.**");
+    game.getLogChannel().send(auxils.getAssetAttachment("mafia-wins.png"));
 
     return true;
   };

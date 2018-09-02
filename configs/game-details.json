@@ -14,7 +14,7 @@
     },
 
     "day-zero": true,
-    "lynch-ratio-floored": 0.125,
+    "lynch-ratio-floored": 0,
 
     "whispers": {
       "allow": false,
