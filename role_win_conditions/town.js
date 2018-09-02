@@ -6,7 +6,8 @@ module.exports = function (game) {
 
   game.setWins(winners);
 
-  game.getLogChannel().send(auxils.getAssetAttachment("town-wins.png"));
+  game.getMainChannel().send(auxils.getAssetAttachment("town-wins.png"));
+  game.postWinLog("town", "All threats to the Town have been wiped out.");
 
   return true;
 

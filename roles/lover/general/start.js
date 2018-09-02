@@ -20,6 +20,13 @@ module.exports = function (player) {
       tags: ["permanent"]
     });
 
+    game.addAction("lover/lock_chats_on_death", ["killed"], {
+      from: player,
+      to: player,
+      expiry: Infinity,
+      tags: ["permanent"]
+    });
+
     var lover = game.getPlayerByIdentifier(player.misc.lover_matched);
     player.addIntroMessage(":heart: Your lover is **" + lover.getDisplayName() + "**.");
     return null;
@@ -45,6 +52,13 @@ module.exports = function (player) {
   game.addAction("lover/suicide", ["killed"], {
     from: player,
     to: player.misc.lover_matched,
+    expiry: Infinity,
+    tags: ["permanent"]
+  });
+
+  game.addAction("lover/lock_chats_on_death", ["killed"], {
+    from: player,
+    to: player,
     expiry: Infinity,
     tags: ["permanent"]
   });

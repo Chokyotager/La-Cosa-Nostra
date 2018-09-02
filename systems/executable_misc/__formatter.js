@@ -91,6 +91,8 @@ module.exports = function (game, message) {
 
 function getParameters (game) {
 
+  var log = game.getPeriodLog();
+
   var config = game.config;
   var ret = {
     "alive": game.getAlive(),
@@ -102,7 +104,7 @@ function getParameters (game) {
     "game_chronos_next": game.getFormattedDay(1),
     "game_chronos_last": game.getFormattedDay(-1),
     "cycle": game.period % 2 === 0 ? "daytime" : "nighttime",
-    "trials_left": game.getPeriodLog().trials,
+    "trials_left": log ? log.trials : null,
     "votes_required": game.getVotesRequired(),
     "veto_time": config.game["veto-time"]
   };

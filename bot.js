@@ -29,6 +29,12 @@ client.on("message", function (message) {
   var content = message.content;
 
   if (content.startsWith(config["command-prefix"])) {
+
+    if (message.channel.type === "dm") {
+      message.channel.send(":x: I do not handle commands in DM. Please use a guild channel instead.");
+      return null;
+    };
+
     var edited = content.substring(config["command-prefix"].length, content.length).split(/[ ]/g);
 
     var command = edited[0].toLowerCase();

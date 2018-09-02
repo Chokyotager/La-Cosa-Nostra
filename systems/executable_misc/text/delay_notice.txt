@@ -1,0 +1,8 @@
+~~                                ~~   **DELAY NOTICE**   ~~                                ~~
+*({;current_utc_formatted})*
+
+Due to an error, there is a delay to the next game step.
+
+We apologise for the error and inconvenience.
+
+`{!game_chronos_next} will begin on {!next_utc_formatted}.`

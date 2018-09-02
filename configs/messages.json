@@ -16,12 +16,6 @@
       "town-wins": "**TOWN WINS**\n\nAll threats to the town have been eliminated.\n\n{@alive}",
       "mafia-wins": "**MAFIA WINS**\n\nThe Mafia has eliminated everyone who did not subject to their reign.\n\n{@alive}",
       "cult-wins": "**CULT WINS**\n\nThe Cult has taken over.\n\n{@alive}"
-    },
-
-    "main": {
-      "town-wins": "As the last of the anti-town asphyxiates in their death, the remaining shudder in relief.\n\n**Town Wins**",
-      "mafia-wins": "Chaos, mutilation, death. The Mafia has taken the majority, elimintating everyone who does not subject to their reign.\n\n**Mafia Wins**",
-      "cult-wins": "Undeterred by threats by Town and Mafia alike, the Cult has taken control.\n\n**Cult Wins**"
     }
 
   }

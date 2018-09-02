@@ -18,7 +18,8 @@ module.exports = function (game) {
     var winners = game.findAll(x => x.role.alignment === "mafia");
 
     game.setWins(winners);
-    game.getLogChannel().send(auxils.getAssetAttachment("mafia-wins.png"));
+    game.getMainChannel().send(auxils.getAssetAttachment("mafia-wins.png"));
+    game.postWinLog("mafia", "The Mafia has successfully eliminated all threats to itself.");
 
     return true;
   };

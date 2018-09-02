@@ -68,6 +68,18 @@ module.exports = class {
     };
 
     var delta = designated.getTime() - current.getTime();
+
+    if (delta < 0) {
+
+      // Recalculate
+      this.game.primeDesignatedTime();
+
+      // Alert players
+      this.game.postDelayNotice();
+
+      var delta = designated.getTime() - current.getTime();
+    };
+
     console.log("Primer: set D/N mediator delta to: %s", delta);
 
     this.designated = designated;
@@ -75,9 +87,11 @@ module.exports = class {
 
     var run_as = this;
 
+    this.clearDayNightMediator();
+
     this.day_night_mediator = setTimeout(function () {
       run_as.step();
-    }, 10000);
+    }, delta);
 
     // IMPORTANT: Substitute time for delta
 
@@ -230,7 +244,11 @@ module.exports = class {
   }
 
   clearDayNightMediator () {
-    clearTimeout(this.day_night_mediator);
+
+    if (this.day_night_mediator) {
+      clearTimeout(this.day_night_mediator);
+    };
+
   }
 
   save () {
@@ -367,16 +385,17 @@ function formatDate (epoch) {
 
   if (days >= 1) {
 
-    var ret = Math.ceil(days);
+    var ret = Math.floor(days);
     return ret + " day" + auxils.vocab("s", ret);
 
   } else if (hours >= 1) {
 
-    var ret = Math.ceil(hours);
+    var ret = Math.floor(hours);
     return ret + " hour" + auxils.vocab("s", ret);
 
   } else {
 
+    // Deliberate
     var ret = Math.ceil(minutes);
     return ret + " minute" + auxils.vocab("s", ret);
 

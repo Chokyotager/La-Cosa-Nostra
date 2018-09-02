@@ -265,6 +265,11 @@ module.exports = class {
     return this.display_role !== undefined ? this.display_role : this.role["role-name"];
   }
 
+  getRole () {
+    // Give true role
+    return this.role["role-name"];
+  }
+
   assignChannel (channel) {
     this.channel = {
       id: channel.id,

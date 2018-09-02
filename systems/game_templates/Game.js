@@ -42,6 +42,17 @@ module.exports = class {
     // Timezone is GMT relative
     this.timezone = this.config.time.timezone;
 
+    this.primeDesignatedTime();
+
+    for (var i = 0; i < this.players.length; i++) {
+      this.players[i].setGame(this);
+    };
+
+    return this;
+
+  }
+
+  primeDesignatedTime () {
     // Always start day zero at closest 12pm/am
     var current = new Date();
     var hours = Math.abs((current.getUTCHours() + this.timezone) % 24);
@@ -59,13 +70,6 @@ module.exports = class {
     this.current_time = current;
 
     this.next_action = new Date(current);
-
-    for (var i = 0; i < this.players.length; i++) {
-      this.players[i].setGame(this);
-    };
-
-    return this;
-
   }
 
   setChannel (name, channel) {
@@ -589,13 +593,25 @@ module.exports = class {
     executable.misc.kill(this, role);
     this.primeDeathMessages(role, reason, secondary_reason);
 
+    if (this.getPeriodLog() && this.getPeriodLog().trial_vote) {
+      this.clearAllVotesBy(role.id);
+      this.__reloadTrialVoteMessage();
+    };
+
   }
 
-  modkill (role) {
+  modkill (id) {
 
-    executable.misc.kill(this, role);
+    var role = this.getPlayerById(id);
 
-    this.primeDeathMessages(role, "__killed__ by a moderator");
+    if (role === null) {
+      return false;
+    };
+
+    role.getPrivateChannel().send(":exclamation: You have been removed from the game by a moderator.");
+
+    executable.admin.modkill(this, role);
+    return true;
 
   }
 
@@ -761,8 +777,10 @@ module.exports = class {
     // Should not put post functions in here,
     // only administrative junk
 
+    var trials = Math.max(this.config["game"]["minimum-trials"], Math.ceil(this.config["game"]["lynch-ratio-floored"] * this.getAlive()));
+
     this.period_log[this.period.toString()] = {
-      "trials": Math.ceil(this.config["game"]["lynch-ratio-floored"] * this.getAlive()),
+      "trials": trials,
       "summary": new Array(),
       "death_broadcasts": new Array(),
       "messages": new Array(),
@@ -794,7 +812,7 @@ module.exports = class {
 
     // Ceiled of alive
     //return 1;
-    return Math.max(2, Math.ceil(alive / 2));
+    return Math.max(this.config["game"]["minimum-lynch-votes"], Math.ceil(alive / 2));
 
   }
 
@@ -989,6 +1007,10 @@ module.exports = class {
     return this.client.guilds.get(this.config["server-id"]);
   }
 
+  postWinLog() {
+    executable.misc.postWinLog(this, ...arguments);
+  }
+
   getLogChannel () {
     return this.getGuild().channels.find(x => x.name === this.config["channels"]["log"]);
   }
@@ -1022,6 +1044,14 @@ module.exports = class {
 
   async createPrivateChannel () {
     return await executable.misc.createPrivateChannel(this, ...arguments);
+  }
+
+  postPrimeLog () {
+    executable.misc.postPrimeMessage(this);
+  }
+
+  postDelayNotice () {
+    executable.misc.postDelayNotice(this);
   }
 
 };

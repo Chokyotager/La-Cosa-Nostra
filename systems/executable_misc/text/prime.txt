@@ -1,0 +1,10 @@
+~~                                ~~   **GAME PRIMED**   ~~                                ~~
+*({;current_utc_formatted})*
+
+There {+is|alive} __{!alive}__ player{+s|alive} registered in this game:
+
+{;players}
+
+`The game will start on {!next_utc_formatted}.`
+
+{@alive}

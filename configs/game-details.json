@@ -15,6 +15,8 @@
 
     "day-zero": true,
     "lynch-ratio-floored": 0,
+    "minimum-lynch-votes": 2,
+    "minimum-trials": 1,
 
     "whispers": {
       "allow": false,
@@ -30,7 +32,7 @@
   },
 
   "time": {
-    "timezone": 9,
+    "timezone": 5,
     "day": 12,
     "night": 12
   }

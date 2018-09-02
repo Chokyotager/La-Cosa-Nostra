@@ -11,6 +11,11 @@ var setRolePermissions = require("./setRolePermissions.js");
 
 module.exports = async function (client, config) {
 
+  if (config["time"]["timezone"] >= 12 || config["time"]["timezone"] < 0) {
+    var err = new Error("Timezone should be between 0-12, inclusive. All games always start at 12 mn/noon for that timezone.");
+    throw err;
+  };
+
   await client.user.setPresence({
     status: "dnd",
     game: {name: "setting up...", type: "PLAYING"}
@@ -52,6 +57,8 @@ module.exports = async function (client, config) {
   // with reference tags
 
   timer.save();
+
+  game.postPrimeLog();
 
   process.timer = timer;
 
