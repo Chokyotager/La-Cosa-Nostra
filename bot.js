@@ -1,4 +1,4 @@
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 var client = new Discord.Client();
 var fs = require("fs");
 

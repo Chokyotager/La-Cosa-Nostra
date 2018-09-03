@@ -1,7 +1,7 @@
 module.exports = async function (client, config) {
   var category = config["categories"]["private"];
 
-  // Bug with Discord.js
+  // Bug with discord.js
   var cat_channel = client.channels.find(x => x.name === category && x.type === "category");
 
   // Check if category configuration is correct

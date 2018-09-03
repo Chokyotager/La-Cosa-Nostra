@@ -2,7 +2,7 @@ var auxils = require("../auxils.js");
 var role_info = require("../role_info.js");
 var win_conditions = require("../win_conditions.js");
 
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 
 module.exports = async function (message, params, config) {
 

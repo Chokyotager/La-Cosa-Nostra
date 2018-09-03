@@ -1,5 +1,5 @@
 var assets = require("../assets.js");
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 var format = require("../executable_misc/__formatter.js");
 
 module.exports = async function (game, faction) {

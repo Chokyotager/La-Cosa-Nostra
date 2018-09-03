@@ -1,5 +1,5 @@
 var fs = require("fs");
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 
 var terms = JSON.parse(fs.readFileSync(__dirname + "/../../terminology.json"));
 var keys = Object.keys(terms).sort();

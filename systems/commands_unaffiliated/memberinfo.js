@@ -1,4 +1,4 @@
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 
 module.exports = function (message, params, config) {
 

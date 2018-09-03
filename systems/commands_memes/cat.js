@@ -1,4 +1,4 @@
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 
 module.exports = async function (message, params, config) {
   var endpoint = "http://thecatapi.com/api/images/get";

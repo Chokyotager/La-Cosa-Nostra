@@ -9,7 +9,7 @@ var texts = require("./text/texts.js");
 
 var pinMessage = require("./pinMessage.js");
 
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 
 module.exports = async function (game) {
 

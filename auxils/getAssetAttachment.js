@@ -1,4 +1,4 @@
-var Discord = require("Discord.js");
+var Discord = require("discord.js");
 var assets = require("../systems/assets.js");
 
 module.exports = function (asset_name) {
