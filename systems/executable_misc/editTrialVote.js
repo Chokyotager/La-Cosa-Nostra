@@ -40,8 +40,8 @@ module.exports = async function (game, ended=false) {
         for (var j = 0; j < voting_against.length; j++) {
 
           // Mapped by IDs
-          var member = game.getGuildMember(voting_against[j]);
-          concat.push(member.displayName);
+          var player = game.getPlayerByIdentifier(voting_against[j].identifier);
+          concat.push(player.getDisplayName());
 
         };
 
@@ -49,7 +49,7 @@ module.exports = async function (game, ended=false) {
 
         names = voting_against.length > 0 ? ": " + names : "";
 
-        displays.push("<@" + roles[i].id + "> (" + voting_against.length + ")" + names);
+        displays.push("<@" + roles[i].id + "> (" + roles[i].countVotes() + ")" + names);
       } else {
         displays.push("[" + roles[i].alphabet + " - dead, **" + roles[i].getDisplayRole() + "**]");
       };

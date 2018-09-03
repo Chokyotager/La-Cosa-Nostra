@@ -2,8 +2,6 @@ TODO
 
 PLANNED: kick/ban check
 
-Substitutions
+Refactor setter code
 
-Mafia chat is semi-broken
-
-Trial votes to use identifiers instead of Discord ids
+Mafia chat immediate expiry

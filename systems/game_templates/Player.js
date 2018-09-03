@@ -7,35 +7,38 @@ module.exports = class {
 
   }
 
-  isVotedAgainstBy (id) {
+  isVotedAgainstBy (identifier) {
 
     // Check if id is voting against player
 
     for (var i = 0; i < this.votes.length; i++) {
-      if (this.votes[i] === id) {
+      if (this.votes[i].identifier === identifier) {
         return true;
       };
     };
+
     return false;
+
   }
 
-  voteAgainst (id) {
-    this.votes.push(id);
+  voteAgainst (identifier, magnitude=1) {
+    // x votes against this player
+    this.votes.push({identifier: identifier, magnitude: 1});
   }
 
-  toggleVotes (id) {
-    if (this.isVotedAgainstBy(id)) {
-      this.clearVotesBy(id);
+  toggleVotes (identifier, magnitude=1) {
+    if (this.isVotedAgainstBy(identifier)) {
+      this.clearVotesBy(identifier);
       return false;
     } else {
-      this.votes.push(id);
+      this.voteAgainst(identifier, magnitude)
       return true;
     };
   }
 
-  clearVotesBy (id) {
+  clearVotesBy (identifier) {
     for (var i = 0; i < this.votes.length; i++) {
-      if (this.votes[i] === id) {
+      if (this.votes[i].identifier === identifier) {
         this.votes.splice(i, 1);
         return true;
       };
@@ -50,14 +53,20 @@ module.exports = class {
   countVotes () {
     // Offset the vote count
 
-    var votes = this.votes.length;
+    var votes = new Number();
 
+    for (var i = 0; i < this.votes.length; i++) {
+      // Magnitude
+      votes += this.votes[i].magnitude;
+    };
+
+    // Offset is calculated elsewhere
     return votes;
 
   }
 
   getVoteOffset () {
-    return this.game_stats["vote-offset"] + this.role.stats["vote-offset"];
+    return this.getStat("vote-offset", (a, b) => a + b);
   }
 
   init (id, alphabet, role) {
@@ -348,6 +357,10 @@ module.exports = class {
 
   addIntroMessage (message) {
     this.intro_messages.push(message);
+  }
+
+  substitute (id) {
+    this.id = id;
   }
 
 };

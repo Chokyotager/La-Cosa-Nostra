@@ -262,28 +262,29 @@ module.exports = class {
         user.send("You voted on a dead player! Sorry man, but the dude is already dead!");
       };
 
-      var already_voting = voted_against.isVotedAgainstBy(voter.id);
+      var already_voting = voted_against.isVotedAgainstBy(voter.identifier);
 
-      if (!already_voting && this.votesOn(voter.id).length >= this.getLynchesAvailable()) {
+      if (!already_voting && this.votesOn(voter.identifier).length >= this.getLynchesAvailable()) {
         // New vote, check if exceeds limit
         return null;
       };
 
       var before_votes = voted_against.countVotes();
 
-      var toggle_on = voted_against.toggleVotes(voter.id);
+      var toggle_on = voted_against.toggleVotes(voter.identifier);
 
       var after_votes = voted_against.countVotes();
 
       if (toggle_on) {
         // New vote
-        executable.misc.addedLynch(this, voter.id, voted_against.id);
+        // OLD SYSTEM: uses IDs directly
+        executable.misc.addedLynch(this, voter, voted_against);
       } else {
-        executable.misc.removedLynch(this, voter.id, voted_against.id);
+        executable.misc.removedLynch(this, voter, voted_against);
       };
 
       this.__reloadTrialVoteMessage();
-      this.__checkLynchAnnouncement(voted_against.id, before_votes, after_votes);
+      this.__checkLynchAnnouncement(voted_against.identifier, before_votes, after_votes);
     };
 
     // Save file
@@ -291,13 +292,13 @@ module.exports = class {
 
   }
 
-  votesOn (id) {
+  votesOn (identifier) {
     // Get everyone someone is voting against
 
     var roles = new Array();
 
     for (var i = 0; i < this.players.length; i++) {
-      if (this.players[i].isVotedAgainstBy(id)) {
+      if (this.players[i].isVotedAgainstBy(identifier)) {
         roles.push(this.players[i]);
       };
     };
@@ -306,9 +307,9 @@ module.exports = class {
 
   }
 
-  __checkLynchAnnouncement (id, before, after) {
+  __checkLynchAnnouncement (identifier, before, after) {
 
-    var role = this.getPlayerById(id);
+    var role = this.getPlayerByIdentifier(identifier);
     var required = this.getVotesRequired() - role.getVoteOffset();
 
     if (before < required && after >= required) {
@@ -324,14 +325,14 @@ module.exports = class {
     executable.misc.editTrialVote(this);
   }
 
-  clearAllVotesBy (id) {
+  clearAllVotesBy (identifier) {
     // Clears all the votes on other people
     // by id specified
 
     var cleared = false;
 
     for (var i = 0; i < this.players.length; i++) {
-      cleared = cleared || this.players[i].clearVotesBy(id);
+      cleared = cleared || this.players[i].clearVotesBy(identifier);
     };
 
     return cleared;
@@ -1053,5 +1054,12 @@ module.exports = class {
   postDelayNotice () {
     executable.misc.postDelayNotice(this);
   }
+
+  substitute (id1, id2) {
+
+    var player = this.getPlayerById(id1);
+    player.substitute(id2);
+
+  };
 
 };

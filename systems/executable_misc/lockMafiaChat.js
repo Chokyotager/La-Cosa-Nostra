@@ -2,19 +2,20 @@ module.exports = async function (game) {
 
   if (game.channels.mafia !== undefined) {
 
-    var chat_id = game.channels.mafia.id;
-    var channel = game.client.channels.get(chat_id);
+    var channel = game.getChannel("mafia");
 
     var read_perms = game.config["base-perms"]["read"];
 
-    var players = game.players;
-    for (var i = 0; i < players.length; i++) {
-      if (players[i]["see-mafia-chat"]) {
+    var mafia = game.findAll(x => x.role["see-mafia-chat"] === true);
 
-        var player = channel.guild.members.get(players[i].id);
-        await channel.overwritePermissions(player, read_perms);
+    for (var i = 0; i < mafia.length; i++) {
 
+      var member = mafia[i].getGuildMember();
+      if (!member) {
+        continue;
       };
+
+      await channel.overwritePermissions(member, read_perms);
     };
 
   };

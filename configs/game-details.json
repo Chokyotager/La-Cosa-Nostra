@@ -6,7 +6,7 @@
     "mafia": {
       "has-chat": true,
       "chat-name": "mafia",
-      "night-only": false
+      "night-only": true
     },
 
     "town": {
