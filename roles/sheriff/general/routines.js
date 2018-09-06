@@ -12,7 +12,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  channel.send(":cop: You may interrogate a player tonight.\n\nUse `" + config["command-prefix"] + "interrogate <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":cop: You may interrogate a player tonight.\n\nUse `" + config["command-prefix"] + "interrogate <alphabet/name/nobody>` to select your target.");
 
 };
 

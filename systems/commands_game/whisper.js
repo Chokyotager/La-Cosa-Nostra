@@ -79,3 +79,7 @@ module.exports = async function (game, message, params) {
   await message.delete();
 
 };
+
+module.exports.ALLOW_PREGAME = false;
+module.exports.ALLOW_GAME = true;
+module.exports.ALLOW_POSTGAME = false;

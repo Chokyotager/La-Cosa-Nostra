@@ -12,6 +12,14 @@ module.exports = async function (game, message, params) {
 
   var formatted = auxils.formatDate(delta);
 
-  message.channel.send(":clock12: **" + formatted + "** left before **" + game.getFormattedDay(1) + "**.");
+  if (game.state === "pre-game") {
+    await message.channel.send(":clock12: **" + formatted + "** left before game starts.");
+  } else {
+    message.channel.send(":clock12: **" + formatted + "** left before **" + game.getFormattedDay(1) + "**.");
+  };
 
 };
+
+module.exports.ALLOW_PREGAME = true;
+module.exports.ALLOW_GAME = true;
+module.exports.ALLOW_POSTGAME = false;

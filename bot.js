@@ -66,9 +66,25 @@ client.on("message", function (message) {
 
     if (commands.game[command] !== undefined) {
       // Check if game is in progress
-      if (process.timer !== undefined && process.timer.game.state === "playing") {
+      if (process.timer !== undefined) {
 
-        commands.game[command](process.timer.game, message, edited);
+        var cond1 = process.timer.game.state === "pre-game" && commands.game[command].ALLOW_PREGAME === false;
+        var cond2 = process.timer.game.state === "playing" && commands.game[command].ALLOW_GAME === false;
+        var cond3 = process.timer.game.state === "ended" && commands.game[command].ALLOW_POSTGAME === false;
+
+        if (!cond1 && !cond2 && !cond3) {
+          commands.game[command](process.timer.game, message, edited);
+        } else {
+
+          if (cond1) {
+            message.channel.send(":x: That command cannot be used in the pre-game!");
+          } else if (cond2) {
+            message.channel.send(":x: That command cannot be used when the game is running!");
+          } else if (cond3) {
+            message.channel.send(":x: That command cannot be used in the post-game!");
+          };
+
+        };
 
       } else {
         message.channel.send(":x: There is no game in progress!");

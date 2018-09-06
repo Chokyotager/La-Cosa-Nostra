@@ -507,10 +507,21 @@ module.exports = class {
     this.messageAll("~~                                              ~~    **" + this.getFormattedDay(offset) + "**");
   }
 
-  messageAll (message) {
+  messageAll (message, pin=false) {
     for (var i = 0; i < this.players.length; i++) {
       if (this.players[i].isAlive()) {
-        this.players[i].getPrivateChannel().send(message);
+
+        var channel = this.players[i].getPrivateChannel();
+
+        if (pin) {
+
+          this.sendPeriodPin(channel, message);
+
+        } else {
+
+          this.players[i].getPrivateChannel().send(message);
+
+        };
       };
     };
   }
@@ -570,6 +581,13 @@ module.exports = class {
 
   }
 
+  async sendPeriodPin (channel, message) {
+
+    var out = await channel.send(message);
+    this.createPeriodPin(out);
+
+  }
+
   checkLynches () {
 
     // Find players who will be lynched
@@ -611,14 +629,14 @@ module.exports = class {
 
   }
 
-  kill (role, reason, secondary_reason) {
+  kill (role, reason, secondary_reason, broadcast_position_offset=0) {
 
     // Secondary reason is what the player sees
     // Can be used to mask death but show true
     // reason of death to the player killed
     this.execute("killed", {target: role.identifier});
     executable.misc.kill(this, role);
-    this.primeDeathMessages(role, reason, secondary_reason);
+    this.primeDeathMessages(role, reason, secondary_reason, broadcast_position_offset);
 
     if (this.getPeriodLog() && this.getPeriodLog().trial_vote) {
       this.clearAllVotesBy(role.id);
@@ -642,10 +660,10 @@ module.exports = class {
 
   }
 
-  primeDeathMessages (role, reason, secondary) {
-    this.addDeathBroadcast(role, reason);
+  primeDeathMessages (role, reason, secondary, broadcast_position_offset=0) {
+    this.addDeathBroadcast(role, reason, broadcast_position_offset);
 
-    if (secondary !== undefined) {
+    if (secondary) {
       this.addDeathMessage(role, secondary);
     } else {
       this.addDeathMessage(role, reason);
@@ -657,7 +675,9 @@ module.exports = class {
     // Enters in from log.death_broadcasts
     var log = this.getPeriodLog(offset);
 
-    var registers = log.death_broadcasts;
+    var registers = Array.from(log.death_broadcasts);
+
+    registers.sort((a, b) => a.position_offset - b.position_offset);
 
     var unique = new Array();
 
@@ -689,11 +709,11 @@ module.exports = class {
 
   }
 
-  addDeathBroadcast (role, reason) {
+  addDeathBroadcast (role, reason, position_offset=0) {
 
     var log = this.getPeriodLog();
 
-    log.death_broadcasts.push({role: role.id, reason: reason});
+    log.death_broadcasts.push({role: role.id, reason: reason, position_offset: position_offset});
 
   }
 

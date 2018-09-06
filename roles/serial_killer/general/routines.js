@@ -12,7 +12,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  channel.send(":knife: You may attack a player tonight.\n\nUse `" + config["command-prefix"] + "attack <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":knife: You may attack a player tonight.\n\nUse `" + config["command-prefix"] + "attack <alphabet/name/nobody>` to select your target.");
 
 };
 

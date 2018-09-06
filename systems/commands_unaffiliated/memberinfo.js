@@ -16,7 +16,7 @@ module.exports = function (message, params, config) {
   var guild = message.client.guilds.get(config["server-id"]);
 
   var members = guild.members.array().filter(function (x) {
-    return x.displayName.toLowerCase() === name || x.user.id === name;
+    return x.displayName.toLowerCase() === name.toLowerCase() || x.user.username === name.toLowerCase() || x.user.id === name;
   });
 
   if (members.length < 1) {

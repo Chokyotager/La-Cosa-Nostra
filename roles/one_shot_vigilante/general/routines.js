@@ -14,11 +14,11 @@ module.exports = function (player) {
 
   if (player.misc.vigilante_bullets > 0) {
 
-    channel.send(":gun: You may choose to shoot a player tonight.\n\nYou currently have __" + player.misc.vigilante_bullets + "__ bullet" + auxils.vocab("s", player.misc.vigilante_bullets) + ".\n\nUse `" + config["command-prefix"] + "shoot <alphabet/name/nobody>` to select your target.");
+    player.game.sendPeriodPin(channel, ":gun: You may choose to shoot a player tonight.\n\nYou currently have __" + player.misc.vigilante_bullets + "__ bullet" + auxils.vocab("s", player.misc.vigilante_bullets) + ".\n\nUse `" + config["command-prefix"] + "shoot <alphabet/name/nobody>` to select your target.");
 
   } else {
 
-    channel.send(":gun: You do not have any bullets left.")
+    player.game.sendPeriodPin(channel, ":gun: You do not have any bullets left.")
 
   };
 

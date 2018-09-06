@@ -5,6 +5,7 @@
     "dead": "Dead",
     "spectator": "Spectator",
     "aftermath": "Season Player",
-    "pre": "Participant"
+    "pre": "Participant",
+    "notify": "Notify"
   }
 }

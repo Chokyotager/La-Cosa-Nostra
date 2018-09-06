@@ -44,3 +44,7 @@ module.exports = async function (game, message, params) {
   game.toggleVote(self, player);
 
 };
+
+module.exports.ALLOW_PREGAME = false;
+module.exports.ALLOW_GAME = true;
+module.exports.ALLOW_POSTGAME = false;

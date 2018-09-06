@@ -93,7 +93,7 @@ module.exports = class {
 
     this.actions.sort(function (a, b) {
 
-      if (a === undefined || b === undefined) {
+      if (!a || !b) {
         return -1;
       };
 
@@ -106,6 +106,11 @@ module.exports = class {
     var ret = new Array();
 
     for (var i = 0; i < this.actions.length; i++) {
+
+      if (!this.actions[i]) {
+        continue;
+      };
+
       if (this.actions[i].tags.includes(tag)) {
         ret.push(this.actions[i]);
       };
@@ -118,6 +123,10 @@ module.exports = class {
   find (key, value) {
 
     for (var i = 0; i < this.actions.length; i++) {
+
+      if (!this.actions[i]) {
+        continue;
+      };
 
       if (typeof key === "function") {
         var condition = key(this.actions[i]);
@@ -146,6 +155,10 @@ module.exports = class {
 
     for (var i = 0; i < this.actions.length; i++) {
 
+      if (!this.actions[i]) {
+        continue;
+      };
+
       if (typeof key === "function") {
         var condition = key(this.actions[i]);
 
@@ -172,6 +185,10 @@ module.exports = class {
     var ret = new Array();
 
     for (var i = this.actions.length - 1; i >= 0; i--) {
+
+      if (!this.actions[i]) {
+        continue;
+      };
 
       if (typeof key === "function") {
 
@@ -230,7 +247,7 @@ module.exports = class {
 
       var action = this.actions[i];
 
-      if (action === undefined) {
+      if (!action) {
         i++;
         continue;
       };
@@ -243,7 +260,7 @@ module.exports = class {
       action._scan.push(loop_id);
       var run = actionables[action.identifier];
 
-      if (run === undefined) {
+      if (!run) {
         console.warn("Bad undefined function in actions!");
         i++;
         continue;
@@ -281,6 +298,12 @@ module.exports = class {
           var result = execute();
         };
 
+        if (action.expiry !== Infinity || !action.tags.includes["permanent"]) {
+          action.expiry--;
+        };
+
+        action.cycles++;
+
       };
 
       function execute () {
@@ -300,17 +323,6 @@ module.exports = class {
       /* Had to shift this in;
       yes, yes, I know it slows stuff down;
       but dang it there's no easier way out */
-
-      if (["cycle"].includes(type)) {
-
-        if (action.expirty === Infinity || action.tags.includes["permanent"]) {
-          action.expiry--;
-        };
-
-        action.cycles++;
-
-      };
-
       if (check_expiries) {
         this.nullExpiries(type);
       };
@@ -328,18 +340,19 @@ module.exports = class {
 
       var action = this.actions[i];
 
+      if (!action) {
+        continue;
+      };
+
       action._scan = this.actions[i]._scan.filter(x => x !== loop_id);
 
-      // Decrement those outside cycle
-      if (!["cycle"].includes(type)) {
-        action.expiry--;
-        action.cycles++;
+    };
 
-        if (check_expiries) {
-          this.nullExpiries();
-        };
+    // Decrement those outside cycle
+    if (!["cycle"].includes(type) && check_expiries) {
 
-      };
+      this.nullExpiries();
+      this.removeUndefinedActionables();
 
     };
 
@@ -351,15 +364,23 @@ module.exports = class {
 
   nullExpiries (trigger=null) {
     // Check expiries, remove
-    for (var i = this.actions.length - 1; i >= 0; i--) {
+    for (var i = 0; i < this.actions.length; i++) {
 
-      if (this.actions[i] === undefined) {
+      if (!this.actions[i]) {
         continue;
       };
 
       if (this.actions[i].expiry < 1 && (this.actions[i].triggers.includes(trigger) || trigger === null)) {
         // Remove
         this.previous.push(this.actions[i]);
+        delete this.actions[i];
+      };
+    };
+  }
+
+  removeUndefinedActionables () {
+    for (var i = this.actions.length - 1; i >= 0; i--) {
+      if (!this.actions[i]) {
         this.actions.splice(i, 1);
       };
     };

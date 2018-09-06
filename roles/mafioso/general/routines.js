@@ -12,7 +12,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  channel.send(":gun: You may vote to shoot a player tonight.\n\nUse `" + config["command-prefix"] + "shoot <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":gun: You may vote to shoot a player tonight.\n\nUse `" + config["command-prefix"] + "shoot <alphabet/name/nobody>` to select your target.");
 
 };
 

@@ -12,7 +12,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  channel.send(":fire_engine: You may choose to extinguish a player tonight.\n\nUse `" + config["command-prefix"] + "extinguish <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":fire_engine: You may choose to extinguish a player tonight.\n\nUse `" + config["command-prefix"] + "extinguish <alphabet/name/nobody>` to select your target.");
 
 };
 
