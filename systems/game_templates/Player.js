@@ -81,6 +81,7 @@ module.exports = class {
 
     this.special_channels = new Array();
 
+    this.pre_emptive = new Array();
     this.votes = new Array();
 
     this.intro_messages = new Array();
@@ -129,6 +130,40 @@ module.exports = class {
 
     return this;
 
+  }
+
+  addPreemptiveVote (identifier) {
+    this.pre_emptive.push(identifier);
+  }
+
+  clearPreemptiveVotes (runnable) {
+
+    if (typeof runnable === "function") {
+
+      for (var i = this.pre_emptive.length - 1; i >= 0; i--) {
+
+        var identifier = this.pre_emptive[i];
+
+        var player = this.game.getPlayerByIdentifier(identifier);
+
+        var outcome = runnable(player);
+
+        if (outcome === true) {
+          this.pre_emptive.splice(i, 1);
+        };
+
+      };
+
+    } else {
+
+      this.pre_emptive = new Array();
+
+    };
+
+  }
+
+  getPreemtiveVotes () {
+    return this.pre_emptive;
   }
 
   resetTemporaryStats () {

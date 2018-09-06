@@ -173,6 +173,8 @@ module.exports = class {
 
     this.instantiateTrialVoteCollector();
 
+    this.loadPreemptiveVotes();
+
   }
 
   async instantiateTrialVoteCollector () {
@@ -236,7 +238,8 @@ module.exports = class {
     reaction.remove(user);
 
     if (!this.isAlive(user.id)) {
-      user.send("You are not alive and in the game, please do not vote in the trials! If you try that again, I will have you kicked.");
+      console.log(user.id + " tried to vote on the trial although they are either dead or not in the game!");
+      await user.send(":x: You are not alive and in the game, please do not vote in the trials! If you try that again, I will have you kicked.");
       return null;
     };
 
@@ -253,46 +256,69 @@ module.exports = class {
     var voter = this.getPlayerById(user.id);
     var voted_against = this.getPlayerByAlphabet(alphabet);
 
-    // Post corresponding messages
-    if (voted_against !== null) {
-
-      // Bug check
-      if (!voted_against.status.alive) {
-        console.log("Dead player voted on!");
-        user.send("You voted on a dead player! Sorry man, but the dude is already dead!");
-      };
-
-      var already_voting = voted_against.isVotedAgainstBy(voter.identifier);
-
-      if (!already_voting && this.votesOn(voter.identifier).length >= this.getLynchesAvailable()) {
-        // New vote, check if exceeds limit
-        return null;
-      };
-
-      var before_votes = voted_against.countVotes();
-
-      var toggle_on = voted_against.toggleVotes(voter.identifier);
-
-      var after_votes = voted_against.countVotes();
-
-      if (toggle_on) {
-        // New vote
-        // OLD SYSTEM: uses IDs directly
-        executable.misc.addedLynch(this, voter, voted_against);
-      } else {
-        executable.misc.removedLynch(this, voter, voted_against);
-      };
-
-      this.__reloadTrialVoteMessage();
-      this.__checkLynchAnnouncement(voted_against.identifier, before_votes, after_votes);
+    // Bug check
+    if (!voted_against.status.alive) {
+      console.log("Dead player voted on!");
+      await user.send(":x: You voted on a dead player! Sorry man, but the dude is already dead!");
+      return null;
     };
+
+    if (voted_against === null) {
+      return null;
+    };
+
+    this.toggleVote(voter, voted_against);
+
+  }
+
+  toggleVote (voter, voted_against) {
+    // Post corresponding messages
+
+    var already_voting = voted_against.isVotedAgainstBy(voter.identifier);
+
+    if (!already_voting && this.votesFrom(voter.identifier).length >= this.getLynchesAvailable()) {
+      // New vote, check if exceeds limit
+      return false;
+    };
+
+    var before_votes = voted_against.countVotes();
+
+    var toggle_on = voted_against.toggleVotes(voter.identifier);
+
+    var after_votes = voted_against.countVotes();
+
+    if (toggle_on) {
+      // New vote
+      // OLD SYSTEM: uses IDs directly
+      executable.misc.addedLynch(this, voter, voted_against);
+    } else {
+      executable.misc.removedLynch(this, voter, voted_against);
+    };
+
+    this.__reloadTrialVoteMessage();
+    this.__checkLynchAnnouncement(voted_against.identifier, before_votes, after_votes);
 
     // Save file
     this.save();
 
+    return true;
+
   }
 
-  votesOn (identifier) {
+  getVotesBy (identifier) {
+
+    var ret = new Array();
+
+    for (var i = 0; i < this.players.length; i++) {
+      if (this.players[i].isVotedAgainstBy(identifier)) {
+        ret.push(this.players[i]);
+      };
+    };
+
+    return ret;
+  }
+
+  votesFrom (identifier) {
     // Get everyone someone is voting against
 
     var roles = new Array();
@@ -1061,5 +1087,60 @@ module.exports = class {
     player.substitute(id2);
 
   };
+
+  clearPreemptiveVotes () {
+    for (var i = 0; i < this.players.length; i++) {
+      this.players[i].clearPreemptiveVotes();
+    };
+  }
+
+  loadPreemptiveVotes (clear_cache=true) {
+
+    var lynches = this.getLynchesAvailable();
+
+    for (var i = 0; i < this.players.length; i++) {
+
+      var player = this.players[i];
+      var votes = player.getPreemtiveVotes();
+
+      if (!player.isAlive()) {
+        continue;
+      };
+
+      var amount = Math.min(lynches - this.votesFrom(player.id).length, votes.length);
+      var successes = new Array();
+
+      for (var j = 0; j < votes.length; j++) {
+
+        // Check if player is votable
+        var current = this.getPlayerByIdentifier(votes[i]);
+
+        var already_voted = current.isVotedAgainstBy(player.identifier);
+        var alive = current.isAlive();
+
+        if (alive && !already_voted) {
+          this.toggleVote(player, current);
+
+          successes.push(current);
+
+          if (successes.length >= amount) {
+            break;
+          };
+
+        };
+
+      };
+
+      if (successes.length > 0) {
+        executable.misc.sendPreemptMessage(player, successes);;
+      };
+
+    };
+
+    if (clear_cache) {
+      this.clearPreemptiveVotes();
+    };
+
+  }
 
 };

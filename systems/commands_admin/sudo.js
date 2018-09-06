@@ -1,11 +1,16 @@
 // Forced command execution
 
-module.exports = function (message, params, config) {
+module.exports = async function (message, params, config) {
 
   var client = message.client;
 
   var user = client.users.get(params[0]);
   var member = message.guild.members.get(params[0]);
+
+  if (!member) {
+    await message.channel.send(":x: That user has an invalid ID and cannot be sudo'd.");
+    return null;
+  };
 
   // Creates a "proto" object
 

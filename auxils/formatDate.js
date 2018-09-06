@@ -9,23 +9,23 @@ module.exports = function (milliseconds) {
   // Calculate
   var concat = new String();
 
-  if (weeks > 1) {
+  if (weeks >= 1) {
     concat += weeks + "w ";
   };
 
-  if (days > 1) {
+  if (days >= 1) {
     concat += days + "d ";
   };
 
-  if (hours > 1) {
+  if (hours >= 1) {
     concat += hours + "h ";
   };
 
-  if (minutes > 1) {
+  if (minutes >= 1) {
     concat += minutes + "min ";
   };
 
-  if (seconds > 1) {
+  if (seconds >= 1) {
     concat += seconds + "s";
   };
 

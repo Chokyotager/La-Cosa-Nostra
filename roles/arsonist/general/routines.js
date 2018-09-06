@@ -12,7 +12,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  channel.send(":oil: You may choose to douse a player tonight.\n\nUse `" + config["command-prefix"] + "douse <alphabet/name/nobody>` to select your target.\n\nAlternatively, you may ignite with `" + config["command-prefix"] + "ignite`");
+  channel.send(":oil: You may choose to douse a player tonight.\n\nUse `" + config["command-prefix"] + "douse <alphabet/name/nobody>` to select your target.\n\nAlternatively, you may ignite with `" + config["command-prefix"] + "ignite`.");
 
 };
 

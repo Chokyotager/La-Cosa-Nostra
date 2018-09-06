@@ -31,7 +31,7 @@ module.exports = function (actionable, game, params) {
 
     // Notifications
     game.addMessage(from, ":exclamation: You have ordered a __Mafioso__ to attack your target.");
-    game.addMessage(mafioso, ":exclamation: The __Godfather__ has ordered you to attack his target, " + to.getDisplayName() + ".");
+    game.addMessage(mafioso, ":exclamation: The __Godfather__ has ordered you to attack his target, **" + to.getDisplayName() + "**.");
 
   } else {
     // Mafioso is not available or dead

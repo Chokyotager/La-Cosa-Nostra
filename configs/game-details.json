@@ -18,6 +18,8 @@
     "minimum-lynch-votes": 2,
     "minimum-trials": 1,
 
+    "allow-pre-emptive-votes": true,
+
     "whispers": {
       "allow": false,
 
@@ -32,7 +34,7 @@
   },
 
   "time": {
-    "timezone": 5,
+    "timezone": 6,
     "day": 12,
     "night": 12
   }

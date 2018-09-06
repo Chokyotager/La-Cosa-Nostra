@@ -5,3 +5,18 @@ PLANNED: kick/ban check
 Refactor setter code
 
 Mafia chat immediate expiry
+
+Fix Lovers death sequence
+
+Fix !memberinfo
+
+Fix !t to allow it to work in pre-game
+
+Logger
+
+More inclusive !sudo for fake players
+
+
+IMPORTANT!!!:
+Fix actionable deletion bug
+Investigate into bot failure!!!
