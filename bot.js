@@ -12,6 +12,7 @@ client.on("ready", function () {
   console.log("Bedlam Mafia ready.");
 
   auxils.readline(client, config, commands);
+  auxils.eventhandler(client, config);
 
   client.user.setPresence({
     status: "online",

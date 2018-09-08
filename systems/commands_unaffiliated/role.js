@@ -80,6 +80,10 @@ module.exports = async function (message, params, config) {
         embed.setThumbnail(info.thumbnail);
       };
 
+      if (info.credits) {
+        embed.setFooter("Role by: " + auxils.pettyFormat(info.credits));
+      };
+
     };
 
     if (win_conditions[role.role["win-condition"]] && win_conditions[role.role["win-condition"]].DESCRIPTION) {

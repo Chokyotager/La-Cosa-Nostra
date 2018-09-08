@@ -1,7 +1,7 @@
 {
   "playing": {
     "players": ["108153479830241280", "2", "3", "4", "5", "6", "7", "8", "9"],
-    "roles": ["godfather", "mafioso", "lover", "lover", "sheriff", "doctor", "firefighter", "one_shot_vigilante", "arsonist"],
+    "roles": ["marshal", "mafioso", "lover", "lover", "sheriff", "doctor", "firefighter", "one_shot_vigilante", "revolutionary"],
     "shuffle": false
   }
 }

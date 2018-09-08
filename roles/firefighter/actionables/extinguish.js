@@ -6,7 +6,7 @@ module.exports = function (actionable, game, params) {
   game.execute("visit", {visitor: actionable.from,
     target: actionable.to,
     priority: actionable.priority,
-    reason: "Arsonist-ignition"});
+    reason: "Firefighter-visit"});
 
   // Remove douse
   var extinguisher = game.getPlayerByIdentifier(actionable.from);

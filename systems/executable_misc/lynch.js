@@ -13,6 +13,10 @@ module.exports = async function (game, role) {
 
   kill(game, role);
 
+  var lynches = Array.from(role.votes);
+
+  game.execute("lynch", {target: role.identifier, votes: lynches});
+
   return lynchable;
 
 };

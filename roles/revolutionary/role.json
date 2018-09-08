@@ -1,0 +1,24 @@
+{
+  "role-name": "Revolutionary",
+
+  "alignment": "neutral",
+  "class": "chaos",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 1,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 1,
+    "priority": 5,
+    "vote-offset": 0
+  },
+
+  "investigation": ["Revolutionary"],
+  "secondary-roles": null,
+
+  "reveal-role-on-interrogation": true,
+
+  "win-condition": "revolutionary"
+}

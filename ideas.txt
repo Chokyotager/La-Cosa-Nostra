@@ -21,7 +21,7 @@ Old Friend (Town, attribute)
 - Knows who other Old Friend is
 - No death mechanic like the Lovers
 
-Marskman
+Marksman
   Town killing
   Each night, mark a player as protégé and mark a player as target. If the target visits the protégé for any reason, role blocks the target and deals a special attack towards him.
   Win with town
@@ -55,3 +55,17 @@ Fence
 
 Prepper/Vagrant (team town):
 - Gets seen as Mafia by Sheriff. If someone tries to kill him, he has a chance of (townies alife+2 /mafia alife) to survive
+
+Escape Artist (Town, Conj):
+- Escapes the Town when attacked for any reason
+- Cannot lynch, cannot be killed, cannot be lynched, cannot talk
+- Can choose to return on any night
+- Returns as a Vanilla Townie
+
+
+
+RELICS gamemode
+- Players assigned relics
+- Can give each other relics
+- 3 relics make up one-shot gun, etc.
+- Killers get relics if they kill a player

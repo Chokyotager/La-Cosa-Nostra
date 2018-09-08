@@ -242,6 +242,17 @@ module.exports = class {
 
     var game = this.game;
 
+    if (type === "chat") {
+      var sender = game.getPlayerById(params.message.author.id);
+
+      if (!sender) {
+        return null;
+      };
+
+      params.target = sender.identifier;
+
+    };
+
     var i = 0;
     while (i < this.actions.length) {
 
@@ -252,18 +263,49 @@ module.exports = class {
         continue;
       };
 
-      if (action._scan.includes(loop_id) || !action.triggers.includes(type)) {
+      if (action._scan.includes(loop_id)) {
         i++;
         continue;
       };
 
       action._scan.push(loop_id);
+
+      if (["cycle"].includes(type)) {
+
+        action.execution--;
+        action.cycles++;
+
+        if (action.expiry !== Infinity || !action.tags.includes["permanent"]) {
+          action.expiry--;
+        };
+
+      };
+
+      if (!action.triggers.includes(type)) {
+        i++;
+        continue;
+      };
+
       var run = actionables[action.identifier];
 
       if (!run) {
         console.warn("Bad undefined function in actions!");
         i++;
         continue;
+      };
+
+      function execute () {
+
+        rerun = true;
+
+        try {
+          var result = run(action, game, params);
+          return result;
+        } catch (err) {
+          console.log(err);
+          return false;
+        };
+
       };
 
       var rerun = false;
@@ -292,30 +334,8 @@ module.exports = class {
       // Periodic-triggers
       if (["cycle"].includes(type)) {
 
-        action.execution--;
-
         if (action.execution <= 0) {
           var result = execute();
-        };
-
-        if (action.expiry !== Infinity || !action.tags.includes["permanent"]) {
-          action.expiry--;
-        };
-
-        action.cycles++;
-
-      };
-
-      function execute () {
-
-        rerun = true;
-
-        try {
-          var result = run(action, game, params);
-          return result;
-        } catch (err) {
-          console.log(err);
-          return false;
         };
 
       };

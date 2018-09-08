@@ -5,6 +5,11 @@ module.exports = function (actionable, game, params) {
   rs.prototypes.increaseImmunity(...arguments);
   var poisoned = rs.prototypes.removePoison(...arguments);
 
+  game.execute("visit", {visitor: actionable.from,
+    target: actionable.to,
+    priority: actionable.priority,
+    reason: "Doctor-visit"});
+
   var self = game.getPlayerByIdentifier(actionable.from);
 
   if (poisoned) {
@@ -16,7 +21,7 @@ module.exports = function (actionable, game, params) {
   };
 
   // Add message
-  game.addAction("doctor/prot_message", ["attacked"], {
+  game.addAction("doctor/prot_self_message", ["attacked"], {
     name: "Doc-prot-success-message",
     from: actionable.from,
     to: actionable.to,

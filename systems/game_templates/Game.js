@@ -29,6 +29,8 @@ module.exports = class {
 
     this.actions = new Actions().init(this);
 
+    this.trial_vote_operations = new Array();
+
     this.players_tracked = players.length;
 
     this.channels = new Object();
@@ -826,6 +828,14 @@ module.exports = class {
 
     var trials = Math.max(this.config["game"]["minimum-trials"], Math.ceil(this.config["game"]["lynch-ratio-floored"] * this.getAlive()));
 
+    for (var i = 0; i < this.trial_vote_operations.length; i++) {
+      var operation = this.trial_vote_operations[i].operation;
+      trials = auxils.operations[operation](trials, this.trial_vote_operations[i].amount);
+    };
+
+    // Clear TV operations
+    this.trial_vote_operations = new Array();
+
     this.period_log[this.period.toString()] = {
       "trials": trials,
       "summary": new Array(),
@@ -835,6 +845,19 @@ module.exports = class {
       "period": this.period,
       "pins": new Array()
     };
+
+  }
+
+  addTrialVoteOperation (operation, amount) {
+
+    var allowed = ["addition", "subtraction", "multiplication", "division", "modulo", "max", "min"];
+
+    if (!allowed.includes(operation)) {
+      var err = new Error("Operation " + operation + " is not allowed!");
+      throw err;
+    };
+
+    this.trial_vote_operations.push({operation: operation, amount: amount})
 
   }
 

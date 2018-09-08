@@ -390,6 +390,10 @@ module.exports = class {
     this.status.won = true;
   }
 
+  hasWon () {
+    return this.status.won === true;
+  }
+
   addIntroMessage (message) {
     this.intro_messages.push(message);
   }

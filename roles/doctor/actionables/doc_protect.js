@@ -4,6 +4,11 @@ module.exports = function (actionable, game, params) {
   rs.prototypes.increaseImmunity(...arguments);
   var poisoned = rs.prototypes.removePoison(...arguments);
 
+  game.execute("visit", {visitor: actionable.from,
+    target: actionable.to,
+    priority: actionable.priority,
+    reason: "Doctor-visit"});
+
   var from = game.getPlayerByIdentifier(actionable.from);
   var to = game.getPlayerByIdentifier(actionable.to);
 
