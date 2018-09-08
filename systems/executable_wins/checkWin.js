@@ -66,6 +66,10 @@ module.exports = function (game) {
 
     };
 
+    if (condition.SURVIVING.length < 1 || !condition.SURVIVING) {
+      surviving = true;
+    };
+
     if (eliminated && surviving) {
       // Run the condition
       var response = condition(game);
