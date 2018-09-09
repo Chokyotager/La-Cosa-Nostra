@@ -18,6 +18,9 @@ module.exports.STOP_CHECKS = false;
 
 module.exports.FACTIONAL = false;
 
+module.exports.PRIORITY = 0;
+module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
+
 // Accepts function
 // Should key in wrt to player
 module.exports.ELIMINATED = [];

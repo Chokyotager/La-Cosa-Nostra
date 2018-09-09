@@ -21,8 +21,8 @@ module.exports = function (game) {
 
   };
 
-  // Sort by alphabetical order
-  win_conditions.sort();
+  // Sort by priority
+  win_conditions.sort((a, b) => conditions[a].PRIORITY - conditions[b].PRIORITY);
 
   // Boolean that is changed if game is to be ended
   var end_game = false;
@@ -34,6 +34,11 @@ module.exports = function (game) {
     if (typeof condition !== "function") {
       var err = new Error(win_conditions[i] + " is not a valid win condition!");
       throw err;
+    };
+
+    if (!end_game && condition.CHECK_ONLY_WHEN_GAME_ENDS) {
+      // Special attribute for roles such as Survivor
+      continue;
     };
 
     // Check all the nitty gritty configurations of the condition

@@ -1,4 +1,4 @@
-module.exports = function (actionable, game, params, astral=false) {
+module.exports = function (actionable, game, params, astral=false, broadcast_offset=0) {
 
   var attacked = game.getPlayerByIdentifier(actionable.to);
 
@@ -21,7 +21,7 @@ module.exports = function (actionable, game, params, astral=false) {
 
   if (stat < 2) {
     // Kill the player
-    game.kill(attacked, module.exports.reason, module.exports.secondary_reason);
+    game.kill(attacked, module.exports.reason, module.exports.secondary_reason, broadcast_offset);
     return true;
   } else {
     return false;

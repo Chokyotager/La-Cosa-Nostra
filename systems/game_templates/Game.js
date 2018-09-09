@@ -879,7 +879,7 @@ module.exports = class {
   getVotesRequired () {
 
     var alive = this.getAlive();
-
+    return 1;
     // Ceiled of alive
     //return 1;
     return Math.max(this.config["game"]["minimum-lynch-votes"], Math.ceil(alive / 2));

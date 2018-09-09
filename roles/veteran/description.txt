@@ -1,0 +1,7 @@
+You are a paranoid gun owner, and you experience constant flashbacks from a war you fought decades ago.
+
+On any night, you may choose to go on alert. Anyone who visits you on that night you will shoot and deal a Basic attack towards.
+
+You will also gain Basic attack immunity on the nights you choose to go on alert.
+
+You may go on alert thrice.

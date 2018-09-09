@@ -1,24 +1,24 @@
 {
-  "role-name": "Jester",
+  "role-name": "Survivor",
 
   "alignment": "neutral",
-  "class": "evil",
+  "class": "benign",
 
   "see-mafia-chat": false,
 
   "stats": {
-    "basic-defense": 0,
+    "basic-defense": 1,
     "roleblock-immunity": 0,
     "detection-immunity": 0,
     "control-immunity": 0,
-    "priority": 8,
+    "priority": 5,
     "vote-offset": 0
   },
 
-  "investigation": ["Jester", "Framer", "Marksman"],
+  "investigation": ["Coroner", "Sheriff", "Revolutionary"],
   "secondary-roles": null,
 
   "reveal-role-on-interrogation": false,
 
-  "win-condition": "jester"
+  "win-condition": "survivor"
 }

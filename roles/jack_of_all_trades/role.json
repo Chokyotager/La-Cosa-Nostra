@@ -1,8 +1,8 @@
 {
-  "role-name": "Jester",
+  "role-name": "Jack of all Trades",
 
   "alignment": "neutral",
-  "class": "evil",
+  "class": "chaos",
 
   "see-mafia-chat": false,
 
@@ -11,14 +11,14 @@
     "roleblock-immunity": 0,
     "detection-immunity": 0,
     "control-immunity": 0,
-    "priority": 8,
+    "priority": 5,
     "vote-offset": 0
   },
 
-  "investigation": ["Jester", "Framer", "Marksman"],
+  "investigation": ["Jack of all Trades"],
   "secondary-roles": null,
 
   "reveal-role-on-interrogation": false,
 
-  "win-condition": "jester"
+  "win-condition": "town"
 }

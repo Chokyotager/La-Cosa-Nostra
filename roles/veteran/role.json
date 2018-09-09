@@ -1,8 +1,8 @@
 {
-  "role-name": "Jester",
+  "role-name": "Veteran",
 
-  "alignment": "neutral",
-  "class": "evil",
+  "alignment": "town",
+  "class": "killing",
 
   "see-mafia-chat": false,
 
@@ -11,14 +11,14 @@
     "roleblock-immunity": 0,
     "detection-immunity": 0,
     "control-immunity": 0,
-    "priority": 8,
+    "priority": 0,
     "vote-offset": 0
   },
 
-  "investigation": ["Jester", "Framer", "Marksman"],
+  "investigation": ["Veteran"],
   "secondary-roles": null,
 
   "reveal-role-on-interrogation": false,
 
-  "win-condition": "jester"
+  "win-condition": "town"
 }

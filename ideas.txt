@@ -62,10 +62,24 @@ Escape Artist (Town, Conj):
 - Can choose to return on any night
 - Returns as a Vanilla Townie
 
+Compulsive (Neutral, Conj):
+- Can choose faction on a night, irreversible
+- Wins with faction on an even/odd day/night
+
+Clockmaker (Neutral, Epicmafia)
+- Refer to their role system
+
+Meddler (Town, Conj):
+- Can skip a day + night once in the game - makes odd rounds even and even rounds odd
 
 
-RELICS gamemode
+RELICS gamemode (Conj)
 - Players assigned relics
 - Can give each other relics
 - 3 relics make up one-shot gun, etc.
 - Killers get relics if they kill a player
+
+COMPULSIVE gamemode (Conj)
+- 2 Mafia
+- One common chat
+- One wins on odd round, other even

@@ -16,5 +16,3 @@ module.exports = function (actionable, game, params) {
   marshal.misc.marshal_uses--;
 
 };
-
-module.exports.FAILS_ON_ROLEBLOCK = true;

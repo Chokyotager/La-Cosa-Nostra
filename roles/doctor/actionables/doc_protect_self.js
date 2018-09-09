@@ -2,7 +2,7 @@ var rs = require("../../../rolesystem/rolesystem.js");
 
 module.exports = function (actionable, game, params) {
 
-  rs.prototypes.increaseImmunity(...arguments);
+  rs.prototypes.powerfulDefense(...arguments);
   var poisoned = rs.prototypes.removePoison(...arguments);
 
   game.execute("visit", {visitor: actionable.from,
