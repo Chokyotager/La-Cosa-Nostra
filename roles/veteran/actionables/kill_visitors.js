@@ -16,6 +16,10 @@ module.exports = function (actionable, game, params) {
   rs.prototypes.basicAttack.reason = "shot by a __Veteran__";
 
   // Attack is astral
-  rs.prototypes.basicAttack({from: veteran.identifier, to: visitor.identifier}, game, params, true);
+  var outcome = rs.prototypes.basicAttack({from: veteran.identifier, to: visitor.identifier}, game, params, true);
+
+  if (!outcome) {
+    game.addMessage(":exclamation: Someone visited you but they could not be attacked!");
+  };
 
 };
