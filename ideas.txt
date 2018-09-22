@@ -72,6 +72,9 @@ Clockmaker (Neutral, Epicmafia)
 Meddler (Town, Conj):
 - Can skip a day + night once in the game - makes odd rounds even and even rounds odd
 
+Spy (Town, Conj):
+- Frequency analysis of Mafia chat
+
 
 RELICS gamemode (Conj)
 - Players assigned relics

@@ -8,7 +8,7 @@ words.pop();
 
 module.exports = function (game) {
 
-  var word = auxils.cryptographicChoice(words);
+  var word = auxils.choice(words);
 
   return word;
 

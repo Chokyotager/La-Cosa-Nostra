@@ -1,0 +1,9 @@
+{
+
+  "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU0olKm1G6UASxOFlyx8YM8IFs9tqGtJHZpa3Eb35dM_YDESih",
+
+  "abilities": ["Choose to either block a players' vote a next day or double their number of votes every night"],
+
+  "attributes": ["Cannot target the same player consecutively on two nights"]
+
+}

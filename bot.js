@@ -41,6 +41,11 @@ client.on("message", function (message) {
     var command = edited[0].toLowerCase();
     edited.splice(0, 1);
 
+    if (config["disabled-commands"].includes(command)) {
+      message.channel.send(":x: That command has been disabled in the configuration!");
+      return null;
+    };
+
     if (commands.unaffiliated[command] !== undefined) {
       // Run command
       commands.unaffiliated[command](message, edited, config);

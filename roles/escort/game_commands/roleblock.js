@@ -17,7 +17,7 @@ module.exports = function (game, message, params) {
   var to = game.getPlayerMatch(params[0]);
   var from = game.getPlayerById(message.author.id);
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "serial_killer/attack");
+  actions.delete(x => x.from === from.identifier && x.identifier === "escort/roleblock");
 
   if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":wine_glass: You have decided not to roleblock anyone tonight.");

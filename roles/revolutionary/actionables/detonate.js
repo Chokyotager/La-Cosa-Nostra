@@ -12,6 +12,11 @@ module.exports = function (actionable, game, params) {
   // Check the text message
   var content = message.content;
 
+  // Should only be in public channels
+  if (message.channel.id !== game.getMainChannel().id && message.channel.id !== (game.getWhisperLogChannel() || new Object()).id) {
+    return false;
+  };
+
   // Run checks
   var regex = new RegExp(word, "gi");
 

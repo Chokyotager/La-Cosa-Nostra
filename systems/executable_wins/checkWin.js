@@ -99,6 +99,7 @@ module.exports = function (game) {
 
   if (end_game) {
     // Kill the game
+    game.postWinLog();
     game.endGame();
   };
 

@@ -35,3 +35,5 @@ module.exports = function (actionable, game, params) {
   assassin.misc.assassin_target = actionable.to;
 
 };
+
+module.exports.TAGS = ["drivable", "roleblockable"];

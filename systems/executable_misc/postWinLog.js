@@ -13,8 +13,8 @@ module.exports = async function (game, faction, description) {
 
   for (var i = 0; i < players.length; i++) {
     var player = players[i];
-    var display_name = player.getDisplayName() === "undef'd player" ? player.alphabet : player.getDisplayName();
-    var text = "**" + display_name + "**: " + player.getRole();
+    var display_name = player.getDisplayName();
+    var text = "**" + display_name + "**: " + player.getInitialRole();
 
     if (player.getStatus("won") === true) {
       // Add a star

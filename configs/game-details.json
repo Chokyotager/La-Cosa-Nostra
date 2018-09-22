@@ -10,11 +10,11 @@
     },
 
     "town": {
-      "night-chat": true
+      "night-chat": false
     },
 
     "day-zero": true,
-    "lynch-ratio-floored": 0,
+    "lynch-ratio-floored": 0.0454,
     "minimum-lynch-votes": 2,
     "minimum-trials": 1,
 
@@ -34,9 +34,9 @@
   },
 
   "time": {
-    "timezone": 6,
-    "day": 12,
-    "night": 12
+    "timezone": 9,
+    "day": 24,
+    "night": 24
   }
 
 }

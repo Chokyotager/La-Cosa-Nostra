@@ -12,3 +12,5 @@ module.exports = function (actionable, game, params) {
   doused.misc.doused = true;
 
 };
+
+module.exports.TAGS = ["drivable", "roleblockable"];

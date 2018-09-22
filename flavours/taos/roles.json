@@ -1,0 +1,155 @@
+{
+
+  "godfather": [{
+    "name": "Jupiter",
+    "banner": "Jupiter.png",
+    "description": "[Night action] order the Mafioso to attack a player. If you are unavailable, the Mafioso will attack their own target. If the Mafioso is unavailable, you will attack the target yourself.\n\n[Passive] detection immunity, basic defense\n\nWin condition: Mafia is at least half the population alive and all other threats to the Mafia are eliminated."
+  }],
+
+  "mafioso": [{
+    "name": "Mars",
+    "banner": "Mars.png",
+    "description": "[Night action] vote to attack a player. If the Godfather is unavailable, you will attack your own target.\n\nWin condition: Mafia is at least half the population alive and all other threats to the Mafia are eliminated."
+  }],
+
+  "janitor": [{
+    "name": "Io",
+    "banner": "Io.png",
+    "description": "[Two-time night action] clean a player. If they are killed that night or lynched the next day, their role and last will will be hidden and you will be informed of it. If the player does not die during that timespan, the clean is not counted as used.\n\nWin condition: Mafia is at least half the population alive and all other threats to the Mafia are eliminated."
+  }],
+
+  "toxicologist": [{
+    "name": "Venus",
+    "banner": "Venus.png",
+    "description": "[Two-time night action] poison a player. Player poisoned is notified as such. If they are not cured that night or the next of the poison, they will be dealt an Unstoppable attack.\n\nWin condition: Mafia is at least half the population alive and all other threats to the Mafia are eliminated."
+  }],
+
+  "consigliere": [{
+    "name": "Ganymede",
+    "banner": "Ganymede.png",
+    "description": "[Night action] investigate a player. You will get a report of their role name and alignment the next day.\n\nWin condition: Mafia is at least half the population alive and all other threats to the Mafia are eliminated."
+  }],
+
+  "mailman": [{
+    "name": "The Moon",
+    "banner": "Moon.png",
+    "description": "[Night action] send one player of your choice an anonymous message. They will receive it when the day starts.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "vagrant": [{
+    "name": "Makemake",
+    "banner": "Makemake.png",
+    "description": "[Two-time night action] choose to equip a bulletproof vest, granting a one-shot Powerful defense that protects against one attack. Vest is also destroyed once an attack occurs with it equipped.\n\n[Passive] seen as a member of the Mafia to Town investigative roles.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "one_shot_strongman": [{
+    "name": "Mimas",
+    "banner": "Mimas.png",
+    "description": "[One-time night action] choose to attack a player. They are dealt an Unstoppable attack that cannot be blocked or otherwise.\n\nWin condition: Mafia is at least half the population alive and all other threats to the Mafia are eliminated."
+  }],
+
+  "lover": [{
+    "name": "Pluto",
+    "banner": "Pluto.png",
+    "description": "[Passive] share a chat with the other Lover, only open at night. If one Lover dies, the other will commit suicide over the loss.\n\nWin condition: eliminate all threats to the Town."
+    }, {
+    "name": "Charon",
+    "banner": "Charon.png",
+    "description": "[Passive] share a chat with the other Lover, only open at night. If one Lover dies, the other will commit suicide over the loss.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "sheriff": [{
+    "name": "Umbriel",
+    "banner": "Umbriel.png",
+    "description": "[Night action] interrogate a player. You will be presented with the alignment of the player the next day.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "investigator": [{
+    "name": "Earth",
+    "banner": "Earth.png",
+    "description": "[Night action] investigate a player. You will be presented with the role name of the player the next day.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "doctor": [{
+    "name": "Deimos",
+    "banner": "Deimos.png",
+    "description": "[Night action] protect a player. This gives them a Powerful defense and cures the target of poison (if applicable). Can only protect self once.\n\nWin condition: eliminate all threats to the Town."
+    }, {
+    "name": "Phobos",
+    "banner": "Phobos.png",
+    "description": "[Night action] protect a player. This gives them a Powerful defense and cures the target of poison (if applicable). Can only protect self once.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "one_shot_vigilante": [{
+    "name": "Neptune",
+    "banner": "Neptune.png",
+    "description": "[One-time night action] shoot a player. They are dealt a Powerful attack.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "escort": [{
+    "name": "Callisto",
+    "banner": "Callisto.png",
+    "description": "[Night action] roleblock a player. This prevents them from using their night action (if applicable).\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "tracker": [{
+    "name": "Eris",
+    "banner": "Eris.png",
+    "description": "[Night action] track a player. You will be notified of who they visited on that night when the day starts.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "lookout": [{
+    "name": "Mercury",
+    "banner": "Mercury.png",
+    "description": "[Night action] check a player. You will be notified of who visited your target on that night when the day starts.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "driver": [{
+    "name": "Titan",
+    "banner": "Titan.png",
+    "description": "[Two-time night action] redirect actions performed on one player to another.\n\n[Passive] roleblock immunity\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "deputy": [{
+    "name": "Ceres",
+    "banner": "Ceres.png",
+    "description": "[Passive] become an Investigator or Sheriff should either of them die, taking the place of the one who died first (if applicable).\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "marshal": [{
+    "name": "Sol",
+    "banner": "Sol.png",
+    "description": "[One-time night action] triple the number of lynches for the next day on any night.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "influencer": [{
+    "name": "Saturn",
+    "banner": "Saturn.png",
+    "description": "[Night action] choose to block the vote of a player or double it the next day. Cannot target the same player consecutively.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "revolutionary": [{
+    "name": "Uranus",
+    "banner": "Uranus.png",
+    "description": "[Night action] choose to tag a player every night. You will be notified of a noun the next day. If the tagged player says the noun in any of the public chats during the day, they will blow up and die immediately.\n\n[Passive] basic defense\n\nWin condition: kill three people using this method to become the immediate sole winner."
+  }],
+
+  "survivor": [{
+    "name": "Planet Nine",
+    "banner": "Planet Nine.png",
+    "description": "Win condition: survive to the end of the game."
+  }],
+
+  "jester": [{
+    "name": "Sedna",
+    "banner": "Sedna.png",
+    "description": "[Special] haunt a player at night who voted you in the trial when you get lynched. They will be dealt an Unstoppable attack.\n\nWin condition: get youself lynched at all costs."
+  }],
+
+  "jack_of_all_trades": [{
+    "name": "'Oumuamua",
+    "banner": "_Oumuamua.png",
+    "description": "[Night action] roll a random night action every night. Each action will have its own condition. You may not self-target with any action.\n\n[Passive] basic defense\n\nWin condition: fulfil the conditions of four night actions."
+  }]
+
+}

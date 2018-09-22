@@ -21,7 +21,7 @@ module.exports = function (actionable, game, params) {
     return null;
   };
 
-  var target = auxils.cryptographicChoice(targets);
+  var target = auxils.choice(targets);
 
   jester.getPrivateChannel().send(":exclamation: You did not pick a target! As a result, **" + target.getDisplayName() + "** has been selected at random to be haunted!");
 

@@ -1,5 +1,3 @@
-var kill = require("./kill.js");
-
 module.exports = async function (game, role) {
 
   var client = game.client;
@@ -8,10 +6,8 @@ module.exports = async function (game, role) {
   var lynchable = role.lynchable();
 
   if (!lynchable) {
-    return null;
+    return false;
   };
-
-  kill(game, role);
 
   var lynches = Array.from(role.votes);
 

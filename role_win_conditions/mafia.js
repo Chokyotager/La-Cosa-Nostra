@@ -19,7 +19,7 @@ module.exports = function (game) {
 
     game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("mafia-wins.png"));
-    game.postWinLog("mafia", "The Mafia has successfully eliminated all threats to itself.");
+    game.primeWinLog("mafia", "The Mafia has successfully eliminated all threats to itself.");
 
     return true;
   };

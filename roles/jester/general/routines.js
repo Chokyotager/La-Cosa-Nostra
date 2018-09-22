@@ -20,7 +20,8 @@ module.exports = function (player) {
       name: "Jester-random-haunt",
       expiry: 1,
       from: player.identifier,
-      to: player.identifier
+      to: player.identifier,
+      priority: -1
     });
 
   };

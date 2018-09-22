@@ -54,6 +54,8 @@ module.exports = async function (game) {
 
   };
 
+  game.save();
+
   return messages;
 
   function getVoteList () {

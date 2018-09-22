@@ -1,0 +1,5 @@
+You are a poisoner. A deadly one.
+
+Every night, you may choose to poison a player. Your target will be notified that they have been poisoned.
+
+Your target will die be dealt an Unstoppable attack if they are not cured on either the night you poisoned them or the next.

@@ -41,7 +41,8 @@ module.exports = function (game, message, params) {
       name: "Jester-random-haunt",
       expiry: 1,
       from: message.author.id,
-      to: message.author.id
+      to: message.author.id,
+      priority: -1
     });
 
     return null;

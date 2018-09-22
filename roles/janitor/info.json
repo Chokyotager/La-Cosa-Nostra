@@ -1,0 +1,11 @@
+{
+
+  "thumbnail": "https://image.freepik.com/iconen-gratis/kubus-mop-schoon_318-33192.jpg",
+
+  "abilities": ["Choose to clean a player twice in the game"],
+
+  "attributes": ["If the player dies that night or the next day, their role is hidden and so is their will",
+                 "You will be notified of the target's actual role and will",
+                 "The clean is not counted if your target does not die during that period"]
+
+}

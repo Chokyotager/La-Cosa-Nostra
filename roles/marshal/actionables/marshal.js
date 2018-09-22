@@ -16,3 +16,5 @@ module.exports = function (actionable, game, params) {
   marshal.misc.marshal_uses--;
 
 };
+
+module.exports.TAGS = ["roleblockable"];

@@ -1,0 +1,7 @@
+You are a cleaner, so competent in your work that you have self-learnt how to clean evidence from bodies as well.
+
+You may clean two players during the game at night. If they die on the night itself or are lynched in the trial the next day, their role and their will will be hidden.
+
+You will, however, be notified of their role and will.
+
+If your target does not die on those occasions, the clean is not counted.

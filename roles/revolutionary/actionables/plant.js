@@ -5,6 +5,11 @@ module.exports = function (actionable, game, params) {
 
   var word = getWord();
 
+  game.execute("visit", {visitor: actionable.from,
+    target: actionable.to,
+    priority: actionable.priority,
+    reason: "Rev-plant"});
+
   game.addAction("revolutionary/detonate", ["chat"], {
     name: "Rev-detonate",
     from: actionable.from,
@@ -27,3 +32,5 @@ module.exports = function (actionable, game, params) {
   attacker.getPrivateChannel().send(":bomb: The word for detonation for your tag is __" + word + "__.");
 
 };
+
+module.exports.TAGS = ["drivable", "roleblockable"];

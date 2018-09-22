@@ -57,6 +57,7 @@ module.exports = async function (message, params, config) {
     embed.addField("Roleblock Immunity", cardinal[role.role.stats["roleblock-immunity"]], true);
     embed.addField("Detection Immunity", cardinal[role.role.stats["detection-immunity"]], true);
     embed.addField("Control Immunity", cardinal[role.role.stats["control-immunity"]], true);
+    embed.addField("Vote Magnitude", role.role.stats["vote-magnitude"], true);
 
     if (role.info) {
       var info = role.info;

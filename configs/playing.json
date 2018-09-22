@@ -1,7 +1,16 @@
 {
   "playing": {
-    "players": ["108153479830241280", "2", "3", "4", "5", "6", "7", "8", "9"],
-    "roles": ["marksman", "mafioso", "lover", "lover", "sheriff", "doctor", "firefighter", "one_shot_vigilante", "revolutionary"],
-    "shuffle": false
+    "players": ["1", "2", "3", "4", "5", "6", "7", "8", "9",
+      "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+    "21", "22", "23", "24", "25", "26"],
+    "roles": ["godfather", "mafioso", "toxicologist", "janitor",
+      "consigliere", "vagrant", "one_shot_strongman",
+      "lover", "lover", "sheriff", "investigator", "doctor",
+      "doctor", "one_shot_vigilante", "escort", "tracker",
+      "lookout", "driver", "deputy", "marshal", "influencer",
+      "mailman", "revolutionary", "survivor", "jester",
+      "jack_of_all_trades"],
+    "shuffle": true,
+    "flavour": "taos"
   }
 }

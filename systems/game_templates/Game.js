@@ -11,6 +11,7 @@ var Actions = require("./Actions.js");
 var Player = require("./Player.js");
 
 var auxils = require("../auxils.js");
+var flavours = require("../flavours.js");
 
 module.exports = class {
 
@@ -48,6 +49,7 @@ module.exports = class {
 
     for (var i = 0; i < this.players.length; i++) {
       this.players[i].setGame(this);
+      this.players[i].postGameInit();
     };
 
     return this;
@@ -216,10 +218,13 @@ module.exports = class {
     var messages_id = period_log.trial_vote.messages;
 
     for (var i = 0; i < messages_id.length; i++) {
-      executable.misc.clearReactions(this, channel_id, messages_id[i]);
+
+      if (i < 1 || !remove_extra) {
+        executable.misc.clearReactions(this, channel_id, messages_id[i]);
+      };
 
       if (i > 0 && remove_extra) {
-        executable.misc.deleteMessage(this, channel_id, messages_od[i])
+        executable.misc.deleteMessage(this, channel_id, messages_id[i]);
       };
 
     };
@@ -285,7 +290,9 @@ module.exports = class {
 
     var before_votes = voted_against.countVotes();
 
-    var toggle_on = voted_against.toggleVotes(voter.identifier);
+    var magnitude = voter.getStat("vote-magnitude", auxils.operations.addition);
+
+    var toggle_on = voted_against.toggleVotes(voter.identifier, magnitude);
 
     var after_votes = voted_against.countVotes();
 
@@ -413,10 +420,12 @@ module.exports = class {
       // Player routines in start
       //this.__playerRoutines();
 
+      this.execute("postcycle", {period: this.period});
+
     } else if (this.state === "playing") {
 
       // Print period in private channel
-      this.messagePeriodicUpdate(1);
+      await this.messagePeriodicUpdate(1);
 
       // Handles actions,
       // closes trial votes, etc.
@@ -445,7 +454,9 @@ module.exports = class {
       this.cycle();
 
       // Player routines - configurable
-      this.__playerRoutines();
+      await this.__playerRoutines();
+
+      this.execute("postcycle", {period: this.period});
 
     } else {
 
@@ -479,7 +490,6 @@ module.exports = class {
 
   async precycle () {
 
-    this.execute("cycle", {period: this.period});
     this.clearPeriodPins();
 
     if (this.period % 2 === 0) {
@@ -491,26 +501,26 @@ module.exports = class {
       this.checkLynches();
       this.clearVotes();
 
-      // Post all messages
-      this.sendMessages();
-
-
-    } else {
-
-      // Dawn
-      this.sendMessages();
-
-
     };
 
+    this.execute("cycle", {period: this.period});
+    this.sendMessages();
+
   }
 
-  messagePeriodicUpdate (offset=0) {
-    this.messageAll("~~                                              ~~    **" + this.getFormattedDay(offset) + "**");
+  async messagePeriodicUpdate (offset=0) {
+    await this.messageAll("~~                                              ~~    **" + this.getFormattedDay(offset) + "**");
   }
 
-  messageAll (message, pin=false) {
+  async messageAll (message, pin=false) {
     for (var i = 0; i < this.players.length; i++) {
+
+      await new Promise(function(resolve, reject) {
+        setTimeout(function () {
+          resolve();
+        }, 100)
+      });
+
       if (this.players[i].isAlive()) {
 
         var channel = this.players[i].getPrivateChannel();
@@ -538,6 +548,7 @@ module.exports = class {
       this.night();
 
     };
+
   }
 
   day () {
@@ -548,7 +559,10 @@ module.exports = class {
       executable.misc.lockMafiaChat(this);
     } else {
       executable.misc.openMafiaChat(this);
+      executable.misc.postMafiaPeriodicMessage(this);
     };
+
+    executable.misc.openMainChats(this);
 
   }
 
@@ -557,6 +571,13 @@ module.exports = class {
 
     // Lynch players
     executable.misc.openMafiaChat(this);
+    executable.misc.postMafiaPeriodicMessage(this);
+
+    if (!this.config["game"]["town"]["night-chat"]) {
+      executable.misc.lockMainChats(this);
+    } else {
+      executable.misc.openMainChats(this);
+    };
 
 
   }
@@ -624,6 +645,8 @@ module.exports = class {
 
     // Add lynch summary
     if (success) {
+      this.execute("killed", {target: role.identifier});
+      executable.misc.kill(this, role);
       this.primeDeathMessages(role, "__lynched__");
     };
 
@@ -861,8 +884,13 @@ module.exports = class {
 
   }
 
-  __playerRoutines () {
+  async __playerRoutines () {
     for (var i = 0; i < this.players.length; i++) {
+      await new Promise(function(resolve, reject) {
+        setTimeout(function () {
+          resolve();
+        }, 100);
+      });
       this.players[i].__routines();
     };
   }
@@ -879,7 +907,7 @@ module.exports = class {
   getVotesRequired () {
 
     var alive = this.getAlive();
-    return 1;
+
     // Ceiled of alive
     //return 1;
     return Math.max(this.config["game"]["minimum-lynch-votes"], Math.ceil(alive / 2));
@@ -1064,7 +1092,9 @@ module.exports = class {
 
     executable.conclusion.endGame(this);
 
-    this.getMainChannel().send(":sunrise_over_mountains: **GAME OVER**");
+    this.getMainChannel().send(this.config["messages"]["game-over"]);
+
+    this.clearTrialVoteReactions();
 
     // End the game
     this.state = "ended";
@@ -1078,7 +1108,15 @@ module.exports = class {
   }
 
   postWinLog() {
-    executable.misc.postWinLog(this, ...arguments);
+    if (this.win_log) {
+      executable.misc.postWinLog(this, this.win_log.faction, this.win_log.caption);
+    } else {
+      console.warn("The win log has not been primed!");
+    };
+  }
+
+  primeWinLog (faction, caption) {
+    this.win_log = {faction: faction, caption: caption};
   }
 
   getLogChannel () {
@@ -1087,6 +1125,10 @@ module.exports = class {
 
   getMainChannel () {
     return this.getGuild().channels.find(x => x.name === this.config["channels"]["main"]);
+  }
+
+  getWhisperLogChannel () {
+    return this.getGuild().channels.find(x => x.name === this.config["channels"]["whisper-log"]);
   }
 
   getPeriod () {
@@ -1184,6 +1226,26 @@ module.exports = class {
       this.clearPreemptiveVotes();
     };
 
+  }
+
+  getGameFlavour () {
+    var config = this.config;
+
+    var flavour_identifier = config["playing"]["flavour"];
+
+    if (!flavour_identifier) {
+      // No flavour
+      return null;
+    };
+
+    var flavour = flavours[flavour_identifier];
+
+    if (!flavour) {
+      console.warn("Invalid flavour " + flavour_identifier + "! Defaulting to no flavour.");
+      return null;
+    };
+
+    return flavour;
   }
 
 };

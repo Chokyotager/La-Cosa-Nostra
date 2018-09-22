@@ -2,6 +2,8 @@ module.exports = {
 
   addition: function () {
 
+    var arr = Array.from(arguments);
+
     var ret = new Number();
 
     for (var i = 0; i < arguments.length; i++) {
@@ -14,10 +16,12 @@ module.exports = {
 
   subtraction: function () {
 
-    var ret = arguments[0];
+    var arr = Array.from(arguments);
 
-    for (var i = 1; i < arguments.length; i++) {
-      ret += arguments[i];
+    var ret = arr[0];
+
+    for (var i = 1; i < arr.length; i++) {
+      ret += arr[i];
     };
 
     return ret;
@@ -26,10 +30,12 @@ module.exports = {
 
   multiplication: function () {
 
+    var arr = Array.from(arguments);
+
     var ret = 1;
 
-    for (var i = 1; i < arguments.length; i++) {
-      ret *= arguments[i];
+    for (var i = 0; i < arr.length; i++) {
+      ret *= arr[i];
     };
 
     return ret;
@@ -38,10 +44,12 @@ module.exports = {
 
   division: function () {
 
-    var ret = arguments[0];
+    var arr = Array.from(arguments);
 
-    for (var i = 1; i < arguments.length; i++) {
-      ret /= arguments[i];
+    var ret = arr[0];
+
+    for (var i = 1; i < arr.length; i++) {
+      ret /= arr[i];
     };
 
     return ret;
@@ -50,10 +58,12 @@ module.exports = {
 
   modulo: function () {
 
-    var ret = arguments[0];
+    var arr = Array.from(arguments);
 
-    for (var i = 1; i < arguments.length; i++) {
-      ret %= arguments[i];
+    var ret = arr[0];
+
+    for (var i = 1; i < arr.length; i++) {
+      ret %= arr[i];
     };
 
     return ret;

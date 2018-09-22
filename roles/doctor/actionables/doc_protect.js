@@ -13,8 +13,9 @@ module.exports = function (actionable, game, params) {
   var to = game.getPlayerByIdentifier(actionable.to);
 
   if (poisoned) {
-    var from = game.getPlayerByIdentifier(actionable.from);
     game.addMessage(from, ":exclamation: You cured your target of poison!");
+
+    game.addMessage(to, ":exclamation: You were cured of poison!");
   };
 
   if (from.status.roleblocked) {
@@ -26,7 +27,10 @@ module.exports = function (actionable, game, params) {
     name: "Doc-prot-success-message",
     from: actionable.from,
     to: actionable.to,
-    expiry: 1
+    expiry: 1,
+    priority: 10
   });
 
 };
+
+module.exports.TAGS = ["drivable", "roleblockable"];

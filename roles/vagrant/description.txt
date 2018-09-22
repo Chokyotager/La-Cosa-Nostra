@@ -1,0 +1,7 @@
+You are a homeless man. Considered somewhat of an underdog of society.
+
+However, you do have a very valuable asset - a bulletproof vest.
+
+Every night, you may choose to equip your bulletproof vest. Doing so will grant you a Powerful defense from one attack.
+
+If you are attacked with your bulletproof vest on, it will become unusable. You can also only use your bulletproof vest twice.

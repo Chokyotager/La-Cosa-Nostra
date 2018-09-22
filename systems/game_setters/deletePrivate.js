@@ -16,7 +16,7 @@ module.exports = async function (client, config) {
 
   var channels = cat_channel.children.array();
   for (var i = 0; i < channels.length; i++) {
-    channels[i].delete();
+    await channels[i].delete();
   };
 
 };

@@ -104,6 +104,9 @@
 
   "Alignment": {"description": "Refers to a players' faction. An alignment is usually Town, Mafia, neutral, or Cult."},
 
-  "Read": {"description": "Refers to an investigation."}
+  "Read": {"description": "Refers to an investigation."},
+
+  "VFR": {"term": "Vote for Role",
+          "description": "Refers to when living players vote to lynch a player in an attempt to get role information from them."}
 
 }

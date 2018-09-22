@@ -25,9 +25,12 @@ module.exports = function (actionable, game, params) {
     name: "Doc-prot-success-message",
     from: actionable.from,
     to: actionable.to,
-    expiry: 1
+    expiry: 1,
+    priority: 10
   });
 
   self.misc.doc_self_heals--;
 
 };
+
+module.exports.TAGS = ["drivable", "roleblockable"];

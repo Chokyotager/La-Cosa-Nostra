@@ -7,14 +7,14 @@ var root = __dirname + "/../../roles/";
 var roles = fs.readdirSync(root);
 
 for (var i = 0; i < roles.length; i++) {
-  var sub = root + roles[i] + "/";
+  var sub = root + roles[i];
 
   if (!fs.lstatSync(sub).isDirectory()) {
     continue;
   };
 
   // Grab the role.json file
-  var jx = JSON.parse(fs.readFileSync(sub + "role.json"));
+  var jx = JSON.parse(fs.readFileSync(sub + "/role.json"));
   ret.push(jx);
 
 };

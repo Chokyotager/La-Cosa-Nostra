@@ -49,7 +49,7 @@ module.exports = async function (game, message, params) {
         return null;
       };
 
-      will = will.trim().replace(/^\s+|\s+$/g, "");;
+      will = will.trim().replace(/^\s+|\s+$/g, "");
 
       if (will.length > 800) {
         await message.channel.send(":x: Last wills cannot exceed 800 characters!");

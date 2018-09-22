@@ -12,11 +12,14 @@
     "detection-immunity": 1,
     "control-immunity": 1,
     "priority": 5,
-    "vote-offset": 0
+    "vote-offset": 0,
+		"vote-magnitude": 1
   },
 
   "investigation": ["Doctor", "Disguiser", "Serial Killer"],
   "secondary-roles": null,
+
+  "tags": [],
 
   "reveal-role-on-interrogation": true,
 

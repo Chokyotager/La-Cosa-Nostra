@@ -1,3 +1,5 @@
+var auxils = require("../auxils.js");
+
 module.exports = async function (message, params, config) {
 
   if (!process.timer || !["pre-game", "playing"].includes(process.timer.game.state)) {
@@ -5,8 +7,10 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
+  var actions = process.timer.game.actions.actions;
+
   // Clone it
-  var actions = Array.from(process.timer.game.actions.actions).map((x, index) => ({action: x, used: true, index: index}));
+  actions = Array.from(actions).map((x, index) => ({action: x, used: true, index: index}));
 
   // Map by tags
   for (var i = 0; i < params.length; i++) {
@@ -17,7 +21,7 @@ module.exports = async function (message, params, config) {
 
       // Exclude
       var check = key.substring(1, Infinity);
-      actions.forEach(x => !x.action.tags.includes(check) && !x.action.triggers.includes(check) ? x.used = false : null);
+      actions.forEach(x => (x.action.tags.includes(check) || x.action.triggers.includes(check)) ? x.used = false : null);
 
     } else if (key === "-*") {
 
@@ -34,11 +38,11 @@ module.exports = async function (message, params, config) {
   actions = actions.filter(x => x.used);
 
   if (actions.length > 1) {
-    var sendable = actions.map(x => "Index **[" + x.index + "]**:\n" + "```fix\n" + JSON.stringify(x.action) + "```");
+    var sendable = actions.map(x => "Index **[" + x.index + "]**:\n" + "```fix\n" + JSON.stringify(x.action, auxils.jsonInfinityCensor) + "```");
   } else {
-    var sendable = ":x: No actions found!";
+    var sendable = [":x: No actions found!"];
   };
 
-  await message.channel.send(sendable, {split: true});
+  await message.channel.send(sendable.join("\n"), {split: {char: "\n```", prepend: "\n```"}});
 
 };

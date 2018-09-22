@@ -16,6 +16,10 @@ module.exports = class {
 
     this.actions = new Array();
     this.previous = new Array();
+
+    this.visit_log = new Array();
+    this.previous_visit_log = new Array();
+
     this.game = game;
 
     return this;
@@ -26,7 +30,7 @@ module.exports = class {
 
     // Actions are calculated relative to the step
 
-    var allowed = ["cycle", "chat", "lynch", "nightkilled", "attacked", "killed", "visit"];
+    var allowed = ["cycle", "chat", "lynch", "nightkilled", "attacked", "killed", "visit", "roleblock", "postcycle"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -59,6 +63,13 @@ module.exports = class {
     actionable.cycles = 0;
 
     actionable._scan = new Array();
+
+    // Append new tags to array
+    var runnable = actionables[actionable.identifier];
+
+    if (typeof runnable === "function" && Array.isArray(runnable.TAGS)) {
+      actionable.tags = actionable.tags.concat(runnable.TAGS);
+    };
 
     /*
     var actionable = {
@@ -253,6 +264,10 @@ module.exports = class {
 
     };
 
+    if (type === "visit") {
+      this.visit_log.push(params);
+    };
+
     var i = 0;
     while (i < this.actions.length) {
 
@@ -289,7 +304,7 @@ module.exports = class {
       var run = actionables[action.identifier];
 
       if (!run) {
-        console.warn("Bad undefined function in actions!");
+        console.warn("Bad undefined function in actions: " + action.identifier + "!");
         i++;
         continue;
       };
@@ -311,7 +326,7 @@ module.exports = class {
       var rerun = false;
 
       // Non-routine triggers
-      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit"].includes(type)) {
+      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit", "roleblock"].includes(type)) {
         var target = action.target || action.to;
 
         if (params.target === target) {
@@ -332,10 +347,16 @@ module.exports = class {
       };
 
       // Periodic-triggers
-      if (["cycle"].includes(type)) {
+      if (["cycle", "postcycle"].includes(type)) {
 
         if (action.execution <= 0) {
           var result = execute();
+
+          if (result === true) {
+            // Immediately mark for deletion
+            action.expiry = 0;
+          };
+
         };
 
       };
@@ -369,11 +390,16 @@ module.exports = class {
     };
 
     // Decrement those outside cycle
-    if (!["cycle"].includes(type) && check_expiries) {
+    if (check_expiries) {
 
       this.nullExpiries();
       this.removeUndefinedActionables();
 
+    };
+
+    if (type === "cycle") {
+      this.previous_visit_log = this.previous_visit_log.concat(this.visit_log);
+      this.visit_log = new Array();
     };
 
   }
@@ -396,6 +422,7 @@ module.exports = class {
         delete this.actions[i];
       };
     };
+
   }
 
   removeUndefinedActionables () {

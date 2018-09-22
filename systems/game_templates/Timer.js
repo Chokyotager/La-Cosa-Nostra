@@ -279,7 +279,7 @@ module.exports = class {
     savable.saved_at = new Date();
 
     // Save object
-    fs.writeFileSync(__dirname + "/../../game_cache/game.save", encode(JSON.stringify(savable)));
+    fs.writeFileSync(__dirname + "/../../game_cache/game.save", encode(JSON.stringify(savable, auxils.jsonInfinityCensor)));
 
     // All of players class should be serialisable without deletions
     for (var i = 0; i < players.length; i++) {
@@ -412,19 +412,6 @@ function decode (string) {
     string = auxils.btoa(string);
   };
 
-  return JSON.parse(string, dateTimeReviver);
-
-  function dateTimeReviver (key, value) {
-
-    var date_format = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/g;
-
-    if (typeof value === "string" && date_format.test(value)) {
-
-      return new Date(value);
-    };
-
-    return value;
-
-  };
+  return JSON.parse(string, auxils.jsonReviver);
 
 };

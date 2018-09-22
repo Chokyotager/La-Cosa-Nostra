@@ -1,4 +1,5 @@
 var executable = require("../executable.js");
+var auxils = require("../auxils.js");
 var crypto = require("crypto");
 
 module.exports = class {
@@ -23,7 +24,7 @@ module.exports = class {
 
   voteAgainst (identifier, magnitude=1) {
     // x votes against this player
-    this.votes.push({identifier: identifier, magnitude: 1});
+    this.votes.push({identifier: identifier, magnitude: magnitude});
   }
 
   toggleVotes (identifier, magnitude=1) {
@@ -75,6 +76,8 @@ module.exports = class {
     this.alphabet = alphabet;
     this.role_identifier = role;
 
+    this.initial_role_identifier = [role];
+
     this.identifier = crypto.randomBytes(8).toString("hex") + "-" + this.id;
 
     this.channel = null;
@@ -86,31 +89,11 @@ module.exports = class {
 
     this.intro_messages = new Array();
 
-    // Initialise stats
-    // A more than value will cause
-    // the action to fire
-    this.game_stats = {
-      "basic-defense": 0,
-      "roleblock-immunity": 0,
-      "detection-immunity": 0,
-      "control-immunity": 0,
-      "priority": 0,
-      "vote-offset": 0
-    };
-
-    this.permanent_stats = {
-      "basic-defense": 0,
-      "roleblock-immunity": 0,
-      "detection-immunity": 0,
-      "control-immunity": 0,
-      "priority": 0,
-      "vote-offset": 0
-    };
-
     // 3x stats - game_stats, permanent_stats, role.stats
 
     this.status = {
       "alive": true,
+
       "roleblocked": false,
       "controlled": false,
       "silenced": false,
@@ -128,8 +111,35 @@ module.exports = class {
 
     this.instantiateRole();
 
+    // Initialise stats
+    // A more than value will cause
+    // the action to fire
+    this.game_stats = {
+      "basic-defense": 0,
+      "roleblock-immunity": 0,
+      "detection-immunity": 0,
+      "control-immunity": 0,
+      "priority": 0,
+      "vote-offset": 0,
+      "vote-magnitude": this.role.stats["vote-magnitude"]
+    };
+
+    this.permanent_stats = {
+      "basic-defense": 0,
+      "roleblock-immunity": 0,
+      "detection-immunity": 0,
+      "control-immunity": 0,
+      "priority": 0,
+      "vote-offset": 0,
+      "vote-magnitude": 0
+    };
+
     return this;
 
+  }
+
+  postGameInit () {
+    this.instantiateFlavour();
   }
 
   addPreemptiveVote (identifier) {
@@ -173,14 +183,24 @@ module.exports = class {
       "detection-immunity": 0,
       "control-immunity": 0,
       "priority": 0,
-      "vote-offset": 0
+      "vote-offset": 0,
+      "vote-magnitude": this.role.stats["vote-magnitude"]
     };
+
+    this.setStatus("roleblocked", false);
+    this.setStatus("controlled", false);
+    this.setStatus("silenced", false);
+
   }
 
   setGameStat (key, amount, modifier) {
 
+    if (modifier === "set") {
+      modifier = () => amount;
+    };
+
     if (modifier === undefined) {
-      modifier = (a, b) => a + b;
+      modifier = auxils.operations.addition;
     };
 
     var final = modifier(this.game_stats[key], amount);
@@ -231,6 +251,14 @@ module.exports = class {
       modifier = (a, b) => a + b;
     };
 
+    if (key === "vote-magnitude") {
+      var temporary = this.getTemporaryStats()["vote-magnitude"];
+      var permanent = this.getPermanentStats()["vote-magnitude"];
+
+      // Vote magnitude is a special stat
+      return modifier(temporary, permanent);
+    };
+
     var a = this.game_stats[key];
     var b = this.permanent_stats[key];
     var c = this.role.stats[key];
@@ -243,8 +271,27 @@ module.exports = class {
     return this.status[key];
   }
 
+  setStatus (key, value) {
+    this.status[key] = value;
+  }
+
   setWill (will) {
     this.will = will;
+  }
+
+  setPrecedentWill (will) {
+    this.precedent_will = will;
+  }
+
+  getWill () {
+
+    var will = this.precedent_will;
+
+    if (will === null) {
+      return undefined;
+    };
+
+    return this.precedent_will || this.will;
   }
 
   getTrueWill () {
@@ -269,7 +316,7 @@ module.exports = class {
     var member = this.getGuildMember();
 
     if (member === undefined) {
-      return "undef'd player";
+      return "[" + this.alphabet + "] undef'd player";
     } else {
       return member.displayName;
     };
@@ -304,14 +351,54 @@ module.exports = class {
     await executable.roles.postRoleIntroduction(this);
   }
 
-  getDisplayRole () {
+  getDisplayRole (append_true_role=true) {
     // Show display role first
-    return this.display_role !== undefined ? this.display_role : this.role["role-name"];
+
+    return this.display_role || this.getTrueFlavourRole(append_true_role);
+  }
+
+  getTrueFlavourRole (append_true_role=true) {
+    // Show display role first
+
+    var flavour_role = this.flavour_role;
+
+    var flavour = this.game.getGameFlavour();
+
+    if (flavour && flavour_role) {
+      var display_extra = flavour.info["display-role-equivalent-on-death"];
+
+      if (display_extra && flavour_role !== this.role["role-name"] && append_true_role) {
+        flavour_role += " (" + this.role["role-name"] + ")";
+      };
+    };
+
+    return flavour_role || this.role["role-name"];
+  }
+
+  setDisplayRole (role_name) {
+    this.display_role = role_name;
   }
 
   getRole () {
     // Give true role
     return this.role["role-name"];
+  }
+
+  getInitialRole (append_true_role=true) {
+    var flavour_role = this.flavour_role;
+
+    var flavour = this.game.getGameFlavour();
+
+    if (flavour && flavour_role) {
+
+      var initial = executable.roles.getRole(this.initial_role_identifier[0])["role-name"];
+
+      if (flavour_role !== initial && append_true_role) {
+        flavour_role += " (" + initial + ")";
+      };
+    };
+
+    return flavour_role || initial || this.role["role-name"];
   }
 
   assignChannel (channel) {
@@ -350,9 +437,46 @@ module.exports = class {
     return this.getStatus("alive");
   }
 
+  changeRole (role_identifier) {
+    this.role_identifier = role_identifier;
+    this.initial_role_identifier.push(role_identifier);
+    this.instantiateRole();
+  }
+
   instantiateRole () {
 
     this.role = executable.roles.getRole(this.role_identifier);
+
+  }
+
+  instantiateFlavour () {
+
+    var flavour = this.game.getGameFlavour();
+
+    if (!flavour) {
+      return null;
+    };
+
+    var identifier = this.role_identifier;
+
+    // Open identifier
+    var current = flavour.roles[identifier];
+
+    if (!current) {
+      // Flavour role not defined
+      this.flavour_role = null;
+      return null;
+    };
+
+    var assigned = this.game.findAll(x => x.role_identifier === identifier && !x.flavour_role);
+
+    var index = assigned.length % current.length;
+
+    // Roles is an array
+    // Count number of roles assigned before
+    this.flavour_role = current[index].name;
+
+    console.log("Flavour: %s, Role: %s", this.flavour_role, this.role_identifier);
 
   }
 

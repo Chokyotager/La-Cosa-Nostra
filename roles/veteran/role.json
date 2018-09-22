@@ -12,11 +12,14 @@
     "detection-immunity": 0,
     "control-immunity": 0,
     "priority": 0,
-    "vote-offset": 0
+    "vote-offset": 0,
+		"vote-magnitude": 1
   },
 
   "investigation": ["Veteran"],
   "secondary-roles": null,
+
+  "tags": [],
 
   "reveal-role-on-interrogation": false,
 

@@ -1,7 +1,7 @@
 var rs = require("../../../rolesystem/rolesystem.js");
 
 var responses = {
-  neutral: ":mag: Your is a __Neutral__.",
+  neutral: ":mag: Your target is a __Neutral__.",
   cult: ":mag: Your target belongs to the __Cult__.",
   mafia: ":mag: Your target is a member of the __Mafia__.",
   town: ":mag: Your target is not suspicious.",
@@ -25,12 +25,18 @@ module.exports = function (actionable, game, params) {
   // Not immune
   if (immunity < 1) {
 
+    // Vagrant
+    if (target.role_identifier === "vagrant") {
+      game.addMessage(from, responses["mafia"]);
+      return null;
+    };
+
     if (target.role["reveal-role-on-interrogation"] === true) {
-      var response = responses["town"].replace(new RegExp("{;role}", "g"), target.role["role-name"]);;
+      var response = responses["role"].replace(new RegExp("{;role}", "g"), target.role["role-name"]);;
       game.addMessage(from, response);
     } else {
       var response = responses[target.role.alignment];
-      game.addMessage(from, response ? response : responses["town"]);  
+      game.addMessage(from, response ? response : responses["town"]);
     };
 
   } else {
@@ -39,3 +45,5 @@ module.exports = function (actionable, game, params) {
   };
 
 };
+
+module.exports.TAGS = ["drivable", "roleblockable"];

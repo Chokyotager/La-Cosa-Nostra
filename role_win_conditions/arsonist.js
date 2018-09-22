@@ -10,7 +10,7 @@ module.exports = function (game) {
   game.setWins(winners);
 
   game.getMainChannel().send(auxils.getAssetAttachment("arsonist-wins.png"));
-  game.postWinLog("arsonist", "Wearing a half-smile as an expression, the Arsonist has burned the Town into oblivion.");
+  game.primeWinLog("arsonist", "Wearing a half-smile as an expression, the Arsonist has burned the Town into oblivion.");
 
   /* Return true to stop the game/checks
   depending on the configuration below. */

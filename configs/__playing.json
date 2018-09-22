@@ -2,6 +2,6 @@
   "playing": {
     "players": ["108153479830241280", "11111", "22222", "33333", "480536441760382976", "44444", "55555", "66666", "77777"],
     "roles": ["godfather", "mafioso", "lover", "lover", "sheriff", "doctor", "firefighter", "one_shot_vigilante", "arsonist"],
-    "shuffle": false
+    "shuffle": true
   }
 }

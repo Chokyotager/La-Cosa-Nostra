@@ -1,3 +1,5 @@
+var auxils = require("../systems/auxils.js");
+
 module.exports = function (game) {
 
   var revolutionaries = game.findAll(x => x.role_identifier === "revolutionary" && x.isAlive() && x.misc.revolutionary_kills_left < 1);
@@ -6,6 +8,8 @@ module.exports = function (game) {
 
     // Revolutionaries win
     game.setWins(revolutionaries);
+    game.getMainChannel().send(auxils.getAssetAttachment("revolutionary-wins.png"));
+    game.primeWinLog("revolutionary", "Half-smile on face, the Revolutionary has taken complete control.");
     return true;
 
   };

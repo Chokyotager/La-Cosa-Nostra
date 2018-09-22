@@ -7,7 +7,7 @@ module.exports = function (game) {
   game.setWins(winners);
 
   game.getMainChannel().send(auxils.getAssetAttachment("town-wins.png"));
-  game.postWinLog("town", "All threats to the Town have been wiped out.");
+  game.primeWinLog("town", "All threats to the Town have been wiped out.");
 
   return true;
 

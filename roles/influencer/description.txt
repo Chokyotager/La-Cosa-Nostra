@@ -1,0 +1,5 @@
+You have the ability to manipulate votes.
+
+Every night, you may choose to either block a players' vote the next day or double their number of votes.
+
+You may not target the same player two nights in a row.

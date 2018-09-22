@@ -9,6 +9,11 @@ module.exports = function (game, message, params) {
 
   var from = game.getPlayerById(message.author.id);
 
+  if (from.misc.marshal_uses < 1) {
+    message.channel.send(":x: You do not have any vote marshals left!");
+    return null;
+  };
+
   var already_marshal = actions.exists(x => x.from === from.identifier && x.identifier === "marshal/marshal");
 
   if (!already_marshal) {
