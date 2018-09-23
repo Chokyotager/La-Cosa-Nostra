@@ -36,6 +36,11 @@ module.exports = async function (game, message, params) {
 
   player = player.player;
 
+  if (!player.isAlive()) {
+    await message.channel.send(":x: That player is dead!");
+    return null;
+  };
+
   if (player.isVotedAgainstBy(self.identifier)) {
     await message.channel.send(":x: You are already voting on **" + player.getDisplayName() + "**!");
     return null;

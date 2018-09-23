@@ -1,9 +1,9 @@
 {
 
-  "thumbnail": "https://image.freepik.com/free-icon/blocked_318-28679.jpg",
+  "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7JMaZzrigUJg8d0imnPk74siPrp6DBb-WkkIYJqBexItlTmVn",
 
-  "abilities": ["Roleblock a player every night"],
+  "abilities": [],
 
-  "attributes": ["Roleblocked players are prevented from using their night action"]
+  "attributes": ["Take the role of a Sheriff or Investigator when they die, whoever died first"]
 
 }

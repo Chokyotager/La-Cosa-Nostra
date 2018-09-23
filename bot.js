@@ -96,8 +96,6 @@ client.on("message", function (message) {
         message.channel.send(":x: There is no game in progress!");
       };
 
-      return null;
-
     };
 
     // Run framework function
@@ -109,7 +107,7 @@ client.on("message", function (message) {
         commands.role[command](process.timer.game, message, edited);
 
       } else {
-        message.channel.send(":x: There is no game in progress!");
+        //message.channel.send(":x: There is no game in progress!");
       };
 
       return null;

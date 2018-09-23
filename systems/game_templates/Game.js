@@ -633,7 +633,7 @@ module.exports = class {
 
     // Find players who will be lynched
 
-    var lynched = new Array();
+    var lynchable = new Array();
 
     for (var i = 0; i < this.players.length; i++) {
       var votes = this.players[i].countVotes();
@@ -641,12 +641,34 @@ module.exports = class {
 
       if (votes >= required) {
         // Execute the player
-        var success = this.lynch(this.players[i]);
+        //var success = this.lynch(this.players[i]);
 
-        if (success) {
-          lynched.push(this.players[i]);
-        };
+        lynchable.push({player: this.players[i], score: votes - required});
+
       };
+
+    };
+
+    var lynches_available = this.getLynchesAvailable();
+
+    lynchable = auxils.cryptographicShuffle(lynchable);
+
+    lynchable.sort(function (a, b) {
+      return b.score - a.score;
+    });
+
+    var lynched = new Array();
+
+    while (lynchable.length > 0 && lynches_available > lynched.length) {
+      var target = lynchable[0].player;
+
+      var success = this.lynch(target);
+
+      if (success) {
+        lynched.push(target);
+      };
+
+      lynchable.splice(0, 1);
 
     };
 
