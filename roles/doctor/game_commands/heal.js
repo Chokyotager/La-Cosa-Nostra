@@ -5,6 +5,7 @@ var rs = require("../../../rolesystem/rolesystem.js");
 module.exports = function (game, message, params) {
 
   var actions = game.actions;
+  var config = game.config;
 
   // Run checks, etc
 

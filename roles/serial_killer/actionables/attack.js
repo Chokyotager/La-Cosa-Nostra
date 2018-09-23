@@ -17,4 +17,4 @@ module.exports = function (actionable, game, params) {
 };
 
 // Traits are compared with the stats before executing
-module.exports.TAGS = ["drivable", "roleblockable"];
+module.exports.TAGS = ["drivable", "roleblockable", "visit"];

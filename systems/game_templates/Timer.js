@@ -77,7 +77,7 @@ module.exports = class {
       // Alert players
       this.game.postDelayNotice();
 
-      var delta = designated.getTime() - current.getTime();
+      var delta = this.game.next_action.getTime() - current.getTime();
     };
 
     console.log("Primer: set D/N mediator delta to: %s", delta);
@@ -106,6 +106,20 @@ module.exports = class {
 
     // TEMP: set to not fire next step for obvious reasons
 
+
+    if (next_action === null) {
+      // Game ended
+      this.clearDayNightMediator();
+    } else {
+      this.prime();
+    };
+
+  }
+
+  async fastforward () {
+
+    console.log("Fastforwarded.");
+    var next_action = await this.game.step(true);
 
     if (next_action === null) {
       // Game ended

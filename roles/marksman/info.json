@@ -4,7 +4,7 @@
 
   "abilities": ["Mark a protégé and a target every night"],
 
-  "attributes": ["If the target visits the protégé, they will be roleblocked and you will deal a Basic attack towards them"],
+  "attributes": ["If the target visits the protégé, you will deal a Powerful attack to the target"],
 
   "credits": ["Xinverse"]
 

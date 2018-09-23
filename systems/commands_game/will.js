@@ -10,6 +10,11 @@ module.exports = async function (game, message, params) {
     return null;
   };
 
+  if (!config["game"]["last-wills"]["allow"]) {
+    await message.channel.send(":x: Last wills are disabled in this game!");
+    return null;
+  };
+
   if (!player.status.alive) {
     await message.channel.send(":x: Dead people cannot write wills!");
     return null;
@@ -22,7 +27,7 @@ module.exports = async function (game, message, params) {
   };
 
   if (params.length < 1) {
-    await message.channel.send(":x: Wrong syntax! Use `" + config["command-prefix"] + "will <view/write> [will]` instead!");
+    await message.channel.send(":x: Wrong syntax! Use `" + config["command-prefix"] + "will <view/write/clear> [will]` instead!");
     return null;
   };
 
@@ -51,8 +56,10 @@ module.exports = async function (game, message, params) {
 
       will = will.trim().replace(/^\s+|\s+$/g, "");
 
-      if (will.length > 800) {
-        await message.channel.send(":x: Last wills cannot exceed 800 characters!");
+      var char_limit = config["game"]["last-wills"]["character-count-limit"];
+
+      if (will.length > char_limit) {
+        await message.channel.send(":x: Last wills cannot exceed " + char_limit + " characters!");
         return null;
       };
 
@@ -74,11 +81,22 @@ module.exports = async function (game, message, params) {
       };
       break;
 
+    case "clear":
+      // Unset
+
+      player.setWill(undefined);
+
+      var send = ":pen_ballpoint: You have removed your last will."
+      await message.channel.send(send);
+      break;
+
     default:
       message.channel.send(":x: Wrong syntax! Use `" + config["command-prefix"] + "will <view/write> [will]` instead!");
       break;
 
   };
+
+  game.save();
 
 };
 

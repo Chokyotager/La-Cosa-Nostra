@@ -32,7 +32,7 @@ for (var i = 0; i < roles.length; i++) {
           var player = game.getPlayerById(user.id);
 
           if (player === null) {
-            message.channel.send(":x: You are not registered in the game!");
+            //message.channel.send(":x: You are not registered in the game!");
             return null;
           };
 
@@ -64,7 +64,7 @@ for (var i = 0; i < roles.length; i++) {
             deliberately conflicts enumeration order;
             allows for correct error message */
             var reasons = [
-              {"key": "ALLOW_NONSPECIFIC", "reason": ":x: You cannot use that command!"},
+              {"key": "ALLOW_NONSPECIFIC", "reason": null},
 
               {"key": "DISALLOW_DAY", "reason": ":x: That command cannot be used during the day!"},
               {"key": "DISALLOW_NIGHT", "reason": ":x: That command cannot be used during the night!"},
@@ -72,7 +72,7 @@ for (var i = 0; i < roles.length; i++) {
               {"key": "ALIVE_CANNOT_USE", "reason": ":x: That command can only be used by the dead!"},
 
               // Should reveal as little information as possible
-              {"key": "PRIVATE_ONLY", "reason": ":x: That command cannot be used here."}
+              {"key": "PRIVATE_ONLY", "reason": null}
             ];
 
             var index = -1;
@@ -84,7 +84,11 @@ for (var i = 0; i < roles.length; i++) {
             if (index < 0) {
               message.channel.send(":x: Cannot execute the command!");
             } else {
-              message.channel.send(reasons[index].reason);
+
+              if (reasons[index].reason) {
+                message.channel.send(reasons[index].reason);
+              };
+
             };
 
           };

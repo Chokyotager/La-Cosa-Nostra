@@ -34,6 +34,8 @@ module.exports = class {
 
     this.players_tracked = players.length;
 
+    this.fast_forward_votes = new Array();
+
     this.channels = new Object();
 
     this.period_log = new Object();
@@ -59,13 +61,12 @@ module.exports = class {
   primeDesignatedTime () {
     // Always start day zero at closest 12pm/am
     var current = new Date();
-    var hours = Math.abs((current.getUTCHours() + this.timezone) % 24);
 
-    if (hours >= 12) {
+    var hours = (12 - this.timezone) % 24;
+
+    if (hours <= current.getUTCHours()) {
       // Next one at 00:00
-      hours = 24 - this.timezone;
-    } else {
-      hours = 12 - this.timezone;
+      hours += 12;
     };
 
     current.setUTCHours(hours, 0, 0, 0);
@@ -399,14 +400,25 @@ module.exports = class {
 
   }
 
-  async step () {
+  async step (adjust_to_current_time=false) {
     // Synced with Timer class
     // Should return next date
 
     // this.config.time.day
 
-    this.current_time = new Date(this.next_action);
-    this.next_action = calculateNextAction(this.next_action, this.period, this.config);
+    if (adjust_to_current_time) {
+
+      this.current_time = new Date();
+
+      var time = new Date();
+      time.setUTCHours(time.getUTCHours() + 1, 0, 0, 0);
+
+      this.next_action = calculateNextAction(time, this.period, this.config);
+
+    } else {
+      this.current_time = new Date(this.next_action);
+      this.next_action = calculateNextAction(this.next_action, this.period, this.config);
+    };
 
     if (this.state === "pre-game") {
 
@@ -485,6 +497,12 @@ module.exports = class {
       return time;
 
     };
+
+  }
+
+  async fastforward () {
+
+    return await this.timer.fastforward();
 
   }
 
@@ -850,6 +868,9 @@ module.exports = class {
     // only administrative junk
 
     var trials = Math.max(this.config["game"]["minimum-trials"], Math.ceil(this.config["game"]["lynch-ratio-floored"] * this.getAlive()));
+
+    // Clear fast forward votes
+    this.fast_forward_votes = new Array();
 
     for (var i = 0; i < this.trial_vote_operations.length; i++) {
       var operation = this.trial_vote_operations[i].operation;
@@ -1246,6 +1267,51 @@ module.exports = class {
     };
 
     return flavour;
+  }
+
+  addFastForwardVote (identifier) {
+
+    if (this.votedFastForward()) {
+      return null;
+    };
+
+    this.fast_forward_votes.push(identifier);
+  }
+
+  removeFastForwardVote (identifier) {
+
+    if (!this.votedFastForward()) {
+      return null;
+    };
+
+    this.fast_forward_votes = this.fast_forward_votes.filter(x => x !== identifier);
+  }
+
+  votedFastForward (identifier) {
+    return this.fast_forward_votes.includes(identifier);
+  }
+
+  checkFastForward () {
+    // Wrt to the configuration
+
+    var alive_count = this.getAlive();
+
+    var minimum = Math.ceil(alive_count * this.config["game"]["fast-forwarding"]["ratio"]);
+
+    var ff_votes = this.fast_forward_votes;
+
+    // Confirm that all players are alive
+    ff_votes = ff_votes.filter(x => this.getPlayerByIdentifier(x).isAlive());
+
+    var ratio = ff_votes.length/alive_count;
+    var percentage = Math.round(ratio * 1000)/10;
+
+    if (ff_votes.length >= minimum) {
+      // Fast forward the game
+      this.addBroadcastSummary("The game has been **fastforwarded** with __" + percentage + "%__ of alive players voting for such last cycle.");
+      this.fastforward();
+    };
+
   }
 
 };

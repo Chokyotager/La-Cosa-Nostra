@@ -1,0 +1,11 @@
+{
+
+  "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRjDiQ6ksqOsXZco6o50pUSwiHAIbhcyQiq9VC8NuYGauH-pkp",
+
+  "abilities": ["Choose to either block a players' vote a next day or double their number of votes every night"],
+
+  "attributes": ["Cannot target the same player consecutively on two nights"],
+
+  "credits": ["Fantôme"]
+
+}

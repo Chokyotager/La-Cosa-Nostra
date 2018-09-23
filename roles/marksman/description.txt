@@ -2,4 +2,6 @@ Ready, aim, fire! Your aim is impeccable and your precision unbeatable.
 
 Every night, mark a player as protégé and mark a player as target.
 
-If the target visits the protégé for any reason, the target's action will be blocked, and you will deal a Powerful attack to the target.
+If the target visits the protégé for any reason, you will deal a Powerful attack to the target.
+
+The protégé can be driven or redirector, but the target cannot. Attacks from you will also not land on any Drivers or Redirectors.

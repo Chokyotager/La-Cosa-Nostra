@@ -65,7 +65,7 @@
 
   "Pro-town": {"description": "Used to describe one who's actions are beneficial to that of Town."},
 
-  "Rolecall": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town."},
+  "Rolecall": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town. (Same as \"massclaim\")"},
 
   "Softclaim": {"description": "Refers to a player indirectly claiming their role subtly, usually done so as not to attract the attention of roles which could harm the claimer."},
 
@@ -106,7 +106,12 @@
 
   "Read": {"description": "Refers to an investigation."},
 
-  "VFR": {"term": "Vote for Role",
-          "description": "Refers to when living players vote to lynch a player in an attempt to get role information from them."}
+  "VfR": {"term": "Vote for Role",
+          "description": "Refers to when living players vote to lynch a player in an attempt to get role information from them."},
+
+  "FtC": {"term": "Follow the Cop",
+          "description": "A strategy in games where players lynch whoever claims cop, and a doctor protects the cop at night, and lynch the cop if the previous lynch was bad. This forces the Mafia to find out who the Doctor is and attack them."},
+
+  "Massclaim": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town. (Same as \"rolecall\")"}
 
 }

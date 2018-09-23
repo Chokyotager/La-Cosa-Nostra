@@ -20,6 +20,19 @@
 
     "allow-pre-emptive-votes": false,
 
+    "fast-forwarding": {
+      "allow": true,
+      "ratio": 1,
+
+      "night": true,
+      "day": true
+    },
+
+    "last-wills": {
+      "allow": true,
+      "character-count-limit": 800
+    },
+
     "whispers": {
       "allow": false,
 

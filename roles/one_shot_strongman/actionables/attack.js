@@ -20,3 +20,5 @@ module.exports = function (actionable, game, params) {
   from.misc.strongman_kills_left--;
 
 };
+
+module.exports.TAGS = ["visit"];

@@ -2,7 +2,7 @@
   "role-name": "Rumourer",
 
   "alignment": "town",
-  "class": "investigate",
+  "class": "investigative",
 
   "see-mafia-chat": false,
 

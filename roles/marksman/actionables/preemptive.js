@@ -10,7 +10,7 @@ module.exports = function (actionable, game, params) {
 
   rs.prototypes.powerfulAttack.reason = "sniped by a __Marksman__";
 
-  var outcome = rs.prototypes.powerfulAttack({to: actionable.attack, from: actionable.from}, game, params);
+  var outcome = rs.prototypes.powerfulAttack({to: actionable.attack, from: actionable.from}, game, params, false, 1);
 
   var from = game.getPlayerByIdentifier(actionable.from);
 

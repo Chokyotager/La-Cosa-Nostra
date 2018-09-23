@@ -24,3 +24,5 @@ Voting for dead people with commands
 !skiptime vote [+ config for %]
 
 Linear decrement of D/N cycles
+
+Fix JOAT watch

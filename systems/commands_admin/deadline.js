@@ -61,6 +61,8 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
+  game.next_action = date;
+
   // Reprime the timer and save
   process.timer.prime();
   game.save();

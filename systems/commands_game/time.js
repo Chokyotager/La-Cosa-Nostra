@@ -10,12 +10,17 @@ module.exports = async function (game, message, params) {
   // Work in progress
   var delta = designation.getTime() - current.getTime();
 
+  if (delta < 1) {
+    await message.channel.send(":clock12: Time is up.");
+    return null;
+  };
+
   var formatted = auxils.formatDate(delta);
 
   if (game.state === "pre-game") {
     await message.channel.send(":clock12: **" + formatted + "** left before game starts.");
   } else {
-    message.channel.send(":clock12: **" + formatted + "** left before **" + game.getFormattedDay(1) + "**.");
+    await message.channel.send(":clock12: **" + formatted + "** left before **" + game.getFormattedDay(1) + "**.");
   };
 
 };

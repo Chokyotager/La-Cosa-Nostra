@@ -19,4 +19,4 @@ module.exports = function (actionable, game, params) {
 
 };
 
-module.exports.TAGS = ["roleblockable", "drivable"];
+module.exports.TAGS = ["roleblockable", "drivable", "visit"];

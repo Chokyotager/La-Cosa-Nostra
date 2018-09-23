@@ -10,9 +10,9 @@ module.exports = async function (message, params, config) {
 
   var action = (params[0] || "").toLowerCase();
 
-  if (!["info", "desc", "card", "investigations"].includes(action)) {
+  if (!["info", "desc", "card"].includes(action)) {
     // Syntax error
-    await message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "role <info/desc/card/investigations> <role>`!");
+    await message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "role <info/desc/card> <role>`!");
     return null;
   };
 
@@ -115,12 +115,6 @@ module.exports = async function (message, params, config) {
 
     var attachment = new Discord.Attachment(await role.role_card, "role_card.png");
     await message.channel.send(attachment);
-    return null;
-
-  } else if (["investigations"].includes(action)) {
-
-    // WORK IN PROGRESS
-    await message.channel.send(":x: Work in progress.");
     return null;
 
   };
