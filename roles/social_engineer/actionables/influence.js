@@ -8,7 +8,7 @@ module.exports = function (actionable, game, params) {
     priority: actionable.priority,
     reason: "SE-double-vote"});
 
-  game.addAction("social_engineerdouble_vote", ["postcycle"], {
+  game.addAction("social_engineer/double_vote", ["postcycle"], {
     name: "SE-double-vote",
     expiry: 2,
     from: actionable.from,

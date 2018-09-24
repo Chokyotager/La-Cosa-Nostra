@@ -17,7 +17,7 @@ module.exports = function (game, message, params) {
   var to = game.getPlayerMatch(params[0]);
   var from = game.getPlayerById(message.author.id);
 
-  actions.delete(x => x.from === from.identifier && (x.identifier === "social_engineerinfluence" || x.identifier === "social_engineerblock"));
+  actions.delete(x => x.from === from.identifier && (x.identifier === "social_engineer/influence" || x.identifier === "social_engineer/block"));
 
   if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":ballot_box: You have decided not to block or influence the vote of anyone tonight.");
@@ -46,7 +46,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  game.addAction("social_engineerinfluence", ["cycle"], {
+  game.addAction("social_engineer/influence", ["cycle"], {
     name: "SE-influence",
     expiry: 1,
     from: message.author.id,
