@@ -11,6 +11,13 @@ module.exports = function (actionable, game, params) {
     from.misc.joat_actions_left--;
   };
 
+  game.addAction("jack_of_all_trades/remove_on_win", ["cycle"], {
+    name: "JOAT-remove-on-win",
+    expiry: 1,
+    from: actionable.from,
+    to: actionable.to
+  });
+
   // Do not destroy, ought there be more attacks
   return false;
 

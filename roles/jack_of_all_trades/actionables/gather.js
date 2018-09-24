@@ -28,14 +28,21 @@ module.exports = function (actionable, game, params) {
   visited_names.sort();
   visitor_names.sort();
 
+  visits = visited_names.length > 0 ? auxils.pettyFormat(visited_names) : "nobody";
+  visitors = visitor_names.length > 0 ? auxils.pettyFormat(visitor_names) : "nobody";
+
   if (visitors.length > 1) {
     game.addMessage(nightwatcher, ":exclamation: You successfully executed your action!");
     nightwatcher.misc.joat_actions_left--;
   };
 
-  visits = visited_names.length > 0 ? auxils.pettyFormat(visited_names) : "nobody";
-  visitors = visitor_names.length > 0 ? auxils.pettyFormat(visitor_names) : "nobody";
-
   game.addMessage(nightwatcher, ":eye: Your target visited " + visits + " and was visited by " + visitors + " last night.");
+
+  game.addAction("jack_of_all_trades/remove_on_win", ["cycle"], {
+    name: "JOAT-remove-on-win",
+    expiry: 1,
+    from: actionable.from,
+    to: actionable.to
+  });
 
 };

@@ -1293,7 +1293,7 @@ module.exports = class {
 
   addFastForwardVote (identifier) {
 
-    if (this.votedFastForward()) {
+    if (this.votedFastForward(identifier)) {
       return null;
     };
 
@@ -1302,7 +1302,7 @@ module.exports = class {
 
   removeFastForwardVote (identifier) {
 
-    if (!this.votedFastForward()) {
+    if (!this.votedFastForward(identifier)) {
       return null;
     };
 

@@ -16,7 +16,5 @@ module.exports = function (player) {
     tags: ["permanent"],
     priority: 12
   });
-
-  player.misc.strongman_kills_left = 1;
-
+  
 };

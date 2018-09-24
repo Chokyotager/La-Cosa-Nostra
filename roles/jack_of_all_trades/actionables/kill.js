@@ -26,6 +26,13 @@ module.exports = function (actionable, game, params) {
 
   };
 
+  game.addAction("jack_of_all_trades/remove_on_win", ["cycle"], {
+    name: "JOAT-remove-on-win",
+    expiry: 1,
+    from: actionable.from,
+    to: actionable.to
+  });
+
 };
 
 module.exports.TAGS = ["drivable", "roleblockable", "visit"];

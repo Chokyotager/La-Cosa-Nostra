@@ -2,7 +2,7 @@ var auxils = require("../systems/auxils.js");
 
 module.exports = function (game) {
 
-  var jack_of_all_trades = game.findAll(x => x.role_identifier === "jack_of_all_trades" && x.isAlive() && x.misc.joat_actions_left < 1 && !x.hasWon());
+  var jack_of_all_trades = game.findAll(x => x.role_identifier === "jack_of_all_trades" && x.misc.joat_actions_left < 1 && !x.hasWon());
 
   if (jack_of_all_trades.length > 0) {
 

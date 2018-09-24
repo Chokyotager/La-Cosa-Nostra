@@ -6,18 +6,18 @@ module.exports = function (actionable, game, params) {
   game.execute("visit", {visitor: actionable.from,
     target: actionable.to,
     priority: actionable.priority,
-    reason: "Influencer-stop-vote"});
+    reason: "SE-stop-vote"});
 
-  game.addAction("influencer/stop_vote", ["postcycle"], {
-    name: "Influencer-stop-vote",
+  game.addAction("social_engineerstop_vote", ["postcycle"], {
+    name: "SE-stop-vote",
     expiry: 2,
     from: actionable.from,
     to: actionable.to
   });
 
-  var influencer = game.getPlayerByIdentifier(actionable.from);
+  var social_engineer = game.getPlayerByIdentifier(actionable.from);
 
-  influencer.misc.influencer_log.unshift(actionable.to);
+  social_engineer.misc.se_influence_log.unshift(actionable.to);
 
 };
 

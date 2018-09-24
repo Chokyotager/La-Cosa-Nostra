@@ -17,7 +17,7 @@ module.exports = function (game, message, params) {
   var to = game.getPlayerMatch(params[0]);
   var from = game.getPlayerById(message.author.id);
 
-  actions.delete(x => x.from === from.identifier && (x.identifier === "influencer/influence" || x.identifier === "influencer/block"));
+  actions.delete(x => x.from === from.identifier && (x.identifier === "social_engineerinfluence" || x.identifier === "social_engineerblock"));
 
   if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":ballot_box: You have decided not to block or influence the vote of anyone tonight.");
@@ -31,7 +31,7 @@ module.exports = function (game, message, params) {
     return null;
   };
 
-  if (from.misc.influencer_log[0] === to.identifier) {
+  if (from.misc.se_influence_log[0] === to.identifier) {
     message.channel.send(":x: You cannot block or influence the vote of the same player consecutively!");
     return null;
   };
@@ -46,8 +46,8 @@ module.exports = function (game, message, params) {
 
   };
 
-  game.addAction("influencer/block", ["cycle"], {
-    name: "Influencer-block",
+  game.addAction("social_engineerblock", ["cycle"], {
+    name: "SE-block",
     expiry: 1,
     from: message.author.id,
     to: to.id

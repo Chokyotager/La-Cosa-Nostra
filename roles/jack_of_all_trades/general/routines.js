@@ -3,27 +3,40 @@
 
 // Function should be synchronous
 
+var fs = require("fs");
+
 var auxils = require("../../../systems/auxils.js");
+
+var joat_config = JSON.parse(fs.readFileSync(__dirname + "/../config.json"));
 
 module.exports = function (player) {
 
-  var config = player.game.config;
+  var game = player.game;
+  var config = game.config;
 
-  // Nighttime actions
-  var channel = player.getPrivateChannel();
+  if (player.misc.joat_actions_left < 1 && joat_config["leaves-game-upon-winning"]) {
+    // Has won
+    game.kill(player, "removed from the game, having fulfilled their win condition", "removed from the game, having fulfilled your win condition");
+    return null;
+  };
 
-  var rolled = auxils.choice(player.misc.joat_usable);
+  if (!game.isDay()) {
+    // Nighttime actions
+    var channel = player.getPrivateChannel();
 
-  player.misc.joat_rolled = rolled.command;
+    var rolled = auxils.choice(player.misc.joat_usable);
 
-  if (player.misc.joat_actions_left > 0) {
-    player.game.sendPeriodPin(channel, ":four_leaf_clover: Your rolled night action tonight is `" + rolled.command + "`.\n\nYou need to successfully execute __" + player.misc.joat_actions_left + "__ more action" + auxils.vocab("s", player.misc.joat_actions_left) + " to win this game.\n\n**Command:** `" + config["command-prefix"] + rolled.command + " <alphabet/name/nobody>`\n**Description:** " + rolled.description + "\n**Condition:** " + rolled.condition);
-  } else {
-    player.game.sendPeriodPin(channel, ":four_leaf_clover: Your rolled night action tonight is `" + rolled.command + "`.\n\nYou have already won this game.\n\n**Command:** `" + config["command-prefix"] + rolled.command + " <alphabet/name/nobody>`\n**Description:** " + rolled.description + "\n**Condition:** " + rolled.condition);
-  }
+    player.misc.joat_rolled = rolled.command;
+
+    if (player.misc.joat_actions_left > 0) {
+      player.game.sendPeriodPin(channel, ":four_leaf_clover: Your rolled night action tonight is `" + rolled.command + "`.\n\nYou need to successfully execute __" + player.misc.joat_actions_left + "__ more action" + auxils.vocab("s", player.misc.joat_actions_left) + " to win this game.\n\n**Command:** `" + config["command-prefix"] + rolled.command + " <alphabet/name/nobody>`\n**Description:** " + rolled.description + "\n**Condition:** " + rolled.condition);
+    } else {
+      player.game.sendPeriodPin(channel, ":four_leaf_clover: Your rolled night action tonight is `" + rolled.command + "`.\n\nYou have already won this game.\n\n**Command:** `" + config["command-prefix"] + rolled.command + " <alphabet/name/nobody>`\n**Description:** " + rolled.description + "\n**Condition:** " + rolled.condition);
+    };
+  };
 
 };
 
 module.exports.ALLOW_DEAD = false;
 module.exports.ALLOW_NIGHT = true;
-module.exports.ALLOW_DAY = false;
+module.exports.ALLOW_DAY = true;
