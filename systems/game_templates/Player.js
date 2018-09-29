@@ -97,6 +97,7 @@ module.exports = class {
       "roleblocked": false,
       "controlled": false,
       "silenced": false,
+      "kidnapped": false,
 
       "won": false
     };
@@ -190,6 +191,7 @@ module.exports = class {
     this.setStatus("roleblocked", false);
     this.setStatus("controlled", false);
     this.setStatus("silenced", false);
+    this.setStatus("kidnapped", false);
 
   }
 

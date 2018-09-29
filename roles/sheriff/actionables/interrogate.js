@@ -6,7 +6,7 @@ var responses = {
   mafia: ":mag: Your target is a member of the __Mafia__.",
   town: ":mag: Your target is not suspicious.",
 
-  role: ":mag: Your target is a **{;role}**."
+  role: ":mag: Your target's role is **{;role}**."
 }
 
 module.exports = function (actionable, game, params) {

@@ -25,4 +25,6 @@ module.exports.CHECK_ONLY_WHEN_GAME_ENDS = true;
 module.exports.ELIMINATED = [];
 module.exports.SURVIVING = ["survivor"];
 
+module.exports.PREVENT_CHECK_ON_WIN = [];
+
 module.exports.DESCRIPTION = "Survive to the end of the game at all costs.";

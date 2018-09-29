@@ -953,7 +953,7 @@ module.exports = class {
 
     // Ceiled of alive
     //return 1;
-    return Math.max(this.config["game"]["minimum-lynch-votes"], Math.ceil(alive / 2));
+    return Math.max(this.config["game"]["minimum-lynch-votes"], Math.floor(alive / 2) + 1);
 
   }
 
@@ -1334,6 +1334,46 @@ module.exports = class {
       this.fastforward();
     };
 
+  }
+
+  checkRole (condition) {
+
+    if (typeof condition === "function") {
+      // Check
+      return this.exists(condition);
+    } else if (typeof condition === "string") {
+
+      condition = condition.toLowerCase();
+
+      // Check separately
+      var cond1 = this.exists(x => x.isAlive() && x.role_identifier === condition);
+      var cond2 = this.exists(x => x.isAlive() && x.role.alignment === condition);
+      var cond3 = this.exists(x => x.isAlive() && x.role.class === condition);
+
+      var cond4 = false;
+
+      if (condition.includes("-")) {
+        condition = condition.split("-");
+        var cond4 = this.exists(x => x.isAlive() && x.role.alignment === condition[0] && x.role.class === condition[1]);
+      };
+
+      return cond1 || cond2 || cond3 || cond4;
+
+    } else {
+      return null;
+    };
+
+  }
+
+  checkRoles (conditions) {
+
+    var ret = false;
+
+    for (var i = 0; i < conditions.length; i++) {
+      ret = ret || this.checkRole(conditions[i]);
+    };
+
+    return ret;
   }
 
 };

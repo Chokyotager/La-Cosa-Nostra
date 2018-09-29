@@ -30,7 +30,7 @@ module.exports = class {
 
     // Actions are calculated relative to the step
 
-    var allowed = ["cycle", "chat", "lynch", "nightkilled", "attacked", "killed", "visit", "roleblock", "postcycle"];
+    var allowed = ["cycle", "chat", "lynch", "nightkilled", "attacked", "killed", "visit", "roleblock", "postcycle", "instant"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -90,6 +90,11 @@ module.exports = class {
 
     if (rearrange) {
       this.sortByPriority(true);
+    };
+
+    if (triggers.includes("instant")) {
+      // Execute immediately
+      this.execute("instant");
     };
 
     return actionable;
@@ -347,7 +352,7 @@ module.exports = class {
       };
 
       // Periodic-triggers
-      if (["cycle", "postcycle"].includes(type)) {
+      if (["cycle", "postcycle", "instant"].includes(type)) {
 
         if (action.execution <= 0) {
           var result = execute();

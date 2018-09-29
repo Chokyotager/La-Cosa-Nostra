@@ -22,7 +22,7 @@ module.exports = function (game, message, params) {
 
   var to = game.getPlayerMatch(params[0]);
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "one_shot_vigilante/shoot");
+  actions.delete(x => x.from === from.identifier && x.identifier === "two_shot_vigilante/shoot");
 
   if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":gun: You have decided not to shoot anyone tonight.");
@@ -44,8 +44,8 @@ module.exports = function (game, message, params) {
 
   } else {
 
-    game.addAction("one_shot_vigilante/shoot", ["cycle"], {
-      name: "OSV-shoot",
+    game.addAction("two_shot_vigilante/shoot", ["cycle"], {
+      name: "TSV-shoot",
       expiry: 1,
       from: message.author.id,
       to: to.id

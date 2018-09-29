@@ -1,0 +1,7 @@
+Predict deaths and make the corpses look nice and shiny, that's what you do.
+
+Every night, you may visit a player. If that player dies that night for any reason, you will gain a Powerful defense that can protect against one attack.
+
+You joint-win with anybody so long as you survive to the end of the game.
+
+However, if the Mafia wins, you will steal the win from them.

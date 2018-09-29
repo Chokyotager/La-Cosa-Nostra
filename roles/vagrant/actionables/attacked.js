@@ -11,7 +11,7 @@ module.exports = function (actionable, game, params) {
   };
 
   attacked.setGameStat("basic-defense", 0, "set");
-  
+
   // Return true regardless
   // Null the attack
   return true;

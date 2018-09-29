@@ -12,7 +12,24 @@ module.exports = function (actionable, game, params) {
   var cond2 = defense >= temp_defense;
 
   if (cond1 && cond2) {
-    game.addMessage(attacked, ":exclamation: You were attacked last night!");
+    var day = game.isDay();
+
+    if (!day) {
+      game.addMessage(attacked, ":exclamation: You were " + module.exports.NIGHT_MESSAGE + "!");
+    } else {
+
+      if (module.exports.INSTANT_FOR_DAY) {
+        attacked.getPrivateChannel().send(":exclamation: You were " + module.exports.DAY_MESSAGE + "!");
+      } else {
+        game.addMessage(attacked, ":exclamation: You were " + module.exports.DAY_MESSAGE + "!");
+      };
+
+    };
   };
 
 };
+
+module.exports.DAY_MESSAGE = "attacked";
+module.exports.NIGHT_MESSAGE = "attacked last night";
+
+module.exports.INSTANT_FOR_DAY = true;

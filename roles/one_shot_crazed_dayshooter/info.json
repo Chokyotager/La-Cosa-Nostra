@@ -1,0 +1,11 @@
+{
+
+  "thumbnail": "https://img.freepik.com/icone-gratis/bersaglio_318-142740.jpg?size=338&ext=jpg",
+
+  "abilities": ["Choose to shoot a player once anytime during the day"],
+
+  "attributes": ["60% chance of dealing the player a Powerful attack",
+                 "25% chance of injuring the player, nulling their vote for the day",
+                 "15% chance of the gun exploding, dealing you a Basic attack"]
+
+}

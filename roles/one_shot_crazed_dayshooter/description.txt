@@ -1,0 +1,5 @@
+Even more militant than the Vigilante, you have reached a point where you think it's acceptable to shoot people in living daylight if it's for the greater good.
+
+You may shoot a person any time during the day. This has a 60% chance of dealing a Powerful attack to them, a 25% chance of injuring them and nulling their day vote, and a 15% chance of the gun blowing up and dealing you a Basic attack. All these actions happen instantaneously.
+
+You only have one bullet.

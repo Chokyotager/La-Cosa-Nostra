@@ -8,7 +8,7 @@ module.exports = function (game) {
 
   for (var i = 0; i < game.players.length; i++) {
 
-    if (win_conditions.includes(game.players[i].role["win-condition"])) {
+    if (win_conditions.includes(game.players[i].role["win-condition"].toLowerCase())) {
       continue;
     };
 
@@ -26,9 +26,15 @@ module.exports = function (game) {
 
   // Boolean that is changed if game is to be ended
   var end_game = false;
+  var skip_condition = new Array();
 
   // Execute the win conditions
   for (var i = 0; i < win_conditions.length; i++) {
+
+    if (skip_condition.includes(win_conditions[i])) {
+      continue;
+    };
+
     var condition = conditions[win_conditions[i]];
 
     if (typeof condition !== "function") {
@@ -81,6 +87,10 @@ module.exports = function (game) {
 
       // Winners would already have been declared
       // by condition function
+
+      if (response && Array.isArray(condition.PREVENT_CHECK_ON_WIN)) {
+        skip_condition = skip_condition.concat(condition.PREVENT_CHECK_ON_WIN.map(x => x.toLowerCase()));
+      };
 
       if (response && condition.STOP_GAME) {
         // Game has ended

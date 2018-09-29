@@ -33,12 +33,14 @@ module.exports.STOP_CHECKS = false;
 
 module.exports.FACTIONAL = true;
 
-module.exports.PRIORITY = 1;
+module.exports.PRIORITY = 2;
 module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
 
 // Accepts function
 // Should key in wrt to player
-module.exports.ELIMINATED = ["neutral-killing", "revolutionary"];
+module.exports.ELIMINATED = ["neutral-killing", "revolutionary", "death"];
 module.exports.SURVIVING = ["mafia"];
+
+module.exports.PREVENT_CHECK_ON_WIN = [];
 
 module.exports.DESCRIPTION = "Destroy anybody who would not submit to the Mafia.";

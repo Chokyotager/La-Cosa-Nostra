@@ -26,4 +26,6 @@ module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
 module.exports.ELIMINATED = [];
 module.exports.SURVIVING = [];
 
+module.exports.PREVENT_CHECK_ON_WIN = [];
+
 module.exports.DESCRIPTION = "Get yourself lynched at all costs.";

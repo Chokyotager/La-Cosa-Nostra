@@ -18,10 +18,6 @@ module.exports = function (actionable, game, params) {
     game.addMessage(to, ":exclamation: You were cured of poison!");
   };
 
-  if (from.status.roleblocked) {
-    return null;
-  };
-
   // Add message
   game.addAction("doctor/prot_message", ["attacked"], {
     name: "Doc-prot-success-message",

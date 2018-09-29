@@ -32,4 +32,6 @@ module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
 module.exports.ELIMINATED = ["town", "mafia", "serial_killer", "revolutionary"];
 module.exports.SURVIVING = ["arsonist"];
 
+module.exports.PREVENT_CHECK_ON_WIN = [];
+
 module.exports.DESCRIPTION = "Kill everyone who can oppose you.";

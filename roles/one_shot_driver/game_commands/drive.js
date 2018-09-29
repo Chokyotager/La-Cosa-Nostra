@@ -21,7 +21,7 @@ module.exports = function (game, message, params) {
     return null;
   };
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "driver/drive");
+  actions.delete(x => x.from === from.identifier && x.identifier === "one_shot_driver/drive");
 
   var player1 = game.getPlayerMatch(params[0]);
 
@@ -56,7 +56,7 @@ module.exports = function (game, message, params) {
     return null;
   };
 
-  game.addAction("driver/drive", ["cycle"], {
+  game.addAction("one_shot_driver/drive", ["cycle"], {
     name: "Driver-drive",
     expiry: 1,
     from: message.author.id,

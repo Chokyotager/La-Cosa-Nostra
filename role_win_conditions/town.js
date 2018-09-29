@@ -18,12 +18,14 @@ module.exports.STOP_CHECKS = false;
 
 module.exports.FACTIONAL = true;
 
-module.exports.PRIORITY = 1;
+module.exports.PRIORITY = 2;
 module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
 
 // Accepts function
 // Should key in wrt to player
-module.exports.ELIMINATED = ["mafia", "neutral-killing", "revolutionary"];
+module.exports.ELIMINATED = ["mafia", "neutral-killing", "revolutionary", "alien"];
 module.exports.SURVIVING = ["town"];
+
+module.exports.PREVENT_CHECK_ON_WIN = [];
 
 module.exports.DESCRIPTION = "Eliminate all threats to the Town.";

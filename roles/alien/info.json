@@ -1,0 +1,12 @@
+{
+
+  "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU0yIs2FlGB5BI9HFztEYYwlFxzGoA2UIiWWsusRC71yXih27t",
+
+  "abilities": ["Probe a player every night"],
+
+  "attributes": ["Probed players are kidnapped, and are as such prevented from using their night action",
+                "Actions on the probed player will also fail"],
+
+  "credits": ["Inffy"]
+
+}
