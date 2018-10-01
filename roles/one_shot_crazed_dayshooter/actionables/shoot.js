@@ -11,8 +11,6 @@ module.exports = function (actionable, game, params) {
   var target_channel = target.getPrivateChannel();
   var main_channel = game.getMainChannel();
 
-  random = 0.2;
-
   if (random < 0.6) {
     rs.prototypes.powerfulAttack.reason = "shot by a __Crazed Dayshooter__";
 
@@ -53,7 +51,7 @@ module.exports = function (actionable, game, params) {
 
   };
 
-  //shooter.misc.crazed_dayshooter_bullets--;
+  shooter.misc.crazed_dayshooter_bullets--;
 
   game.save();
 

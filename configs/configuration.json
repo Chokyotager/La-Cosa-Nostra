@@ -1,0 +1,11 @@
+{
+  "bot-token": "",
+  "server-id": "",
+
+  "command-prefix": "!",
+  "automatically-load-saves": true,
+
+  "encode-cache": true,
+
+  "merge-configs": ["game-details.json", "server-details.json", "permissions.json", "channels.json", "playing.json", "assets.json", "messages.json", "tick.json", "disabled_commands.json"]
+}
