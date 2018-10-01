@@ -112,4 +112,6 @@ venv.bak/
 # Save
 *.save
 
+/configuration.json
+
 meta/
