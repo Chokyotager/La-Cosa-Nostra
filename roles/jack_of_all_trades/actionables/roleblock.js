@@ -29,7 +29,7 @@ module.exports = function (actionable, game, params) {
   } else {
 
     game.addMessage(target, ":exclamation: Someone tried roleblocking you last night but you could not be roleblocked!");
-    game.addMessage(roleblocker, ":exclamation: Your target could not be roleblocked last night!");
+    //game.addMessage(roleblocker, ":exclamation: Your target could not be roleblocked last night!");
 
   };
 

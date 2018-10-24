@@ -1,0 +1,5 @@
+Fiery-tempered, compounded with a particular obsession with fire. That's you.
+
+Every night, you may vote to douse or ignite a player. If there is a Pyrofather, you will douse or ignite at their command. If they are unavailable, you will douse or ignite on your own accord.
+
+Doused players are not notified that they have been doused. Ignition deals an Unstoppable attack to all doused players.

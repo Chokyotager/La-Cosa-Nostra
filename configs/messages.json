@@ -1,7 +1,7 @@
 {
   "messages": {
 
-    "game-start": "**Welcome to The Anarchy of Sol.**\n\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
+    "game-start": "**十二生肖：黑手黨。Welcome to Zodiac Mafia.**\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
     "whisper-log": "**This is the Billboard.**\n\nThis channel is normally used for whispers, but since whispers are disabled in this game, this channel has become a secondary discussion channel. Players are advised to direct the purpose of this channel to suit their needs.",
     "mafia": "**This is the Mafia Chat.**\n\nThis channel is only open at night for members of the Mafia to communicate.",
 
@@ -10,8 +10,8 @@
     "nighttime-quote": "**Night has descended. This chat is now locked until Daytime starts. Remember to use your night actions if you intend to!**",
     "no-summary": "*Nothing of interest happened.*",
 
-    "singular-lynch": ":skull_crossbones: The gunshot rings through the air. Soaring through the haze is a bullet, expended for its singular use. As it lands, it makes a sickening crunch. {;player} has been lynched. The bloodthirsty lynch mob cheers in agreement.",
-    "plural-lynch": ":skull_crossbones: The gunshots ring through the air. Soaring through the haze are bullets, expended for their singular use. As they land, sickening crunches echo around the room. {;players} have been lynched. The bloodthirsty lynch mob cheers in agreement.",
+    "singular-lynch": ":skull_crossbones: The Zodiacs watch each other in solemn silence for what seemed like an eternity, only to suddenly throw {;player} into a fire pit. They have been lynched.",
+    "plural-lynch": ":skull_crossbones: The Zodiacs watch each other in solemn silence for what seemed like an eternity, only to suddenly throw {;players} into a fire pit. They have been lynched.",
     "abstain-lynch": "**The Town has abstained on lynches for the day.**",
 
     "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game."

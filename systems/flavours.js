@@ -38,7 +38,7 @@ for (var i = 0; i < flavours.length; i++) {
     var listed = fs.readdirSync(assets_dir);
 
     for (var j = 0; j < listed.length; j++) {
-      assets[listed[j]] = attemptReadStream(assets_dir + listed[j]);
+      assets[listed[j]] = attemptRead(assets_dir + listed[j]);
     };
 
   };
@@ -68,12 +68,12 @@ for (var i = 0; i < flavours.length; i++) {
 
 module.exports = ret;
 
-function attemptReadStream (directory) {
+function attemptRead (directory) {
   var available = fs.existsSync(directory);
 
   if (available) {
 
-    return fs.createReadStream(directory);
+    return fs.readFileSync(directory);
 
   } else {
     return undefined;

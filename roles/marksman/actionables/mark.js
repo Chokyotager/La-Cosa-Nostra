@@ -7,7 +7,7 @@ module.exports = function (actionable, game, params) {
     priority: actionable.priority,
     reason: "Marksman-visit"});
 
-  game.addAction("marksman/preemptive", ["visit"], {
+  game.addAction("marksman/preemptive", ["retrovisit"], {
     name: "Marksman-preemptive",
     expiry: 1,
     from: actionable.from,

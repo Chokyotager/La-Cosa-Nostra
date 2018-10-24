@@ -37,7 +37,7 @@ module.exports = async function (message, params, config) {
 
   actions = actions.filter(x => x.used);
 
-  if (actions.length > 1) {
+  if (actions.length > 0) {
     var sendable = actions.map(x => "Index **[" + x.index + "]**:\n" + "```fix\n" + JSON.stringify(x.action, auxils.jsonInfinityCensor) + "```");
   } else {
     var sendable = [":x: No actions found!"];

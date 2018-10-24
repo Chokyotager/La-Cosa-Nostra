@@ -8,6 +8,8 @@ var config = auxils.config_handler();
 var commands = require("./systems/commands.js");
 var game = require("./systems/game.js");
 
+client.options.disableEveryone = true;
+
 client.on("ready", function () {
   console.log("Bedlam Mafia ready.");
 

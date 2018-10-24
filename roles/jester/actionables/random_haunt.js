@@ -17,13 +17,13 @@ module.exports = function (actionable, game, params) {
   };
 
   if (targets.length < 1) {
-    jester.getPrivateChannel().send(":exclamation: Nobody who lynched you could be haunted!");
+    game.addMessage(jester, ":exclamation: Nobody who lynched you could be haunted!");
     return null;
   };
 
   var target = auxils.choice(targets);
 
-  jester.getPrivateChannel().send(":exclamation: You did not pick a target! As a result, **" + target.getDisplayName() + "** has been selected at random to be haunted!");
+  game.addMessage(jester, ":exclamation: You did not pick a target! As a result, **" + target.getDisplayName() + "** has been selected at random to be haunted!");
 
   // Revert back to original haunt
   game.addAction("jester/haunt", ["cycle"], {

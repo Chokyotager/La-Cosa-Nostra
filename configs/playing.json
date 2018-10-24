@@ -1,8 +1,19 @@
 {
   "playing": {
-    "players": [],
-    "roles": [],
+    "players": ["449232653720354816", "304399238195052544", "99615039366889472",
+      "211104374112518145", "273961001299476491",
+      "192832726691348480", "178457396648214528",
+      "92336517179002880", "281590363213398016",
+      "151713776687775744", "244211825820827648",
+      "271055129610944512", "246334877287317504",
+      "193573248867237888", "217713009118674946", "83012212779646976"],
+    "roles": ["pyrofather", "pyroconsort", "zm_mafioso",
+              "pyromaniac", "marksman", "odd_night_tracker",
+              "even_night_sheriff", "zm_firefighter_1", "investigator",
+              "compulsive_visitor", "escort", "zm_delayed_prosecutor",
+              "compulsive_visitor", "zm_firefighter_2", "odd_night_fence",
+              "plaguebearer"],
     "shuffle": true,
-    "flavour": null
+    "flavour": "zodiac"
   }
 }

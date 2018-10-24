@@ -13,7 +13,7 @@ module.exports = function (actionable, game, params) {
   var from = game.getPlayerByIdentifier(actionable.from);
   var to = game.getPlayerByIdentifier(actionable.to);
 
-  var mafioso = game.find(x => x.role_identifier === "mafioso" && x.isAlive() && !x.getStatus("roleblocked"));
+  var mafioso = game.find(x => x.role_identifier === "mafioso" && x.isAlive() && !x.getStatus("roleblocked") && !x.getStatus("kidnapped"));
 
   if (mafioso) {
     // Mafioso is available

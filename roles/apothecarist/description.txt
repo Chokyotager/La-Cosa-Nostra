@@ -1,0 +1,5 @@
+You are the local Town healer, until the Mafia came, and you decided to use your pharmacologic skills to poison them.
+
+On any night, you may poison a player. The poisoned player is notified as such. If they are not cured of the poison by the next night, they will be dealt an Unstoppable attack.
+
+You may poison only twice.

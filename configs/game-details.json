@@ -14,7 +14,7 @@
     },
 
     "day-zero": true,
-    "lynch-ratio-floored": 0.0454,
+    "lynch-ratio-floored": 0,
     "minimum-lynch-votes": 2,
     "minimum-trials": 1,
 
@@ -29,7 +29,7 @@
     },
 
     "last-wills": {
-      "allow": true,
+      "allow": false,
       "character-count-limit": 800
     },
 
@@ -48,8 +48,30 @@
 
   "time": {
     "timezone": 9,
-    "day": 24,
-    "night": 24
+    "day": 18,
+    "night": 18
+  },
+
+  "message-checks": {
+    "alive-pings": {
+      "restrict": true,
+      "exempt": ["admin"],
+      "threshold": 2,
+      "threshold-time": 3600000
+    },
+
+    "edits": {
+      "restrict": true,
+      "exempt": ["admin"],
+      "minimum-character-count": 200,
+      "edit-ratio": 0.1
+    },
+
+    "deletion": {
+      "restrict": true,
+      "exempt": ["admin"],
+      "minimum-character-count": 200
+    }
   }
 
 }

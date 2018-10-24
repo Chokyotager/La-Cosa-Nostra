@@ -291,7 +291,7 @@ module.exports = class {
 
     var before_votes = voted_against.countVotes();
 
-    var magnitude = voter.getStat("vote-magnitude", auxils.operations.addition);
+    var magnitude = voter.getVoteMagnitude();
 
     var toggle_on = voted_against.toggleVotes(voter.identifier, magnitude);
 
@@ -772,6 +772,25 @@ module.exports = class {
 
     };
 
+    this.uploadPublicRoleInformation(unique);
+
+  }
+
+  uploadPublicRoleInformation (role_ids, ignore_cleaned=true) {
+
+    var display = new Array();
+
+    for (var i = 0; i < role_ids.length; i++) {
+      var player = this.getPlayerById(role_ids[i]);
+
+      if (!player.misc.role_cleaned) {
+        display.push(player);
+      };
+
+    };
+
+    executable.roles.uploadPublicRoleInformation(this, display);
+
   }
 
   addDeathBroadcast (role, reason, position_offset=0) {
@@ -972,6 +991,17 @@ module.exports = class {
     var period = this.period + offset;
 
     var numeral = Math.ceil(0.5 * period);
+
+    var flavour = this.getGameFlavour();
+
+    if (flavour && flavour.info["step-names"]) {
+      var step_names = flavour.info["step-names"];
+      var step = this.getStep() + offset;
+
+      var index = step % step_names.length;
+
+      return step_names[index] + " " + numeral;
+    };
 
     if (period % 2 === 0) {
       return "Day " + numeral;
@@ -1179,7 +1209,7 @@ module.exports = class {
   }
 
   getStep () {
-    return this.step;
+    return this.steps;
   }
 
   isDay () {

@@ -9,13 +9,19 @@ module.exports = function (game, message, params) {
 
   // Run checks, etc
 
+  var from = game.getPlayerById(message.author.id);
+
+  if (from.misc.assassin_picked_target) {
+    message.channel.send(":x: You already picked your target!");
+    return null;
+  };
+
   if (params[0] === undefined) {
-    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "douse <alphabet/username/nobody>` instead!");
+    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "pick <alphabet/username/nobody>` instead!");
     return null;
   };
 
   var to = game.getPlayerMatch(params[0]);
-  var from = game.getPlayerById(message.author.id);
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "arsonist/douse" || x.identifier === "arsonist/ignite"));
 

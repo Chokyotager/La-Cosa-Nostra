@@ -1,0 +1,3 @@
+Detain people!
+
+Every night, you may detain a player. This performs a Basic kidnap on them.

@@ -12,7 +12,9 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":eye_in_speech_bubble: You may choose a player tonight.\n\nUse `" + config["command-prefix"] + "choose <alphabet/name/nobody>` to select your target.");
+  var addendum = player.misc.oracle_last_target ? "Your latest chosen target is **" + player.game.getPlayerByIdentifier(player.misc.oracle_last_target).getDisplayName() + "**." : "You currently do not have a target.";
+
+  player.game.sendPeriodPin(channel, ":eye_in_speech_bubble: You may choose a player tonight.\n\nUse `" + config["command-prefix"] + "choose <alphabet/name/nobody>` to select your target.\n\n" + addendum);
 
 };
 

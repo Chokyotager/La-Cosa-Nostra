@@ -12,15 +12,18 @@ module.exports = function (actionable, game, params) {
     reason: "Alien-visit"});
 
   rs.prototypes.unstoppableKidnap.reason = "abducted";
-  rs.prototypes.unstoppableKidnap(...arguments);
+  var outcome = rs.prototypes.unstoppableKidnap(...arguments);
 
-  target.setStatus("kidnapped", true);
+  if (outcome) {
+    game.addMessage(target, ":exclamation: You were abducted last night!");
 
-  if (!alien.misc.alien_kidnappings.includes(actionable.to)) {
-    alien.misc.alien_kidnappings.push(actionable.to);
+    if (!alien.misc.alien_kidnappings.includes(actionable.to)) {
+      alien.misc.alien_kidnappings.push(actionable.to);
+    };
+
+  } else {
+    game.addMessage(target, ":exclamation: Someone tried to abduct you last night but you could not be abducted!");
   };
-
-  game.addMessage(target, ":exclamation: You were abducted last night!");
 
 };
 

@@ -48,11 +48,16 @@ module.exports = async function (player, stagger=800) {
 
   };
 
-  var send = "**Your role:** {;role}{;true_role}\n\n**Alignment:** {;alignment}-{;class}\n\n```fix\n{;description}```\n<@{;player_id}>";
+  var send = "**Your role:** {;role}{;true_role}\n\n**Alignment:** {;alignment}\n\n```fix\n{;description}```\n<@{;player_id}>";
 
   send = send.replace(/{;role}/g, cpl(flavour_role["name"] || role["role-name"]));
-  send = send.replace(/{;alignment}/g, cpl(role["alignment"]));
-  send = send.replace(/{;class}/g, cpl(role["class"]));
+
+  if (flavour_info["show-role-category"] === false) {
+    send = send.replace(/{;alignment}/g, cpl(role["alignment"]));
+  } else {
+    send = send.replace(/{;alignment}/g, cpl(role["alignment"] + "-" + cpl(role["class"])));
+  };
+
   send = send.replace(/{;description}/g, flavour_role["description"] || role["description"]);
   send = send.replace(/{;player_id}/g, player.id);
 

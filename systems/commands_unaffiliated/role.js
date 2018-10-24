@@ -50,6 +50,7 @@ module.exports = async function (message, params, config) {
     //embed.addBlankField();
 
     var def_stats = ["None", "Basic", "Powerful", "Immune", "Absolute"];
+    var kidnap_stats = ["None", "Basic", "Unstoppable"];
     var cardinal = ["No", "Yes", "Yes (special)", "No (special)"];
 
     embed.addField("General Priority", role.role.stats["priority"], true);
@@ -57,6 +58,8 @@ module.exports = async function (message, params, config) {
     embed.addField("Roleblock Immunity", cardinal[role.role.stats["roleblock-immunity"]], true);
     embed.addField("Detection Immunity", cardinal[role.role.stats["detection-immunity"]], true);
     embed.addField("Control Immunity", cardinal[role.role.stats["control-immunity"]], true);
+    embed.addField("Redirection Immunity", cardinal[role.role.stats["redirection-immunity"]], true);
+    embed.addField("Kidnap Immunity", kidnap_stats[role.role.stats["kidnap-immunity"]], true);
     embed.addField("Vote Magnitude", role.role.stats["vote-magnitude"], true);
 
     if (role.info) {

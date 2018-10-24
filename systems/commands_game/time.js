@@ -10,7 +10,7 @@ module.exports = async function (game, message, params) {
   // Work in progress
   var delta = designation.getTime() - current.getTime();
 
-  if (delta < 1) {
+  if (delta < 1000) {
     await message.channel.send(":clock12: Time is up.");
     return null;
   };

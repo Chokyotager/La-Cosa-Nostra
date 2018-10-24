@@ -6,6 +6,12 @@
 
   "display-role-equivalent-on-death": true,
 
-  "investigator-sees-flavour-role": true
+  "investigator-sees-flavour-role": true,
+
+  "show-role-category": true,
+
+  "post-role-card-and-description-on-death": true,
+
+  "step-names": null
 
 }

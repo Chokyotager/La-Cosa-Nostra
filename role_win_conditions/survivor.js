@@ -17,7 +17,7 @@ module.exports.STOP_CHECKS = false;
 
 module.exports.FACTIONAL = false;
 
-module.exports.PRIORITY = 3;
+module.exports.PRIORITY = 4;
 module.exports.CHECK_ONLY_WHEN_GAME_ENDS = true;
 
 // Accepts function

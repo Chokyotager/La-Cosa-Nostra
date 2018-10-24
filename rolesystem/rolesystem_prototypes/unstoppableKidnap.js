@@ -1,28 +1,42 @@
 module.exports = function (actionable, game, params, notify=true) {
 
-  // Seen as visit
-  game.execute("visit", {visitor: actionable.from,
-    target: actionable.to,
-    priority: actionable.priority});
+  var target = game.getPlayerByIdentifier(actionable.to);
 
-  // Stops all actions to the target that are roleblockable
-  var actions = game.actions.findAll(x => x.to === actionable.to && x.tags.includes("visit") && !x.tags.includes("permanent") && x.execution <= 0);
+  var stat = target.getStat("kidnap-immunity", Math.max);
 
-  if (notify) {
-    for (var i = 0; i < actions.length; i++) {
-      // Inform of failure
+  if (stat < 2) {
 
-      var action = actions[i];
+    // Seen as visit
+    game.execute("visit", {visitor: actionable.from,
+      target: actionable.to,
+      priority: actionable.priority});
 
-      var affected = game.getPlayerByIdentifier(action.from);
+    // Stops all actions to the target that are roleblockable
+    var actions = game.actions.findAll(x => (x.to === actionable.to || x.to === actionable.target) && x.tags.includes("visit") && !x.tags.includes("permanent") && x.execution <= 0);
 
-      game.addMessage(affected, ":exclamation: Your action failed because your target was " + module.exports.reason + "!");
+    if (notify) {
+      for (var i = 0; i < actions.length; i++) {
+        // Inform of failure
 
+        var action = actions[i];
+
+        var affected = game.getPlayerByIdentifier(action.from);
+
+        game.addMessage(affected, ":exclamation: Your action failed because your target was " + module.exports.reason + "!");
+
+      };
     };
+
+    target.setStatus("kidnapped", true);
+
+    game.actions.delete(x => x.from === actionable.to && x.tags.includes("visit"));
+    game.actions.delete(x => (x.to === actionable.to || x.to === actionable.target) && x.tags.includes("visit") && !x.tags.includes("permanent") && x.execution <= 0);
+
+    return true;
+
   };
 
-  game.actions.delete(x => x.from === actionable.from && x.tags.includes("roleblockable"));
-  game.actions.delete(x => x.to === actionable.to && x.tags.includes("visit") &&!x.tags.includes("permanent") && x.execution <= 0);
+  return false;
 
 };
 

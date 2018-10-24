@@ -30,7 +30,9 @@ module.exports = class {
 
     // Actions are calculated relative to the step
 
-    var allowed = ["cycle", "chat", "lynch", "nightkilled", "attacked", "killed", "visit", "roleblock", "postcycle", "instant"];
+    var allowed = ["cycle", "chat", "lynch", "nightkilled",
+    "attacked", "killed", "visit", "roleblock", "postcycle",
+    "instant", "outvisit", "retrovisit", "retrocycle"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -40,6 +42,24 @@ module.exports = class {
     };
 
     var actionable = options;
+
+    if (triggers.includes("retrovisit")) {
+
+      if (triggers.length > 1) {
+        var err = "Retrovisit trigger cannot be combined.";
+        throw new Error(err);
+      };
+
+    };
+
+    if (triggers.includes("retrocycle")) {
+
+      if (triggers.length > 1) {
+        var err = "Retrovisit trigger cannot be combined.";
+        throw new Error(err);
+      };
+
+    };
 
     actionable.id = crypto.randomBytes(4).toString("hex");
     actionable.identifier = identifier;
@@ -271,6 +291,7 @@ module.exports = class {
 
     if (type === "visit") {
       this.visit_log.push(params);
+      this.execute("outvisit", params);
     };
 
     var i = 0;
@@ -290,15 +311,25 @@ module.exports = class {
 
       action._scan.push(loop_id);
 
-      if (["cycle"].includes(type)) {
+      if (["cycle"].includes(type) && !action.triggers.includes("retrovisit") && !action.triggers.includes("retrocycle")) {
 
         action.execution--;
         action.cycles++;
 
-        if (action.expiry !== Infinity || !action.tags.includes["permanent"]) {
+        if (action.expiry !== Infinity && !action.tags.includes("permanent")) {
           action.expiry--;
         };
 
+      };
+
+      if (["retrocycle"].includes(type) && (action.triggers.includes("retrovisit") || action.triggers.includes("retrocycle"))) {
+
+        action.execution--;
+        action.cycles++;
+
+        if (action.expiry !== Infinity && !action.tags.includes("permanent")) {
+          action.expiry--;
+        };
       };
 
       if (!action.triggers.includes(type)) {
@@ -331,12 +362,16 @@ module.exports = class {
       var rerun = false;
 
       // Non-routine triggers
-      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit", "roleblock"].includes(type)) {
+      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit", "roleblock", "outvisit", "retrovisit"].includes(type)) {
         var target = action.target || action.to;
 
-        if (params.target === target) {
+        var check = params.target;
 
-          action.execution--;
+        if (["outvisit"].includes(type)) {
+          check = params.visitor;
+        };
+
+        if (check === target) {
 
           if (action.execution <= 0) {
             var result = execute();
@@ -352,7 +387,7 @@ module.exports = class {
       };
 
       // Periodic-triggers
-      if (["cycle", "postcycle", "instant"].includes(type)) {
+      if (["cycle", "postcycle", "instant", "retrocycle"].includes(type)) {
 
         if (action.execution <= 0) {
           var result = execute();
@@ -394,17 +429,24 @@ module.exports = class {
 
     };
 
+    if (type === "cycle") {
+
+      for (var i = 0; i < this.visit_log.length; i++) {
+        this.execute("retrovisit", this.visit_log[i]);
+      };
+
+      this.execute("retrocycle");
+
+      this.previous_visit_log = this.previous_visit_log.concat(this.visit_log);
+      this.visit_log = new Array();
+    };
+
     // Decrement those outside cycle
     if (check_expiries) {
 
       this.nullExpiries();
       this.removeUndefinedActionables();
 
-    };
-
-    if (type === "cycle") {
-      this.previous_visit_log = this.previous_visit_log.concat(this.visit_log);
-      this.visit_log = new Array();
     };
 
   }

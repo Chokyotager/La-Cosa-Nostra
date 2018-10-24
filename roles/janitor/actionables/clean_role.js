@@ -6,6 +6,8 @@ module.exports = function (actionable, game, params) {
   var cleaned = game.getPlayerByIdentifier(actionable.to);
   var cleaner = game.getPlayerByIdentifier(actionable.from);
 
+  cleaned.misc.role_cleaned = true;
+
   cleaned.setDisplayRole("Cleaned");
 
   cleaned.setPrecedentWill(null);

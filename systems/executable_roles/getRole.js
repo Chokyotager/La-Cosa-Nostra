@@ -22,7 +22,7 @@ module.exports = function (name) {
   var description = fs.readFileSync(directory + "/" + name + "/description.txt", "utf8");
 
   role_obj.description = description;
-  role_obj.role_card = attemptReadStream(directory + "/" + name + "/role_card.png");
+  role_obj.role_card = attemptRead(directory + "/" + name + "/role_card.png");
 
   role_obj.routine = attemptRequiring(directory + "/" + name + "/general/routines.js");
   role_obj.start = attemptRequiring(directory + "/" + name + "/general/start.js");
@@ -32,12 +32,12 @@ module.exports = function (name) {
 
 };
 
-function attemptReadStream (directory) {
+function attemptRead (directory) {
   var available = fs.existsSync(directory);
 
   if (available) {
 
-    return fs.createReadStream(directory);
+    return fs.readFileSync(directory);
 
   } else {
     return undefined;

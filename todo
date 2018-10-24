@@ -6,29 +6,26 @@ Refactor setter code
 
 Logger
 
-ROLES!!!
-Finish: Jack of all Trades
-
-Bug: Marshal does not triple if lynches is already > 1
-
-Save the game immediately if a will is changed
-
 Bot pings people an hour before deadline if they have not used their actions
 
 Voting for dead people with commands
 
-!will clear
-
-!will read/etc. etc.
-
-!skiptime vote [+ config for %]
-
 Linear decrement of D/N cycles
+
+-----
+FIXES
+-----
 
 Fix JOAT watch
 
-Change ceil of votes to floor + 1
-
-ELO system
-
 Fix Vagrant to align with Mortician
+
+Role cards for Survivor and Apothecarist are broken?
+
+Fix Veteran
+
+Ping restriction system
+
+Edit/deletion restriction system
+
+Back-visit executor, for Plaguebearer etc (*)

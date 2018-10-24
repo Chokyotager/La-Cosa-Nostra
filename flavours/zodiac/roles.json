@@ -1,0 +1,103 @@
+{
+
+  "pyrofather": [{
+    "name": "龍 Dragon",
+    "banner": "Dragon.png",
+    "description": "[Night action] vote to douse or ignite a player. You will order a Pyromaniac to carry out your orders. If no Pyromaniac is available, you will execute the actions yourself.\n\n[Passive] Detection immunity, attack immunity\n\nWin condition: the Mafia makes up half or more of the living players with all threats eliminated."
+  }],
+
+  "pyromaniac": [{
+    "name": "虎 Tiger",
+    "banner": "Tiger.png",
+    "description": "[Night action] vote to douse or ignite a player. The Pyrofather may override your command.\n\nWin condition: the Mafia makes up half or more of the living players with all threats eliminated."
+  }],
+
+  "pyroconsort": [{
+    "name": "貓 Cat",
+    "banner": "Cat.png",
+    "description": "[Night action] roleblock a player.\n\nWin condition: the Mafia makes up half or more of the living players with all threats eliminated."
+  }],
+
+  "zm_mafioso": [{
+    "name": "蛇 Snake",
+    "banner": "Snake.png",
+    "description": "[Night action on Summer] attack a player, you will deal them a Basic attack.\n\nWin condition: the Mafia makes up half or more of the living players with all threats eliminated."
+  }],
+
+  "investigator": [{
+    "name": "牛 Ox",
+    "banner": "Ox.png",
+    "description": "[Night action] investigate a player every night to receive their role name.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "marksman": [{
+    "name": "鷹 Eagle",
+    "banner": "Eagle.png",
+    "description": "[Night action] choose a protégé and a target every night. Should the target visit the protégé for any reason, you will deal the target a Powerful attack. You are also seen as visiting the protégé.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "escort": [{
+    "name": "馬 Horse",
+    "banner": "Horse.png",
+    "description": "[Night action] roleblock a player.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "zm_delayed_prosecutor": [{
+    "name": "玉帝 Jade Emperor",
+    "banner": "Jade Emperor.png",
+    "description": "[Night action] visit a player. If you do not choose a target, one will be selected at random and visited.\n\n[Passive] every vote you cast is counted as two from the first Winter onwards.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "plaguebearer": [{
+    "name": "鼠 Rat",
+    "banner": "Rat.png",
+    "description": "[Night action as Plaguebearer] infect a player every night. You are infected by default. The infection spreads as players visit each other.\n\n[Passive as Plaguebearer] Basic attack immunity, detection immunity\n\n\nShould everyone alive in the game be infected, you become Pestilence.\n\n\n[Night action as Pestilence] Ransack a player every night. You will deal a Powerful attack to your target and anyone who visits them. You may also self-target to attack anyone who visits you.\n\n[Passive as Pestilence] Unstoppable attack immunity - completely immune to every attack possible, roleblock immunity\n\nWin condition: destroy anybody who can oppose you. If the Mafia reaches majority before you become Pestilence, you lose."
+  }],
+
+  "pestilence": [{
+    "name": "鼠 Rat",
+    "banner": "Rat.png",
+    "description": "[Night action as Plaguebearer] infect a player every night. You are infected by default. The infection spreads as players visit each other.\n\n[Passive as Plaguebearer] Basic attack immunity, detection immunity\n\n\nShould everyone alive in the game be infected, you become Pestilence.\n\n\n[Night action as Pestilence] Ransack a player every night. You will deal a Powerful attack to your target and anyone who visits them. You may also self-target to attack anyone who visits you.\n\n[Passive as Pestilence] Unstoppable attack immunity - completely immune to every attack possible, roleblock immunity\n\nWin condition: destroy anybody who can oppose you. If the Mafia reaches majority before you become Pestilence, you lose."
+  }],
+
+  "compulsive_visitor": [{
+    "name": "豬 Boar",
+    "banner": "Boar.png",
+    "description": "[Night action] visit a player. If you do not choose a target, one will be selected at random and visited.\n\nWin condition: eliminate all threats to the Town."
+  },{
+    "name": "羊 Goat",
+    "banner": "Goat.png",
+    "description": "[Night action] visit a player. If you do not choose a target, one will be selected at random and visited.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "zm_firefighter_1": [{
+    "name": "兔 Rabbit",
+    "banner": "Rabbit.png",
+    "description": "[Night action during Spring] Extinguish a player. This will remove gasoline from them. Both you and your target will be notified if you successfully remove gasoline from them.\n\n[Night action outside of Spring] visit a player. If you do not choose a target, one will be selected at random and visited.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "zm_firefighter_2": [{
+    "name": "雞 Rooster",
+    "banner": "Rooster.png",
+    "description": "[Night action during Autumn] Extinguish a player. This will remove gasoline from them. Both you and your target will be notified if you successfully remove gasoline from them.\n\n[Night action outside of Autumn] visit a player. If you do not choose a target, one will be selected at random and visited.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "odd_night_tracker": [{
+    "name": "狗 Dog",
+    "banner": "Dog.png",
+    "description": "[Night action during Spring and Autumn] Track a player. You will be notified of who they visited (if applicable) when the day starts.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "even_night_sheriff": [{
+    "name": "猴 Monkey",
+    "banner": "Monkey.png",
+    "description": "[Night action during Summer and Winter] Interrogate a player. You will be presented with their alignment when the day starts.\n\nWin condition: eliminate all threats to the Town."
+  }],
+
+  "odd_night_fence": [{
+    "name": "狐 Fox",
+    "banner": "Fox.png",
+    "description": "[Night action during Spring and Autumn] Deliver a gun to a player anonymously. The gun may be fired once during the day, non-anonymously, dealing an immediate Basic attack, and will expire on the next night if unused.\n\nPlayers shot by the gun will only have their roles revealed at the end of the day. Shooting a target while they have already cast their vote will lock their vote in place.\n\nYou may not deliver guns to yourself or to the same target consecutively. If you do not pick a target, one will be chosen at random.\n\nWin condition: survive to the end of the game."
+  }]
+
+}

@@ -29,6 +29,6 @@ module.exports = function (milliseconds) {
     concat += seconds + "s";
   };
 
-  return concat;
+  return concat.trim();
 
 };

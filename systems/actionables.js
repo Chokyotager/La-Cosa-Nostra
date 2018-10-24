@@ -25,6 +25,30 @@ for (var i = 0; i < roles.length; i++) {
 
 };
 
+var attributes_dir = __dirname + "/../attributes";
+var attributes = fs.readdirSync(attributes_dir);
+
+for (var i = 0; i < attributes.length; i++) {
+
+  var root = attributes_dir + "/" + attributes[i] + "/actionables";
+
+  // Check exists
+  var exists = fs.existsSync(root);
+  if (!exists) {
+    continue;
+  };
+
+  // Cycle and read
+  var actions = cycle(root);
+
+  for (var j = 0; j < actions.length; j++) {
+    // -3 because of .js suffix
+    var key = "a/" + attributes[i] + actions[j].substring(root.length, actions[j].length - 3);
+    actionables[key] = require(actions[j]);
+  };
+
+};
+
 module.exports = actionables;
 
 // Get a whole treeview of the roles

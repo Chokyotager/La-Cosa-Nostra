@@ -1,3 +1,6 @@
+var actionables = require("../actionables.js");
+var attributes = require("../attributes.js");
+
 var executable = require("../executable.js");
 var auxils = require("../auxils.js");
 var crypto = require("crypto");
@@ -112,6 +115,18 @@ module.exports = class {
 
     this.instantiateRole();
 
+    this.permanent_stats = {
+      "basic-defense": 0,
+      "roleblock-immunity": 0,
+      "detection-immunity": 0,
+      "control-immunity": 0,
+      "redirection-immunity": 0,
+      "kidnap-immunity": 0,
+      "priority": 0,
+      "vote-offset": 0,
+      "vote-magnitude": this.role.stats["vote-magnitude"]
+    };
+
     // Initialise stats
     // A more than value will cause
     // the action to fire
@@ -120,20 +135,15 @@ module.exports = class {
       "roleblock-immunity": 0,
       "detection-immunity": 0,
       "control-immunity": 0,
+      "redirection-immunity": 0,
+      "kidnap-immunity": 0,
       "priority": 0,
       "vote-offset": 0,
-      "vote-magnitude": this.role.stats["vote-magnitude"]
+      "vote-magnitude": this.permanent_stats["vote-magnitude"]
     };
 
-    this.permanent_stats = {
-      "basic-defense": 0,
-      "roleblock-immunity": 0,
-      "detection-immunity": 0,
-      "control-immunity": 0,
-      "priority": 0,
-      "vote-offset": 0,
-      "vote-magnitude": 0
-    };
+    // Attributes
+    this.attributes = new Array();
 
     return this;
 
@@ -178,14 +188,17 @@ module.exports = class {
   }
 
   resetTemporaryStats () {
+
     this.game_stats = {
       "basic-defense": 0,
       "roleblock-immunity": 0,
       "detection-immunity": 0,
       "control-immunity": 0,
+      "redirection-immunity": 0,
+      "kidnap-immunity": 0,
       "priority": 0,
       "vote-offset": 0,
-      "vote-magnitude": this.role.stats["vote-magnitude"]
+      "vote-magnitude": this.permanent_stats["vote-magnitude"]
     };
 
     this.setStatus("roleblocked", false);
@@ -247,6 +260,10 @@ module.exports = class {
     return this.game_stats;
   }
 
+  getVoteMagnitude () {
+    return this.getTemporaryStats()["vote-magnitude"];
+  }
+
   getStat (key, modifier) {
 
     if (modifier === undefined) {
@@ -254,11 +271,8 @@ module.exports = class {
     };
 
     if (key === "vote-magnitude") {
-      var temporary = this.getTemporaryStats()["vote-magnitude"];
-      var permanent = this.getPermanentStats()["vote-magnitude"];
-
-      // Vote magnitude is a special stat
-      return modifier(temporary, permanent);
+      var err = "[Vote magnitude] get this number with Player.getVoteMagnitude()";
+      throw new Error(err);
     };
 
     var a = this.game_stats[key];
@@ -403,6 +417,10 @@ module.exports = class {
     return flavour_role || initial || this.role["role-name"];
   }
 
+  getInitialRoleDetails () {
+    return executable.roles.getRole(this.initial_role_identifier[0]);
+  }
+
   assignChannel (channel) {
     this.channel = {
       id: channel.id,
@@ -439,10 +457,16 @@ module.exports = class {
     return this.getStatus("alive");
   }
 
-  changeRole (role_identifier) {
+  changeRole (role_identifier, change_vote_magnitude_stat=false) {
     this.role_identifier = role_identifier;
     this.initial_role_identifier.push(role_identifier);
     this.instantiateRole();
+
+    if (change_vote_magnitude_stat) {
+      var current_magnitude = this.getRoleStats()["vote-magnitude"];
+      this.setPermanentStat("vote-magnitude", current_magnitude, "set");
+    };
+
   }
 
   instantiateRole () {
@@ -489,27 +513,40 @@ module.exports = class {
 
   __routines () {
 
-    if (this.role.routine === undefined) {
-      return null;
-    };
-
     this.resetTemporaryStats();
 
+    this.checkAttributeExpiries();
+
+    var ret = this.executeRoutine(this.role.routine);
+
+    for (var i = 0; i < this.attributes.length; i++) {
+      var runnable = attributes[this.attributes[i].identifier].routines;
+      this.executeRoutine(runnable);
+    };
+
+    return ret;
+
+  }
+
+  executeRoutine (routine) {
+    if (routine === undefined) {
+      return null;
+    };
+
     // Check if dead
-    if (!this.isAlive() && !this.role.routine.ALLOW_DEAD) {
+    if (!this.isAlive() && !routine.ALLOW_DEAD) {
       return null;
     };
 
-    if (this.game.isDay() && !this.role.routine.ALLOW_DAY) {
+    if (this.game.isDay() && !routine.ALLOW_DAY) {
       return null;
     };
 
-    if (!this.game.isDay() && !this.role.routine.ALLOW_NIGHT) {
+    if (!this.game.isDay() && !routine.ALLOW_NIGHT) {
       return null;
     };
 
-    return this.role.routine(this);
-
+    return routine(this);
   }
 
   setWin () {
@@ -526,6 +563,111 @@ module.exports = class {
 
   substitute (id) {
     this.id = id;
+  }
+
+  hasAttribute (attribute) {
+
+    // Attribute format:
+    // {identifier: "attribute_name", expiry: 1}
+
+    return this.attributes.some(x => x.identifier === attribute);
+
+  }
+
+  addAttribute (attribute, expiry=Infinity) {
+
+    if (attributes[attribute].start !== undefined) {
+      attributes[attribute].start(this);
+    };
+
+    this.attributes.push({identifier: attribute, expiry: expiry});
+
+  }
+
+  checkAttributeExpiries () {
+
+    for (var i = this.attributes.length - 1; i >= 0; i--) {
+
+      if (this.attributes[i].expiry !== Infinity) {
+        this.attributes[i].expiry--;
+      };
+
+      if (this.attributes[i].expiry <= 0) {
+        this.attributes.splice(i, 1);
+      };
+
+    };
+
+  }
+
+  deleteAttributes (key, value) {
+
+    var ret = new Array();
+
+    for (var i = this.attributes.length - 1; i >= 0; i--) {
+
+      if (!this.attributes[i]) {
+        continue;
+      };
+
+      if (typeof key === "function") {
+
+        var condition = key(this.attributes[i]);
+
+        if (condition) {
+          ret.push(this.attributes[i]);
+          this.attributes.splice(i, 1);
+        };
+
+      } else {
+
+        if (this.attributes[i][key] === value) {
+          ret.push(this.attributes[i]);
+          this.attributes.splice(i, 1);
+        };
+
+      };
+
+    };
+
+    return ret;
+
+  }
+
+  deleteAttribute (key, value) {
+
+    for (var i = this.attributes.length - 1; i >= 0; i--) {
+
+      if (!this.attributes[i]) {
+        continue;
+      };
+
+      if (typeof key === "function") {
+
+        var condition = key(this.attributes[i]);
+
+        if (condition) {
+          var ret = this.attributes[i];
+          this.attributes.splice(i, 1);
+
+          return ret;
+        };
+
+      } else {
+
+        if (this.attributes[i][key] === value) {
+          var ret = this.attributes[i];
+          this.attributes.splice(i, 1);
+
+          return ret;
+        };
+
+      };
+
+    };
+
+    return null;
+
   }
 
 };

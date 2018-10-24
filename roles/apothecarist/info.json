@@ -1,0 +1,9 @@
+{
+
+  "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtnReFhT4AGY3Ser6RDQ4yinm118fv2Cd1_CamDTHl4Q-3qUsu",
+
+  "abilities": ["Poison a player at night, can be done twice"],
+
+  "attributes": ["If the target is not cured of the poison on the night of the poisoning and the next, they will be dealt an Unstoppable attack"]
+
+}

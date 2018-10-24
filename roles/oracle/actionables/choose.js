@@ -13,3 +13,5 @@ module.exports = function (actionable, game, params) {
     oracle.misc.oracle_last_target = actionable.to;
 
 };
+
+module.exports.TAGS = ["drivable", "roleblockable", "visit"];

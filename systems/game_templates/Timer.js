@@ -110,6 +110,7 @@ module.exports = class {
     if (next_action === null) {
       // Game ended
       this.clearDayNightMediator();
+      this.updatePresence();
     } else {
       this.prime();
     };
