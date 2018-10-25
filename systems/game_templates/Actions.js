@@ -67,11 +67,15 @@ module.exports = class {
 
     actionable.tags = actionable.tags || new Array();
 
-    var from = this.game.getPlayer(actionable.from);
-    var to = this.game.getPlayer(actionable.to);
+    if (actionable.from !== "*") {
+      var from = this.game.getPlayer(actionable.from);
+      actionable.from = from.identifier;
+    };
 
-    actionable.from = from.identifier;
-    actionable.to = to.identifier;
+    if (actionable.to !== "*") {
+      var to = this.game.getPlayer(actionable.to);
+      actionable.to = to.identifier;
+    };
 
     var implicit_priority = from.getStat("priority", Math.max);
 
@@ -371,7 +375,7 @@ module.exports = class {
           check = params.visitor;
         };
 
-        if (check === target) {
+        if (check === target || target === "*") {
 
           if (action.execution <= 0) {
             var result = execute();

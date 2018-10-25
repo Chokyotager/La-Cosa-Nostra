@@ -4,7 +4,7 @@
   "game": {
 
     "mafia": {
-      "has-chat": true,
+      "has-chat": false,
       "chat-name": "mafia",
       "night-only": true
     },
@@ -22,21 +22,21 @@
 
     "fast-forwarding": {
       "allow": true,
-      "ratio": 1,
+      "ratio": 0.8,
 
       "night": true,
       "day": true
     },
 
     "last-wills": {
-      "allow": false,
+      "allow": true,
       "character-count-limit": 800
     },
 
     "whispers": {
-      "allow": false,
+      "allow": true,
 
-      "night": true,
+      "night": false,
       "day": true,
 
       "broadcast": true,

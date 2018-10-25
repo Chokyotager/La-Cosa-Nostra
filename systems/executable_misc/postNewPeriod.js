@@ -1,6 +1,8 @@
 var texts = require("./text/texts.js");
 var format = require("./__formatter.js");
 
+var pinMessage = require("./pinMessage.js");
+
 module.exports = async function (game, broadcast) {
   // Post periodic log
 
@@ -19,12 +21,13 @@ module.exports = async function (game, broadcast) {
 
   log.send(format(game, sendable));
 
-  if (game.period % 2 === 0) {
-    var message = await main.send(format(game, game.config["messages"]["daytime-quote"]));
-  } else {
-    var message = await main.send(format(game, game.config["messages"]["nighttime-quote"]));
-  };
+  var pinnable = await main.send("**" + game.getFormattedDay() + "**    ~~                                                                                            ~~");
+  await pinMessage(pinnable);
 
-  game.createPeriodPin(message);
+  if (game.period % 2 === 0) {
+    await main.send(format(game, game.config["messages"]["daytime-quote"]));
+  } else {
+    await main.send(format(game, game.config["messages"]["nighttime-quote"]));
+  };
 
 };

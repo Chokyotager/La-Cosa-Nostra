@@ -25,21 +25,24 @@ module.exports = async function (game) {
   var attachment = auxils.getAssetAttachment(config["assets"]["game-start"]);
 
   var intro = await main.send(format(game, config["messages"]["game-start"]));
-  await main.send(undefined, attachment);
+  var banner = await main.send(undefined, attachment);
 
   var whisper_intro = await post.send(format(game, config["messages"]["whisper-log"]));
 
   await log.send(format(game, texts.opening));
 
-  if (game.period % 2 === 0) {
-    var pinnable = await main.send(format(game, config["messages"]["daytime-quote"]));
-  } else {
-    var pinnable = await main.send(format(game, config["messages"]["nighttime-quote"]));
-  };
+  var pinnable = await main.send("**" + game.getFormattedDay() + "**    ~~                                                                                            ~~");
 
+  if (game.period % 2 === 0) {
+    await main.send(format(game, config["messages"]["daytime-quote"]));
+  } else {
+    await main.send(format(game, config["messages"]["nighttime-quote"]));
+  };
+  
   await pinMessage(intro);
   await pinMessage(whisper_intro);
-  game.createPeriodPin(pinnable);
+
+  await pinMessage(pinnable);
 
   if (game.channels.mafia !== undefined) {
 

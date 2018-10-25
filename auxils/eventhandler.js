@@ -3,6 +3,8 @@ var formatDateVerbose = require("./formatDateVerbose.js");
 var formatUTCDate = require("./formatUTCDate.js");
 var levenshteinDistance = require("./levenshteinDistance.js");
 
+var ping_restrictions = new Array();
+
 module.exports = function (client, config) {
 
   client.on("message", function (message) {
@@ -11,9 +13,11 @@ module.exports = function (client, config) {
     };
   });
 
-  var ping_restrictions = new Array();
-
   client.on("message", function (message) {
+
+    if (message.artificial) {
+      return null;
+    };
 
     if (!process.timer || process.timer.game.state !== "playing") {
       return null;

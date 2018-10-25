@@ -12,7 +12,7 @@ module.exports = function (actionable, game, params) {
   rs.prototypes.basicDefense(...arguments);
 
   // Add killing action
-  game.addAction("veteran/kill_visitors", ["visit"], {
+  game.addAction("veteran/kill_visitors", ["retrovisit"], {
     name: "Veteran-kill-visitors",
     expiry: 1,
     from: actionable.from,

@@ -1,0 +1,15 @@
+{
+
+  "epi_escort": [{
+    "name": "Compulsive Escort",
+    "banner": "Compulsive Escort.png",
+    "description": "[Night action as Compulsive Escort] roleblock a player. You may not roleblock a player twice in the game. If you do not select a target, one will be chosen at random.\n\nIf everyone has alive has already been roleblocked, you become a Compulsive Visitor.\n\n[Night action as Compulsive Visitor] visit a player. If you do not choose a target, one will be chosen at random.\n\nWin condition: eliminate the Plaguebearer."
+  }],
+
+  "epi_plaguebearer": [{
+    "name": "Plaguebearer",
+    "banner": "Plaguebearer.png",
+    "description": "[Night action as Plaguebearer] infect a player every night. You are infected by default. The infection spreads as players visit each other.\n\n[Passive as Plaguebearer] Basic attack immunity, detection immunity\n\n\nShould everyone alive in the game be infected, you become Pestilence.\n\n\n[Night action as Pestilence] Ransack a player every night. You will kill your target and anyone who visits them. You may also self-target to attack anyone who visits you.\n\n[Passive as Pestilence] roleblock immunity\n\nWin condition: reach parity with the Town or get them to mislynch twice."
+  }]
+
+}

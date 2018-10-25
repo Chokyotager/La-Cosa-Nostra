@@ -7,11 +7,12 @@ module.exports = async function (game, roles) {
   var client = game.client;
 
   var flavour = game.getGameFlavour();
-  var flavours = flavour.flavours;
 
   if (!flavour) {
     return null;
   };
+
+  var flavours = flavour.flavours;
 
   if (!flavour.info["post-role-card-and-description-on-death"]) {
     return null;
