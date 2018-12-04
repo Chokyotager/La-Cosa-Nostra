@@ -130,7 +130,18 @@ client.on("guildMemberAdd", function (member) {
   };
 
   // Send rule message
-  welcome.send(":wave: Hi <@" + member.id + ">! Welcome to La Cosa Nostra!");
+  if (config["messages"]["welcome-message"]) {
+
+    var sendable = config["messages"]["welcome-message"];
+
+    sendable = sendable.replace(new RegExp("{;member}", "g"), "<@" + member.id + ">");
+    welcome.send(sendable);
+
+  };
+
+  if (config["messages"]["welcome-dm-message"]) {
+    member.send(config["messages"]["welcome-dm-message"]);
+  };
 
 });
 

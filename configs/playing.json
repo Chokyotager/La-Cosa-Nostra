@@ -1,8 +1,8 @@
 {
   "playing": {
-    "players": ["1", "2", "3", "4", "5", "6", "7", "8"],
-    "roles": ["epi_plaguebearer", "epi_escort", "epi_escort", "epi_escort", "epi_escort", "epi_escort", "epi_escort", "epi_escort"],
+    "players": ["184003566363607040", "377358249093103626", "99664430932971520", "516734577180409856", "178457396648214528", "151713776687775744", "285247487168479232", "115090410849828865", "391405396855619585", "205016812822200320", "246334877287317504", "241287978767482881", "198512939467145223", "349672674068398082", "299079845063950336", "348121008198254594"],
+    "roles": ["nightwatcher", "janitor", "mafioso", "godfather", "doctor", "oracle", "sheriff", "deputy", "assassin", "cupid", "one_shot_vigilante", "vanilla_townie", "vanilla_townie", "vanilla_townie", "serial_killer", "survivor"],
     "shuffle": true,
-    "flavour": "epidemiology"
+    "flavour": null
   }
 }

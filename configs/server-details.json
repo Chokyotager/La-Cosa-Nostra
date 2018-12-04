@@ -23,6 +23,18 @@
       "EMBED_LINKS": false,
       "ATTACH_FILES": false,
       "SEND_TTS_MESSAGES": false
+    },
+
+    "deny": {
+      "READ_MESSAGES": false,
+      "READ_MESSAGE_HISTORY": false,
+      "SEND_MESSAGES": false,
+      "ADD_REACTIONS": false,
+      "USE_EXTERNAL_EMOJIS": false,
+      "MENTION_EVERYONE": false,
+      "EMBED_LINKS": false,
+      "ATTACH_FILES": false,
+      "SEND_TTS_MESSAGES": false
     }
 
   }

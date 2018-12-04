@@ -9,16 +9,10 @@ module.exports = async function (game, channel_name, permissions, position=-1) {
 
   var spectator = guild.roles.find(x => x.name === config["permissions"]["spectator"]);
 
-  var read_perms = auxils.permsToArray(config["base-perms"]["read"]);
-
   var perms = [
     {id: guild.id, deny: ["READ_MESSAGES"]},
-    {id: spectator.id, deny: read_perms.deny, allow: read_perms.allow}
+    {id: spectator.id, deny: ["SEND_MESSAGES", "ADD_REACTIONS"], allow: ["READ_MESSAGES", "READ_MESSAGE_HISTORY"]}
   ];
-
-  if (Array.isArray(permissions)) {
-    perms = perms.concat(permissions);
-  };
 
   var channel = await guild.createChannel(channel_name, "text", perms);
 
@@ -29,6 +23,15 @@ module.exports = async function (game, channel_name, permissions, position=-1) {
 
   if (position >= 0) {
     await channel.setPosition(position);
+  };
+
+  // {target, permissions}
+  for (var i = 0; i < permissions.length; i++) {
+    if (!permissions[i].target) {
+      continue;
+    };
+
+    await channel.overwritePermissions(permissions[i].target, permissions[i].permissions);
   };
 
   game.setChannel(channel_name, channel);

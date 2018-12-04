@@ -1,20 +1,24 @@
 {
   "messages": {
 
-    "game-start": "**Welcome to Epidemiology.**\n\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
-    "whisper-log": "**This is the Post Office.**\n\nWhisper logs are reported here. This channel also acts as a secondary discussion platform.\n\nTo whisper to a player, use `!w <alphabet/name> <message>` in the private channels.",
+    "game-start": "**Welcome to La Cosa Nostra.**\n\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
+    "whisper-log": "**This is the Billboard.**\n\nThis channel is normally used for whispers, but since whispers are disabled in this game, this channel has become a secondary discussion channel. Players are advised to direct the purpose of this channel to suit their needs.",
     "mafia": "**This is the Mafia Chat.**\n\nThis channel is only open at night for members of the Mafia to communicate.",
 
     "opening-quote": "May lies and deceit distort the dimming truth;\nfor calamity is sowed from the seeds of rivalry.",
     "daytime-quote": "**It is now daytime. The trial has now begun.**",
-    "nighttime-quote": "**Night has descended. This chat is now locked until Daytime starts. Remember to use your night actions if you intend to!**",
+    "nighttime-quote": "**Night has descended. Remember to use your night actions if you intend to!**",
     "no-summary": "*Nothing of interest happened.*",
 
     "singular-lynch": ":skull_crossbones: The players put {;player} on a noose. They have been lynched.",
     "plural-lynch": ":skull_crossbones: The players put {;players} on a noose. They have been lynched.",
     "abstain-lynch": "**The Town has abstained on lynches for the day.**",
 
-    "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game."
+    "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game.",
+
+
+    "welcome-dm-message": ":exclamation: **HELLO! WELCOME TO LA COSA NOSTRA!**\n\n**HOW TO PLAY:**\nGuides and rules to the Mafia games hosted can be found under the information category.\n\n**HOW TO JOIN:**\nTo play a game of Mafia - signups are under the #signups channel.\n\n**I NEED HELP, WHO DO I APPROACH?**\nShould you be in doubt, ask the hosts!\n\nHave fun, and argue away!",
+    "welcome-message": ":wave: Hi {;member}! Welcome to La Cosa Nostra!"
 
   }
 }

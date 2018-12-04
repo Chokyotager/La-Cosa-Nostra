@@ -1,0 +1,1 @@
+:books: The vote count of the **no-lynch** option has dropped below __{;votes}__ votes and a day lynch is possible.

@@ -46,6 +46,10 @@ module.exports = function (client, config) {
       return null;
     };
 
+    if (!message.isMentioned(alive_role)) {
+      return null;
+    };
+
     for (var i = 0; i < ping_config["exempt"].length; i++) {
 
       var role_key = ping_config["exempt"][i];
@@ -83,7 +87,7 @@ module.exports = function (client, config) {
 
     };
 
-    if (message.isMentioned(alive_role) && count > ping_config["threshold"]) {
+    if (count > ping_config["threshold"]) {
       message.channel.send(":x: <@" + message.author.id + ">, please refrain from pinging the Alive role more than __" + ping_config["threshold"] + "__ time" + pettyFormat("s", ping_config["threshold"]) + " in the timespan of **" + formatDateVerbose(ping_config["threshold-time"]) + "**!");
     };
 

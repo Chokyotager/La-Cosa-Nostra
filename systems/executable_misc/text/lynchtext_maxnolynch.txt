@@ -1,0 +1,1 @@
+If the votes are tied at the end of the day, it will default to a no-lynch.

@@ -17,10 +17,18 @@ module.exports = function (game, message, params) {
   var to = game.getPlayerMatch(params[0]);
   var from = game.getPlayerById(message.author.id);
 
-  actions.delete(x => x.from === from.identifier && (x.identifier === "social_engineer/influence" || x.identifier === "social_engineer/block"));
+  actions.delete(x => x.from === from.identifier && (x.identifier === "social_engineer/influence" || x.identifier === "social_engineer/block" || x.identifier === "social_engineer/no_action"));
 
   if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":ballot_box: You have decided not to block or influence the vote of anyone tonight.");
+
+    game.addAction("social_engineer/no_action", ["cycle"], {
+      name: "SE-no_action",
+      expiry: 1,
+      from: message.author.id,
+      to: message.author.id
+    });
+
     return null;
   };
 
@@ -28,11 +36,27 @@ module.exports = function (game, message, params) {
 
   if (!to.isAlive()) {
     message.channel.send(":x: You cannot block the vote of a dead player!" + rs.misc.sarcasm(true));
+
+    game.addAction("social_engineer/no_action", ["cycle"], {
+      name: "SE-no_action",
+      expiry: 1,
+      from: message.author.id,
+      to: message.author.id
+    });
+
     return null;
   };
 
   if (from.misc.se_influence_log[0] === to.identifier) {
     message.channel.send(":x: You cannot block or influence the vote of the same player consecutively!");
+
+    game.addAction("social_engineer/no_action", ["cycle"], {
+      name: "SE-no_action",
+      expiry: 1,
+      from: message.author.id,
+      to: message.author.id
+    });
+
     return null;
   };
 

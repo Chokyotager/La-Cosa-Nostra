@@ -31,18 +31,20 @@ module.exports = async function (game) {
 
   await log.send(format(game, texts.opening));
 
-  var pinnable = await main.send("**" + game.getFormattedDay() + "**    ~~                                                                                            ~~");
+  var main_pinnable = await main.send("**" + game.getFormattedDay() + "**    ~~                                                                                            ~~");
+  var post_pinnable = await post.send("**" + game.getFormattedDay() + "**    ~~                                                                                            ~~");
 
   if (game.period % 2 === 0) {
     await main.send(format(game, config["messages"]["daytime-quote"]));
   } else {
     await main.send(format(game, config["messages"]["nighttime-quote"]));
   };
-  
+
   await pinMessage(intro);
   await pinMessage(whisper_intro);
 
-  await pinMessage(pinnable);
+  await pinMessage(main_pinnable);
+  await pinMessage(post_pinnable);
 
   if (game.channels.mafia !== undefined) {
 
@@ -51,7 +53,8 @@ module.exports = async function (game) {
     var mafia = game.exists(x => x.role["see-mafia-chat"] === true && x.isAlive());
 
     if (mafia) {
-      await mafia_channel.send(config["messages"]["mafia"]);
+      var mafia_pinnable = await mafia_channel.send(config["messages"]["mafia"]);
+      await pinMessage(mafia_pinnable);
     };
 
   };

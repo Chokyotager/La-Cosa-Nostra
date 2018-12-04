@@ -44,6 +44,8 @@ module.exports = class {
     this.steps = 0;
     this.state = "pre-game";
 
+    this.voting_halted = false;
+
     // Timezone is GMT relative
     this.timezone = this.config.time.timezone;
 
@@ -95,6 +97,12 @@ module.exports = class {
     };
 
     return guild.channels.get(this.channels[name].id);
+  }
+
+  getChannelById (id) {
+    var guild = this.getGuild();
+
+    return guild.channels.get(id);
   }
 
   getPlayerById (id) {
@@ -262,17 +270,32 @@ module.exports = class {
 
     // Count the vote
     var voter = this.getPlayerById(user.id);
-    var voted_against = this.getPlayerByAlphabet(alphabet);
 
-    // Bug check
-    if (!voted_against.status.alive) {
-      console.log("Dead player voted on!");
-      await user.send(":x: You voted on a dead player! Sorry man, but the dude is already dead!");
-      return null;
-    };
+    if (alphabet === "nl") {
 
-    if (voted_against === null) {
-      return null;
+      if (!this.config["game"]["lynch"]["no-lynch-option"]) {
+        console.log(user.id + " tried voting no-lynch using the reaction poll but no-lynches are disabled!");
+        await user.send(":x: The no-lynch vote is disabled.");
+        return null;
+      };
+
+      var voted_against = "nl";
+
+    } else {
+
+      var voted_against = this.getPlayerByAlphabet(alphabet);
+
+      if (voted_against === null) {
+        return null;
+      };
+
+      // Bug check
+      if (!voted_against.status.alive) {
+        console.log("Dead player voted on!");
+        await user.send(":x: You voted on a dead player! Sorry man, but the dude is already dead!");
+        return null;
+      };
+
     };
 
     this.toggleVote(voter, voted_against);
@@ -282,34 +305,79 @@ module.exports = class {
   toggleVote (voter, voted_against) {
     // Post corresponding messages
 
-    var already_voting = voted_against.isVotedAgainstBy(voter.identifier);
-
-    if (!already_voting && this.votesFrom(voter.identifier).length >= this.getLynchesAvailable()) {
-      // New vote, check if exceeds limit
+    if (this.voting_halted) {
       return false;
     };
 
-    var before_votes = voted_against.countVotes();
+    var no_lynch_vote = voted_against === "nl";
+    var voted_no_lynch = this.isVotingNoLynch(voter.identifier);
 
     var magnitude = voter.getVoteMagnitude();
 
-    var toggle_on = voted_against.toggleVotes(voter.identifier, magnitude);
+    if (no_lynch_vote) {
 
-    var after_votes = voted_against.countVotes();
+      // NL vote is independent
+      var has_voted = this.votesFrom(voter.identifier).length > 0;
 
-    if (toggle_on) {
-      // New vote
-      // OLD SYSTEM: uses IDs directly
-      executable.misc.addedLynch(this, voter, voted_against);
+      if (has_voted) {
+        return false;
+      };
+
+      var before_votes = this.getNoLynchVoteCount();
+
+      // Count NL vote
+      if (voted_no_lynch) {
+        // Remove no-lynch vote
+        this.clearNoLynchVotesBy(voter.identifier);
+        executable.misc.removedNolynch(this, voter);
+      } else {
+        this.addNoLynchVote(voter.identifier, magnitude);
+        executable.misc.addedNolynch(this, voter);
+      };
+
+      var after_votes = this.getNoLynchVoteCount();
+
+      this.__checkLynchAnnouncement("nl", before_votes, after_votes);
+
     } else {
-      executable.misc.removedLynch(this, voter, voted_against);
+
+      if (voted_no_lynch) {
+        return false;
+      };
+
+      var already_voting = voted_against.isVotedAgainstBy(voter.identifier);
+
+      if (!already_voting && this.votesFrom(voter.identifier).length >= this.getLynchesAvailable()) {
+        // New vote, check if exceeds limit
+        return false;
+      };
+
+      var before_votes = voted_against.countVotes();
+
+      var toggle_on = voted_against.toggleVotes(voter.identifier, magnitude);
+
+      var after_votes = voted_against.countVotes();
+
+      if (toggle_on) {
+        // New vote
+        // OLD SYSTEM: uses IDs directly
+        executable.misc.addedLynch(this, voter, voted_against);
+      } else {
+        executable.misc.removedLynch(this, voter, voted_against);
+      };
+
+      this.__checkLynchAnnouncement(voted_against.identifier, before_votes, after_votes);
+
     };
 
     this.__reloadTrialVoteMessage();
-    this.__checkLynchAnnouncement(voted_against.identifier, before_votes, after_votes);
 
     // Save file
     this.save();
+
+    if (this.hammerActive()) {
+      this.__checkLynchHammer();
+    };
 
     return true;
 
@@ -326,6 +394,7 @@ module.exports = class {
     };
 
     return ret;
+
   }
 
   votesFrom (identifier) {
@@ -346,14 +415,53 @@ module.exports = class {
   __checkLynchAnnouncement (identifier, before, after) {
 
     var role = this.getPlayerByIdentifier(identifier);
-    var required = this.getVotesRequired() - role.getVoteOffset();
 
-    if (before < required && after >= required) {
-      // New lynch
-      executable.misc.lynchReached(this, role);
-    } else if (before >= required && after < required) {
-      executable.misc.lynchOff(this, role);
+    if (identifier === "nl") {
+      var required = this.getNoLynchVotesRequired();
+    } else {
+      var required = this.getVotesRequired() - role.getVoteOffset();
     };
+
+    if (!this.config["game"]["lynch"]["top-voted-lynch"]) {
+
+      if (before < required && after >= required) {
+        // New lynch
+        identifier === "nl" ? executable.misc.nolynchReached(this) : executable.misc.lynchReached(this, role);
+      } else if (before >= required && after < required) {
+        identifier === "nl" ? executable.misc.nolynchOff(this) : executable.misc.lynchOff(this, role);
+      };
+
+    };
+
+  }
+
+  __checkLynchHammer () {
+
+    var no_lynch_votes = this.getNoLynchVoteCount();
+
+    if (no_lynch_votes >= this.getNoLynchVotesRequired()) {
+      this.fastforward();
+      return true;
+    };
+
+    // Checks for all potential hammers
+    for (var i = 0; i < this.players.length; i++) {
+      var votes = this.players[i].countVotes();
+      var required = this.getVotesRequired() - this.players[i].getVoteOffset();
+
+      if (votes >= required) {
+        // Execute the player
+        //var success = this.lynch(this.players[i]);
+
+        // Fastforward cycle
+        this.fastforward();
+        return true;
+
+      };
+
+    };
+
+    return false;
 
   }
 
@@ -406,6 +514,10 @@ module.exports = class {
 
     // this.config.time.day
 
+    this.voting_halted = true;
+
+    var addition = this.state === "pre-game" ? 0 : 1;
+
     if (adjust_to_current_time) {
 
       this.current_time = new Date();
@@ -413,11 +525,11 @@ module.exports = class {
       var time = new Date();
       time.setUTCHours(time.getUTCHours() + 1, 0, 0, 0);
 
-      this.next_action = calculateNextAction(time, this.period, this.config);
+      this.next_action = calculateNextAction(time, this.period + addition, this.config);
 
     } else {
       this.current_time = new Date(this.next_action);
-      this.next_action = calculateNextAction(this.next_action, this.period, this.config);
+      this.next_action = calculateNextAction(this.next_action, this.period + addition, this.config);
     };
 
     if (this.state === "pre-game") {
@@ -479,6 +591,8 @@ module.exports = class {
     // Save
     this.save();
 
+    this.voting_halted = false;
+
     return this.next_action;
 
     function calculateNextAction (time, period, config) {
@@ -502,6 +616,8 @@ module.exports = class {
 
   async fastforward () {
 
+    this.voting_halted = true;
+
     return await this.timer.fastforward();
 
   }
@@ -522,12 +638,13 @@ module.exports = class {
     };
 
     this.execute("cycle", {period: this.period});
+    this.enterDeathMessages();
     this.sendMessages();
 
   }
 
   async messagePeriodicUpdate (offset=0) {
-    await this.messageAll("~~                                              ~~    **" + this.getFormattedDay(offset) + "**");
+    await this.messageAll("~~                                              ~~    **" + this.getFormattedDay(offset) + "**", "permanent");
   }
 
   async messageAll (message, pin=false) {
@@ -543,9 +660,13 @@ module.exports = class {
 
         var channel = this.players[i].getPrivateChannel();
 
-        if (pin) {
+        if (pin === "period") {
 
           this.sendPeriodPin(channel, message);
+
+        } else if (pin === "permanent") {
+
+          this.sendPin(channel, message);
 
         } else {
 
@@ -622,10 +743,25 @@ module.exports = class {
 
   }
 
+  createPin (message) {
+
+    var result = executable.misc.pinMessage(message);
+
+    return result;
+
+  }
+
   async sendPeriodPin (channel, message) {
 
     var out = await channel.send(message);
     this.createPeriodPin(out);
+
+  }
+
+  async sendPin (channel, message) {
+
+    var out = await channel.send(message);
+    this.createPin(out);
 
   }
 
@@ -639,11 +775,13 @@ module.exports = class {
       var votes = this.players[i].countVotes();
       var required = this.getVotesRequired() - this.players[i].getVoteOffset();
 
-      if (votes >= required) {
+      var top_voted_lynch = this.config["game"]["lynch"]["top-voted-lynch"] && votes >= this.config["game"]["lynch"]["top-voted-lynch-minimum-votes"];
+
+      if (votes >= required || top_voted_lynch) {
         // Execute the player
         //var success = this.lynch(this.players[i]);
 
-        lynchable.push({player: this.players[i], score: votes - required});
+        lynchable.push({player: this.players[i], score: votes - required, votes: votes});
 
       };
 
@@ -658,17 +796,38 @@ module.exports = class {
     });
 
     var lynched = new Array();
+    var no_lynch_votes = this.getNoLynchVoteCount();
+    var top_voted_lynch = this.config["game"]["lynch"]["top-voted-lynch"];
 
-    while (lynchable.length > 0 && lynches_available > lynched.length) {
-      var target = lynchable[0].player;
+    // Check no-lynch
+    if (no_lynch_votes < this.getNoLynchVotesRequired() || top_voted_lynch) {
 
-      var success = this.lynch(target);
+      while (lynchable.length > 0 && lynches_available > lynched.length) {
 
-      if (success) {
-        lynched.push(target);
+        var score = lynchable[0].score;
+        var votes = lynchable[0].votes;
+        var target = lynchable[0].player;
+
+        // Checks popularity of no lynch votes
+        if (votes < no_lynch_votes) {
+          break;
+        };
+
+        // Encased in loop in event of > 2 lynches available and second-ups are tied
+        if (lynchable.filter(x => x.score === score).length > (lynches_available - lynched.length) && !this.config["game"]["lynch"]["tied-random"]) {
+          // Stop further lynch
+          break;
+        };
+
+        var success = this.lynch(target);
+
+        if (success) {
+          lynched.push(target);
+        };
+
+        lynchable.splice(0, 1);
+
       };
-
-      lynchable.splice(0, 1);
 
     };
 
@@ -685,9 +844,7 @@ module.exports = class {
 
     // Add lynch summary
     if (success) {
-      this.execute("killed", {target: role.identifier});
-      executable.misc.kill(this, role);
-      this.primeDeathMessages(role, "__lynched__");
+      this.silentKill(role, "__lynched__");
     };
 
     return success;
@@ -699,14 +856,31 @@ module.exports = class {
     // Secondary reason is what the player sees
     // Can be used to mask death but show true
     // reason of death to the player killed
+    this.silentKill(...arguments);
+
+    if (this.getPeriodLog() && this.getPeriodLog().trial_vote) {
+      this.clearAllVotesFromAndTo(role.identifier);
+      this.__reloadTrialVoteMessage();
+      this.__checkLynchHammer();
+    };
+
+  }
+
+  silentKill (role, reason, secondary_reason, broadcast_position_offset=0) {
+
+    // Work in progress, should remove emote
+    /*
+    if (this.getPeriodLog() && this.getPeriodLog().trial_vote) {
+      executable.misc.removePlayerEmote(this, role.identifier);
+    };
+    */
+
+    // Secondary reason is what the player sees
+    // Can be used to mask death but show true
+    // reason of death to the player killed
     this.execute("killed", {target: role.identifier});
     executable.misc.kill(this, role);
     this.primeDeathMessages(role, reason, secondary_reason, broadcast_position_offset);
-
-    if (this.getPeriodLog() && this.getPeriodLog().trial_vote) {
-      this.clearAllVotesBy(role.id);
-      this.__reloadTrialVoteMessage();
-    };
 
   }
 
@@ -736,6 +910,41 @@ module.exports = class {
 
   }
 
+  enterDeathMessages (offset=0) {
+    var log = this.getPeriodLog(offset);
+
+
+    // {role, reason}
+    var registers = Array.from(log.death_messages);
+
+    var messages = new Object();
+
+    for (var i = 0; i < registers.length; i++) {
+
+      var identifier = registers[i].role;
+
+      if (!messages[identifier]) {
+        messages[identifier] = new Array();
+      };
+
+      messages[identifier].push(registers[i].reason);
+
+    };
+
+    var keys = Object.keys(messages);
+
+    for (var i = 0; i < keys.length; i++) {
+      var identifier = keys[i];
+      var role = this.getPlayerByIdentifier(identifier);
+      var reason = auxils.pettyFormat(messages[keys[i]]);
+
+      var message = executable.misc.getDeathMessage(this, role, reason);
+
+      this.addMessage(role, message);
+    };
+
+  }
+
   enterDeathBroadcasts (offset=0) {
     // Enters in from log.death_broadcasts
     var log = this.getPeriodLog(offset);
@@ -752,16 +961,42 @@ module.exports = class {
       };
     };
 
+    var cause_of_death_config = this.config["game"]["cause-of-death"];
+    var exceptions = cause_of_death_config["exceptions"];
+
+    var hide_day = (cause_of_death_config["hide-day"] && this.isDay());
+    var hide_night = (cause_of_death_config["hide-night"] && !this.isDay());
+
     for (var i = 0; i < unique.length; i++) {
 
-      var role = this.getPlayerById(unique[i]);
+      var role = this.getPlayerByIdentifier(unique[i]);
 
       var reasons = new Array();
 
       for (var j = 0; j < registers.length; j++) {
+
         if (registers[j].role === unique[i]) {
-          reasons.push(registers[j].reason);
+
+          var exempt = false;
+
+          // TODO: fix
+          for (var k = 0; k < exceptions.length; k++) {
+            if (registers[j].reason.includes(exceptions[k])) {
+              exempt = true;
+              break;
+            };
+          };
+
+          if (hide_day || hide_night || exempt) {
+            reasons.push(registers[j].reason);
+          };
+
         };
+
+      };
+
+      if (reasons.length < 1) {
+        reasons.push("found dead");
       };
 
       var reason = auxils.pettyFormat(reasons);
@@ -776,12 +1011,12 @@ module.exports = class {
 
   }
 
-  uploadPublicRoleInformation (role_ids, ignore_cleaned=true) {
+  uploadPublicRoleInformation (role_identifiers, ignore_cleaned=true) {
 
     var display = new Array();
 
-    for (var i = 0; i < role_ids.length; i++) {
-      var player = this.getPlayerById(role_ids[i]);
+    for (var i = 0; i < role_identifiers.length; i++) {
+      var player = this.getPlayerByIdentifier(role_identifiers[i]);
 
       if (!player.misc.role_cleaned) {
         display.push(player);
@@ -797,7 +1032,7 @@ module.exports = class {
 
     var log = this.getPeriodLog();
 
-    log.death_broadcasts.push({role: role.id, reason: reason, position_offset: position_offset});
+    log.death_broadcasts.push({role: role.identifier, reason: reason, position_offset: position_offset});
 
   }
 
@@ -808,15 +1043,15 @@ module.exports = class {
   }
 
   addDeathMessage (role, reason) {
-    var message = executable.misc.getDeathMessage(this, role, reason);
+    var log = this.getPeriodLog();
 
-    this.addMessage(role, message);
+    log.death_messages.push({role: role.identifier, reason: reason});
   }
 
   addMessage (role, message) {
     var log = this.getPeriodLog();
 
-    log.messages.push({message: message, recipient: role.id, time: new Date()});
+    log.messages.push({message: message, recipient: role.identifier, time: new Date()});
   }
 
   addMessages (roles, message) {
@@ -899,7 +1134,16 @@ module.exports = class {
     };
 
     executable.misc.postGameStart(this);
-    executable.misc.openMainChats(this);
+
+    if (!this.isDay() && !this.config["game"]["town"]["night-chat"]) {
+
+        executable.misc.lockMainChats(this);
+
+      } else {
+
+        executable.misc.openMainChats(this);
+
+      };
 
   }
 
@@ -925,8 +1169,10 @@ module.exports = class {
       "trials": trials,
       "summary": new Array(),
       "death_broadcasts": new Array(),
+      "death_messages": new Array(),
       "messages": new Array(),
       "trial_vote": null,
+      "no_lynch_vote": new Array(),
       "period": this.period,
       "pins": new Array()
     };
@@ -970,9 +1216,18 @@ module.exports = class {
 
     var alive = this.getAlive();
 
-    // Ceiled of alive
+    // Floored of alive
     //return 1;
     return Math.max(this.config["game"]["minimum-lynch-votes"], Math.floor(alive / 2) + 1);
+
+  }
+
+  getNoLynchVotesRequired () {
+
+    var alive = this.getAlive();
+
+    // Ceiled of alive
+    return Math.max(this.config["game"]["minimum-nolynch-votes"], Math.ceil(alive / 2));
 
   }
 
@@ -1265,7 +1520,7 @@ module.exports = class {
         continue;
       };
 
-      var amount = Math.min(lynches - this.votesFrom(player.id).length, votes.length);
+      var amount = Math.min(lynches - this.votesFrom(player.identifier).length, votes.length);
       var successes = new Array();
 
       for (var j = 0; j < votes.length; j++) {
@@ -1404,6 +1659,95 @@ module.exports = class {
     };
 
     return ret;
+  }
+
+  getNoLynchVoters () {
+
+    var ret = new Array();
+    var no_lynch_vote = this.getPeriodLog()["no_lynch_vote"];
+
+    // {identifier, magnitude}
+
+    for (var i = 0; i < no_lynch_vote.length; i++) {
+      ret.push(no_lynch_vote[i].identifier);
+    };
+
+    return ret;
+
+  }
+
+  getNoLynchVoteCount () {
+
+    var count = new Number();
+    var no_lynch_vote = this.getPeriodLog()["no_lynch_vote"];
+
+    for (var i = 0; i < no_lynch_vote.length; i++) {
+      count += no_lynch_vote[i].magnitude;
+    };
+
+    return count;
+
+  }
+
+  addNoLynchVote (identifier, magnitude) {
+    var no_lynch_vote = this.getPeriodLog()["no_lynch_vote"];
+
+    no_lynch_vote.push({identifier: identifier, magnitude: magnitude});
+  }
+
+  clearNoLynchVotesBy (identifier) {
+
+    var no_lynch_vote = this.getPeriodLog()["no_lynch_vote"];
+
+    var cleared = false;
+
+    for (var i = no_lynch_vote.length - 1; i >= 0; i--) {
+      if (no_lynch_vote[i].identifier === identifier) {
+        no_lynch_vote.splice(i, 1);
+        cleared = true;
+      };
+    };
+
+    return cleared;
+
+  }
+
+  clearNoLynchVotes () {
+    this.getPeriodLog()["no_lynch_vote"] = new Array();
+  }
+
+  isVotingNoLynch (identifier) {
+    return this.getNoLynchVoters().includes(identifier);
+  }
+
+  hammerActive () {
+
+    var trials_available = this.getTrialsAvailable();
+
+    return this.config["game"]["lynch"]["allow-hammer"] && (trials_available < 2);
+
+  }
+
+  getTrialsAvailable () {
+
+    var period_log = this.getPeriodLog();
+    return period_log ? period_log["trials"] : Math.max(this.config["game"]["minimum-trials"], Math.ceil(this.config["game"]["lynch-ratio-floored"] * this.getAlive()));
+
+  }
+
+  clearAllVotesOn (identifier) {
+    var player = this.getPlayerByIdentifier(identifier);
+
+    player.clearVotes();
+  }
+
+  clearAllVotesFromAndTo (identifier) {
+
+    // Stops votes to and from player
+    this.clearNoLynchVotesBy(identifier);
+    this.clearAllVotesBy(identifier);
+    this.clearAllVotesOn(identifier);
+
   }
 
 };

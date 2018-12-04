@@ -2,10 +2,5 @@
 
 {;public_votes}
 
-Lynches for today: __{!trials_left}__.
-
-With __{!alive}__ player{+s|alive} alive, __{!votes_required}__ vote{+s|votes_required} {+is|votes_required} required to lynch.
-To abstain, refrain from voting.
-You may uncheck on your vote.
-
+{;vote_configurations}
 *React on the corresponding alphabet below to vote.*

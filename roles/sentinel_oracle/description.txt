@@ -1,0 +1,5 @@
+You are a psychic, and a very insistent one.
+
+On any night, you may choose a target. Should you die for any reason subsequently, the role name of your target will be publicly announced (but not who your target is).
+
+You may not choose a new target unless the previous target died for any reason.

@@ -12,17 +12,18 @@ module.exports = async function (game, role) {
 
   var main_channel = guild.channels.find(x => x.name === config["channels"]["main"]);
 
-  var member = main_channel.members.get(role.id);
-
-  if (member === undefined) {
-    console.log("Undefined member on voted user. Debugging?");
-    return null;
-  };
-
   var message = texts.getting_lynched;
 
-  message = message.replace(new RegExp("{;player}", "g"), member.displayName);
+  message = message.replace(new RegExp("{;player}", "g"), role.getDisplayName());
   message = message.replace(new RegExp("{;votes}", "g"), game.getVotesRequired() + role.getVoteOffset());
+
+  var nolynch_info = new String();
+
+  if (game.config["game"]["lynch"]["no-lynch-option"]) {
+    nolynch_info = " if the no-lynch vote does not preside";
+  };
+
+  message = message.replace(new RegExp("{;extra_nolynch_info}", "g"), nolynch_info);
 
   await main_channel.send(message);
 

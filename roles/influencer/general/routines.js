@@ -12,6 +12,13 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
+  player.game.addAction("influencer/no_action", ["cycle"], {
+    name: "Influencer-no_action",
+    expiry: 1,
+    from: player,
+    to: player
+  });
+
   player.game.sendPeriodPin(channel, ":ballot_box: You may choose to double a player's vote strength or null it for tomorrow.\n\nUse `" + config["command-prefix"] + "influence <alphabet/name/nobody>` to double the vote strength of your selected target.\n\nUse `" + config["command-prefix"] + "block <alphabet/name/nobody>` to null the vote of your selected target.\n\nYou may only do either action.");
 
 };

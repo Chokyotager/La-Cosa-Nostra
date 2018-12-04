@@ -1,0 +1,29 @@
+{
+  "role-name": "Sentinel Oracle",
+
+  "alignment": "town",
+  "class": "investigative",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+		"redirection-immunity": 0,
+		"kidnap-immunity": 0,
+    "priority": 2,
+    "vote-offset": 0,
+		"vote-magnitude": 1
+  },
+
+  "investigation": ["Oracle"],
+  "secondary-roles": null,
+
+  "tags": [],
+
+  "reveal-role-on-interrogation": false,
+
+  "win-condition": "town"
+}

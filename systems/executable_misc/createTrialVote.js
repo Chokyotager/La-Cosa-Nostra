@@ -10,12 +10,15 @@ module.exports = async function (game) {
   var client = game.client;
   var config = game.config;
 
+  var no_lynch_option = game.config["game"]["lynch"]["no-lynch-option"];
+
   var guild = client.guilds.get(config["server-id"]);
   var vote = guild.channels.find(x => x.name === config["channels"]["voting"]);
 
   var message = texts.public_vote;
 
   message = message.replace("{;public_votes}", getVoteList());
+  message = message.replace("{;vote_configurations}", getVoteConfiguration());
 
   message = await vote.send(format(game, message));
 
@@ -23,12 +26,19 @@ module.exports = async function (game) {
   var messages = [message];
   var alive = game.getAlivePlayers();
 
-  for (var i = 0; i < alive.length; i += chunk) {
-    var current = alive.slice(i, i + chunk);
+  var reactions = alive.map(x => x.alphabet);
+
+  if (no_lynch_option) {
+    // No lynch reaction trigger
+    reactions.push("NL");
+  };
+
+  for (var i = 0; i < reactions.length; i += chunk) {
+    var current = reactions.slice(i, i + chunk);
 
     if (i === 0) {
       for (var j = 0; j < current.length; j++) {
-        var alpha = current[j].alphabet.toLowerCase();
+        var alpha = current[j].toLowerCase();
 
         var reaction = alphabets[alpha];
 
@@ -42,7 +52,7 @@ module.exports = async function (game) {
       messages.push(message);
 
       for (var j = 0; j < current.length; j++) {
-        var alpha = current[j].alphabet.toLowerCase();
+        var alpha = current[j].toLowerCase();
 
         var reaction = alphabets[alpha];
 
@@ -88,7 +98,53 @@ module.exports = async function (game) {
       };
     };
 
+    if (no_lynch_option) {
+
+      var voters = game.getNoLynchVoters();
+      var vote_count = game.getNoLynchVoteCount();
+
+      var concat = voters.map(x => game.getPlayerByIdentifier(x).getDisplayName());
+
+      var names = auxils.pettyFormat(concat);
+
+      names = voters.length > 0 ? ": " + names : "";
+
+      displays.push("**No-lynch** (" + vote_count + ")" + names);
+
+    };
+
     return displays.join("\n");
+
+  };
+
+  function getVoteConfiguration () {
+
+    var ret = new Array();
+    var lynch_config = config["game"]["lynch"];
+
+    if (game.getLynchesAvailable() > 1) {
+      ret.push(texts.lynchtext_available);
+    };
+
+    if (lynch_config["no-lynch-option"]) {
+      ret.push(texts.lynchtext_nolynch);
+    } else {
+      ret.push(texts.lynchtext_standard);
+    };
+
+    if (game.hammerActive()) {
+      ret.push(texts.lynchtext_hammer);
+    };
+
+    if (lynch_config["top-voted-lynch"]) {
+      if (lynch_config["tied-random"]) {
+        ret.push(texts.lynchtext_maxrandom);
+      } else {
+        ret.push(texts.lynchtext_maxnolynch);
+      };
+    };
+
+    return ret.join("\n");
 
   };
 

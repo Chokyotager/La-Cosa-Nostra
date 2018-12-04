@@ -22,6 +22,10 @@ module.exports = async function (game, message, params) {
       game.toggleVote(self, voted[i]);
     };
 
+    if (game.isVotingNoLynch(self.identifier)) {
+      game.toggleVote(self, "nl");
+    };
+
     return null;
   };
 

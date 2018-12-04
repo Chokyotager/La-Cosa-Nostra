@@ -1,0 +1,1 @@
+If the votes are tied at the end of the day, a random player with tied votes is chosen and lynched.

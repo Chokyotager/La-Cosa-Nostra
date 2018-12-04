@@ -395,6 +395,10 @@ module.exports = class {
     this.display_role = role_name;
   }
 
+  clearDisplayRole () {
+    this.display_role = null;
+  }
+
   getRole () {
     // Give true role
     return this.role["role-name"];
@@ -405,9 +409,9 @@ module.exports = class {
 
     var flavour = this.game.getGameFlavour();
 
-    if (flavour && flavour_role) {
+    var initial = executable.roles.getRole(this.initial_role_identifier[0])["role-name"];
 
-      var initial = executable.roles.getRole(this.initial_role_identifier[0])["role-name"];
+    if (flavour && flavour_role) {
 
       if (flavour_role !== initial && append_true_role) {
         flavour_role += " (" + initial + ")";
@@ -521,7 +525,13 @@ module.exports = class {
 
     for (var i = 0; i < this.attributes.length; i++) {
       var runnable = attributes[this.attributes[i].identifier].routines;
-      this.executeRoutine(runnable);
+
+      try {
+        this.executeRoutine(runnable);
+      } catch (err) {
+        console.log(err);
+      };
+
     };
 
     return ret;
@@ -668,6 +678,10 @@ module.exports = class {
 
     return null;
 
+  }
+
+  getDiscordUser (alphabet) {
+    return this.game.client.users.get(this.id);
   }
 
 };

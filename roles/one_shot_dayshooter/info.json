@@ -1,0 +1,12 @@
+{
+
+  "thumbnail": "https://img.freepik.com/icone-gratis/bersaglio_318-142740.jpg?size=338&ext=jpg",
+
+  "abilities": ["Choose to shoot a player once anytime during the day, dealing a Powerful attack"],
+
+  "attributes": ["The players' role is not revealed until the end of the day",
+                 "All votes to and from the shot player is nulled"],
+
+  "credits": ["ShapeShifted"]
+
+}

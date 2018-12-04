@@ -1,0 +1,3 @@
+With __{!alive}__ player{+s|alive} alive,
+__{!votes_required}__ vote{+s|votes_required} {+is|votes_required} required to lynch and __{!nolynch_votes_required}__ vote{+s|nolynch_votes_required} {+is|nolynch_votes_required} required to no-lynch.
+To abstain, refrain from voting.

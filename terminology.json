@@ -51,7 +51,7 @@
 
   "Scum": {"description": "Used to refer to a player being anti-Town."},
 
-  "Hammer": {"description": "The act of putting one last vote on a person to reach a majority, causing said person to be lynched. Not applicable here due to a different voting system."},
+  "Hammer": {"description": "The act of putting one last vote on a person to reach a majority, causing said person to be lynched."},
 
   "LYLO": {"term": "Lynch or Lose",
            "description": "Usually refers to a situation when Town has a majority of 1 over anti-Town. Abstaining for that day will lead to a Town loss. These situations are usually also MYLO (Mislynch and You Lose)."},
@@ -112,6 +112,38 @@
   "FtC": {"term": "Follow the Cop",
           "description": "A strategy in games where players lynch whoever claims cop, and a doctor protects the cop at night, and lynch the cop if the previous lynch was bad. This forces the Mafia to find out who the Doctor is and attack them."},
 
-  "Massclaim": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town. (Same as \"rolecall\")"}
+  "Massclaim": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town. (Same as \"rolecall\")"},
+
+  "Alibi": {"description": "A claim in which to prove that a player could not possibly be anti-Town or performed an action."},
+
+  "NP": {"term": "Night phase"},
+
+  "DP": {"term": "Day phase"},
+
+  "Backpedaling": {"description": "When a player goes back on something said previously; also refers to when a player suddenly stops scumhunting."},
+
+  "Blitz": {"description": "A rapid vote, usually a hammer, typically employed by anti-Town in MYLO/LYLO situations to end the game in their favour."},
+
+  "Lurk": {"description": "To actively view the game, however to rarely contribute or post in it."},
+
+  "WIFOM": {"term": "Wine in front of me",
+            "description": "Refers to circular reasoning in which it is impossible to determine the truth using the already available information."},
+
+  "Metagaming": {"description": "Using external factors which transcend the game usually to one's advantage. May or may not be allowed to certain extents depending on the game rules."},
+
+  "RVS": {"term": "Random Voting State",
+          "description": "Refers to when players attempt to lynch to gain information at the beginning of the game, usually basing off reactions and reads only."},
+
+  "Sheep": {"description": "Refers to individuals following other players without contributing much and without rational basis."},
+
+  "Tunnel": {"description": "The act of focusing all of one's attention on a player even if logic dictates otherwise."},
+
+  "FoS": {"term": "Finger of Suspicion",
+          "description": "Used when a player notices suspicious behaviour from another player."},
+
+  "Perjury": {"description": "Refers to when a member of the Town lies to advance discussion, usually with the thought of helping the Town."},
+
+  "Good Skele": {"description": "Refers to retracting on a vote a short while before a deadline to prevent someone from being lynched.",
+                 "example": "Skele pulled a Good Skele on Corbin to prevent his Mafia teammate from dying due to a wagon."}
 
 }

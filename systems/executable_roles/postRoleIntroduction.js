@@ -70,7 +70,8 @@ module.exports = async function (player, stagger=800) {
   var message = await channel.send(send);
   await pinMessage(message);
 
-  await channel.send("~~                                              ~~    **" + player.game.getFormattedDay() + "**         [*game start*]");
+  var start_message = await channel.send("~~                                              ~~    **" + player.game.getFormattedDay() + "**         [*game start*]");
+  await pinMessage(start_message);
 
   for (var i = 0; i < player.intro_messages.length; i++) {
     await channel.send(player.intro_messages[i]);

@@ -1,24 +1,35 @@
 module.exports = async function (message) {
 
-  if (message.pinnable && !message.pinned) {
+  try {
 
-    // Create collector
-    message.channel.createMessageCollector(pinFunction, {maxMatches: 1, time: 2000});
+    if (message.pinnable && !message.pinned) {
 
-    // Await
-    await new Promise(function(resolve, reject) {
-      setTimeout(function () {
-        resolve();
-      }, 200);
-    });
+      // Create collector
+      message.channel.createMessageCollector(pinFunction, {maxMatches: 1, time: 2000});
 
-    await message.pin();
+      // Await
+      await new Promise(function(resolve, reject) {
+        setTimeout(function () {
+          resolve();
+        }, 200);
+      });
 
-    return true;
+      await message.pin();
+
+      return true;
+
+    };
+
+  } catch (err) {
+
+    // Suppress error
+    return false;
+
+  } finally {
+
+    return false;
 
   };
-
-  return false;
 
 };
 

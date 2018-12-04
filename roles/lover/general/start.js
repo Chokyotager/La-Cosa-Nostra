@@ -70,17 +70,17 @@ module.exports = function (player) {
   // Always put lower alphabet first
   async function createLoverChannels () {
 
-    var read_perms = auxils.permsToArray(config["base-perms"]["read"]);
+    var read_perms = config["base-perms"]["read"];
 
     var name = "lovers-" + player.alphabet + "-" + matched.alphabet;
 
-    player.misc.lover_channel = name;
-    matched.misc.lover_channel = name;
-
     var channel = await game.createPrivateChannel(name, [
-      {id: player.id, allow: read_perms.allow, deny: read_perms.deny},
-      {id: matched.id, allow: read_perms.allow, deny: read_perms.deny}
+      {target: player.getDiscordUser(), permissions: read_perms},
+      {target: matched.getDiscordUser(), permissions: read_perms}
     ]);
+
+    player.misc.lover_channel = channel.id;
+    matched.misc.lover_channel = channel.id;
 
     await channel.send("**This is the Lovers' chat.**\n\nThis chat is open to both parties only at night.");
 

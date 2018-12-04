@@ -12,9 +12,9 @@ module.exports = function (player) {
 
   // Get the lovers channel
 
-  var channel = game.getChannel(player.misc.lover_channel);
+  var channel = game.getChannelById(player.misc.lover_channel);
 
-  if (player.misc.lover_initiator === true && !game.isDay()) {
+  if (player.misc.lover_initiator === true) {
     channel.send("~~                                              ~~    **" + game.getFormattedDay() + "**");
   };
 

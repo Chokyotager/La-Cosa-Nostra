@@ -8,6 +8,8 @@ module.exports = async function (game, ended=false) {
   var client = game.client;
   var config = game.config;
 
+  var no_lynch_option = game.config["game"]["lynch"]["no-lynch-option"];
+
   var log = game.getPeriodLog();
 
   var guild = client.guilds.get(config["server-id"]);
@@ -22,6 +24,7 @@ module.exports = async function (game, ended=false) {
   };
 
   message = message.replace("{;public_votes}", getVoteList());
+  message = message.replace("{;vote_configurations}", getVoteConfiguration());
 
   await display_message.edit(format(game, message));
 
@@ -55,7 +58,53 @@ module.exports = async function (game, ended=false) {
       };
     };
 
+    if (no_lynch_option) {
+
+      var voters = game.getNoLynchVoters();
+      var vote_count = game.getNoLynchVoteCount();
+
+      var concat = voters.map(x => game.getPlayerByIdentifier(x).getDisplayName());
+
+      var names = auxils.pettyFormat(concat);
+
+      names = voters.length > 0 ? ": " + names : "";
+
+      displays.push("**No-lynch** (" + vote_count + ")" + names);
+
+    };
+
     return displays.join("\n");
+
+  };
+
+  function getVoteConfiguration () {
+
+    var ret = new Array();
+    var lynch_config = config["game"]["lynch"];
+
+    if (game.getLynchesAvailable() > 1) {
+      ret.push(texts.lynchtext_available);
+    };
+
+    if (lynch_config["no-lynch-option"]) {
+      ret.push(texts.lynchtext_nolynch);
+    } else {
+      ret.push(texts.lynchtext_standard);
+    };
+
+    if (game.hammerActive()) {
+      ret.push(texts.lynchtext_hammer);
+    };
+
+    if (lynch_config["top-voted-lynch"]) {
+      if (lynch_config["tied-random"]) {
+        ret.push(texts.lynchtext_maxrandom);
+      } else {
+        ret.push(texts.lynchtext_maxnolynch);
+      };
+    };
+
+    return ret.join("\n");
 
   };
 

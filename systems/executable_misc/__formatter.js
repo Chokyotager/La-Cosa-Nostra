@@ -100,12 +100,14 @@ function getParameters (game) {
     "night_hours": config.time.night,
     "utc_formatted": auxils.formatUTCDate(game.current_time),
     "next_utc_formatted": auxils.formatUTCDate(game.next_action),
+    "now_utc": auxils.formatUTCDate(new Date()),
     "game_chronos": game.getFormattedDay().toUpperCase(),
     "game_chronos_next": game.getFormattedDay(1),
     "game_chronos_last": game.getFormattedDay(-1),
-    "cycle": game.period % 2 === 0 ? "daytime" : "nighttime",
-    "trials_left": log ? log.trials : null,
+    "cycle": game.isDay() ? "daytime" : "nighttime",
+    "trials_left": game.getTrialsAvailable(),
     "votes_required": game.getVotesRequired(),
+    "nolynch_votes_required": game.getNoLynchVotesRequired(),
     "veto_time": config.game["veto-time"]
   };
 

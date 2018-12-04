@@ -4,37 +4,49 @@
   "game": {
 
     "mafia": {
-      "has-chat": false,
+      "has-chat": true,
       "chat-name": "mafia",
       "night-only": true
     },
 
     "town": {
-      "night-chat": false
+      "night-chat": true
     },
 
     "day-zero": true,
     "lynch-ratio-floored": 0,
+
+    "lynch": {
+      "top-voted-lynch": true,
+      "top-voted-lynch-minimum-votes": 0,
+
+      "tied-random": true,
+
+      "allow-hammer": true,
+      "no-lynch-option": true
+    },
+
     "minimum-lynch-votes": 2,
+    "minimum-nolynch-votes": 2,
     "minimum-trials": 1,
 
     "allow-pre-emptive-votes": false,
 
     "fast-forwarding": {
       "allow": true,
-      "ratio": 0.8,
+      "ratio": 1,
 
       "night": true,
       "day": true
     },
 
     "last-wills": {
-      "allow": true,
+      "allow": false,
       "character-count-limit": 800
     },
 
     "whispers": {
-      "allow": true,
+      "allow": false,
 
       "night": false,
       "day": true,
@@ -42,14 +54,20 @@
       "broadcast": true,
 
       "allow-dead": false
+    },
+
+    "cause-of-death": {
+      "hide-day": false,
+      "hide-night": true,
+      "exceptions": ["modkill"]
     }
 
   },
 
   "time": {
-    "timezone": 9,
-    "day": 18,
-    "night": 18
+    "timezone": 0,
+    "day": 12,
+    "night": 12
   },
 
   "message-checks": {

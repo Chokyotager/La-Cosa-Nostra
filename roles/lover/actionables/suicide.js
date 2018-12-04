@@ -14,7 +14,7 @@ module.exports = function (actionable, game, params) {
   and unpreventable by ANY role or action */
 
   // Set 1 to broadcast offset
-  game.kill(from, "found dead, having committed suicide over the loss of their __Lover__", "found dead, having committed suicide over the loss of your __Lover__", 2);
+  game.silentKill(from, "found dead, having committed suicide over the loss of their __Lover__", "found dead, having committed suicide over the loss of your __Lover__", 2);
 
   // Destroy this instance
   return true;

@@ -1,0 +1,7 @@
+Lovestruck, lovestruck!
+
+On any night, you may choose to match two players. This will give them a common night chat.
+
+If one of the matched players die for any reason, the other will commit suicide over the loss. This is effective immediately on the night they were matched.
+
+You may match yourself and you may only use this action once.
