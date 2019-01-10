@@ -1,6 +1,6 @@
 {
-  "bot-token": "NDg3MDY4MjkyOTYwMjIzMjYz.Dvy9Yw.GXeD-C6mP5NZcxlOUFEJ4fzbPGk",
-  "server-id": "487067842328526848",
+  "bot-token": "<insert bot token>",
+  "server-id": "<insert server ID>",
 
   "command-prefix": "!",
   "automatically-load-saves": true,
