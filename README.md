@@ -1,7 +1,9 @@
-![Banner](https://github.com/Chokyotager/La-Cosa-Nostra/blob/master/assets/game-start.jpg?raw=true)
+![Main Banner](https://github.com/Chokyotager/La-Cosa-Nostra/blob/master/assets/game-start.jpg?raw=true)
 
 # La Cosa Nostra
 **Bringing real-time Mafia to Discord.**
+
+![Bot banner](https://github.com/Chokyotager/La-Cosa-Nostra/blob/master/assets/bot-banner.png?raw=true)
 
 ## Credits
 Authors: ChocoParrot & Hex4Nova
