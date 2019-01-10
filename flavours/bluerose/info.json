@@ -1,0 +1,17 @@
+{
+
+  "show-role-equivalent": false,
+
+  "show-vanilla-banner": false,
+
+  "display-role-equivalent-on-death": true,
+
+  "investigator-sees-flavour-role": true,
+
+  "show-role-category": false,
+
+  "post-role-card-and-description-on-death": true,
+
+  "step-names": ["Lucifer", "Somnus"]
+
+}

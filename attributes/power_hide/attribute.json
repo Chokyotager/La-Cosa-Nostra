@@ -1,0 +1,18 @@
+{
+
+  "name": "Hide",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Protection"},
+      {"name": "Command", "description": "hide <on/off>"},
+      {"name": "Description", "description": "Stops all actions onto the user for one night."}
+    ]
+
+  }
+
+}

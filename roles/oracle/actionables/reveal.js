@@ -12,7 +12,7 @@ module.exports = function (actionable, game, params) {
   var target = game.getPlayerByIdentifier(oracle.misc.oracle_last_target);
 
   // Role of target is added
-  game.addBroadcastSummary("An __Oracle__ has died. Their targets' role is __" + target.getDisplayRole() + "__.");
+  game.addBroadcastSummary("An __Oracle__ has died. Their targets' role is __" + target.getDisplayRole(false) + "__.");
 
   return true;
 

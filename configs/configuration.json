@@ -1,5 +1,5 @@
 {
-  "bot-token": "NDg3MDY4MjkyOTYwMjIzMjYz.DrfOWQ.if-mnREqfDSp_OxBAr2yJ5eJNU8",
+  "bot-token": "NDg3MDY4MjkyOTYwMjIzMjYz.Dvy9Yw.GXeD-C6mP5NZcxlOUFEJ4fzbPGk",
   "server-id": "487067842328526848",
 
   "command-prefix": "!",
@@ -7,5 +7,5 @@
 
   "encode-cache": true,
 
-  "merge-configs": ["game-details.json", "server-details.json", "permissions.json", "channels.json", "playing.json", "assets.json", "messages.json", "tick.json", "disabled_commands.json"]
+  "merge-configs": ["game-details.json", "server-details.json", "permissions.json", "channels.json", "playing.json", "messages.json", "tick.json", "disabled_commands.json"]
 }

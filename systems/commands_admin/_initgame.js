@@ -1,4 +1,4 @@
-var initGame = require("../game_setters/initGame.js")
+var initGame = require("../game_setters/initGame.js");
 
 module.exports = async function (message, params, config) {
 

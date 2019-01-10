@@ -11,14 +11,14 @@ var game = require("./systems/game.js");
 client.options.disableEveryone = true;
 
 client.on("ready", function () {
-  console.log("Bedlam Mafia ready.");
+  console.log("La Cosa Nostra ready.");
 
   auxils.readline(client, config, commands);
   auxils.eventhandler(client, config);
 
   client.user.setPresence({
     status: "online",
-    game: {name: "La Cosa Nostra v0.1", type: "PLAYING"}
+    game: {name: "Bluerose LCN v0.1", type: "PLAYING"}
   });
 
   if (config["automatically-load-saves"]) {

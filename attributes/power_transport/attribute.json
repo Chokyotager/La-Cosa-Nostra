@@ -1,0 +1,18 @@
+{
+
+  "name": "Transport",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Redirection"},
+      {"name": "Command", "description": "transport <alphabet/name/nobody> <alphabet/name>"},
+      {"name": "Description", "description": "Switches the user and targets’ location. All actions inflicted on the user go onto the target, and vice versa. Does not notify either target. Action is considered astral."}
+    ]
+
+  }
+
+}

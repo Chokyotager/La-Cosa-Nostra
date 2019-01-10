@@ -44,7 +44,7 @@ module.exports = function (message, params, config) {
     }
 
     embed.addField("Joined at", member.joinedAt.toISOString(), true);
-    embed.addField("Higest role", member.highestRole.name, true);
+    embed.addField("Highest role", member.highestRole.name, true);
     embed.addField("Status", presences[member.user.presence.status], true);
     embed.setFooter("Discord ID " + member.user.id);
 

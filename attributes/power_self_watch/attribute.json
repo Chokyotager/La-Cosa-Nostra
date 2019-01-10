@@ -1,0 +1,18 @@
+{
+
+  "name": "Selfwatch",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Investigative"},
+      {"name": "Command", "description": "selfwatch <on/off>"},
+      {"name": "Description", "description": "Sees who visited the user."}
+    ]
+
+  }
+
+}

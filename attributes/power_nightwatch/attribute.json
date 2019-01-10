@@ -1,0 +1,18 @@
+{
+
+  "name": "Nightwatch",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Investigative"},
+      {"name": "Command", "description": "nightwatch <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Sees who the target visited, as well as who visited the target."}
+    ]
+
+  }
+
+}

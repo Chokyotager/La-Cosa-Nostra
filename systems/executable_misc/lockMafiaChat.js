@@ -6,7 +6,7 @@ module.exports = async function (game) {
 
     var read_perms = game.config["base-perms"]["read"];
 
-    var mafia = game.findAll(x => x.role["see-mafia-chat"] === true);
+    var mafia = game.findAll(x => x.see_mafia_chat === true);
 
     for (var i = 0; i < mafia.length; i++) {
 

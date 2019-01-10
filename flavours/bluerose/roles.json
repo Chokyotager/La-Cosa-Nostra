@@ -1,0 +1,159 @@
+{
+
+  "mx_1": [{
+    "name": "Dr. Killjoy the Neurosurgeon",
+    "banner": "Dr. Killjoy the Neurosurgeon.png",
+    "description": "[Modular powers]\n1x Attorney\n1x Kill\nInfinity x PID Kill\n\n[Modular traits]\nPower Inspect Immunity\nPower Manipulation Immunity\n\nInitial win condition: destroy all threats to the Mafia."
+  }],
+
+  "mx_2": [{
+    "name": "Rick the Hospital Administrator",
+    "banner": "Rick the Hospital Administrator.png",
+    "description": "[Modular powers]\n2x Power Census\nInfinity x Power Inspect\n\n[Modular traits]\nPower Inspect Immunity\nPower Manipulation Immunity\n\nInitial win condition: destroy all threats to the Mafia."
+  }],
+
+  "mx_3": [{
+    "name": "Dr. Léonie the Pathologist",
+    "banner": "Dr. Leonie the Pathologist.png",
+    "description": "[Modular powers]\n1x Investigate\n1x Superkill\n2x Power Census\n2x Nightwatch\n\nInitial win condition: destroy all threats to the Mafia."
+  }],
+
+  "mx_4": [{
+    "name": "Jane the Cyanide Nurse",
+    "banner": "Jane the Cyanide Nurse.png",
+    "description": "[Modular powers]\n1x Poison\n1x Power Inspect\n2x Roleblock\n\n[Modular traits]\nRoleblock Immunity\n\nInitial win condition: destroy all threats to the Mafia."
+  }],
+
+  "mx_5": [{
+    "name": "Erik the Radiologist",
+    "banner": "Erik the Radiologist.png",
+    "description": "[Modular powers]\nInfinity x Jail\n\n[Modular traits]\nCovert\n\nInitial win condition: destroy all threats to the Mafia."
+  }],
+
+  "mx_6": [{
+    "name": "Dr. Barker the Cardiologist",
+    "banner": "Dr. Barker the Cardiologist.png",
+    "description": "[Modular powers]\n1x Mail\n1x Power Steal\n2x Power Swap\n\n[Modular traits]\nPower Manipulation Immunity\nRoleblock Immunity\n\nInitial win condition: destroy all threats to the Mafia."
+  }],
+
+  "tx_1": [{
+    "name": "Emma the Newborn Infant",
+    "banner": "Emma the Newborn Infant.png",
+    "description": "[Modular powers]\n3x Oracle\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_2": [{
+    "name": "Albert the Anxious Worrywart",
+    "banner": "Albert the Anxious Worrywart.png",
+    "description": "[Modular powers]\n1x Transport\n1x Drive\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_3": [{
+    "name": "Sophia the Hypochondriac",
+    "banner": "Sophia the Hypochondriac.png",
+    "description": "[Modular powers]\n2x Power Copy\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_4": [{
+    "name": "Ben the Janitor Dude",
+    "banner": "Ben the Janitor Dude.png",
+    "description": "[Modular powers]\n1x Investigate\n2x Power Census\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_5": [{
+    "name": "Kate the Serial Killer",
+    "banner": "Kate the Serial Killer.png",
+    "description": "[Modular powers]\n1x Deliver Kill\n1x Protect\n2x Mail\n\n[Modular traits]\nPower Inspect Immunity\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_6": [{
+    "name": "Marco the Lasik Outpatient",
+    "banner": "Marco the Lasik Outpatient.png",
+    "description": "[Modular powers]\n3x Self-redirection\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_7": [{
+    "name": "Kenneth the Heart Bypass Patient",
+    "banner": "Kenneth the Heart Bypass Patient.png",
+    "description": "[Modular powers]\n3x Disable\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_8": [{
+    "name": "John the Paranoid",
+    "banner": "John the Paranoid.png",
+    "description": "[Modular powers]\n1x Guard\n2x Crosshair\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_9": [{
+    "name": "Damien the Epidemiology Scientist",
+    "banner": "Damien the Epidemiology Scientist.png",
+    "description": "[Modular powers]\n1x Watch\n3x Track\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_10": [{
+    "name": "Agnes the Pneumonia Lady",
+    "banner": "Agnes the Pneumonia Lady.png",
+    "description": "[Modular powers]\n2x Power Steal\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_11": [{
+    "name": "Li Jun the Boy with the Fracture",
+    "banner": "Li Jun the Boy with the Fracture.png",
+    "description": "[Modular powers]\n1x Attorney\n3x Inquisit\n\n[Modular traits]\nPower Manipulation Immunity\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_12": [{
+    "name": "Dmitry the Cholera Case",
+    "banner": "Dmitry the Cholera Case.png",
+    "description": "[Modular powers]\n1x Marshal\n1x Power Census\n1x Influence\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_13": [{
+    "name": "Sebastian the Chronic Insomniac",
+    "banner": "Sebastian the Chronic Insomniac.png",
+    "description": "[Modular powers]\n2x Interrogate\n2x Investigate\n[Modular traits]\nPower Inspect Immunity\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_14": [{
+    "name": "Mr. Nakamura Jr. the Visitor",
+    "banner": "Mr. Nakamura Jr. the Visitor.png",
+    "description": "[Modular powers]\n1x Interrogate\n3x Power Inspect\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_15": [{
+    "name": "Mr. Nakamura Sr. the Heart Patient",
+    "banner": "Mr. Nakamura Sr. the Heart Patient.png",
+    "description": "[Modular powers]\n2x Hide\n2x Selfwatch\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_16": [{
+    "name": "Dr. Koch the Bacteriologist",
+    "banner": "Dr. Koch the Bacteriologist.png",
+    "description": "[Modular powers]\n4x Protect\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "tx_17": [{
+    "name": "Ethan the Dialysis Nurse",
+    "banner": "Ethan the Dialysis Nurse.png",
+    "description": "[Modular powers]\n2x Poison\n2x Roleblock\n\n[Modular traits]\nRoleblock Immunity\n\nInitial win condition: eliminate all threats to the Town."
+  }],
+
+  "nx_1": [{
+    "name": "Boris the Multiple Personality Man",
+    "banner": "Boris the Multiple Personality Man.png",
+    "description": "[Modular powers]\nInfinity x Copy\n\n[Modular traits]\nPower Manipulation Immunity\n\nInitial win condition: copy and successfully execute three actions. If the game ends from any other faction winning before you reach your target, you lose."
+  }],
+
+  "nx_2": [{
+    "name": "Dr. Indoctor the Psychiatrist",
+    "banner": "Dr. Indoctor the Psychiatrist.png",
+    "description": "[Modular powers]\nInfinity x Indoctrinate\n1x Hide\n\n[Modular traits]\nAlignment Investigation Immunity\nCovert\nPower Manipulation Immunity\n\nWin condition: eliminate all threats to the Cult."
+  }],
+
+  "nx_3": [{
+    "name": "Senator McMuller the Politician",
+    "banner": "Senator McMuller the Politician.png",
+    "description": "[Modular powers]\nInfinity x RID Kill\n2x Investigate\n\n[Modular traits]\nPower Inspect Immunity\nPower Manipulation Immunity\n\nInitial win condition: successfully RID kill two people. If the game ends from any other faction winning before you reach your target, you lose."
+  }]
+
+}

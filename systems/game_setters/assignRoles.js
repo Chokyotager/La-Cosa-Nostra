@@ -30,8 +30,34 @@ module.exports = function (client, config) {
     // Should be only place where the name is assigned
     var alphabet = String.fromCharCode(65 + i);
 
+    // Possible alternative:
+    // {identifier, flavour_identifier, display_secondary, attributes: [{identifier, expiry, tags}]}
+
+    var role = roles[i];
+    var base_identifier = role.identifier || role;
+
     // Assign respective roles
-    player = new Player().init(players[i], alphabet, roles[i].toLowerCase());
+    player = new Player().init(players[i], alphabet, base_identifier.toLowerCase());
+
+    if (role instanceof Object) {
+
+      if (role.flavour_identifier) {
+        player.setBaseFlavourIdentifier(role.flavour_identifier);
+      };
+
+      if (role.display_secondary) {
+        player.setDisplaySecondary(role.display_secondary);
+      };
+
+      if (role.attributes) {
+        for (var j = 0; j < role.attributes.length; j++) {
+          var attribute = role.attributes[j];
+          player.addAttribute(attribute.identifier, attribute.expiry, attribute.tags);
+        };
+      };
+
+    };
+
     ret.push(player);
 
   };

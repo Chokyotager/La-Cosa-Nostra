@@ -1,10 +1,5 @@
 var rs = require("../../../rolesystem/rolesystem.js");
 
-// Defaults to shooting
-// Godfather can override
-
-// See godfather/kill_vote
-
 module.exports = function (actionable, game, params) {
 
   rs.prototypes.basicAttack.reason = "killed";
@@ -20,6 +15,8 @@ module.exports = function (actionable, game, params) {
     game.addMessage(from, ":exclamation: Your target could not be attacked last night!");
 
   };
+
+  rs.modular.attributeDecrement(...arguments);
 
 };
 

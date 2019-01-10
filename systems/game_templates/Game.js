@@ -422,7 +422,8 @@ module.exports = class {
       var required = this.getVotesRequired() - role.getVoteOffset();
     };
 
-    if (!this.config["game"]["lynch"]["top-voted-lynch"]) {
+    // !this.config["game"]["lynch"]["top-voted-lynch"] && !this.hammerActive()
+    if (!this.hammerActive()) {
 
       if (before < required && after >= required) {
         // New lynch
@@ -772,6 +773,11 @@ module.exports = class {
     var lynchable = new Array();
 
     for (var i = 0; i < this.players.length; i++) {
+
+      if (!this.players[i].isAlive()) {
+        continue;
+      };
+
       var votes = this.players[i].countVotes();
       var required = this.getVotesRequired() - this.players[i].getVoteOffset();
 
@@ -809,7 +815,7 @@ module.exports = class {
         var target = lynchable[0].player;
 
         // Checks popularity of no lynch votes
-        if (votes < no_lynch_votes) {
+        if (votes <= no_lynch_votes) {
           break;
         };
 

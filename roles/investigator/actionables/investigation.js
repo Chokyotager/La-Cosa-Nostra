@@ -6,7 +6,7 @@ module.exports = function (actionable, game, params) {
   game.execute("visit", {visitor: actionable.from,
     target: actionable.to,
     priority: actionable.priority,
-    reason: "Investigator-interrogation"});
+    reason: "Investigator-investigation"});
 
   var from = game.getPlayerByIdentifier(actionable.from);
   var target = game.getPlayerByIdentifier(actionable.to);

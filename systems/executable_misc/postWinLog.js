@@ -26,6 +26,6 @@ module.exports = async function (game, faction, description) {
 
   message = message.replace(new RegExp("{;role_list}", "g"), concat.join("\n"));
 
-  await game.getLogChannel().send(format(game, message));
+  await game.getLogChannel().send(format(game, message), {split: true});
 
 };

@@ -1,0 +1,18 @@
+{
+
+  "name": "Drive",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Redirection"},
+      {"name": "Command", "description": "drive <alphabet/name/nobody> <alphabet/name>"},
+      {"name": "Description", "description": "Redirects all actions on the first target onto the second. Seen as visiting the second target. Does not notify either target."}
+    ]
+
+  }
+
+}

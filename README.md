@@ -1,3 +1,5 @@
+![Banner](https://github.com/Chokyotager/La-Cosa-Nostra/blob/master/assets/game-start.jpg?raw=true)
+
 # La Cosa Nostra
 **Bringing real-time Mafia to Discord.**
 
@@ -8,12 +10,10 @@ Alpha testers: Justin, Lia
 
 Beta testers: ShapeShifted, Les, Lia, Misode, Conjurer, Good Skele, Hex4Nova, Inffy
 
-Special thanks: Error, Fogalog, Inffy, Randium
+Special thanks: Error, Fogalog, Inffy, Randium, Sai Kurogetsu, Alisha
 
 ## Installation
-Change the items in the configuration folder.
+The Wiki provides an overview for the installation: https://github.com/Chokyotager/La-Cosa-Nostra/wiki
 
 ## Contact
 Discord: ChocoParrot#8925
-
-[I accept friend requests if there are no mutual servers]

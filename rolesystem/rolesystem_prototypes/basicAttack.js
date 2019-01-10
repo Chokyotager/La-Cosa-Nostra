@@ -2,13 +2,14 @@ module.exports = function (actionable, game, params, astral=false, broadcast_off
 
   var attacked = game.getPlayerByIdentifier(actionable.to);
 
+  game.execute("attacked", {attacker: actionable.from,
+    target: actionable.to,
+    priority: actionable.priority,
+    strength: 1,
+    reason: module.exports.reason,
+    secondary_reason: module.exports.secondary_reason});
+
   if (!astral) {
-    game.execute("attacked", {attacker: actionable.from,
-      target: actionable.to,
-      priority: actionable.priority,
-      strength: 1,
-      reason: module.exports.reason,
-      secondary_reason: module.exports.secondary_reason});
 
     game.execute("visit", {visitor: actionable.from,
       target: actionable.to,

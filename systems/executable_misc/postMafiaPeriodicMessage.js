@@ -6,7 +6,7 @@ module.exports = async function (game) {
 
     var channel = game.getChannel("mafia");
 
-    var mafia = game.exists(x => x.role["see-mafia-chat"] === true && x.isAlive());
+    var mafia = game.exists(x => x.see_mafia_chat === true && x.isAlive());
 
     if (mafia) {
       var message = await channel.send("~~                                              ~~    **" + game.getFormattedDay() + "**");

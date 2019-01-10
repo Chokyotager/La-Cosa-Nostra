@@ -1,0 +1,18 @@
+{
+
+  "name": "Power Inspect",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Investigative"},
+      {"name": "Command", "description": "powerinspect <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Gets a list of powers the target has, but not how many uses at the end of the cycle."}
+    ]
+
+  }
+
+}

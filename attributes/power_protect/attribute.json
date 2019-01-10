@@ -1,0 +1,18 @@
+{
+
+  "name": "Protect",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Protection"},
+      {"name": "Command", "description": "protect <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Prevents the target from being killed by a normal attack. Also cures them of poison (if applicable). May not be used on self."}
+    ]
+
+  }
+
+}

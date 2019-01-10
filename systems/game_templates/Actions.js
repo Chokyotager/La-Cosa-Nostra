@@ -32,7 +32,7 @@ module.exports = class {
 
     var allowed = ["cycle", "chat", "lynch", "nightkilled",
     "attacked", "killed", "visit", "roleblock", "postcycle",
-    "instant", "outvisit", "retrovisit", "retrocycle"];
+    "instant", "outvisit", "retrovisit", "retrocycle", "miscellaneous"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -66,6 +66,7 @@ module.exports = class {
     actionable.triggers = triggers;
 
     actionable.tags = actionable.tags || new Array();
+    actionable.meta = actionable.meta || new Object();
 
     if (actionable.from !== "*") {
       var from = this.game.getPlayer(actionable.from);
@@ -366,7 +367,7 @@ module.exports = class {
       var rerun = false;
 
       // Non-routine triggers
-      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit", "roleblock", "outvisit", "retrovisit"].includes(type)) {
+      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit", "roleblock", "outvisit", "retrovisit", "miscellaneous"].includes(type)) {
         var target = action.target || action.to;
 
         var check = params.target;

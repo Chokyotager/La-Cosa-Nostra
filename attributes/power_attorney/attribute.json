@@ -1,0 +1,18 @@
+{
+
+  "name": "Attorney",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Voting"},
+      {"name": "Command", "description": "attorney <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Prevents the target from being lynched in the trials the next day. The target is not notified as such - and votes still appear to count, but have no effect."}
+    ]
+
+  }
+
+}

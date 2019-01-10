@@ -1,0 +1,18 @@
+{
+
+  "name": "Deliver Kill",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Miscellaneous"},
+      {"name": "Command", "description": "deliverkill <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Gives the target a 1x Kill power."}
+    ]
+
+  }
+
+}

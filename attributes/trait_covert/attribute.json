@@ -1,0 +1,17 @@
+{
+
+  "name": "Covert",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "trait",
+
+    "display-field": [
+      {"name": "Category", "description": "Immunity"},
+      {"name": "Description", "description": "All actions appear astral and cannot be watched/tracked."}
+    ]
+
+  }
+
+}

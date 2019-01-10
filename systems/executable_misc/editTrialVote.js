@@ -54,7 +54,7 @@ module.exports = async function (game, ended=false) {
 
         displays.push("<@" + roles[i].id + "> (" + roles[i].countVotes() + ")" + names);
       } else {
-        displays.push("[" + roles[i].alphabet + " - dead, **" + roles[i].getDisplayRole() + "**]");
+        displays.push("[" + roles[i].alphabet + " - dead, **" + roles[i].getDisplayRole(false) + "**]");
       };
     };
 

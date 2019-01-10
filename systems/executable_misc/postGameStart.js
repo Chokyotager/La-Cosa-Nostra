@@ -22,7 +22,7 @@ module.exports = async function (game) {
   var post = guild.channels.find(x => x.name === config["channels"]["whisper-log"]);
 
   // Send the start message
-  var attachment = auxils.getAssetAttachment(config["assets"]["game-start"]);
+  var attachment = auxils.getAssetAttachment("game-start.jpg");
 
   var intro = await main.send(format(game, config["messages"]["game-start"]));
   var banner = await main.send(undefined, attachment);

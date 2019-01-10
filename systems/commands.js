@@ -126,7 +126,7 @@ for (var i = 0; i < attributes.length; i++) {
       if (main.role[key] === undefined) {
 
         // Framework function
-        main.role[key] = function (game, message, params) {
+        main.role[key] = function commandPlaceholder (game, message, params) {
           var user = message.author;
           var player = game.getPlayerById(user.id);
 
@@ -137,7 +137,7 @@ for (var i = 0; i < attributes.length; i++) {
 
           // Check properties
 
-          var properties = arguments.callee.properties;
+          var properties = commandPlaceholder.properties;
 
           var fails = new Array();
 

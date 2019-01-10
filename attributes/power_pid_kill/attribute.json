@@ -1,0 +1,18 @@
+{
+
+  "name": "PID Kill",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Lethal"},
+      {"name": "Command", "description": "pidkill <alphabet/name/nobody> [power1],[power2]..."},
+      {"name": "Description", "description": "If the user is able to list all the powers the target has (at least 60% accuracy), deals them an attack."}
+    ]
+
+  }
+
+}

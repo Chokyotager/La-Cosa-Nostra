@@ -308,7 +308,7 @@ module.exports = class {
       delete player.game;
       delete player.role;
 
-      var string = JSON.stringify(player);
+      var string = JSON.stringify(player, auxils.jsonInfinityCensor);
 
       // Saved by Discord ID
       fs.writeFileSync(__dirname + "/../../game_cache/players/" + id + ".save", encode(string));

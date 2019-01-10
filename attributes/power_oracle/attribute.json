@@ -1,0 +1,18 @@
+{
+
+  "name": "Oracle",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Investigative"},
+      {"name": "Command", "description": "oracle <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Reveals the role name of the target publicly if the user dies that night."}
+    ]
+
+  }
+
+}

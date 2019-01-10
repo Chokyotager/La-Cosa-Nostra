@@ -1,0 +1,18 @@
+{
+
+  "name": "Marshal",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Voting"},
+      {"name": "Command", "description": "marshal <on/off>"},
+      {"name": "Description", "description": "Increases the number of lynches available the next day by 1."}
+    ]
+
+  }
+
+}

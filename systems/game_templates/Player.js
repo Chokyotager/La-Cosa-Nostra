@@ -78,6 +78,7 @@ module.exports = class {
     this.id = id;
     this.alphabet = alphabet;
     this.role_identifier = role;
+    this.base_flavour_identifier = undefined;
 
     this.initial_role_identifier = [role];
 
@@ -112,8 +113,11 @@ module.exports = class {
     this.will = undefined;
 
     this.display_role = undefined;
+    this.display_secondary = undefined;
 
     this.instantiateRole();
+
+    this.see_mafia_chat = this.role["see-mafia-chat"];
 
     this.permanent_stats = {
       "basic-defense": 0,
@@ -228,11 +232,19 @@ module.exports = class {
 
   setPermanentStat (key, amount, modifier) {
 
-    if (modifier === undefined) {
-      modifier = (a, b) => a + b;
-    };
+    if (modifier === "set") {
 
-    var final = modifier(this.permanent_stats[key], amount);
+      var final = amount;
+
+    } else {
+
+      if (modifier === undefined) {
+        modifier = (a, b) => a + b;
+      };
+
+      var final = modifier(this.permanent_stats[key], amount);
+
+    };
 
     this.permanent_stats[key] = final;
 
@@ -357,6 +369,17 @@ module.exports = class {
       this.role.start(this);
     };
 
+    // Start attributes
+    for (var i = 0; i < this.attributes.length; i++) {
+
+      var attribute = attributes[this.attributes[i].identifier];
+
+      if (attribute.start) {
+        attribute.start(this);
+      };
+
+    };
+
     await this.postIntro();
     this.__routines();
 
@@ -384,7 +407,7 @@ module.exports = class {
       var display_extra = flavour.info["display-role-equivalent-on-death"];
 
       if (display_extra && flavour_role !== this.role["role-name"] && append_true_role) {
-        flavour_role += " (" + this.role["role-name"] + ")";
+        flavour_role += " (" + (this.display_secondary || this.role["role-name"]) + ")";
       };
     };
 
@@ -401,7 +424,7 @@ module.exports = class {
 
   getRole () {
     // Give true role
-    return this.role["role-name"];
+    return this.display_secondary || this.role["role-name"];
   }
 
   getInitialRole (append_true_role=true) {
@@ -414,7 +437,7 @@ module.exports = class {
     if (flavour && flavour_role) {
 
       if (flavour_role !== initial && append_true_role) {
-        flavour_role += " (" + initial + ")";
+        flavour_role += " (" + (this.display_secondary || initial) + ")";
       };
     };
 
@@ -487,7 +510,8 @@ module.exports = class {
       return null;
     };
 
-    var identifier = this.role_identifier;
+    // Base flavour identifier to override
+    var identifier = this.base_flavour_identifier || this.role_identifier;
 
     // Open identifier
     var current = flavour.roles[identifier];
@@ -584,13 +608,19 @@ module.exports = class {
 
   }
 
-  addAttribute (attribute, expiry=Infinity) {
+  addAttribute (attribute, expiry=Infinity, tags=new Object()) {
 
-    if (attributes[attribute].start !== undefined) {
-      attributes[attribute].start(this);
+    if (!attributes[attribute]) {
+      throw new Error("Invalid attribute identifier " + attribute + "!");
     };
 
-    this.attributes.push({identifier: attribute, expiry: expiry});
+    var addable = {identifier: attribute, expiry: expiry, tags: tags, attribute: attributes[attribute].attribute};
+
+    if (attributes[attribute].start && this.game) {
+      attributes[attribute].start(this, addable);
+    };
+
+    this.attributes.push(addable);
 
   }
 
@@ -682,6 +712,14 @@ module.exports = class {
 
   getDiscordUser (alphabet) {
     return this.game.client.users.get(this.id);
+  }
+
+  setBaseFlavourIdentifier (identifier) {
+    this.base_flavour_identifier = identifier;
+  }
+
+  setDisplaySecondary (identifier) {
+    this.display_secondary = identifier;
   }
 
 };

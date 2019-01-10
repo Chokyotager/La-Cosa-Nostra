@@ -1,0 +1,18 @@
+{
+
+  "name": "Crosshair",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Lethal"},
+      {"name": "Command", "description": "crosshair <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Primes a target. If the user is killed on any subsequent night for any reason, deals their target an unstoppable attack. May only have a maximum of 1 primed target at any time - re-using the action primes another target."}
+    ]
+
+  }
+
+}

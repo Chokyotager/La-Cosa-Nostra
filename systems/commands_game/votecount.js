@@ -55,8 +55,6 @@ module.exports = async function (game, message, params) {
         names = voting_against.length > 0 ? ": " + names : "";
 
         displays.push("**" + roles[i].getDisplayName() + "** (" + roles[i].countVotes() + ")" + names);
-      } else {
-        displays.push("[" + roles[i].alphabet + " - dead, **" + roles[i].getDisplayRole() + "**]");
       };
     };
 

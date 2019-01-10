@@ -1,0 +1,18 @@
+{
+
+  "name": "Indoctrinate",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "power",
+
+    "display-field": [
+      {"name": "Category", "description": "Cult / Mentorship"},
+      {"name": "Command", "description": "indoctrinate <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Recruits members into the Cult. Permanently changes their alignment. If there is already one mentee in the Cult, will deal an attack on the target instead."}
+    ]
+
+  }
+
+}

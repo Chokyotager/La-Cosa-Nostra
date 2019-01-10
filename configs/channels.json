@@ -5,7 +5,6 @@
     "main": "city-hall",
     "whisper-log": "billboard",
     "roles": "yellow-pages",
-    "verbose": "_",
 
     "welcome-channel": "general"
   },

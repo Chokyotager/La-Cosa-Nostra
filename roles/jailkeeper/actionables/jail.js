@@ -5,12 +5,6 @@ module.exports = function (actionable, game, params) {
   var target = game.getPlayerByIdentifier(actionable.to);
   var alien = game.getPlayerByIdentifier(actionable.from);
 
-  // Considered as visit
-  game.execute("visit", {visitor: actionable.from,
-    target: actionable.to,
-    priority: actionable.priority,
-    reason: "Jailkeeper-visit"});
-
   rs.prototypes.basicKidnap.reason = "abducted";
   var outcome =rs.prototypes.basicKidnap(...arguments);
 

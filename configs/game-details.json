@@ -10,7 +10,7 @@
     },
 
     "town": {
-      "night-chat": true
+      "night-chat": false
     },
 
     "day-zero": true,
@@ -20,7 +20,7 @@
       "top-voted-lynch": true,
       "top-voted-lynch-minimum-votes": 0,
 
-      "tied-random": true,
+      "tied-random": false,
 
       "allow-hammer": true,
       "no-lynch-option": true
@@ -65,9 +65,9 @@
   },
 
   "time": {
-    "timezone": 0,
-    "day": 12,
-    "night": 12
+    "timezone": 9,
+    "day": 29,
+    "night": 20
   },
 
   "message-checks": {

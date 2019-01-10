@@ -104,13 +104,13 @@
 
   "Alignment": {"description": "Refers to a players' faction. An alignment is usually Town, Mafia, neutral, or Cult."},
 
-  "Read": {"description": "Refers to an investigation."},
+  "Read": {"description": "Refers to the constructed profile of a said person, often to identify if they are anti-Town."},
 
   "VfR": {"term": "Vote for Role",
           "description": "Refers to when living players vote to lynch a player in an attempt to get role information from them."},
 
   "FtC": {"term": "Follow the Cop",
-          "description": "A strategy in games where players lynch whoever claims cop, and a doctor protects the cop at night, and lynch the cop if the previous lynch was bad. This forces the Mafia to find out who the Doctor is and attack them."},
+          "description": "A strategy in games where players follow the direction given by a cop, and a doctor protects the cop at night, and lynch the cop if the previous lynch was bad. This forces the Mafia to find out who the Doctor is and attack them."},
 
   "Massclaim": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town. (Same as \"rolecall\")"},
 
@@ -144,6 +144,9 @@
   "Perjury": {"description": "Refers to when a member of the Town lies to advance discussion, usually with the thought of helping the Town."},
 
   "Good Skele": {"description": "Refers to retracting on a vote a short while before a deadline to prevent someone from being lynched.",
-                 "example": "Skele pulled a Good Skele on Corbin to prevent his Mafia teammate from dying due to a wagon."}
+                 "example": "Skele pulled a Good Skele on Corbin to prevent his Mafia teammate from dying due to a wagon."},
+
+  "MPD": {"term": "Mass Panic Debate",
+          "description": "Used to refer to continous debate between players on multiple perspectives at the same time, usually going on for hours."}
 
 }
