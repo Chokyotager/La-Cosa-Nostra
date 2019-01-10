@@ -24,7 +24,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && x.identifier === "two_shot_vigilante/shoot");
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":gun: You have decided not to shoot anyone tonight.");
     return null;
   };

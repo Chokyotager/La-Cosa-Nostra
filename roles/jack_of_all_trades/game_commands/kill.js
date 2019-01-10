@@ -25,7 +25,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && x.identifier === "jack_of_all_trades/kill");
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":four_leaf_clover: You have decided not to kill anyone tonight.");
     return null;
   };

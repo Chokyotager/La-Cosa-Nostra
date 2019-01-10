@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && x.identifier === "epi_plaguebearer/infect");
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":key2: You have decided not to infect anyone tonight.");
     return null;
   };

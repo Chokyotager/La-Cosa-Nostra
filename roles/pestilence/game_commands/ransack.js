@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "pestilence/ransack" || x.identifier === "pestilence/self_ransack"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":skull: You have decided not to ransack anyone nor stay at home tonight.");
     return null;
   };

@@ -34,7 +34,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "jester/haunt" || x.identifier === "jester/random_haunt"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":black_joker: You have decided not to haunt anyone. A player who has lynched you will be haunted at random.");
 
     game.addAction("jester/random_haunt", ["cycle"], {

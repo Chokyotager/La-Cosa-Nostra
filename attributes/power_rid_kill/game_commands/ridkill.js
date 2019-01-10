@@ -21,7 +21,7 @@ module.exports = function (game, message, params) {
 
   rs.modular.clearModuleActions(game, from.identifier, "power");
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":bow_and_arrow: You have decided not to RID kill anyone tonight.");
     return null;
   };

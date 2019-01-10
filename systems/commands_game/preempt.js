@@ -68,7 +68,7 @@ module.exports = async function (game, message, params) {
 
     var current = game.getPlayerMatch(params[i]);
 
-    if (current.score > 0.7 || !current.player.isAlive()) {
+    if (current.score < 0.7 || !current.player.isAlive()) {
       fails.push("`" + params[i] + "`");
       continue;
     };

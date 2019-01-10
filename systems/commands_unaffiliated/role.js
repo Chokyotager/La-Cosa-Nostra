@@ -21,16 +21,16 @@ module.exports = async function (message, params, config) {
   var distances = new Array();
   for (var i = 0; i < roles.length; i++) {
 
-    var distance = auxils.levenshteinDistance(roles[i].toLowerCase(), selected.toLowerCase()) / roles[i].length;
+    var distance = auxils.hybridisedStringComparison(selected.toLowerCase(), roles[i].toLowerCase());
     distances.push(distance);
 
   };
 
-  var best_match_index = distances.indexOf(Math.min.apply(null, distances));
+  var best_match_index = distances.indexOf(Math.max(...distances));
 
   var score = distances[best_match_index];
 
-  if (score > 0.6) {
+  if (score < 0.7) {
     await message.channel.send(":x: I cannot find that role!");
     return null;
   };

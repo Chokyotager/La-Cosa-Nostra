@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && x.identifier === "alien/probe");
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":alien: You have decided not to probe anyone tonight.");
     return null;
   };

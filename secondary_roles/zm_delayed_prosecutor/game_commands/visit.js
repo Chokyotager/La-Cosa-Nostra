@@ -20,7 +20,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "zm_delayed_prosecutor/visit" || x.identifier === "zm_delayed_prosecutor/random_visit"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":house_with_garden: You have decided not to visit anyone. A random player will be chosen and visited.");
 
     game.addAction("zm_delayed_prosecutor/random_visit", ["cycle"], {

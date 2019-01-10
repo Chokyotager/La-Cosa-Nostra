@@ -10,7 +10,7 @@ module.exports = function (game, message, params) {
   // Run checks, etc
 
   var from = game.getPlayerById(message.author.id);
-  
+
   if (from.misc.cupid_matches < 1) {
     message.channel.send(":x: You have already used up all your matches.");
     return null;
@@ -25,7 +25,7 @@ module.exports = function (game, message, params) {
 
   var one = game.getPlayerMatch(params[0]);
 
-  if (one.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (one.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":hearts: You have decided not to match anyone tonight.");
     return null;
   };
@@ -39,7 +39,7 @@ module.exports = function (game, message, params) {
 
   var two = game.getPlayerMatch(params[1]);
 
-  if (two.score > 0.7) {
+  if (two.score < 0.7) {
     message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "match <alphabet/name/nobody> <alphabet/name>` instead!");
     return null;
   };

@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   rs.modular.clearModuleActions(game, from.identifier, "power");
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":scales: You have decided not to prevent anyone from being lynched tomorrow.");
     return null;
   };

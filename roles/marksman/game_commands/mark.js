@@ -20,7 +20,7 @@ module.exports = function (game, message, params) {
 
   var prot = game.getPlayerMatch(params[0]);
 
-  if (prot.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (prot.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":round_pushpin: You have decided not to mark anyone tonight.");
     return null;
   };
@@ -34,7 +34,7 @@ module.exports = function (game, message, params) {
 
   var target = game.getPlayerMatch(params[1]);
 
-  if (target.score > 0.7) {
+  if (target.score < 0.7) {
     message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "mark <alphabet/name/nobody> <alphabet/name>` instead!");
     return null;
   };

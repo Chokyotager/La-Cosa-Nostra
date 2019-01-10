@@ -24,7 +24,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && x.identifier === "apothecarist/poison");
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":herb: You have decided not to poison anyone tonight.");
     return null;
   };

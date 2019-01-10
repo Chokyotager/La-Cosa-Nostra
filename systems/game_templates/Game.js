@@ -1336,8 +1336,8 @@ module.exports = class {
         // Calculate Levenshtein Distance
         // Ratio'd
 
-        var s_username = auxils.levenshteinDistance(name.toLowerCase(), username.toLowerCase()) / username.length;
-        var s_nickname = auxils.levenshteinDistance(name.toLowerCase(), nickname.toLowerCase()) / nickname.length;
+        var s_username = auxils.hybridisedStringComparison(name.toLowerCase(), username.toLowerCase());
+        var s_nickname = auxils.hybridisedStringComparison(name.toLowerCase(), nickname.toLowerCase());
 
         var distance = Math.min(s_username, s_nickname);
         distances.push(distance);

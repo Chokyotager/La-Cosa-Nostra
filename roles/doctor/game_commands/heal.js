@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "doctor/doc_protect" || x.identifier === "doctor/doc_protect_self"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":syringe: You have decided to protect nobody tonight.");
     return null;
   };

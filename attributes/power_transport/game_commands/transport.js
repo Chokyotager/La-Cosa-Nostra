@@ -20,7 +20,7 @@ module.exports = function (game, message, params) {
 
   var player1 = game.getPlayerMatch(params[0]);
 
-  if (player1.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (player1.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":twisted_rightwards_arrows: You have decided not to transport anyone tonight.");
     return null;
   };
@@ -34,7 +34,7 @@ module.exports = function (game, message, params) {
 
   var player2 = game.getPlayerMatch(params[1]);
 
-  if (player2.score > 0.7) {
+  if (player2.score < 0.7) {
     message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "transport <alphabet/name/nobody> <alphabet/name>` instead!");
     return null;
   };

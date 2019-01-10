@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "epi_escort/roleblock" || x.identifier === "epi_escort/random_roleblock"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":wine_glass: You have decided not to roleblock anyone tonight. A random player will be chosen and roleblocked.");
 
     game.addAction("epi_escort/random_roleblock", ["cycle"], {

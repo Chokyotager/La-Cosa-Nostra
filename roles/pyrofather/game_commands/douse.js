@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "pyrofather/douse_vote" || x.identifier === "pyrofather/ignite_vote"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":oil: You have decided not to douse nor ignite tonight.");
     return null;
   };

@@ -28,7 +28,7 @@ module.exports = async function (game, message, params) {
 
   var player = game.getPlayerMatch(target);
 
-  if (player.score > 0.7) {
+  if (player.score < 0.7) {
     // Disallow
     await message.channel.send(":x: I cannot find that player!");
     return null;

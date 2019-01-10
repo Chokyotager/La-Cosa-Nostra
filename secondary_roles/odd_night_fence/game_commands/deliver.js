@@ -24,7 +24,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "odd_night_fence/delivery" || x.identifier === "odd_night_fence/random_delivery"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":mailbox_closed: You have decided not to deliver a gun to anyone. A random player will be chosen instead.");
 
     game.addAction("odd_night_fence/random_delivery", ["cycle"], {

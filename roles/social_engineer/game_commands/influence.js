@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
 
   actions.delete(x => x.from === from.identifier && (x.identifier === "social_engineer/influence" || x.identifier === "social_engineer/block" || x.identifier === "social_engineer/no_action"));
 
-  if (to.score > 0.7 || params[0].toLowerCase() === "nobody") {
+  if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":ballot_box: You have decided not to block or influence the vote of anyone tonight.");
 
     game.addAction("social_engineer/no_action", ["cycle"], {
