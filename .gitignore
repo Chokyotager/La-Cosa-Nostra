@@ -110,8 +110,11 @@ venv.bak/
 .DS_Store
 
 # Save
+data/
 *.save
 
 configuration.json
+expansions/
+self/
 
 meta/
