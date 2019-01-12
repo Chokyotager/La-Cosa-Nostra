@@ -1352,7 +1352,7 @@ module.exports = class {
 
     } else {
 
-      var score = -1;
+      var score = Infinity;
 
     };
 
