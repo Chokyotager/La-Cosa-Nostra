@@ -13,8 +13,8 @@ var rules = new Array();
 // Add expansions
 for (var i = 0; i < expansions.length; i++) {
 
-  scripts = scripts.concat(expansions[i].additions.win_conditions.map(x => expansions[i].identifier + "/" + x));
-  rules = rules.concat(expansions[i].setup.overrides.win_conditions);
+  scripts = scripts.concat(expansions[i].additions.role_win_conditions.map(x => expansions[i].identifier + "/" + x));
+  rules = rules.concat(expansions[i].setup.overrides.role_win_conditions);
 
 };
 
@@ -33,7 +33,7 @@ for (var i = 0; i < scripts.length; i++) {
 
   } else {
 
-    var directory = __dirname + "/../expansions/" + expansion + "/role_win_conditions/" + script;
+    var directory = __dirname + "/../../expansions/" + expansion + "/role_win_conditions/" + script;
 
   };
 

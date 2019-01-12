@@ -37,7 +37,7 @@ for (var i = 0; i < roles.length; i++) {
 
   } else {
 
-    var directory = __dirname + "/../expansions/" + expansion + "/roles/" + role;
+    var directory = __dirname + "/../../expansions/" + expansion + "/roles/" + role;
 
   };
 

@@ -33,7 +33,7 @@ for (var i = 0; i < attributes.length; i++) {
 
   } else {
 
-    var directory = __dirname + "/../expansions/" + expansion + "/attributes/" + attribute;
+    var directory = __dirname + "/../../expansions/" + expansion + "/attributes/" + attribute;
 
   };
 

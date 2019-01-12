@@ -43,7 +43,7 @@ for (var i = 0; i < flavours.length; i++) {
 
   } else {
 
-    var directory = __dirname + "/../expansions/" + expansion + "/flavours/" + flavour;
+    var directory = __dirname + "/../../expansions/" + expansion + "/flavours/" + flavour;
 
   };
 

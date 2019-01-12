@@ -2,6 +2,10 @@
 
 module.exports = function (sample, rules) {
 
+  if (!sample || !rules) {
+    return sample;
+  };
+
   var final = Array.from(sample);
 
   /*
