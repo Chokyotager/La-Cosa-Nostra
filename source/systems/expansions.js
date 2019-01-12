@@ -3,7 +3,7 @@ var config = auxils.config_handler();
 
 var fs = require("fs");
 
-var expansions_dir = __dirname + "/../expansions/";
+var expansions_dir = __dirname + "/../../expansions/";
 var expansions = getExpansions(config.playing.expansions);
 
 module.exports = expansions;

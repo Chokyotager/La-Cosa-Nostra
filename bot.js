@@ -2,11 +2,13 @@ var Discord = require("discord.js");
 var client = new Discord.Client();
 var fs = require("fs");
 
-var auxils = require("./systems/auxils.js");
+var lcn = require("./source/lcn.js");
+
+var auxils = lcn.auxils;
+var commands = lcn.commands;
+var game = lcn.game;
 
 var config = auxils.config_handler();
-var commands = require("./systems/commands.js");
-var game = require("./systems/game.js");
 
 client.options.disableEveryone = true;
 
@@ -18,7 +20,7 @@ client.on("ready", function () {
 
   client.user.setPresence({
     status: "online",
-    game: {name: "Bluerose LCN v0.1", type: "PLAYING"}
+    game: {name: "Foxgloves LCN v0.1", type: "PLAYING"}
   });
 
   if (config["automatically-load-saves"]) {

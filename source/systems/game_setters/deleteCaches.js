@@ -9,15 +9,22 @@ module.exports = function (client, config) {
 
   var current_time = new Date();
 
-  var archive = __dirname + "/../../archive/";
+  var data = __dirname + "/../../../data";
+
+  if (!fs.existsSync(data)) {
+    console.log("[Routine] Made Data directory because it didn't exist.");
+    fs.mkdirSync(data);
+  };
+
+  var archive = __dirname + "/../../../data/archive/";
 
   if (!fs.existsSync(archive)) {
     console.log("[Routine] Made Archive directory because it didn't exist.");
     fs.mkdirSync(archive);
   };
 
-  if (fs.existsSync(__dirname + "/../../game_cache")) {
-    fs.renameSync(__dirname + "/../../game_cache", archive + "/game_cache_" + current_time.getTime());
+  if (fs.existsSync(__dirname + "/../../../data/game_cache")) {
+    fs.renameSync(__dirname + "/../../../data/game_cache", archive + "/game_cache_" + current_time.getTime());
     console.log("Deleted all caches.");
   };
 
