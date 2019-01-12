@@ -1,6 +1,7 @@
 {
   "playing": {
     "players": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26"],
+
     "roles": [
 
               {"identifier": "modular_mafia", "display_secondary": "Godfather", "flavour_identifier": "mx_1", "attributes": [{"identifier": "power_pid_kill", "tags": {"uses": "Infinity"}}, {"identifier": "power_attorney", "tags": {"uses": 1}}, {"identifier": "power_kill", "tags": {"uses": 1}}, {"identifier": "trait_power_inspect_immunity"}, {"identifier": "trait_power_manipulation_immunity"}, {"identifier": "modular_mafia_promotion"}]},
@@ -33,7 +34,10 @@
               {"identifier": "modular_serial_killer", "display_secondary": "Serial Killer", "flavour_identifier": "nx_3", "attributes": [{"identifier": "power_rid_kill", "tags": {"uses": "Infinity"}}, {"identifier": "power_investigate", "tags": {"uses": 2}}, {"identifier": "trait_power_inspect_immunity"}, {"identifier": "trait_power_manipulation_immunity"}]}
 
              ],
+
+    "expansions": [],
     "shuffle": false,
     "flavour": "bluerose"
+
   }
 }

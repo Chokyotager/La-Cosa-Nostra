@@ -2,6 +2,9 @@
 
 var fs = require("fs");
 
+var expansions = require("./expansions.js");
+var auxils = require("./auxils.js");
+
 var ret = new Object();
 
 var flavours_dir = __dirname + "/../flavours/";
@@ -13,16 +16,40 @@ if (!fs.existsSync(flavours_dir)) {
 
 };
 
-var flavours = fs.readdirSync(flavours_dir);
+var flavours = fs.readdirSync(flavours_dir).map(x => "lcn/" + x);
+
+var rules = new Array();
+
+// Add expansions
+for (var i = 0; i < expansions.length; i++) {
+
+  flavours = flavours.concat(expansions[i].additions.flavours.map(x => expansions[i].identifier + "/" + x));
+  rules = rules.concat(expansions[i].setup.overrides.flavours);
+
+};
+
+flavours = auxils.ruleFilter(flavours, rules);
 
 for (var i = 0; i < flavours.length; i++) {
 
-  if (!fs.lstatSync(flavours_dir + flavours[i]).isDirectory()) {
-    continue;
+  var flavour_info = flavours[i].split("/");
+
+  var expansion = flavour_info[0];
+  var flavour = flavour_info[1];
+
+  if (expansion === "lcn") {
+
+    var directory = flavours_dir + "/" + flavour;
+
+  } else {
+
+    var directory = __dirname + "/../expansions/" + expansion + "/flavours/" + flavour;
+
   };
 
-  var flavour = flavours[i];
-  var directory = flavours_dir + flavour;
+  if (!fs.lstatSync(directory).isDirectory()) {
+    continue;
+  };
 
   // Scan the system
   var info = JSON.parse(fs.readFileSync(directory + "/info.json"));

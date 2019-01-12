@@ -1,5 +1,5 @@
 var auxils = require("../auxils.js");
-var role_info = require("../role_info.js");
+var role_info = require("../roles.js");
 var win_conditions = require("../win_conditions.js");
 
 var Discord = require("discord.js");
@@ -21,7 +21,7 @@ module.exports = async function (message, params, config) {
   var distances = new Array();
   for (var i = 0; i < roles.length; i++) {
 
-    var distance = auxils.hybridisedStringComparison(selected.toLowerCase(), roles[i].toLowerCase());
+    var distance = auxils.hybridisedStringComparison(selected.toLowerCase(), role_info[roles[i]]["role"]["role-name"].toLowerCase());
     distances.push(distance);
 
   };
@@ -35,15 +35,15 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
-  var role_name = roles[best_match_index];
-  var role = role_info[role_name];
+  var role_identifier = roles[best_match_index];
+  var role = role_info[role_identifier];
 
   if (["info"].includes(action)) {
 
     var embed = new Discord.RichEmbed();
 
     embed.setColor("BLUE");
-    embed.setTitle(role_name);
+    embed.setTitle(role.role["role-name"]);
     embed.setDescription("*" + cpl(role.role.alignment) + "-" + cpl(role.role.class) + "*");
 
     // Add role information
@@ -101,7 +101,7 @@ module.exports = async function (message, params, config) {
 
     var send = ":pencil: Description for **{;role}**:\n```fix\n{;description}```";
 
-    send = send.replace(new RegExp("{;role}", "g"), role_name);
+    send = send.replace(new RegExp("{;role}", "g"), role.role["role-name"]);
     send = send.replace(new RegExp("{;description}", "g"), role.description);
 
     await message.channel.send(send);
