@@ -55,7 +55,7 @@ function cycle (directory, accept=".js") {
 
     // Recursively check
     if (fs.lstatSync(lists[i]).isDirectory()) {
-      ret.push(cycle(lists[i]));
+      ret = ret.concat(cycle(lists[i]));
     } else if (lists[i].endsWith(accept)) {
       ret.push(lists[i]);
     };
