@@ -44,6 +44,8 @@ module.exports = class {
     this.steps = 0;
     this.state = "pre-game";
 
+    this.flavour_identifier = this.config["playing"]["flavour"];
+
     this.voting_halted = false;
 
     // Timezone is GMT relative
@@ -1565,7 +1567,7 @@ module.exports = class {
   getGameFlavour () {
     var config = this.config;
 
-    var flavour_identifier = config["playing"]["flavour"];
+    var flavour_identifier = this.flavour_identifier;
 
     if (!flavour_identifier) {
       // No flavour

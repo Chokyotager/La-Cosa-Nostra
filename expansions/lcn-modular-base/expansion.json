@@ -1,0 +1,24 @@
+{
+
+  "name": "LCN Modular Base Expansion",
+  "description": "Adds default modular roles",
+
+  "link": null,
+
+  "authors": ["ChocoParrot", "Alisha"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}

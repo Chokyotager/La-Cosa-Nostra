@@ -8,6 +8,7 @@ var setPermissions = require("./setPermissions.js");
 var nicknameAndRole = require("./nicknameAndRole.js");
 var deleteCaches = require("./deleteCaches.js");
 var setRolePermissions = require("./setRolePermissions.js");
+var configModifier = require("./configModifier.js");
 
 module.exports = async function (client, config) {
 
@@ -29,6 +30,8 @@ module.exports = async function (client, config) {
 
     console.log("Destroyed previous Timer instance.");
   };
+
+  config = configModifier(config);
 
   await deletePrivate(client, config);
 
