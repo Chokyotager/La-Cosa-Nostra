@@ -8,7 +8,7 @@ var auxils = lcn.auxils;
 var commands = lcn.commands;
 var game = lcn.game;
 
-var config = auxils.config_handler();
+var config = lcn.config;
 
 client.options.disableEveryone = true;
 

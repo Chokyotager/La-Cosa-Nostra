@@ -17,7 +17,7 @@
     "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game.",
 
 
-    "welcome-dm-message": ":exclamation: **HELLO! WELCOME TO LA COSA NOSTRA!**\n\n**HOW TO PLAY:**\nGuides and rules to the Mafia games hosted can be found under the information category.\n\n**HOW TO JOIN:**\nTo play a game of Mafia - signups are under the #signups channel.\n\n**I NEED HELP, WHO DO I APPROACH?**\nShould you be in doubt, ask the hosts!\n\nHave fun, and argue away!",
+    "welcome-dm-message": null,
     "welcome-message": ":wave: Hi {;member}! Welcome to La Cosa Nostra!"
 
   }

@@ -46,6 +46,10 @@ function getExpansions (identifiers, scanned=new Array()) {
                 flavours: attemptReaddir(directory + "/flavours"),
                 role_win_conditions: attemptReaddir(directory + "/role_win_conditions"),
                 attributes: attemptReaddir(directory + "/attributes")
+              },
+              scripts: {
+                start: attemptRequiring(directory + "/scripts/start.js"),
+                game_assign: attemptRequiring(directory + "/scripts/game_assign.js")
               }});
 
   };
@@ -61,5 +65,16 @@ function attemptReaddir (directory) {
   };
 
   return fs.readdirSync(directory);
+
+};
+
+function attemptRequiring (directory) {
+  var available = fs.existsSync(directory);
+
+  if (available) {
+    return require(directory);
+  } else {
+    return undefined;
+  };
 
 };
