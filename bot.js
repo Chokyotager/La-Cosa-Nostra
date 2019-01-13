@@ -32,7 +32,7 @@ client.on("ready", function () {
   };
 
   var total_load_time = process.uptime() * 1000;
-  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.setup.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.commands.role).length, load_time, login_time - load_time, total_load_time - login_time, total_load_time];
+  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.expansion.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.commands.role).length, load_time, login_time - load_time, total_load_time - login_time, total_load_time];
   console.log("\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s command handle(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms;\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
 
 });

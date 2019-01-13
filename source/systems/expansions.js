@@ -34,13 +34,13 @@ function getExpansions (identifiers, scanned=new Array()) {
     };
 
     // Read information JSON
-    var setup = JSON.parse(fs.readFileSync(directory + "/setup.json"));
+    var expansion = JSON.parse(fs.readFileSync(directory + "/expansion.json"));
 
-    ret = ret.concat(getExpansions(setup.dependencies, ret));
+    ret = ret.concat(getExpansions(expansion.dependencies, ret));
 
     // Add information
     ret.push({identifier: identifier,
-              setup: setup,
+              expansion: expansion,
               additions: {
                 roles: attemptReaddir(directory + "/roles"),
                 flavours: attemptReaddir(directory + "/flavours"),

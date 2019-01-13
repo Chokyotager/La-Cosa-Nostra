@@ -18,7 +18,7 @@ var rules = new Array();
 for (var i = 0; i < expansions.length; i++) {
 
   roles = roles.concat(expansions[i].additions.roles.map(x => expansions[i].identifier + "/" + x));
-  rules = rules.concat(expansions[i].setup.overrides.roles);
+  rules = rules.concat(expansions[i].expansion.overrides.roles);
 
 };
 

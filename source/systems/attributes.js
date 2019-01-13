@@ -12,7 +12,7 @@ var rules = new Array();
 for (var i = 0; i < expansions.length; i++) {
 
   attributes = attributes.concat(expansions[i].additions.attributes.map(x => expansions[i].identifier + "/" + x));
-  rules = rules.concat(expansions[i].setup.overrides.attributes);
+  rules = rules.concat(expansions[i].expansion.overrides.attributes);
 
 };
 

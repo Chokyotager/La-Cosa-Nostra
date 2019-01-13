@@ -24,7 +24,7 @@ var rules = new Array();
 for (var i = 0; i < expansions.length; i++) {
 
   flavours = flavours.concat(expansions[i].additions.flavours.map(x => expansions[i].identifier + "/" + x));
-  rules = rules.concat(expansions[i].setup.overrides.flavours);
+  rules = rules.concat(expansions[i].expansion.overrides.flavours);
 
 };
 
