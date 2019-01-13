@@ -150,7 +150,7 @@ client.on("guildMemberAdd", function (member) {
 // Autoload
 function autoload () {
   // Check for game save
-  var saved = fs.existsSync(__dirname + "/game_cache/game.save");
+  var saved = fs.existsSync(__dirname + "/data/game_cache/game.save");
 
   if (!saved) {
     console.log("No game save found.");
