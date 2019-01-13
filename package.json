@@ -1,0 +1,25 @@
+{
+  "name": "La Cosa Nostra",
+  "description": "",
+  "version": "2.0.0",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chokyotager/La-Cosa-Nostra"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chokyotager/La-Cosa-Nostra/issues"
+  },
+  "homepage": "https://github.com/Chokyotager/La-Cosa-Nostra",
+  "dependencies": {
+    "discord.js": "~11.4.2",
+    "request": "~2.88.0",
+    "request-promise": "4.2.2"
+  }
+}
