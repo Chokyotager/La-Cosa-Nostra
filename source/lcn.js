@@ -11,3 +11,4 @@ module.exports.flavours = require("./systems/flavours.js");
 module.exports.expansions = require("./systems/expansions.js");
 module.exports.win_conditions = require("./systems/win_conditions.js");
 module.exports.actionables = require("./systems/actionables.js");
+module.exports.roles = require("./systems/roles.js");

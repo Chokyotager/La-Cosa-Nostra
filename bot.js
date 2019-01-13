@@ -12,8 +12,12 @@ var config = auxils.config_handler();
 
 client.options.disableEveryone = true;
 
+var load_time = process.uptime() * 1000;
+
 client.on("ready", function () {
-  console.log("La Cosa Nostra ready.");
+  console.log("Foxgloves La Cosa Nostra ready.");
+
+  var login_time = process.uptime() * 1000;
 
   auxils.readline(client, config, commands);
   auxils.eventhandler(client, config);
@@ -26,6 +30,10 @@ client.on("ready", function () {
   if (config["automatically-load-saves"]) {
     autoload();
   };
+
+  var total_load_time = process.uptime() * 1000;
+  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.setup.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.commands.role).length, load_time, login_time - load_time, total_load_time - login_time, total_load_time];
+  console.log("\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s command handle(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms;\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
 
 });
 
