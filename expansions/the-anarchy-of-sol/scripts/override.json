@@ -35,13 +35,13 @@
     "lynch-ratio-floored": 0.0454,
 
     "lynch": {
-      "top-voted-lynch": true,
+      "top-voted-lynch": false,
       "top-voted-lynch-minimum-votes": 0,
 
       "tied-random": false,
 
-      "allow-hammer": true,
-      "no-lynch-option": true
+      "allow-hammer": false,
+      "no-lynch-option": false
     },
 
     "minimum-lynch-votes": 2,
