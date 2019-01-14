@@ -1,0 +1,36 @@
+{
+
+  "name": "Zodiac Mafia",
+  "type": "Setup",
+  "description": "Revolving around the Chinese Zodiac animals, this originally closed game involves the battle of many roles.",
+
+  "link": "https://docs.google.com/document/d/10cZqkVqaOl_eFZIZveAeBnvfroxvCb6PxdrMyH7MKf8/edit?usp=sharing",
+
+  "authors": ["ChocoParrot", "Jordan (Jivvi)"],
+
+  "overrides": {
+
+    "flavours": [
+      "+zodiac-mafia/*"
+    ],
+
+    "role_win_conditions": [],
+
+    "roles": [
+      "-lcn/*",
+      "*/pyromaniac",
+      "*/marksman",
+      "*/investigator",
+      "*/escort",
+      "*/odd_night_fence",
+      "*/plaguebearer",
+      "*/pestilence"
+    ],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}

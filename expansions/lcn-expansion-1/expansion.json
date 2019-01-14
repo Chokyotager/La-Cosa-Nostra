@@ -1,7 +1,8 @@
 {
 
   "name": "LCN Expansion Pack 1",
-  "description": "Adds 10 new roles",
+  "type": "Expansion",
+  "description": "Adds 10 new roles.",
 
   "link": null,
 

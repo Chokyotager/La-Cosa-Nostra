@@ -1,0 +1,29 @@
+{
+  "role-name": "1-shot Strongman",
+
+  "alignment": "mafia",
+  "class": "killing",
+
+  "see-mafia-chat": true,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 1,
+    "detection-immunity": 0,
+    "control-immunity": 1,
+		"redirection-immunity": 1,
+		"kidnap-immunity": 0,
+    "priority": 6,
+    "vote-offset": 0,
+		"vote-magnitude": 1
+  },
+
+  "investigation": ["Strongman"],
+  "secondary-roles": null,
+
+  "tags": [],
+
+  "reveal-role-on-interrogation": false,
+
+  "win-condition": "mafia"
+}

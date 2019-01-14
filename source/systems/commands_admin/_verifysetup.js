@@ -2,7 +2,11 @@ var auxils = require("../auxils.js");
 var crypto = require("crypto");
 var flavours = require("../flavours.js");
 
+var configModifier = require("../game_setters/configModifier.js");
+
 module.exports = async function (message, params, config) {
+
+  config = configModifier(config);
 
   var players = config.playing.players;
   var guild = message.client.guilds.find(x => x.id === config["server-id"]);

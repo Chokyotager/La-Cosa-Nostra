@@ -1,7 +1,8 @@
 {
 
   "name": "LCN Modular Base Expansion",
-  "description": "Adds default modular roles",
+  "type": "Base",
+  "description": "Adds default modular roles.",
 
   "link": null,
 

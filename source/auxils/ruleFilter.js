@@ -41,7 +41,7 @@ module.exports = function (sample, rules) {
             continue;
           };
 
-          final.push(include);
+          final = final.concat(include);
 
         };
         break;

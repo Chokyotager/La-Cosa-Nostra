@@ -1,0 +1,12 @@
+{
+
+  "roles": ["pyrofather", "pyroconsort", "zm_mafioso",
+              "pyromaniac", "marksman", "odd_night_tracker",
+              "even_night_sheriff", "zm_firefighter_1", "investigator",
+              "compulsive_visitor", "escort", "zm_delayed_prosecutor",
+              "compulsive_visitor", "zm_firefighter_2", "odd_night_fence",
+              "plaguebearer"],
+
+  "flavour": "zodiac"
+
+}

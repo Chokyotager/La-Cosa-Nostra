@@ -114,7 +114,6 @@ data/
 *.save
 
 configuration.json
-expansions/
 self/
 
 meta/

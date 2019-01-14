@@ -14,7 +14,7 @@ module.exports = function replace (j1, j2) {
     };
 
     // Substitution
-    if (typeof item === "object") {
+    if (typeof item === "object" && !(Symbol.iterator in Object(item))) {
 
       ret[key] = replace(j1[key], item);
       continue;
