@@ -40,7 +40,7 @@ module.exports = async function (player, stagger=800) {
   if (role.role_card !== undefined && flavour_info["show-vanilla-banner"]) {
 
     // Role card available
-    var attachment = new Discord.Attachment(role.role_card, "role_card.png");
+    var attachment = new Discord.Attachment(await role.role_card, "role_card.png");
 
     // Post
     var message = await channel.send(undefined, attachment);
