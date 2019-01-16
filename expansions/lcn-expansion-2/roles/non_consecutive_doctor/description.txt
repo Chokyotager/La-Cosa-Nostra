@@ -1,0 +1,5 @@
+You are a visiting physician skilled in trauma care.
+
+You may choose a target on any night, including yourself. You will give them a Powerful defense.
+
+You may not choose the same person twice in a row.

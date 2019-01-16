@@ -1,0 +1,12 @@
+{
+
+  "thumbnail": "https://i.pinimg.com/originals/b6/d7/97/b6d797c1cf1899b2bd6788de2368b49b.jpg",
+
+  "abilities": ["Choose to attach a bomb on a player every night",
+                "Bomb comes with a noun, if the target says the noun in any chat during the day, the bomb will explode immediately",
+                "The bomb will deactivate the next night"],
+
+  "attributes": ["Target does not know that a bomb has been attached to them",
+                "However, they are notified when the bomb is deactivated"]
+
+}

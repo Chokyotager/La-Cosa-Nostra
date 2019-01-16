@@ -1,0 +1,38 @@
+{
+
+  "roles": [
+
+            {"identifier": "modular_mafia", "display_secondary": "Godfather", "flavour_identifier": "mx_1", "attributes": [{"identifier": "power_pid_kill", "tags": {"uses": "Infinity"}}, {"identifier": "power_attorney", "tags": {"uses": 1}}, {"identifier": "power_kill", "tags": {"uses": 1}}, {"identifier": "trait_power_inspect_immunity"}, {"identifier": "trait_power_manipulation_immunity"}, {"identifier": "modular_mafia_promotion"}]},
+            {"identifier": "modular_mafia", "display_secondary": "Consigliere", "flavour_identifier": "mx_2", "attributes": [{"identifier": "power_power_census", "tags": {"uses": 2}}, {"identifier": "power_power_inspect", "tags": {"uses": "Infinity"}}, {"identifier": "trait_power_inspect_immunity"}, {"identifier": "trait_power_manipulation_immunity"}, {"identifier": "modular_mafia_promotion"}]},
+            {"identifier": "modular_mafia", "display_secondary": "Nightwatcher-Strongman", "flavour_identifier": "mx_3", "attributes": [{"identifier": "power_nightwatch", "tags": {"uses": 2}}, {"identifier": "power_superkill", "tags": {"uses": 1}}, {"identifier": "power_investigate", "tags": {"uses": 1}}, {"identifier": "power_power_census", "tags": {"uses": 2}}, {"identifier": "modular_mafia_promotion"}]},
+            {"identifier": "modular_mafia", "display_secondary": "Toxicologist-Consort", "flavour_identifier": "mx_4", "attributes": [{"identifier": "power_poison", "tags": {"uses": 1}}, {"identifier": "power_roleblock", "tags": {"uses": 2}}, {"identifier": "power_power_inspect", "tags": {"uses": 1}}, {"identifier": "trait_roleblock_immunity"}, {"identifier": "modular_mafia_promotion"}]},
+            {"identifier": "modular_mafia", "display_secondary": "Detainer", "flavour_identifier": "mx_5", "attributes": [{"identifier": "power_jail", "tags": {"uses": "Infinity"}}, {"identifier": "trait_covert"}, {"identifier": "trait_roleblock_immunity"}, {"identifier": "modular_mafia_promotion"}]},
+            {"identifier": "modular_mafia", "display_secondary": "Power Fixer", "flavour_identifier": "mx_6", "attributes": [{"identifier": "power_power_swap", "tags": {"uses": 2}}, {"identifier": "power_power_steal", "tags": {"uses": 1}}, {"identifier": "power_mail", "tags": {"uses": 1}}, {"identifier": "trait_power_manipulation_immunity"}, {"identifier": "modular_mafia_promotion"}]},
+
+            {"identifier": "modular_town", "display_secondary": "Oracle", "flavour_identifier": "tx_1", "attributes": [{"identifier": "power_oracle", "tags": {"uses": 3}}]},
+            {"identifier": "modular_town", "display_secondary": "Redirector", "flavour_identifier": "tx_2", "attributes": [{"identifier": "power_transport", "tags": {"uses": 1}}, {"identifier": "power_drive", "tags": {"uses": 1}}]},
+            {"identifier": "modular_town", "display_secondary": "Power Copier", "flavour_identifier": "tx_3", "attributes": [{"identifier": "power_power_copy", "tags": {"uses": 2}}]},
+            {"identifier": "modular_town", "display_secondary": "Psychic-Investigator", "flavour_identifier": "tx_4", "attributes": [{"identifier": "power_investigate", "tags": {"uses": 1}}, {"identifier": "power_power_census", "tags": {"uses": 2}}]},
+            {"identifier": "modular_town", "display_secondary": "Fence-Vigilante", "flavour_identifier": "tx_5", "attributes": [{"identifier": "power_deliver_kill", "tags": {"uses": 1}}, {"identifier": "power_protect", "tags": {"uses": 1}}, {"identifier": "power_mail", "tags": {"uses": 2}}, {"identifier": "trait_power_inspect_immunity"}]},
+            {"identifier": "modular_town", "display_secondary": "Self-Redirector", "flavour_identifier": "tx_6", "attributes": [{"identifier": "power_self_redirect", "tags": {"uses": 3}}]},
+            {"identifier": "modular_town", "display_secondary": "Disabler", "flavour_identifier": "tx_7", "attributes": [{"identifier": "power_disable", "tags": {"uses": 3}}]},
+            {"identifier": "modular_town", "display_secondary": "Bodyguard-Assassin", "flavour_identifier": "tx_8", "attributes": [{"identifier": "power_crosshair", "tags": {"uses": 2}}, {"identifier": "power_guard", "tags": {"uses": 1}}]},
+            {"identifier": "modular_town", "display_secondary": "Watcher-Tracker", "flavour_identifier": "tx_9", "attributes": [{"identifier": "power_watch", "tags": {"uses": 1}}, {"identifier": "power_track", "tags": {"uses": 3}}]},
+            {"identifier": "modular_town", "display_secondary": "Power Thief", "flavour_identifier": "tx_10", "attributes": [{"identifier": "power_power_steal", "tags": {"uses": 2}}]},
+            {"identifier": "modular_town", "display_secondary": "Neighbouriser-Attorney", "flavour_identifier": "tx_11", "attributes": [{"identifier": "power_attorney", "tags": {"uses": 1}}, {"identifier": "power_inquisit", "tags": {"uses": 3}}, {"identifier": "trait_power_manipulation_immunity"}]},
+            {"identifier": "modular_town", "display_secondary": "Marshal-Influencer", "flavour_identifier": "tx_12", "attributes": [{"identifier": "power_marshal", "tags": {"uses": 1}}, {"identifier": "power_power_census", "tags": {"uses": 1}}, {"identifier": "power_influence", "tags": {"uses": 1}}]},
+            {"identifier": "modular_town", "display_secondary": "Sheriff-Investigator", "flavour_identifier": "tx_13", "attributes": [{"identifier": "power_interrogate", "tags": {"uses": 2}}, {"identifier": "power_investigate", "tags": {"uses": 2}}, {"identifier": "trait_power_inspect_immunity"}]},
+            {"identifier": "modular_town", "display_secondary": "Inspector-Sheriff", "flavour_identifier": "tx_14", "attributes": [{"identifier": "power_interrogate", "tags": {"uses": 1}}, {"identifier": "power_power_inspect", "tags": {"uses": 3}}]},
+            {"identifier": "modular_town", "display_secondary": "Hider-Observer", "flavour_identifier": "tx_15", "attributes": [{"identifier": "power_hide", "tags": {"uses": 2}}, {"identifier": "power_self_watch", "tags": {"uses": 2}}]},
+            {"identifier": "modular_town", "display_secondary": "Doctor", "flavour_identifier": "tx_16", "attributes": [{"identifier": "power_protect", "tags": {"uses": 4}}]},
+            {"identifier": "modular_town", "display_secondary": "Apothecarist-Escort", "flavour_identifier": "tx_17", "attributes": [{"identifier": "power_poison", "tags": {"uses": 2}}, {"identifier": "power_roleblock", "tags": {"uses": 2}}, {"identifier": "trait_roleblock_immunity"}]},
+
+            {"identifier": "modular_copy_machine", "display_secondary": "Copy Machine", "flavour_identifier": "nx_1", "attributes": [{"identifier": "power_power_copy", "tags": {"uses": "Infinity"}}, {"identifier": "trait_power_manipulation_immunity"}]},
+            {"identifier": "modular_cult", "display_secondary": "Mentor", "flavour_identifier": "nx_2", "attributes": [{"identifier": "power_indoctrinate", "tags": {"uses": "Infinity"}}, {"identifier": "power_hide", "tags": {"uses": 1}}, {"identifier": "trait_alignment_investigation_immunity"}, {"identifier": "trait_covert"}, {"identifier": "trait_power_manipulation_immunity"}]},
+            {"identifier": "modular_serial_killer", "display_secondary": "Serial Killer", "flavour_identifier": "nx_3", "attributes": [{"identifier": "power_rid_kill", "tags": {"uses": "Infinity"}}, {"identifier": "power_investigate", "tags": {"uses": 2}}, {"identifier": "trait_power_inspect_immunity"}, {"identifier": "trait_power_manipulation_immunity"}]}
+
+  ],
+
+  "flavour": "bluerose"
+
+}

@@ -1,0 +1,149 @@
+{
+
+  "NS": {"term": "Not Suspicious",
+         "description": "Used to describe a player which is investigated as likely not being anti-Town.",
+         "example": "A is NS. The sheriff saw them last night."},
+
+  "Sus": {"term": "Suspicious",
+          "description": "Used to describe someone as potentially being anti-Town."},
+
+  "Maf": {"term": "Mafia",
+          "description": "Contraction for Mafia."},
+
+  "MYLO": {"term": "Mislynch And You Lose",
+           "description": "Situation in which lynching a member of the Town (mislynching) would result in a Town loss."},
+
+  "Mislynch": {"description": "Used to describe the lynching of a member of the Town."},
+
+  "Wagon": {"term": "Bandwagon",
+            "description": "Regarding the movement for the lynch of an individual, especially when it becomes popular.",
+            "example": "A is getting wagoned because he failed to provide a will and the investigator wants him dead."},
+
+  "Mafia Wagon": {"description": "When members of the Mafia bandwagon a member of the Town."},
+
+  "Townie": {"description": "Refers to a member of the Town."},
+
+  "Bus": {"term": "Short for \"Throw under the bus\" (American idiom)",
+          "description": "When a team member \"betrays\" a member of their own faction to keep their own faction safe.",
+          "example": "A and B are both Mafia. B votes A during the day to make himself less suspicious the next day. This is an act of bussing. Bussing is NOT necessarily gamethrowing."},
+
+  "Gamethrow": {"description": "When a player deliberately sabotages their own factions' chances of winning. This is against the rules."},
+
+  "Safe": {"description": "Someone who is confirmed pro-Town."},
+
+  "Unsafe": {"description": "Someone who is not confirmed to be pro-Town."},
+
+  "Anti-Town": {"description": "A player whose win condition is fulfilled partially or completely if Town loses."},
+
+  "Backread": {"description": "The act of reading older chat from the same game."},
+
+  "Claim": {"description": "A claim is when someone reveals their role publicly."},
+
+  "Fakeclaim": {"description": "A fakeclaim is when someone claims a role other than the role they have."},
+
+  "Lead": {"description": "Information allowing for the potential action on one person.",
+           "example": "A: I have a lead, I watched B last night and saw C visiting B. B died last night, so C has to have attacked him."},
+
+  "CC": {"term": "Counterclaim",
+         "description": "Refers to a person claiming a role, then another person claiming the same role."},
+
+  "Counterclaim": {"description": "Refers to a person claiming a role, then another person claiming the same role, and one of them is fakeclaiming."},
+
+  "Scum": {"description": "Used to refer to a player being anti-Town."},
+
+  "Hammer": {"description": "The act of putting one last vote on a person to reach a majority, causing said person to be lynched."},
+
+  "LYLO": {"term": "Lynch or Lose",
+           "description": "Usually refers to a situation when Town has a majority of 1 over anti-Town. Abstaining for that day will lead to a Town loss. These situations are usually also MYLO (Mislynch and You Lose)."},
+
+  "Modkill": {"description": "Refers to when a user is killed by a host and removed from the game, usually due to a violation of game rules."},
+
+  "Abstain": {"description": "Refers to not lynching a player for that day, usually due to a lack of information."},
+
+  "NL": {"term": "No-lynch",
+         "description": "Refers to not lynching a player for that day, usually due to a lack of information."},
+
+  "Pro-town": {"description": "Used to describe one who's actions are beneficial to that of Town."},
+
+  "Rolecall": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town. (Same as \"massclaim\")"},
+
+  "Softclaim": {"description": "Refers to a player indirectly claiming their role subtly, usually done so as not to attract the attention of roles which could harm the claimer."},
+
+  "Prot": {"term": "Protect"},
+
+  "Hardclaim": {"description": "Refers to a player directly claiming their role."},
+
+  "Inno": {"term": "Innocent",
+           "description": "Refers to a player which is not anti-Town."},
+
+  "Scumhunting": {"description": "The act of reviewing previous posts' from a player in order to identify which players are most likely anti-Town."},
+
+  "Proven": {"description": "Used to describe someone with a role which is confirmed."},
+
+  "Flip": {"term": "Cardflip",
+           "description": "Used to refer to the results of a role reveal after the player is dead."},
+
+  "Nx": {"term": "Night x"},
+
+  "Dx": {"term": "Day x"},
+
+  "Nokill": {"description": "Refers to when a faction decides not to use their kill for a night."},
+
+  "PL": {"term": "Policy Lynch",
+         "description": "Refers to the lynching of a pro-Town because of bad play. Highly controversial matter of debate."},
+
+  "AtE": {"term": "Appeal to Emotion"},
+
+  "PR": {"term": "Power Role",
+         "description": "Refers to a role that can skew the outcome of the game significantly through their ability. Can be on any alignment."},
+
+  "Rando": {"term": "Random"},
+
+  "BoP": {"term": "Burden of Proficiency",
+          "description": "Refers to the logical fallacy based on the assumption that renowed players are likely to find anti-Town."},
+
+  "Alignment": {"description": "Refers to a players' faction. An alignment is usually Town, Mafia, neutral, or Cult."},
+
+  "Read": {"description": "Refers to the constructed profile of a said person, often to identify if they are anti-Town."},
+
+  "VfR": {"term": "Vote for Role",
+          "description": "Refers to when living players vote to lynch a player in an attempt to get role information from them."},
+
+  "FtC": {"term": "Follow the Cop",
+          "description": "A strategy in games where players follow the direction given by a cop, and a doctor protects the cop at night, and lynch the cop if the previous lynch was bad. This forces the Mafia to find out who the Doctor is and attack them."},
+
+  "Massclaim": {"description": "The act of everyone revealing their roles. Usually to narrow down a list of suspects who are anti-Town. (Same as \"rolecall\")"},
+
+  "Alibi": {"description": "A claim in which to prove that a player could not possibly be anti-Town or performed an action."},
+
+  "NP": {"term": "Night phase"},
+
+  "DP": {"term": "Day phase"},
+
+  "Backpedaling": {"description": "When a player goes back on something said previously; also refers to when a player suddenly stops scumhunting."},
+
+  "Blitz": {"description": "A rapid vote, usually a hammer, typically employed by anti-Town in MYLO/LYLO situations to end the game in their favour."},
+
+  "Lurk": {"description": "To actively view the game, however to rarely contribute or post in it."},
+
+  "WIFOM": {"term": "Wine in front of me",
+            "description": "Refers to circular reasoning in which it is impossible to determine the truth using the already available information."},
+
+  "Metagaming": {"description": "Using external factors which transcend the game usually to one's advantage. May or may not be allowed to certain extents depending on the game rules."},
+
+  "RVS": {"term": "Random Voting State",
+          "description": "Refers to when players attempt to lynch to gain information at the beginning of the game, usually basing off reactions and reads only."},
+
+  "Sheep": {"description": "Refers to individuals following other players without contributing much and without rational basis."},
+
+  "Tunnel": {"description": "The act of focusing all of one's attention on a player even if logic dictates otherwise."},
+
+  "FoS": {"term": "Finger of Suspicion",
+          "description": "Used when a player notices suspicious behaviour from another player."},
+
+  "Perjury": {"description": "Refers to when a member of the Town lies to advance discussion, usually with the thought of helping the Town."},
+
+  "MPD": {"term": "Mass Panic Debate",
+          "description": "Used to refer to continous debate between players on multiple perspectives at the same time, usually going on for hours."}
+
+}

@@ -1,0 +1,75 @@
+{
+
+  "messages": {
+
+    "game-start": "**Welcome to The Bluerose Hospital.**\n\nDeath presides in a hospital, it always has and always will. However, when faced in a true scenario of life and death, malice and malign take hold. Who will gain control of the situation?\n\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
+    "whisper-log": "**This is the Billboard.**\n\nThis channel is normally used for whispers, but since whispers are disabled in this game, this channel has become a secondary discussion channel. Players are advised to direct the purpose of this channel to suit their needs.",
+    "mafia": "**This is the Mafia Chat.**\n\nThis channel is only open at night for members of the Mafia to communicate.",
+
+    "opening-quote": "Lies and corpses are not too different;\nfor rigor mortis sets them in stone.\n\nThey say dead men tell no lies;\nbut can living men tell the truth?\n\nMay lies and deceit distort the dimming truth;\nfor calamity is sowed from the seeds of rivalry.",
+    "daytime-quote": "**It is now daytime. The trial has now begun.**",
+    "nighttime-quote": "**Night has descended. Remember to use your night actions if you intend to!**",
+    "no-summary": "*Nothing of interest happened.*",
+
+    "singular-lynch": ":syringe: Furious, the bloodthirsty hospital residents forced {;player} into the morgue and coated them with formaldehyde. They have been lynched.",
+    "plural-lynch": ":syringe: Furious, the bloodthirsty hospital residents forced {;players} into the morgue and coated them with formaldehyde. They have been lynched.",
+    "abstain-lynch": "**The hospital residents have decided nobody goes into formaldehyde today.**",
+
+    "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game."
+
+  },
+
+  "game": {
+
+    "mafia": {
+      "has-chat": true,
+      "chat-name": "mafia",
+      "night-only": true
+    },
+
+    "town": {
+      "night-chat": false
+    },
+
+    "day-zero": true,
+    "lynch-ratio-floored": 0,
+
+    "lynch": {
+      "top-voted-lynch": true,
+      "top-voted-lynch-minimum-votes": 0,
+
+      "tied-random": false,
+
+      "allow-hammer": true,
+      "no-lynch-option": true
+    },
+
+    "minimum-lynch-votes": 2,
+    "minimum-nolynch-votes": 2,
+    "minimum-trials": 1,
+
+    "last-wills": {
+      "allow": false,
+      "character-count-limit": 800
+    },
+
+    "whispers": {
+      "allow": false,
+
+      "night": false,
+      "day": true,
+
+      "broadcast": true,
+
+      "allow-dead": false
+    },
+
+    "cause-of-death": {
+      "hide-day": false,
+      "hide-night": true,
+      "exceptions": ["modkill"]
+    }
+
+  }
+
+}

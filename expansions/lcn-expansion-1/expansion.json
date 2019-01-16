@@ -1,0 +1,25 @@
+{
+
+  "name": "LCN Expansion Pack 1",
+  "type": "Expansion",
+  "description": "Adds 10 new roles.",
+
+  "link": null,
+
+  "authors": ["ChocoParrot"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}

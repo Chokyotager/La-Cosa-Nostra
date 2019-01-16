@@ -1,0 +1,11 @@
+{
+
+  "thumbnail": "https://freestencilgallery.com/wp-content/uploads/2016/07/Pokemon-Fire-Type-Symbol-Stencil-thumb.jpg",
+
+  "abilities": ["Vote to ignite or douse a player every night",
+                "If a Pyromaniac is available, you will order them to execute your action",
+                "If a Pyromaniac is not available, you will execute the action yourself"],
+
+  "attributes": ["Players targeted are not notified that they have been doused"]
+
+}

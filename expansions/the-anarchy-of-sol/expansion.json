@@ -1,0 +1,53 @@
+{
+
+  "name": "The Anarchy of Sol",
+  "type": "Setup",
+  "description": "The Solar System has descended into anarchy. Originally meant to be a closed setup, this game stretched the limits of what the LCN bot was capable of.",
+
+  "link": null,
+
+  "authors": ["ChocoParrot"],
+
+  "overrides": {
+
+    "flavours": [
+      "+the-anarchy-of-sol/*"
+    ],
+
+    "role_win_conditions": [],
+
+    "roles": [
+      "-lcn/*",
+      "*/godfather",
+      "*/mafioso",
+      "*/toxicologist",
+      "*/janitor",
+      "*/consigliere",
+      "*/vagrant",
+      "*/one_shot_strongman",
+      "*/lover",
+      "*/sheriff",
+      "*/investigator",
+      "*/doctor",
+      "*/one_shot_vigilante",
+      "*/escort",
+      "*/tracker",
+      "*/lookout",
+      "*/driver",
+      "*/deputy",
+      "*/marshal",
+      "*/influencer",
+      "*/mailman",
+      "*/revolutionary",
+      "*/survivor",
+      "*/jester",
+      "*/jack_of_all_trades"
+    ],
+
+    "attributes": []
+
+  },
+
+  "dependencies": ["lcn-expansion-1"]
+
+}

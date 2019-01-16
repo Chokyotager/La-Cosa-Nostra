@@ -1,0 +1,9 @@
+{
+
+  "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdHDIVfyje8bvXwG2aELiPZ-Y2JD3XARHd0IttLzO5dmFZFSZDAQ",
+
+  "abilities": ["Interrogate a player at night"],
+
+  "attributes": ["Will be presented alignment of interrogated player the next day"]
+
+}

@@ -1,0 +1,75 @@
+{
+
+  "messages": {
+
+    "game-start": "**Welcome to The Anarchy of Sol.**\n\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
+    "whisper-log": "**This is the Billboard.**\n\nThis channel is normally used for whispers, but since whispers are disabled in this game, this channel has become a secondary discussion channel. Players are advised to direct the purpose of this channel to suit their needs.",
+    "mafia": "**This is the Mafia Chat.**\n\nThis channel is only open at night for members of the Mafia to communicate.",
+
+    "opening-quote": "May lies and deceit distort the dimming truth;\nfor calamity is sowed from the seeds of rivalry.",
+    "daytime-quote": "**It is now daytime. The trial has now begun.**",
+    "nighttime-quote": "**Night has descended. This chat is now locked until Daytime starts. Remember to use your night actions if you intend to!**",
+    "no-summary": "*Nothing of interest happened.*",
+
+    "singular-lynch": ":skull_crossbones: The gunshot rings through the air. Soaring through the haze is a bullet, expended for its singular use. As it lands, it makes a sickening crunch. {;player} has been lynched. The bloodthirsty lynch mob cheers in agreement.",
+    "plural-lynch": ":skull_crossbones: The gunshots ring through the air. Soaring through the haze are bullets, expended for their singular use. As they land, sickening crunches echo around the room. {;players} have been lynched. The bloodthirsty lynch mob cheers in agreement.",
+    "abstain-lynch": "**The Town has abstained on lynches for the day.**",
+
+    "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game."
+
+  },
+
+  "game": {
+
+    "mafia": {
+      "has-chat": true,
+      "chat-name": "mafia",
+      "night-only": true
+    },
+
+    "town": {
+      "night-chat": false
+    },
+
+    "day-zero": true,
+    "lynch-ratio-floored": 0.0454,
+
+    "lynch": {
+      "top-voted-lynch": false,
+      "top-voted-lynch-minimum-votes": 0,
+
+      "tied-random": false,
+
+      "allow-hammer": false,
+      "no-lynch-option": false
+    },
+
+    "minimum-lynch-votes": 2,
+    "minimum-nolynch-votes": 2,
+    "minimum-trials": 1,
+
+    "last-wills": {
+      "allow": true,
+      "character-count-limit": 800
+    },
+
+    "whispers": {
+      "allow": false,
+
+      "night": false,
+      "day": true,
+
+      "broadcast": true,
+
+      "allow-dead": false
+    },
+
+    "cause-of-death": {
+      "hide-day": false,
+      "hide-night": false,
+      "exceptions": ["modkill"]
+    }
+
+  }
+
+}

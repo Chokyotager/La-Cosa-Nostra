@@ -4,7 +4,7 @@
     "voting": "trial",
     "main": "city-hall",
     "whisper-log": "billboard",
-    "roles": "yellow-pages",
+    "roles": "game-info",
 
     "welcome-channel": "general"
   },

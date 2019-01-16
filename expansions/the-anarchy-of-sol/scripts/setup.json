@@ -1,0 +1,13 @@
+{
+
+  "roles": ["godfather", "mafioso", "toxicologist", "janitor",
+  "consigliere", "vagrant", "one_shot_strongman",
+  "lover", "lover", "sheriff", "investigator", "doctor",
+  "doctor", "one_shot_vigilante", "escort", "tracker",
+  "lookout", "driver", "deputy", "marshal", "influencer",
+  "mailman", "revolutionary", "survivor", "jester",
+  "jack_of_all_trades"],
+
+  "flavour": "taos"
+
+}

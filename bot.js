@@ -2,28 +2,38 @@ var Discord = require("discord.js");
 var client = new Discord.Client();
 var fs = require("fs");
 
-var auxils = require("./systems/auxils.js");
+var lcn = require("./source/lcn.js");
 
-var config = auxils.config_handler();
-var commands = require("./systems/commands.js");
-var game = require("./systems/game.js");
+var auxils = lcn.auxils;
+var commands = lcn.commands;
+var game = lcn.game;
+
+var config = lcn.config;
 
 client.options.disableEveryone = true;
 
+var load_time = process.uptime() * 1000;
+
 client.on("ready", function () {
-  console.log("La Cosa Nostra ready.");
+  console.log("Foxgloves La Cosa Nostra ready.");
+
+  var login_time = process.uptime() * 1000;
 
   auxils.readline(client, config, commands);
   auxils.eventhandler(client, config);
 
   client.user.setPresence({
     status: "online",
-    game: {name: "Bluerose LCN v0.1", type: "PLAYING"}
+    game: {name: "Foxgloves LCN v0.1", type: "PLAYING"}
   });
 
   if (config["automatically-load-saves"]) {
     autoload();
   };
+
+  var total_load_time = process.uptime() * 1000;
+  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.expansion.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.win_conditions).length, Object.keys(lcn.commands.role).length, load_time, login_time - load_time, total_load_time - login_time, total_load_time];
+  console.log("\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s unique win condition(s);\nLoaded %s command handle(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms;\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
 
 });
 
@@ -148,7 +158,7 @@ client.on("guildMemberAdd", function (member) {
 // Autoload
 function autoload () {
   // Check for game save
-  var saved = fs.existsSync(__dirname + "/game_cache/game.save");
+  var saved = fs.existsSync(__dirname + "/data/game_cache/game.save");
 
   if (!saved) {
     console.log("No game save found.");

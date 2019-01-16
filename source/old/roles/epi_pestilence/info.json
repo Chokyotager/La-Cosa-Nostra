@@ -1,0 +1,11 @@
+{
+
+  "thumbnail": "https://image.freepik.com/free-icon/biohazard_318-61739.jpg",
+
+  "abilities": ["Infect a player with the plague every night"],
+
+  "attributes": ["You are infected by default",
+                 "The plague spreads when infected players visit each other",
+                 "When all players alive are infected, you become Pestilence"]
+
+}

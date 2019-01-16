@@ -1,0 +1,10 @@
+{
+
+  "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/9/98/Red_Cross_Icon_Reworked.jpg",
+
+  "abilities": ["Choose a target on any night",
+                "Will repeatedly protect until they are dead"],
+
+  "attributes": ["Cannot change targets until the target is dead"]
+
+}
