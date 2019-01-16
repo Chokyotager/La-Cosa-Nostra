@@ -1,7 +1,5 @@
 var lcn = require("../../../../../source/lcn.js");
 
-// Register heal
-
 var rs = lcn.rolesystem;
 
 module.exports = function (game, message, params) {
@@ -11,38 +9,39 @@ module.exports = function (game, message, params) {
 
   // Run checks, etc
 
+  var from = game.getPlayerById(message.author.id);
+
   if (params[0] === undefined) {
     message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "shoot <alphabet/username/nobody>` instead!");
     return null;
   };
 
   var to = game.getPlayerMatch(params[0]);
-  var from = game.getPlayerById(message.author.id);
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "caporegime/kill_vote");
+  actions.delete(x => x.from === from.identifier && x.identifier === "vigilante/shoot");
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
-    message.channel.send(":gun: You have decided not to vote for anyone to be shot tonight.");
+    message.channel.send(":gun: You have decided not to shoot anyone tonight.");
     return null;
   };
 
   to = to.player;
 
   if (!to.isAlive()) {
-    message.channel.send(":x: You cannot vote to shoot a dead player!" + rs.misc.sarcasm(true));
+    message.channel.send(":x: You cannot shoot a dead player!" + rs.misc.sarcasm(true));
     return null;
   };
 
   if (to.id === message.author.id) {
 
-    message.channel.send(":x: You cannot vote to shoot yourself!" + rs.misc.sarcasm(true));
+    message.channel.send(":x: You cannot shoot yourself!" + rs.misc.sarcasm(true));
 
     return null;
 
   } else {
 
-    game.addAction("caporegime/kill_vote", ["cycle"], {
-      name: "Caporegime-killvote",
+    game.addAction("vigilante/shoot", ["cycle"], {
+      name: "Vigilante-shoot",
       expiry: 1,
       from: message.author.id,
       to: to.id
@@ -52,7 +51,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  message.channel.send(":gun: You have voted to shoot **" + mention + "** tonight.");
+  message.channel.send(":gun: You have decided to shoot **" + mention + "** tonight.");
 
 };
 

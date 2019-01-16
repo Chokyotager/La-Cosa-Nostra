@@ -484,14 +484,19 @@ module.exports = class {
     return this.getStatus("alive");
   }
 
-  changeRole (role_identifier, change_vote_magnitude_stat=false) {
+  changeRole (role_identifier, change_vote_magnitude_stat=false, rerun_start=true) {
     this.role_identifier = role_identifier;
     this.initial_role_identifier.push(role_identifier);
+
     this.instantiateRole();
 
     if (change_vote_magnitude_stat) {
       var current_magnitude = this.getRoleStats()["vote-magnitude"];
       this.setPermanentStat("vote-magnitude", current_magnitude, "set");
+    };
+
+    if (rerun_start && this.role.start !== undefined) {
+      this.role.start(this);
     };
 
   }

@@ -116,4 +116,5 @@ data/
 configuration.json
 self/
 
+_+*
 meta/

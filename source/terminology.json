@@ -143,9 +143,6 @@
 
   "Perjury": {"description": "Refers to when a member of the Town lies to advance discussion, usually with the thought of helping the Town."},
 
-  "Good Skele": {"description": "Refers to retracting on a vote a short while before a deadline to prevent someone from being lynched.",
-                 "example": "Skele pulled a Good Skele on Corbin to prevent his Mafia teammate from dying due to a wagon."},
-
   "MPD": {"term": "Mass Panic Debate",
           "description": "Used to refer to continous debate between players on multiple perspectives at the same time, usually going on for hours."}
 
