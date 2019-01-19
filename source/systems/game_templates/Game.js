@@ -1290,6 +1290,34 @@ module.exports = class {
     this.timer = timer;
     this.players = players;
 
+    // Check role/attribute incompatibility
+    var incompatible = new Array();
+    for (var i = 0; i < players.length; i++) {
+      incompatible = incompatible.concat(players[i].verifyProperties());
+    };
+
+    if (!flavours[this.flavour_identifier]) {
+      incompatible = incompatible.concat({type: "flavour", identifier: this.flavour_identifier});
+    };
+
+    if (incompatible.length > 0) {
+
+      var errors = [{type: "role", items: auxils.getUniqueArray(incompatible.filter(x => x.type === "role").map(x => x.identifier))}, {type: "attribute", items: auxils.getUniqueArray(incompatible.filter(x => x.type === "attribute").map(x => x.identifier))}, {type: "flavour", items: auxils.getUniqueArray(incompatible.filter(x => x.type === "flavour").map(x => x.identifier))}];
+
+      for (var i = 0; i < errors.length; i++) {
+
+        if (errors[i].items.length > 0) {
+          console.log("\nError loading type " + errors[i].type + ":");
+          console.table(errors[i].items);
+        };
+
+      };
+
+      console.log("\nStopped save reload due to role/attribute incompatibilities. Make sure expansions required for this save can be loaded (you can also check config/playing.json's \"expansions\" field). Restart the bot when ready. Key \"uninstantiate\" to delete saves.\n");
+
+      return false;
+    };
+
     for (var i = 0; i < players.length; i++) {
       players[i].reinstantiate(this);
     };
@@ -1302,6 +1330,8 @@ module.exports = class {
 
     this.actions.reinstantiate(this);
     this.instantiateTrialVoteCollector();
+
+    return true;
   }
 
   addAction () {

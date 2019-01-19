@@ -476,6 +476,28 @@ module.exports = class {
     this.instantiateRole();
   }
 
+  verifyProperties () {
+
+    var incompatible = new Array();
+
+    var role = executable.roles.getRole(this.role_identifier, true);
+
+    if (!role) {
+      incompatible.push({type: "role", identifier: this.role_identifier});
+    };
+
+    for (var i = 0; i < this.attributes.length; i++) {
+      var identifier = this.attributes[i].identifier;
+
+      if (!attributes[identifier]) {
+        incompatible.push({type: "attribute", identifier: identifier});
+      };
+    };
+
+    return incompatible;
+
+  }
+
   setGame (game) {
     this.game = game;
   }

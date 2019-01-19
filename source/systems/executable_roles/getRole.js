@@ -5,7 +5,7 @@ var roles = require("../roles.js");
 
 // NOTE: SHOULD INCLUDE FUNCTION PROTOTYPES
 
-module.exports = function (identifier) {
+module.exports = function (identifier, silent=false) {
 
   identifier = identifier.toLowerCase();
 
@@ -13,6 +13,11 @@ module.exports = function (identifier) {
   var role = roles[identifier];
 
   if (!role) {
+    
+    if (silent) {
+      return null;
+    };
+
     throw new Error("Role \"" + identifier + "\" does not exist!");
   };
 

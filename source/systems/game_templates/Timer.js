@@ -370,7 +370,11 @@ module.exports.load = function (client, config) {
   });
 
   // Reinstantiate deleted properties
-  game.reinstantiate(this, players);
+  var outcome = game.reinstantiate(this, players);
+  
+  if (!outcome) {
+    return null;
+  };
 
   var timer = new module.exports().reinstantiate(game);
 

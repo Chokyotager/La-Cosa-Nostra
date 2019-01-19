@@ -27,13 +27,15 @@ client.on("ready", function () {
     game: {name: "Foxgloves LCN v0.1", type: "PLAYING"}
   });
 
+  var save_status = "NONE ATTEMPTED";
+
   if (config["automatically-load-saves"]) {
-    autoload();
+    save_status = autoload();
   };
 
   var total_load_time = process.uptime() * 1000;
-  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.expansion.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.win_conditions).length, Object.keys(lcn.commands.role).length, load_time, login_time - load_time, total_load_time - login_time, total_load_time];
-  console.log("\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s unique win condition(s);\nLoaded %s command handle(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms;\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
+  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.expansion.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.win_conditions).length, Object.keys(lcn.commands.role).length, load_time, login_time - load_time, total_load_time - login_time, save_status, total_load_time];
+  console.log("\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s unique win condition(s);\nLoaded %s command handle(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms [%s];\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
 
 });
 
@@ -161,16 +163,23 @@ function autoload () {
   var saved = fs.existsSync(__dirname + "/data/game_cache/game.save");
 
   if (!saved) {
-    console.log("No game save found.");
-    return null;
+    console.log("\x1b[1m%s\x1b[0m", "No game save found.");
+    return "\x1b[1m\x1b[34mNO SAVE FOUND\x1b[0m";
   };
 
   // Load the save
   var timer = game.templates.Timer.load(client, config);
 
+  if (!timer) {
+    console.log("\x1b[1m%s\x1b[0m", "Did not restore save.");
+    return "\x1b[1m\x1b[31mFAILED\x1b[0m";
+  };
+
   process.timer = timer;
 
-  console.log("Restored save.");
+  console.log("\x1b[1m%s\x1b[0m", "Restored save.");
+
+  return "\x1b[1m\x1b[32mSUCCESSFUL\x1b[0m";
 
 };
 
