@@ -425,7 +425,7 @@ module.exports = class {
     };
 
     // !this.config["game"]["lynch"]["top-voted-lynch"] && !this.hammerActive()
-    if (!this.hammerActive()) {
+    if (!this.hammerActive() && !this.config["game"]["lynch"]["top-voted-lynch"]) {
 
       if (before < required && after >= required) {
         // New lynch

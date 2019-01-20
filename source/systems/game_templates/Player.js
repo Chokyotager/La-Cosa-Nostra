@@ -512,6 +512,8 @@ module.exports = class {
 
     this.instantiateRole();
 
+    this.see_mafia_chat = this.see_mafia_chat || this.role["see-mafia-chat"];
+
     if (change_vote_magnitude_stat) {
       var current_magnitude = this.getRoleStats()["vote-magnitude"];
       this.setPermanentStat("vote-magnitude", current_magnitude, "set");

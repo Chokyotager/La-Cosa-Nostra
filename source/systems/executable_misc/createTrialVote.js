@@ -126,10 +126,14 @@ module.exports = async function (game) {
       ret.push(texts.lynchtext_available);
     };
 
-    if (lynch_config["no-lynch-option"]) {
-      ret.push(texts.lynchtext_nolynch);
+    if (!lynch_config["top-voted-lynch"]) {
+      if (lynch_config["no-lynch-option"]) {
+        ret.push(texts.lynchtext_nolynch);
+      } else {
+        ret.push(texts.lynchtext_standard);
+      };
     } else {
-      ret.push(texts.lynchtext_standard);
+      ret.push(texts.lynchtext_tvl);
     };
 
     if (game.hammerActive()) {
