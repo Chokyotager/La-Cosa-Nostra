@@ -1371,7 +1371,7 @@ module.exports = class {
         var s_username = auxils.hybridisedStringComparison(name.toLowerCase(), username.toLowerCase());
         var s_nickname = auxils.hybridisedStringComparison(name.toLowerCase(), nickname.toLowerCase());
 
-        var distance = Math.min(s_username, s_nickname);
+        var distance = Math.max(s_username, s_nickname);
         distances.push(distance);
 
       };
