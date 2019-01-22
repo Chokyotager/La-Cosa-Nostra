@@ -144,6 +144,9 @@
   "Perjury": {"description": "Refers to when a member of the Town lies to advance discussion, usually with the thought of helping the Town."},
 
   "MPD": {"term": "Mass Panic Debate",
-          "description": "Used to refer to continous debate between players on multiple perspectives at the same time, usually going on for hours."}
+          "description": "Used to refer to continous debate between players on multiple perspectives at the same time, usually going on for hours."},
+
+  "OMGUS": {"term": "Oh My God, You Suck (for voting for me)",
+            "description": "Shorthand for a player voting another player because the latter voted them."}
 
 }
