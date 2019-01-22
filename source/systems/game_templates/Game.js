@@ -1358,7 +1358,7 @@ module.exports = class {
         var member = guild.members.get(this.players[i].id);
 
         if (member === undefined) {
-          distances.push(Infinity);
+          distances.push(-1);
           continue;
         };
 
@@ -1377,7 +1377,7 @@ module.exports = class {
       };
 
       // Compare distances
-      var best_match_index = distances.indexOf(Math.min(...distances));
+      var best_match_index = distances.indexOf(Math.max(...distances));
 
       var score = distances[best_match_index];
       player = this.players[best_match_index];
