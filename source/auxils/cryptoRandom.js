@@ -22,7 +22,7 @@ module.exports = function (bytes=24, extend=6) {
     numeral += buffer[i];
   };
 
-  var limit = 255 * extend;
+  var limit = 256 / extend;
 
   return (numeral % limit) / limit;
 
