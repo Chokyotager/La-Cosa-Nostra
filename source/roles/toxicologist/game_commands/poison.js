@@ -46,7 +46,7 @@ module.exports = function (game, message, params) {
 
     game.addAction("toxicologist/poison", ["cycle"], {
       name: "Toxicologist-poison",
-      expiry: 1,
+      expiry: 2,
       from: message.author.id,
       to: to.id
     });

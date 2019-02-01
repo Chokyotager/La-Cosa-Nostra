@@ -31,7 +31,7 @@ module.exports = function (actionable, game, params) {
   };
 
   // Set logs
-  from.misc.protect_log.push(to.identifier);
+  from.misc.protect_log.unshift(to.identifier);
 
   // Add message
   game.addAction("non_consecutive_doctor/prot_message", ["attacked"], {
