@@ -1296,7 +1296,7 @@ module.exports = class {
       incompatible = incompatible.concat(players[i].verifyProperties());
     };
 
-    if (!flavours[this.flavour_identifier]) {
+    if (this.flavour_identifier && !flavours[this.flavour_identifier]) {
       incompatible = incompatible.concat({type: "flavour", identifier: this.flavour_identifier});
     };
 
