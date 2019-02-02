@@ -3,6 +3,37 @@ var fs = require("fs");
 
 var main = reader("commands_", ".js");
 
+var expansions = require("./expansions.js");
+
+for (i = 0; i < expansions.length; i++) {
+
+  var expansion = expansions[i];
+
+  for (var key in expansion.additions.commands) {
+
+    if (!main[key]) {
+      main[key] = new Object();
+    };
+
+    var commands = expansion.additions.commands[key];
+
+    var directory = __dirname + "/../../expansions/" + expansion.identifier + "/commands/" + key + "/";
+
+    for (var j = 0; j < commands.length; j++) {
+
+      if (!commands[j].endsWith(".js")) {
+        continue;
+      };
+
+      var name = commands[j].substring(0, commands[j].length - 3);
+      main[key][name] = attemptRequiring(directory + commands[j]);
+
+    };
+
+  };
+
+};
+
 // Build framework properties
 main.role = new Object();
 
@@ -211,5 +242,16 @@ function cycle (directory, accept=".js") {
   };
 
   return ret;
+
+};
+
+function attemptRequiring (directory) {
+  var available = fs.existsSync(directory);
+
+  if (available) {
+    return require(directory);
+  } else {
+    return undefined;
+  };
 
 };

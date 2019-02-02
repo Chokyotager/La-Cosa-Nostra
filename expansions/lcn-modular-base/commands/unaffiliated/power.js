@@ -1,4 +1,4 @@
-var attributes = require("../attributes.js");
+var attributes = require("../../../../source/systems/attributes.js");
 
 var Discord = require("discord.js");
 

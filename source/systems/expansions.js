@@ -38,6 +38,22 @@ function getExpansions (identifiers, scanned=new Array()) {
 
     ret = ret.concat(getExpansions(expansion.dependencies, ret));
 
+    // Add custom commands
+    var command_types = attemptReaddir(directory + "/commands");
+    var commands = new Object();
+
+    for (var j = 0; j < command_types.length; j++) {
+
+      var sub_directory = directory + "/commands/" + command_types[j];
+
+      if (!commands[command_types[j]]) {
+        commands[command_types[j]] = new Array();
+      };
+
+      commands[command_types[j]] = commands[command_types[j]].concat(attemptReaddir(sub_directory));
+
+    };
+
     // Add information
     ret.push({identifier: identifier,
               expansion: expansion,
@@ -45,7 +61,8 @@ function getExpansions (identifiers, scanned=new Array()) {
                 roles: attemptReaddir(directory + "/roles"),
                 flavours: attemptReaddir(directory + "/flavours"),
                 role_win_conditions: attemptReaddir(directory + "/role_win_conditions"),
-                attributes: attemptReaddir(directory + "/attributes")
+                attributes: attemptReaddir(directory + "/attributes"),
+                commands: commands
               },
               scripts: {
                 start: attemptRequiring(directory + "/scripts/start.js"),
