@@ -4,19 +4,65 @@ var win_conditions = require("../win_conditions.js");
 
 var Discord = require("discord.js");
 
+var ret = new Object();
+
+// Categorise
+for (var key in role_info) {
+
+  var role = role_info[key];
+  var info = role.role;
+
+  if (!ret[info.alignment]) {
+    ret[info.alignment] = new Object();
+  };
+
+  if (!ret[info.alignment][info.class]) {
+    ret[info.alignment][info.class] = new Array();
+  };
+
+  ret[info.alignment][info.class].push(info["role-name"]);
+
+};
+
 module.exports = async function (message, params, config) {
 
   var roles = Object.keys(role_info);
 
-  var action = (params[0] || "").toLowerCase();
+  if (params.length < 1) {
+    var sendable = new String();
 
-  if (!["info", "desc", "card"].includes(action)) {
-    // Syntax error
-    await message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "role <info/desc/card> <role>`!");
+    for (var alignment in ret) {
+
+      sendable += "\n\n[" + cpl(alignment) + "]";
+
+      for (var category in ret[alignment]) {
+
+        sendable += "\n" + cpl(category) + ": " + ret[alignment][category].join(", ");
+
+      };
+
+    };
+
+    sendable += "\n\n[" + Object.keys(role_info).length + " roles loaded]";
+
+    sendable = "```ini" + sendable + "```\n:exclamation: To get more information on a particular role, enter `" + config["command-prefix"] + "role [info/desc/card] <role name>`."
+
+    await message.channel.send(sendable);
+
     return null;
   };
 
-  var selected = params.splice(1, Infinity).join(" ");
+  var action = (params[0] || "").toLowerCase();
+
+  if (!["info", "desc", "card"].includes(action)) {
+
+    // Syntax error
+    action = "desc";
+    var selected = params.splice(0, Infinity).join(" ");
+
+  } else {
+    var selected = params.splice(1, Infinity).join(" ");
+  };
 
   var distances = new Array();
   for (var i = 0; i < roles.length; i++) {
