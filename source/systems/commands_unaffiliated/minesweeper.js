@@ -2,8 +2,8 @@ var auxils = require("../auxils.js");
 
 module.exports = async function (message, params, config) {
 
-  var width = params[0] !== undefined ? parseInt(params[0]) : 10;
-  var height = params[1] !== undefined ? parseInt(params[0]) : 10;
+  var width = params[0] !== undefined ? parseInt(params[0]) : 8;
+  var height = params[1] !== undefined ? parseInt(params[0]) : 8;
   var bombs = params[2] !== undefined ? parseInt(params[0]) : 10;
 
   if (isNaN(width) || isNaN(height) || isNaN(bombs)) {
