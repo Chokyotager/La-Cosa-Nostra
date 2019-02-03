@@ -3,8 +3,8 @@ var auxils = require("../auxils.js");
 module.exports = async function (message, params, config) {
 
   var width = params[0] !== undefined ? parseInt(params[0]) : 8;
-  var height = params[1] !== undefined ? parseInt(params[0]) : 8;
-  var bombs = params[2] !== undefined ? parseInt(params[0]) : 10;
+  var height = params[1] !== undefined ? parseInt(params[1]) : 8;
+  var bombs = params[2] !== undefined ? parseInt(params[2]) : 10;
 
   if (isNaN(width) || isNaN(height) || isNaN(bombs)) {
     await message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "minesweeper [width] [height] [bombs]` instead!");
@@ -39,7 +39,7 @@ module.exports = async function (message, params, config) {
 
     var index = Math.floor(Math.random() * area);
 
-    var x = Math.floor(index / width);
+    var x = Math.floor(index / height);
     var y = index % height;
 
     if (array[x][y] !== -1) {
