@@ -1,4 +1,4 @@
-![Banner](flavours/taos/assets/Anarchy of Sol.png?raw=true)
+![Banner](flavours/taos/assets/Anarchy%20of%20Sol.png?raw=true)
 ## The Anarchy of Sol
 A game by **ChocoParrot**.
 
