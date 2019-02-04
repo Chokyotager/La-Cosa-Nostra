@@ -1,0 +1,6 @@
+[
+  {"from": "mafia-wins.png", "to": "Mafia-wins.png"},
+  {"from": "town-wins.png", "to": "Town-wins.png"},
+  {"from": "serial-killer-wins.png", "to": "Serial-killer-wins.png"},
+  {"from": "game-start.jpg", "to": "Banner.png"}
+]
