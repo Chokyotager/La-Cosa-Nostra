@@ -59,4 +59,6 @@ module.exports = async function (game) {
 
   };
 
+  await game.postIntroMessages();
+
 };

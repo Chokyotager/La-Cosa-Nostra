@@ -86,7 +86,7 @@ module.exports = async function (game, ended=false) {
       ret.push(texts.lynchtext_available);
     };
 
-    if (!lynch_config["top-voted-lynch"]) {
+    if (!lynch_config["top-voted-lynch"] || game.hammerActive()) {
       if (lynch_config["no-lynch-option"]) {
         ret.push(texts.lynchtext_nolynch);
       } else {
@@ -95,8 +95,13 @@ module.exports = async function (game, ended=false) {
     } else {
       ret.push(texts.lynchtext_tvl);
     };
-    if (game.hammerActive()) {
+
+    if (game.hammerActive() && !lynch_config["top-voted-lynch"]) {
       ret.push(texts.lynchtext_hammer);
+    };
+
+    if (game.hammerActive() && lynch_config["top-voted-lynch"]) {
+      ret.push(texts.lynchtext_hammer_tvl);
     };
 
     if (lynch_config["top-voted-lynch"]) {

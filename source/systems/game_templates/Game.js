@@ -40,6 +40,8 @@ module.exports = class {
 
     this.period_log = new Object();
 
+    this.intro_messages = new Array();
+
     this.period = this.config["game"]["day-zero"] ? 0 : 1;
     this.steps = 0;
     this.state = "pre-game";
@@ -1145,13 +1147,13 @@ module.exports = class {
 
     if (!this.isDay() && !this.config["game"]["town"]["night-chat"]) {
 
-        executable.misc.lockMainChats(this);
+      executable.misc.lockMainChats(this);
 
-      } else {
+    } else {
 
-        executable.misc.openMainChats(this);
+      executable.misc.openMainChats(this);
 
-      };
+    };
 
   }
 
@@ -1785,6 +1787,23 @@ module.exports = class {
     this.clearNoLynchVotesBy(identifier);
     this.clearAllVotesBy(identifier);
     this.clearAllVotesOn(identifier);
+
+  }
+
+  addIntroMessage (channel_id, message) {
+
+    this.intro_messages.push({channel_id: channel_id, message: message});
+
+  }
+
+  async postIntroMessages () {
+
+    for (var i = 0; i < this.intro_messages.length; i++) {
+
+      var channel = this.getChannelById(this.intro_messages[i].channel_id);
+      await channel.send(this.intro_messages[i].message);
+      
+    };
 
   }
 
