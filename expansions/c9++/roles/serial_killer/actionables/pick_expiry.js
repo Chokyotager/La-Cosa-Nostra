@@ -8,7 +8,7 @@ module.exports = function (actionable, game, params) {
 
   serial_killer.misc.can_pick = false;
 
-  game.addMessage(serial_killer, ":exclamation: You did not pick a perk! As a result, you have lost the ability to do so.");
+  game.addMessage(serial_killer, ":exclamation: You did not pick a perk! As a result, your perk has been forfeit.");
 
   return true;
 

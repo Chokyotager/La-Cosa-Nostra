@@ -13,6 +13,7 @@ module.exports = function (actionable, game, params) {
   switch (choice) {
 
     case "bulletproof":
+      serial_killer.addAttribute("protection", Infinity, {amount: 1});
       serial_killer.misc.can_pick = false;
       channel.send(":exclamation: You have chosen the 1-shot bulletproof perk.");
       break;

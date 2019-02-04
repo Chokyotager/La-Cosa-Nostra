@@ -53,7 +53,7 @@ module.exports = function (game, message, params) {
 
   var mention = to.getDisplayName();
 
-  message.channel.send(":shield: You have decided to heal **" + mention + "** tonight.");
+  message.channel.send(":shield: You have decided to protect **" + mention + "** tonight.");
 
 };
 
