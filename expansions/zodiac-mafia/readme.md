@@ -1,4 +1,4 @@
-![Banner](flavours/zodiac/assets/Zodiac Mafia.png?raw=true)
+![Banner](flavours/zodiac/assets/Zodiac%20Mafia.png?raw=true)
 ## Zodiac Mafia
 A game by **ChocoParrot** and **Jivvi (Jordan)**.
 
