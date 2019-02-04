@@ -1,4 +1,4 @@
-![Banner](flavours/c9++/assets/Banner?raw=true)
+![Banner](flavours/c9++/assets/Banner.png?raw=true)
 ## C9++
 A game by **Fiasco**.
 [https://wiki.mafiascum.net/index.php?title=C9%2B%2B]
