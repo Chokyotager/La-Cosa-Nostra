@@ -6,7 +6,7 @@ module.exports = async function (message, params, config) {
 
   // Isolate
 
-  var mode = params[0];
+  var mode = params[0].toLowerCase();
 
   if (!["pinpoint", "cluster", "context"].includes(mode)) {
 
