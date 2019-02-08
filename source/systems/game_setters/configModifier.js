@@ -2,7 +2,9 @@ var expansions = require("../expansions.js");
 
 module.exports = function (config) {
 
-  var playing = config["playing"];
+  // Per MDN documentation
+  var playing = JSON.parse(JSON.stringify(config));
+
   // Expansions
   for (var i = 0; i < expansions.length; i++) {
     var game_assign = expansions[i].scripts.game_assign;
