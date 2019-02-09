@@ -15,6 +15,7 @@ module.exports = async function (client, config, roles) {
 
   var everyone = cat_channel.guild.roles.find(x => x.name === "@everyone");
   var spectator = cat_channel.guild.roles.find(x => x.name === config["permissions"]["spectator"]);
+  var admin = cat_channel.guild.roles.find(x => x.name === config["permissions"]["admin"]);
 
   var guild = client.guilds.get(config["server-id"]);
 
@@ -56,9 +57,11 @@ module.exports = async function (client, config, roles) {
     ]);
 
     var read_perms = config["base-perms"]["read"];
+    var manage_perms = config["base-perms"]["manage"];
 
     //await channel.overwritePermissions(everyone, {READ_MESSAGES: false, SEND_MESSAGES: false});
     await channel.overwritePermissions(spectator, read_perms);
+    await channel.overwritePermissions(admin, manage_perms);
     await channel.setParent(cat_channel.id);
 
     return channel;

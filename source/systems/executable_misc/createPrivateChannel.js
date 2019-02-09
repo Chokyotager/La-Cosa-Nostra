@@ -8,13 +8,12 @@ module.exports = async function (game, channel_name, permissions, position=-1) {
   var guild = client.guilds.get(config["server-id"]);
 
   var spectator = guild.roles.find(x => x.name === config["permissions"]["spectator"]);
+  var admin = guild.roles.find(x => x.name === config["permissions"]["admin"]);
 
-  var perms = [
-    {id: guild.id, deny: ["READ_MESSAGES"]},
-    {id: spectator.id, deny: ["SEND_MESSAGES", "ADD_REACTIONS"], allow: ["READ_MESSAGES", "READ_MESSAGE_HISTORY"]}
-  ];
+  permissions = [{target: spectator, permissions: config["base-perms"]["read"]},
+                 {target: admin, permissions: config["base-perms"]["manage"]}].concat(permissions);
 
-  var channel = await guild.createChannel(channel_name, "text", perms);
+  var channel = await guild.createChannel(channel_name, "text", [{id: guild.id, deny: ["READ_MESSAGES"]}]);
 
   var category = config["categories"]["private"];
   var cat_channel = client.channels.find(x => x.name === category && x.type === "category");

@@ -4,6 +4,7 @@ module.exports = async function (client, config) {
   var guild = client.guilds.get(config["server-id"]);
 
   // Should only be set once
+  var admin = guild.roles.find(x => x.name === config["permissions"]["admin"]);
   var spectator = guild.roles.find(x => x.name === config["permissions"]["spectator"]);
   var alive = guild.roles.find(x => x.name === config["permissions"]["alive"]);
   var dead = guild.roles.find(x => x.name === config["permissions"]["dead"]);
@@ -20,7 +21,9 @@ module.exports = async function (client, config) {
 
   var read_perms = config["base-perms"]["read"];
   var post_perms = config["base-perms"]["post"];
+  var manage_perms = config["base-perms"]["manage"];
 
+  await setPermissions(all, admin, manage_perms);
   await setPermissions(all, spectator, read_perms);
   await setPermissions(all, dead, read_perms);
   await setPermissions(all, alive, read_perms);

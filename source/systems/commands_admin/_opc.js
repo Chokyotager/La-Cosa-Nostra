@@ -1,7 +1,7 @@
 module.exports = async function (message, params, config) {
 
-  if (params.length < 2 || !["read", "write", "deny"].includes(params[0].toLowerCase())) {
-    await message.channel.send(":x: Wrong syntax! Use `" + config["command-prefix"] + "_opc <read/write/deny> <role name/everyone>` instead!");
+  if (params.length < 2 || !["read", "write", "deny", "manage"].includes(params[0].toLowerCase())) {
+    await message.channel.send(":x: Wrong syntax! Use `" + config["command-prefix"] + "_opc <read/write/deny/manage> <role name/everyone>` instead!");
     return null;
   };
 
@@ -40,6 +40,9 @@ module.exports = async function (message, params, config) {
     case "deny":
       await setPerms(role, channels, config["base-perms"]["deny"]);
       break;
+
+    case "manage":
+      await setPerms(role, channels, config["base-perms"]["manage"]);
 
   };
 

@@ -35,6 +35,22 @@
       "EMBED_LINKS": false,
       "ATTACH_FILES": false,
       "SEND_TTS_MESSAGES": false
+    },
+
+    "manage": {
+      "MANAGE_CHANNELS": true,
+      "MANAGE_ROLES": true,
+      "MANAGE_MESSAGES": true,
+      "MANAGE_WEBHOOKS": false,
+      "READ_MESSAGES": true,
+      "READ_MESSAGE_HISTORY": true,
+      "SEND_MESSAGES": true,
+      "ADD_REACTIONS": true,
+      "USE_EXTERNAL_EMOJIS": true,
+      "MENTION_EVERYONE": true,
+      "EMBED_LINKS": true,
+      "ATTACH_FILES": true,
+      "SEND_TTS_MESSAGES": true
     }
 
   }
