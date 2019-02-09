@@ -3,9 +3,9 @@ var lcn = require("../../../../../source/lcn.js");
 var rs = lcn.rolesystem;
 
 var responses = {
-  neutral: ":mag: Your target is __Anti-Town__.",
-  cult: ":mag: Your target is __Anti-Town__.",
-  mafia: ":mag: Your target is __Anti-Town__.",
+  neutral: ":mag: Your target is __Anti-town__.",
+  cult: ":mag: Your target is __Anti-town__.",
+  mafia: ":mag: Your target is __Anti-town__.",
   town: ":mag: Your target is __Town__.",
 
   role: ":mag: Your target's role is **{;role}**."
