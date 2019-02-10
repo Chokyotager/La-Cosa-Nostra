@@ -1,6 +1,17 @@
-# La Cosa Nostra
-![Generic banner](/display/generic-banner.png)
+<div align="center">
+  <br />
+  <p>
+    <a href="https://https://github.com/Chokyotager/La-Cosa-Nostra"><img src="/display/generic-banner.png" alt="banner" /></a>
+  </p>
+  <br />
+  <p>
+    <a href="https://discord.gg/9ecwAR9"><img src="https://discordapp.com/api/guilds/472948229839912960/embed.png" alt="Discord server" /></a>
+    <a href="https://snyk.io/test/github/Chokyotager/La-Cosa-Nostra"><img src="https://snyk.io/test/github/Chokyotager/La-Cosa-Nostra/badge.svg?targetFile=package.json" alt="Vulnerabilities" /></a>
+    <a href="https://david-dm.org/Chokyotager/La-Cosa-Nostra"><img src="https://david-dm.org/Chokyotager/La-Cosa-Nostra/status.svg" alt="Dependencies" /></a>
+  </p>
+</div>
 
+## About
 **Bringing real-time Mafia to Discord.** Forum Mafia has always been an interesting game. La Cosa Nostra is my attempt in bringing the charged zero-sum strategic mafia party game into Discord, all while keeping everything automated and requiring no human intervention. It is coded in JavaScript.
 
 ## Features and preview
