@@ -6,6 +6,13 @@ module.exports = async function (message, params, config) {
 
   // Isolate
 
+  if (params.length < 1) {
+
+    await message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "isolate [pinpoint/cluster/context] <message ID>` instead!");
+    return null;
+    
+  };
+
   var mode = params[0].toLowerCase();
 
   if (!["pinpoint", "cluster", "context"].includes(mode)) {
