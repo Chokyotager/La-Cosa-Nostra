@@ -366,7 +366,13 @@ module.exports = class {
   async start () {
 
     if (this.role.start !== undefined) {
-      this.role.start(this);
+
+      try {
+        this.role.start(this);
+      } catch (err) {
+        console.log(err);
+      };
+
     };
 
     // Start attributes
@@ -375,7 +381,13 @@ module.exports = class {
       var attribute = attributes[this.attributes[i].identifier];
 
       if (attribute.start) {
-        attribute.start(this);
+
+        try {
+          attribute.start(this);
+        } catch (err) {
+          console.log(err);
+        };
+
       };
 
     };
@@ -609,7 +621,17 @@ module.exports = class {
       return null;
     };
 
-    return routine(this);
+    try {
+
+      return routine(this);
+
+    } catch (err) {
+
+      console.log(err);
+      return null;
+
+    }
+
   }
 
   setWin () {
@@ -646,7 +668,13 @@ module.exports = class {
     var addable = {identifier: attribute, expiry: expiry, tags: tags, attribute: attributes[attribute].attribute};
 
     if (attributes[attribute].start && this.game) {
-      attributes[attribute].start(this, addable);
+
+      try {
+        attributes[attribute].start(this, addable);
+      } catch (err) {
+        console.log(err);
+      };
+
     };
 
     this.attributes.push(addable);
