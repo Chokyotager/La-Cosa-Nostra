@@ -9,7 +9,7 @@ var auxils = lcn.auxils;
 
 module.exports = function (player) {
 
-  if (from.misc.investigations_left < 1) {
+  if (player.misc.investigations_left < 1) {
     return null;
   };
 

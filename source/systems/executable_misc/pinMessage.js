@@ -5,7 +5,7 @@ module.exports = async function (message) {
     if (message.pinnable && !message.pinned) {
 
       // Create collector
-      message.channel.createMessageCollector(pinFunction, {maxMatches: 1, time: 2000});
+      message.channel.createMessageCollector(pinFunction, {maxMatches: 3, time: 2000});
 
       // Await
       await new Promise(function(resolve, reject) {
@@ -33,14 +33,22 @@ module.exports = async function (message) {
 
 };
 
-function pinFunction (m) {
+async function pinFunction (m) {
   // Remove the system pin message
 
-  if (m.type === 'PINS_ADD' && m.system) {
+  if (m.type === 'PINS_ADD' && m.system && !m.deleted) {
 
     // Delete the message
-    m.delete();
-    return true;
+    try {
+
+      await m.delete();
+      return true;
+
+    } catch (err) {
+
+      return false;
+
+    };
 
   } else {
 
