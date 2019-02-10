@@ -1,1 +1,0 @@
-Your vote magnitude is doubled on the fourth day onwards (excluding day zero).

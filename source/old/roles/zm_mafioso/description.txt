@@ -1,5 +1,0 @@
-You are the right-hand man of the Godfather, here for the sole purpose of doing his dirty work.
-
-Every night, the Godfather can order you to attack a target, in which you will comply.
-
-If the Godfather is not available, or did not pick a target, you will instead attack your own target.

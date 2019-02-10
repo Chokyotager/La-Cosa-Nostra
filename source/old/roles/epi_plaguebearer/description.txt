@@ -1,7 +1,0 @@
-Outwardly, everyone knows you as a harmless, polite person. However, you spread disease. And when everyone is weakened by it, you strike.
-
-Every night, you may infect a person with the plague. People who visit you also get infected.
-
-Infected players infect each other on visits. Infected players are not notified that they have been infected.
-
-When everyone alive is infected with the plague, you become Pestilence. This gives you a Powerful attack every night which also kills all visitors on your target. You also gain an Unstoppable defense. However, your detection immunity is nulled when you become Pestilence.
