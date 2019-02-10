@@ -3,7 +3,7 @@
 # La Cosa Nostra
 **Bringing real-time Mafia to Discord.**
 
-![Bot banner](https://raw.githubusercontent.com/Chokyotager/La-Cosa-Nostra/master/source/assets/bot-banner.png)
+![Bot banner](https://raw.githubusercontent.com/Chokyotager/La-Cosa-Nostra/master/display/bot-banner.png)
 
 ## Credits
 Authors: ChocoParrot & Hex4Nova
