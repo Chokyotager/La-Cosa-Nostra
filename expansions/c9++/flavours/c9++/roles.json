@@ -36,7 +36,7 @@
     {
       "name": "Town 1-Shot Doctor",
       "banner": "1-Shot Doctor.png",
-      "description": "Welcome to C9++. You are a Town Doctor.\n\nAbilities:\n- Heal: Once, at night, you may target one player in the game to heal them. They will be protected from a single kill. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to C9++. You are a Town 1-Shot Doctor.\n\nAbilities:\n- Heal: Once, at night, you may target one player in the game to heal them. They will be protected from a single kill. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
