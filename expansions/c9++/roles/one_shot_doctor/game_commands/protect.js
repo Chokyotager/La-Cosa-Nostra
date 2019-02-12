@@ -41,6 +41,7 @@ module.exports = function (game, message, params) {
   if (to.id === message.author.id) {
 
     message.channel.send(":x: You may not protect yourself.");
+    return null;
 
   };
 

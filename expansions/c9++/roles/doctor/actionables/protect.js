@@ -10,6 +10,7 @@ module.exports = function (actionable, game, params) {
     reason: "Doctor-visit"});
 
   var target = game.getPlayerByIdentifier(actionable.to);
+  var from = game.getPlayerByIdentifier(actionable.from);
 
   /*
   target.misc.protections ? target.misc.protections++ : target.misc.protections = 1;

@@ -40,6 +40,8 @@ module.exports = function (actionable, game, params) {
     game.addMessage(from, responses["town"]);
   };
 
+  from.misc.investigations_left--;
+
 };
 
 module.exports.TAGS = ["drivable", "roleblockable", "visit"];

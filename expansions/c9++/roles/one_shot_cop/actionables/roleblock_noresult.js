@@ -10,6 +10,8 @@ module.exports = function (actionable, game, params) {
 
   if (investigating && !previously_roleblocked) {
     game.addMessage(player, ":mag: You got __No Result__.");
+
+    from.misc.investigations_left--;
   };
 
 };
