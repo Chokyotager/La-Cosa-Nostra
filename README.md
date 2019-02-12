@@ -57,7 +57,7 @@ Some of the default expansion packs that come with the bot include (as listed in
 
 `lcn-expansion-1` & `lcn-expansion-2` - expansion packs
 
-`lcn-modular-base` - expansion back for modular roles
+`lcn-modular-base` - expansion pack for modular roles
 
 `the-anarchy-of-sol`, `zodiac-mafia` & `the-bluerose-hospital` - closed setups, designed by myself with a few other hosts
 
