@@ -7,7 +7,7 @@ var configurations = {
     "2": ["cop"],
     "3": ["cop", "one_shot_cop"],
     "4": ["cop", "cop"],
-    "5": ["cop", "cop", "1_shot_cop"],
+    "5": ["cop", "cop", "one_shot_cop"],
     "6": ["cop", "cop", "cop"]
   },
 
