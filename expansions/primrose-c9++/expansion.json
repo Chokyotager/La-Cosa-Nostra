@@ -1,0 +1,28 @@
+{
+
+  "name": "Primrose C9++",
+  "description": "A semi-open expanded setup designed to randomise the field.",
+
+  "link": "https://wiki.mafiascum.net/index.php?title=C9%2B%2B",
+
+  "authors": ["ChocoParrot", "Fiasco"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [
+      "c9++/*"
+    ],
+
+    "attributes": [
+      "c9++/*"
+    ]
+
+  },
+
+  "dependencies": ["c9++"]
+
+}

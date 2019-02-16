@@ -1,0 +1,17 @@
+{
+
+  "show-role-equivalent": false,
+
+  "show-vanilla-banner": true,
+
+  "display-role-equivalent-on-death": false,
+
+  "investigator-sees-flavour-role": false,
+
+  "show-role-category": false,
+
+  "post-role-card-and-description-on-death": false,
+
+  "step-names": null
+
+}
