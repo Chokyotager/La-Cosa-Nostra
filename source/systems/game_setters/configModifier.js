@@ -6,12 +6,15 @@ module.exports = function (config) {
   var playing = JSON.parse(JSON.stringify(config));
 
   // Expansions
-  for (var i = 0; i < expansions.length; i++) {
+  for (var i = expansions.length - 1; i >= 0; i--) {
     var game_assign = expansions[i].scripts.game_assign;
     if (!game_assign) {
       continue;
     };
+
     playing = game_assign(playing) || playing;
+    break;
+    
   };
 
   // Enforce defaults on parameters if undefined

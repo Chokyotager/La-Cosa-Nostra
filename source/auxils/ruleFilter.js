@@ -60,6 +60,9 @@ function wildcard (str) {
     str = str.substring(1, str.length);
   };
 
+  str = str.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+
   var reg = str.replace("*", "(?:)");
   return new RegExp(reg, "gi");
+
 };
