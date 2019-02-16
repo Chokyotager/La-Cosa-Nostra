@@ -60,7 +60,7 @@ var configurations = {
     "3": ["roleblocker", "roleblocker"],
     "4": ["roleblocker", "roleblocker", "one_shot_roleblocker"],
     "5": ["roleblocker", "roleblocker", "roleblocker"],
-    "6": ["roleblocker", "roleblocker", "one_shot_roleblocker"]
+    "6": ["roleblocker", "roleblocker", "roleblocker", "one_shot_roleblocker"]
   },
 
   "T": {
