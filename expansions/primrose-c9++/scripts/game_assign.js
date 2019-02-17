@@ -46,12 +46,12 @@ var configurations = {
   "W": {
     "1": ["one_shot_tracker"],
     "2": ["one_shot_tracker", "one_shot_watcher"],
-    "2": ["tracker", "one_shot_watcher"],
-    "3": ["one_shot_tracker", "watcher"],
-    "4": ["tracker", "watcher"],
-    "5": ["one_shot_tracker", "tracker", "watcher"],
-    "6": ["one_shot_tracker", "one_shot_watcher", "tracker", "watcher"],
-    "7": ["one_shot_watcher", "tracker", "tracker", "watcher"]
+    "3": ["tracker", "one_shot_watcher"],
+    "4": ["one_shot_tracker", "watcher"],
+    "5": ["tracker", "watcher"],
+    "6": ["one_shot_tracker", "tracker", "watcher"],
+    "7": ["one_shot_tracker", "one_shot_watcher", "tracker", "watcher"],
+    "8": ["one_shot_watcher", "tracker", "tracker", "watcher"]
   },
 
   "B": {
@@ -161,7 +161,7 @@ module.exports = function (playing_config) {
 
   console.log("[Primrose C9++] Running setup: %s; rolled: %s", letters.join(""), numbers.join(", "));
 
-  var override = {roles: setup, flavour: "primrose-c9++"};
+  var override = {roles: setup, flavour: "primrose-c9++", generated: {numbers: numbers, letters: letters}};
 
   return lcn.auxils.objectOverride(playing_config, override);
 

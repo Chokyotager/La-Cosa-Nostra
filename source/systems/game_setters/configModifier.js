@@ -3,7 +3,8 @@ var expansions = require("../expansions.js");
 module.exports = function (config) {
 
   // Per MDN documentation
-  var playing = JSON.parse(JSON.stringify(config));
+  var new_config = JSON.parse(JSON.stringify(config));
+  var playing = new_config.playing;
 
   // Expansions
   for (var i = expansions.length - 1; i >= 0; i--) {
@@ -14,7 +15,7 @@ module.exports = function (config) {
 
     playing = game_assign(playing) || playing;
     break;
-    
+
   };
 
   // Enforce defaults on parameters if undefined
@@ -22,14 +23,14 @@ module.exports = function (config) {
   for (var i = 0; i < enforce_default.length; i++) {
     var enforce = enforce_default[i];
     if (enforce.liberal) {
-      playing[enforce.key] = config["playing"][enforce.key] || playing[enforce.key];
+      playing[enforce.key] = new_config["playing"][enforce.key] || playing[enforce.key];
     } else {
-      playing[enforce.key] = config["playing"][enforce.key];
+      playing[enforce.key] = new_config["playing"][enforce.key];
     };
   };
 
-  config["playing"] = playing;
+  new_config["playing"] = playing;
 
-  return config;
+  return new_config;
 
 };

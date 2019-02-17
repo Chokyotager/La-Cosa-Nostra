@@ -11,16 +11,12 @@ module.exports = function (actionable, game, params) {
 
   game.addAction("mafia_one_shot_janitor/clean_role", ["killed"], {
     name: "Janitor-clean-role",
-    expiry: 2,
+    expiry: 1,
     from: actionable.from,
     to: actionable.to,
     attack: actionable.target,
     priority: 4
   });
-
-  var cleaner = game.getPlayerByIdentifier(actionable.from);
-
-  cleaner.misc.janitor_cleans_left--;
 
 };
 

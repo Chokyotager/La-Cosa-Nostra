@@ -1,7 +1,7 @@
-![Banner](flavours/c9++/assets/Banner.png?raw=true)
+![Banner](flavours/primrose-c9++/assets/Banner.png?raw=true)
 ## Primrose C9++
 An expanded C9++ game by **ChocoParrot**, based off **Fiasco**'s setup.
-[https://wiki.mafiascum.net/index.php?title=C9%2B%2B]
+[Game info is attached as PDF]
 
 ### Features:
 - Procedurally generated setup with random number rolls.

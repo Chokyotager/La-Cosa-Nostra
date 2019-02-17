@@ -31,27 +31,27 @@ module.exports = async function (client, config) {
     console.log("Destroyed previous Timer instance.");
   };
 
-  config = configModifier(config);
+  var new_config = configModifier(config);
 
-  await deletePrivate(client, config);
+  await deletePrivate(client, new_config);
 
   // Delete (or rename) previous cache
-  deleteCaches(client, config);
+  deleteCaches(client, new_config);
 
   // Initialise cache
-  initCache(client, config);
+  initCache(client, new_config);
 
   // assign roles first
-  var roles = assignRoles(client, config);
+  var roles = assignRoles(client, new_config);
 
   // Create private channels
-  var [mafia_channel, private_channels] = await createPrivate(client, config, roles);
+  var [mafia_channel, private_channels] = await createPrivate(client, new_config, roles);
 
-  await nicknameAndRole(client, config, roles);
-  await setPermissions(client, config, roles);
-  await setRolePermissions(client, config);
+  await nicknameAndRole(client, new_config, roles);
+  await setPermissions(client, new_config, roles);
+  await setRolePermissions(client, new_config);
 
-  var [game, timer] = createGame(client, config, roles, mafia_channel);
+  var [game, timer] = createGame(client, new_config, roles, mafia_channel);
 
   // create test vote
   //game.createVotes("development-chambers");

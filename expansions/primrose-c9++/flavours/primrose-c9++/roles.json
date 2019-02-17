@@ -92,7 +92,7 @@
     {
       "name": "Town Tracker",
       "banner": "Tracker.png",
-      "description": "Welcome to Primrose C9++. You are a Town Tracker.\n\nAbilities:\n- Track: Each night phase, you may target another player in the game to see who they visit that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Primrose C9++. You are a Town Tracker.\n\nAbilities:\n- Track: Each night phase, you may target another player in the game to see who they visit that night, showing up as \"nobody\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
@@ -100,7 +100,7 @@
     {
       "name": "Town 1-Shot Tracker",
       "banner": "1-Shot Tracker.png",
-      "description": "Welcome to Primrose C9++. You are a Town 1-Shot Tracker.\n\nAbilities:\n- Track: Once, at night, you may target another player in the game to see who they visit that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Primrose C9++. You are a Town 1-Shot Tracker.\n\nAbilities:\n- Track: Once, at night, you may target another player in the game to see who they visit that night, showing up as \"nobody\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
@@ -116,7 +116,7 @@
     {
       "name": "Town 1-Shot Watcher",
       "banner": "1-Shot Watcher.png",
-      "description": "Welcome to Primrose C9++. You are a Town Watcher.\n\nAbilities:\n- Track: Once, at night, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Primrose C9++. You are a Town 1-Shot Watcher.\n\nAbilities:\n- Track: Once, at night, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
@@ -140,7 +140,7 @@
     {
       "name": "Mafia 1-Shot Janitor",
       "banner": "1-Shot Janitor.png",
-      "description": "Welcome to Primrose C9++. You are a Mafia 1-Shot Janitor.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Clean: Once, at night, you may target another player to hide their role if they are killed on the same night. If they do not die, the clean action is still counted as used.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+      "description": "Welcome to Primrose C9++. You are a Mafia 1-Shot Janitor.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Clean: Once, at night, you may target another player to hide their role if they are killed on the same night. If they do not die, the clean action is not counted as used.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
     }
   ],
 

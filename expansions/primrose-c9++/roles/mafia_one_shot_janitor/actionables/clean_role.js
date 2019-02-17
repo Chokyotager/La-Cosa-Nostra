@@ -18,6 +18,8 @@ module.exports = function (actionable, game, params) {
 
   cleaner.getPrivateChannel().send(sendable);
 
+  cleaner.misc.janitor_cleans_left--;
+
   return true;
 
 };
