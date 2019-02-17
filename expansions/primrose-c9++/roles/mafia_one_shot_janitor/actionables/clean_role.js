@@ -14,10 +14,6 @@ module.exports = function (actionable, game, params) {
 
   cleaned.setPrecedentWill(null);
 
-  var sendable = ":file_cabinet: **" + cleaned.getDisplayName() + "**'s role was **" + cleaned.getTrueFlavourRole() + "**.";
-
-  cleaner.getPrivateChannel().send(sendable);
-
   cleaner.misc.janitor_cleans_left--;
 
   return true;
