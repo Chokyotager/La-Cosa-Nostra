@@ -63,6 +63,8 @@ Some of the default expansion packs that come with the bot include (as listed in
 
 `c9++` - the C9++ semi-open game by Fiasco [as seen in Mafiascum](https://wiki.mafiascum.net/index.php?title=C9%2B%2B)
 
+`primrose-c9++` - an expanded C9++ setup
+
 Simply go to `/configs/playing.json` and add your expansion pack as a list like such to load it:
 ```js
 {

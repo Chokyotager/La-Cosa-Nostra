@@ -108,7 +108,7 @@
     {
       "name": "Town Watcher",
       "banner": "Watcher.png",
-      "description": "Welcome to Primrose C9++. You are a Town Watcher.\n\nAbilities:\n- Track: Each night phase, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Primrose C9++. You are a Town Watcher.\n\nAbilities:\n- Watch: Each night phase, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
@@ -116,7 +116,7 @@
     {
       "name": "Town 1-Shot Watcher",
       "banner": "1-Shot Watcher.png",
-      "description": "Welcome to Primrose C9++. You are a Town 1-Shot Watcher.\n\nAbilities:\n- Track: Once, at night, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Primrose C9++. You are a Town 1-Shot Watcher.\n\nAbilities:\n- Watch: Once, at night, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
