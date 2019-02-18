@@ -68,7 +68,7 @@
     {
       "name": "Town Mason",
       "banner": "Mason.png",
-      "description": "Welcome to Primrose C9++. You are a Town Mason.\n\nAbilities:\n- Masons: You and the other mason all know each other to be town. Pre-game and during the night, you may communicate.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Primrose C9++. You are a Town Mason.\n\nAbilities:\n- Masons: You and the other mason(s) all know each other to be town. During the night, you may communicate.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
