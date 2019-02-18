@@ -11,7 +11,7 @@ module.exports = function (actionable, game, params) {
     priority: actionable.priority,
     reason: "Watcher-watch"});
 
-  game.addAction("watcher/gather", ["cycle"], {
+  game.addAction("one_shot_watcher/gather", ["cycle"], {
     name: "watcher-gather",
     expiry: 1,
     from: actionable.from,

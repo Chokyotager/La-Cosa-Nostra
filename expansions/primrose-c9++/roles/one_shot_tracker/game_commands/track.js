@@ -24,7 +24,7 @@ module.exports = function (game, message, params) {
     return null;
   };
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "tracker/track");
+  actions.delete(x => x.from === from.identifier && x.identifier === "one_shot_tracker/track");
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":mag: You have decided not to track anyone tonight.");
@@ -46,7 +46,7 @@ module.exports = function (game, message, params) {
 
   } else {
 
-    game.addAction("tracker/track", ["cycle"], {
+    game.addAction("one_shot_tracker/track", ["cycle"], {
       name: "Tracker-track",
       expiry: 1,
       from: message.author.id,

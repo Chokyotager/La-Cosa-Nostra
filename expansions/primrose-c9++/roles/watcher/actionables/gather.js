@@ -21,11 +21,11 @@ module.exports = function (actionable, game, params) {
   visitor_names.sort();
 
   if (visitor_names.length > 0) {
-    var message = ":eye: " + auxils.pettyFormat(visitor_names) + " visited your target last night.";
+    var message = ":mag: " + auxils.pettyFormat(visitor_names) + " visited your target last night.";
 
     game.addMessage(lookout, message);
   } else {
-    game.addMessage(lookout, ":eye: Nobody visited your target last night.");
+    game.addMessage(lookout, ":mag: Nobody visited your target last night.");
   };
 
 };

@@ -2,7 +2,7 @@
 
 module.exports = function (player) {
 
-  player.game.addAction("one_shot_janitor/lock_mafia_chat_on_death", ["killed"], {
+  player.game.addAction("mafia_one_shot_janitor/lock_mafia_chat_on_death", ["killed"], {
     from: player,
     to: player,
     expiry: Infinity,

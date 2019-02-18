@@ -11,7 +11,7 @@ module.exports = function (actionable, game, params) {
 
   game.addAction("mafia_one_shot_janitor/clean_role", ["killed"], {
     name: "Janitor-clean-role",
-    expiry: 1,
+    expiry: 2,
     from: actionable.from,
     to: actionable.to,
     attack: actionable.target,

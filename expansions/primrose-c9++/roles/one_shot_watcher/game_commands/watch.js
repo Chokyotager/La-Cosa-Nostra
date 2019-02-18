@@ -24,7 +24,7 @@ module.exports = function (game, message, params) {
     return null;
   };
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "watcher/watch");
+  actions.delete(x => x.from === from.identifier && x.identifier === "one_shot_watcher/watch");
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":mag: You have decided not to watch anyone tonight.");
@@ -46,7 +46,7 @@ module.exports = function (game, message, params) {
 
   } else {
 
-    game.addAction("watcher/watch", ["cycle"], {
+    game.addAction("one_shot_watcher/watch", ["cycle"], {
       name: "Watcher-watch",
       expiry: 1,
       from: message.author.id,
