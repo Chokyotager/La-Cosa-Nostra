@@ -48,7 +48,7 @@ module.exports = async function (message, params, config) {
   await message.channel.send("_ _\n**:clock11: Timezone and Cycles :clock11:**\n```fix\nTimezone: UTC+" + timezone.timezone + "\nGame cycles: " + timezone.day+ " hours / " + timezone.night + " hours\n```");
 
   var hash = computeHash(config);
-  await message.channel.send("_ _\n**:exclamation: Set-up Hash :exclamation:**\n**`" + hash + "`**");
+  await message.channel.send("_ _\n**:exclamation: Set-up Hash :exclamation:**\n**`" + hash + "`**\n\n*(Note that hashes will change if role determination uses random mechanics.)*");
 
   function computeHash (config) {
 

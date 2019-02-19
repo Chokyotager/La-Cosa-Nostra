@@ -11,7 +11,7 @@ module.exports = function (actionable, game, params) {
     priority: actionable.priority,
     reason: "Tracker-track"});
 
-  game.addAction("tracker/gather", ["cycle"], {
+  game.addAction("one_shot_tracker/gather", ["cycle"], {
     name: "Tracker-gather",
     expiry: 1,
     from: actionable.from,
