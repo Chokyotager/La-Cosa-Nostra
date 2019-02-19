@@ -14,7 +14,7 @@ module.exports = function (player) {
   };
 
   // Form as many pairs as possible before forming triplets
-  var available = game.findAll(x => x.role_identifier === "mason" && x.isAlive() && x.identifier !== player.identifier && !x.misc.mason_channel);
+  var available = game.findAll(x => x.role_identifier === "mason" && x.isAlive() && x.identifier !== player.identifier && !x.misc.paired);
 
   available = lcn.auxils.cryptographicShuffle(available);
 
