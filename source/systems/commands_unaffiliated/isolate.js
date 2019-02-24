@@ -10,7 +10,7 @@ module.exports = async function (message, params, config) {
 
     await message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "isolate [pinpoint/cluster/context] <message ID>` instead!");
     return null;
-    
+
   };
 
   var mode = params[0].toLowerCase();
@@ -119,6 +119,8 @@ module.exports = async function (message, params, config) {
 
   if (messages.length < 1) {
     await message.channel.send(":x: Cannot find that message! Isolation only works for the channel the command is posted in.");
+    await message.channel.stopTyping();
+    return null;
   };
 
   messages.reverse();

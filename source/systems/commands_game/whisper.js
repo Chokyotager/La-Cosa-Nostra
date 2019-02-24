@@ -20,6 +20,11 @@ module.exports = async function (game, message, params) {
     return null;
   };
 
+  if (params.length < 2) {
+    await message.channel.send(":x: Wrong syntax! Use `" + config["command-prefix"] + "whisper <alphabet/name> <message>` instead!");
+    return null;
+  };
+
   var target = params[0];
   var context = Array.from(params).splice(1, Infinity).join(" ");
 

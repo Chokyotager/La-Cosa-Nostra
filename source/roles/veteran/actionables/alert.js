@@ -20,6 +20,10 @@ module.exports = function (actionable, game, params) {
     priority: 10
   });
 
+  var veteran = game.getPlayerByIdentifier(actionable.from);
+
+  veteran.misc.veteran_alerts_left--;
+
 };
 
 module.exports.TAGS = ["roleblockable", "visit"];
