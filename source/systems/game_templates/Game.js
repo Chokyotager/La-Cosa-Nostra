@@ -1096,7 +1096,7 @@ module.exports = class {
 
   }
 
-  sendMessages (offset=0) {
+  async sendMessages (offset=0) {
 
     // Actually sends messages
 
@@ -1105,9 +1105,16 @@ module.exports = class {
     var messages = log.messages;
 
     for (var i = 0; i < messages.length; i++) {
+
       var message = messages[i].message;
 
       executable.misc.sendIndivMessage(this, messages[i].recipient, message);
+
+      await new Promise(function(resolve, reject) {
+        setTimeout(function () {
+          resolve();
+        }, 80);
+      });
 
     };
 
@@ -1802,7 +1809,7 @@ module.exports = class {
 
       var channel = this.getChannelById(this.intro_messages[i].channel_id);
       await channel.send(this.intro_messages[i].message);
-      
+
     };
 
   }
