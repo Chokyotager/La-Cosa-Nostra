@@ -11,6 +11,15 @@ module.exports = function (type, amount) {
 
       break;
 
+    case "!s":
+      if (amount === 1) {
+        return "s";
+      } else {
+        return "";
+      };
+
+      break;
+
     case "es":
       if (amount === 1) {
         return "";

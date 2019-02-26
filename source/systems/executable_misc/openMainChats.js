@@ -4,7 +4,7 @@ module.exports = async function (game) {
   var config = game.config;
   var client = game.client;
 
-  var guild = client.guilds.get(config["server-id"]);
+  var guild = client.guilds.find(x => x.id === config["server-id"]);
 
   // Should only be set once
   var alive = guild.roles.find(x => x.name === config["permissions"]["alive"]);
