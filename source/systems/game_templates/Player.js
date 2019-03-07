@@ -479,6 +479,10 @@ module.exports = class {
     });
   }
 
+  removeSpecialChannel (channel) {
+    this.special_channels = this.special_channels.filter(x => x.id !== channel);
+  }
+
   getSpecialChannels () {
     return this.special_channels;
   }
