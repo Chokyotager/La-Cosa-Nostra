@@ -33,8 +33,6 @@ module.exports = async function (message, params, config) {
 
   };
 
-  message.channel.startTyping();
-
   switch (mode) {
 
     case "pinpoint":
@@ -60,7 +58,6 @@ module.exports = async function (message, params, config) {
 
   } catch (err) {
     await message.channel.send(":x: Invalid message ID! Please use `" + config["command-prefix"] + "isolate [pinpoint/cluster/context] <message ID>` to isolate a message!");
-    await message.channel.stopTyping();
     return null;
   };
 
@@ -128,7 +125,5 @@ module.exports = async function (message, params, config) {
   var sendable = messages.filter(x => x !== null).join("\n\n");
 
   await message.channel.send("**ISO for message** `" + message_id + "`:```ini\n" + sendable + "```");
-
-  await message.channel.stopTyping();
 
 };
