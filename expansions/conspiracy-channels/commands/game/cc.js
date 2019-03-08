@@ -81,9 +81,19 @@ module.exports = async function (game, message, params) {
 
       players = auxils.getUniqueArray(players);
 
+      // Check reserved names
+      var name = params[1];
+
+      for (var key in config["channels"]) {
+        if (name.toLowerCase() === config["channels"][key].toLowerCase()) {
+          await message.channel.send(":x: A conspiracy channel cannot be created with that name.");
+          return null;
+        };
+      };
+
       message.channel.startTyping();
 
-      var channel = await createCC(params[1], sender, players);
+      var channel = await createCC(name, sender, players);
 
       await message.channel.send(":exclamation: You have created the conspiracy channel <#" + channel.id + ">.");
 
