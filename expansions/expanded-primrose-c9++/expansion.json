@@ -1,0 +1,30 @@
+{
+
+  "name": "Expanded Primrose C9++",
+  "description": "A semi-open expanded setup designed to randomise the field.",
+
+  "link": null,
+
+  "authors": ["ChocoParrot", "Fiasco"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [
+      "c9++/*",
+      "primrose-c9++/*"
+    ],
+
+    "attributes": [
+      "c9++/*",
+      "primrose-c9++/*"
+    ]
+
+  },
+
+  "dependencies": ["primrose-c9++"]
+
+}
