@@ -84,8 +84,10 @@ var configurations = {
     "5": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "mafia_one_shot_janitor", "serial_killer"],
     "6": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather"],
     "7": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "serial_killer"],
-    "8": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather"],
-    "9": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "serial_killer"]
+    "8": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon"],
+    "9": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "serial_killer"],
+    "10": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon"],
+    "11": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "serial_killer"]
   }
 
 };
