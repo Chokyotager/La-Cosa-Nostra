@@ -93,7 +93,7 @@ We also have a forum dedicated to the LCN community. If you are a developer want
 
 **Alpha testers:** Justin, Lia
 
-**Beta testers:** ShapeShifted, Les, Lia, Misode, Conjurer, Good Skele, Hex4Nova, Inffy
+**Beta testers:** Ardvark8op, ShapeShifted, Les, Lia, Misode, Conjurer, Good Skele, Hex4Nova, Inffy
 
 **Special thanks:** Error, Fogalog, Inffy, Randium, Sai Kurogetsu, Alisha
 
