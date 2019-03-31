@@ -1,0 +1,25 @@
+{
+
+  "name": "You Die You Lose",
+  "type": "Expansion",
+  "description": "Applies a you-die-you-lose win condition throughout.",
+
+  "link": null,
+
+  "authors": ["ChocoParrot"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}
