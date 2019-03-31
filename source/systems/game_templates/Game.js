@@ -10,6 +10,8 @@ var alphabets = require("../alpha_table.js");
 var Actions = require("./Actions.js");
 var Player = require("./Player.js");
 
+var expansions = require("../expansions.js");
+
 var auxils = require("../auxils.js");
 var flavours = require("../flavours.js");
 
@@ -683,6 +685,19 @@ module.exports = class {
   }
 
   cycle () {
+
+    for (var i = expansions.length - 1; i >= 0; i--) {
+      
+      var cycle = expansions[i].scripts.cycle;
+
+      if (!cycle) {
+        continue;
+      };
+
+      cycle(this);
+
+    };
+
     if (this.period % 2 === 0) {
 
       this.day();
