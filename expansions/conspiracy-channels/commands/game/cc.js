@@ -17,6 +17,22 @@ module.exports = async function (game, message, params) {
 
   };
 
+  var day = game.isDay();
+
+  if (day && !expansion_config["enabled"]["day"]) {
+
+    await message.channel.send(":x: You may not create/modify conspiracy channels during the day.");
+    return null;
+
+  };
+
+  if (!day && !expansion_config["enabled"]["night"]) {
+
+    await message.channel.send(":x: You may not create/modify conspiracy channels at night.");
+    return null;
+
+  };
+
   var sender = game.getPlayerById(message.author.id);
 
   if (sender === null) {
