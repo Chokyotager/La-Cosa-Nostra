@@ -8,8 +8,10 @@ module.exports = function (game) {
 
   if (serial_killer.length > 0) {
 
+    var winners = serial_killer.filter(x => x.canWin());
+
     // Revolutionaries win
-    game.setWins(serial_killer);
+    game.setWins(winners);
     return true;
 
   };

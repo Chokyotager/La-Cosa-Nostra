@@ -8,8 +8,10 @@ module.exports = function (game) {
 
   if (copy_machine.length > 0) {
 
+    var winners = copy_machine.filter(x => x.canWin());
+
     // Revolutionaries win
-    game.setWins(copy_machine);
+    game.setWins(winners);
     return true;
 
   };

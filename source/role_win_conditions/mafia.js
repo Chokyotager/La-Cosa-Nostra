@@ -15,7 +15,7 @@ module.exports = function (game) {
   if (mafia.length >= (alive.length / 2)) {
     // Parity reached
 
-    var winners = game.findAll(x => x.role.alignment === "mafia");
+    var winners = game.findAll(x => x.role.alignment === "mafia" && x.canWin());
 
     game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("mafia-wins.png"));

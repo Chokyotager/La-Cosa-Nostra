@@ -2,7 +2,7 @@ var auxils = require("../systems/auxils.js");
 
 module.exports = function (game) {
 
-  var winners = game.findAll(x => x.role.alignment === "town");
+  var winners = game.findAll(x => x.role.alignment === "town" && x.canWin());
 
   game.setWins(winners);
 

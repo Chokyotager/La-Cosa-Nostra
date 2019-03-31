@@ -20,7 +20,9 @@ module.exports = function (game) {
     // Mafia's win condition
     // Steal the win from them
 
-    game.setWins(mortician);
+    var winners = mortician.filter(x => x.canWin());
+
+    game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("mortician-wins.png"));
     game.primeWinLog("mortician", "The Mortician has stolen the win from the Mafia.");
 
@@ -33,7 +35,10 @@ module.exports = function (game) {
   var town_win_check = !game.checkRoles(town_win_condition.ELIMINATED) && game.checkRoles(town_win_condition.SURVIVING);
 
   if (town_win_check) {
-    game.setWins(mortician);
+
+    var winners = mortician.filter(x => x.canWin());
+
+    game.setWins(winners);
     return true;
   };
 

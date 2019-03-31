@@ -6,8 +6,10 @@ module.exports = function (game) {
 
   if (revolutionaries.length > 0) {
 
+    var winners = revolutionaries.filter(x => x.canWin());
+
     // Revolutionaries win
-    game.setWins(revolutionaries);
+    game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("revolutionary-wins.png"));
     game.primeWinLog("revolutionary", "Half-smile on face, the Revolutionary has taken complete control.");
     return true;

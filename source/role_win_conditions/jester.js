@@ -5,7 +5,10 @@ module.exports = function (game) {
   var jesters = game.findAll(x => x.role_identifier === "jester" && !x.isAlive() && x.misc.jester_lynched === true && !x.hasWon());
 
   if (jesters.length > 0) {
-    game.setWins(jesters);
+
+    var winners = jesters.filter(x => x.canWin());
+
+    game.setWins(winners);
     return true;
   };
 

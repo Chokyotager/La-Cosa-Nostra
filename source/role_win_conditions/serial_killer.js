@@ -7,7 +7,9 @@ module.exports = function (game) {
 
   if (serial_killers.length >= (alive.length / 2)) {
 
-    game.setWins(serial_killers);
+    var winners = serial_killers.filter(x => x.canWin());
+
+    game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("serial-killer-wins.png"));
     game.primeWinLog("serial killer", "The Serial Killer has destroyed everyone who could oppose them.");
 

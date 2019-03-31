@@ -15,7 +15,7 @@ module.exports = function (game) {
   if (cult.length >= (alive.length / 2)) {
     // Parity reached
 
-    var winners = game.findAll(x => x.role.alignment === "cult" && x.isAlive());
+    var winners = cult.filter(x => x.canWin());
 
     game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("cult-wins.png"));

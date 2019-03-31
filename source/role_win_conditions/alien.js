@@ -16,8 +16,10 @@ module.exports = function (game) {
 
   if (aliens.length > 0) {
 
+    var winners = aliens.filter(x => x.canWin());
+
     // Revolutionaries win
-    game.setWins(aliens);
+    game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("alien-wins.png"));
     game.primeWinLog("alien", "The extraterrestrial has gathered sufficient information to annihilate and control the planet.");
     return true;

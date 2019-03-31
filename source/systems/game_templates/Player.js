@@ -103,7 +103,8 @@ module.exports = class {
       "silenced": false,
       "kidnapped": false,
 
-      "won": false
+      "won": false,
+      "can-win": true
     };
 
     this.misc = new Object();
@@ -644,6 +645,10 @@ module.exports = class {
 
   hasWon () {
     return this.status.won === true;
+  }
+
+  canWin () {
+    return this.status["can-win"] === true;
   }
 
   addIntroMessage (message) {

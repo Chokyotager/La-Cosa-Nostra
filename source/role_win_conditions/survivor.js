@@ -1,7 +1,7 @@
 module.exports = function (game) {
 
   // Have to manually set the win
-  var winners = game.findAll(x => x.role_identifier === "survivor" && x.isAlive());
+  var winners = game.findAll(x => x.role_identifier === "survivor" && x.isAlive() && x.canWin());
 
   game.setWins(winners);
 

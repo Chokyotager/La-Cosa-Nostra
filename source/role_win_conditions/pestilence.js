@@ -7,7 +7,9 @@ module.exports = function (game) {
 
   if (pestilence.length >= (alive.length / 2)) {
 
-    game.setWins(pestilence);
+    var winners = game.findAll(x => (x.role_identifier === "pestilence" || x.role_identifier === "plaguebearer") && x.isAlive() && x.canWin());
+
+    game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("pestilence-wins.png"));
     game.primeWinLog("pestilence", "The Horseman of the Apocalypse reigns with fear.");
 

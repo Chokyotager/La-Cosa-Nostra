@@ -5,7 +5,7 @@ module.exports = function (game) {
   game.getLogChannel().send("**Arsonist wins.**");
 
   // Have to manually set the win
-  var winners = game.findAll(x => x.role_identifier === "arsonist" && x.isAlive());
+  var winners = game.findAll(x => x.role_identifier === "arsonist" && x.isAlive() && x.canWin());
 
   game.setWins(winners);
 
