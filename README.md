@@ -57,6 +57,8 @@ Some of the default expansion packs that come with the bot include (as listed in
 
 `conspiracy-channels` - adds conspiracy channels - a form of group private communication in games
 
+`forum-auxiliaries` - adds Mafia factional kill and basic one-attack protection
+
 `lcn-expansion-1` & `lcn-expansion-2` - expansion packs
 
 `lcn-modular-base` - expansion pack for modular roles

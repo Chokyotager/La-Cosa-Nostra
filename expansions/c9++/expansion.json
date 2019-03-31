@@ -23,6 +23,6 @@
 
   },
 
-  "dependencies": []
+  "dependencies": ["forum-auxiliaries"]
 
 }
