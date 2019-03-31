@@ -771,7 +771,7 @@ module.exports = class {
 
   }
 
-  getDiscordUser (alphabet) {
+  getDiscordUser () {
     return this.game.client.users.get(this.id);
   }
 

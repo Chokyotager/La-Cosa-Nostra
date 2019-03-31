@@ -687,7 +687,7 @@ module.exports = class {
   cycle () {
 
     for (var i = expansions.length - 1; i >= 0; i--) {
-      
+
       var cycle = expansions[i].scripts.cycle;
 
       if (!cycle) {
