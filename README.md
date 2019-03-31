@@ -55,15 +55,21 @@ Ever since the Foxgloves update, the bot is able to accept *expansion packs*. Th
 
 Some of the default expansion packs that come with the bot include (as listed in `/expansions`):
 
+`conspiracy-channels` - adds conspiracy channels - a form of group private communication in games
+
 `lcn-expansion-1` & `lcn-expansion-2` - expansion packs
 
 `lcn-modular-base` - expansion pack for modular roles
+
+`you-die-you-lose` - self-explanatory
 
 `the-anarchy-of-sol`, `zodiac-mafia` & `the-bluerose-hospital` - closed setups, designed by myself with a few other hosts
 
 `c9++` - the C9++ semi-open game by Fiasco [as seen in Mafiascum](https://wiki.mafiascum.net/index.php?title=C9%2B%2B)
 
 `primrose-c9++` - an expanded C9++ setup
+
+`expanded-primrose-c9++` - a further expanded C9++ setup but for 21 players
 
 Simply go to `/configs/playing.json` and add your expansion pack as a list like such to load it:
 ```js
