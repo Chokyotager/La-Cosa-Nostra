@@ -55,6 +55,18 @@ module.exports = class {
     // Timezone is GMT relative
     this.timezone = this.config.time.timezone;
 
+    for (var i = expansions.length - 1; i >= 0; i--) {
+
+      var game_init = expansions[i].scripts.game_init;
+
+      if (!game_init) {
+        continue;
+      };
+
+      game_init(this);
+
+    };
+
     this.primeDesignatedTime();
 
     for (var i = 0; i < this.players.length; i++) {
