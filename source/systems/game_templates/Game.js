@@ -1161,6 +1161,18 @@ module.exports = class {
 
     this.state = "playing";
 
+    for (var i = expansions.length - 1; i >= 0; i--) {
+
+      var game_start = expansions[i].scripts.game_start;
+
+      if (!game_start) {
+        continue;
+      };
+
+      game_start(this);
+
+    };
+
     for (var i = 0; i < this.players.length; i++) {
       this.players[i].start();
     };

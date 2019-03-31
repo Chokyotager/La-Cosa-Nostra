@@ -66,6 +66,7 @@ function getExpansions (identifiers, scanned=new Array()) {
               },
               scripts: {
                 start: attemptRequiring(directory + "/scripts/start.js"),
+                game_start: start: attemptRequiring(directory + "/scripts/game_start.js"),
                 game_assign: attemptRequiring(directory + "/scripts/game_assign.js"),
                 cycle: attemptRequiring(directory + "/scripts/cycle.js")
               }});
