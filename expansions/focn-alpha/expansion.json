@@ -1,0 +1,25 @@
+{
+
+  "name": "FoCN Alpha",
+  "type": "Setup",
+  "description": null,
+
+  "link": null,
+
+  "authors": ["ChocoParrot", "Kroppeb"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": ["conspiracy-channels", "you-die-you-lose", "forum-auxiliaries"]
+
+}

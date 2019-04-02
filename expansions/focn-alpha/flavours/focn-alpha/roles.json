@@ -1,0 +1,51 @@
+{
+
+  "vanilla_townie": [
+    {
+      "name": "Vanilla Townie",
+      "banner": "Vanilla Townie.png",
+      "description": "Welcome to FoCN Alpha. You are a Vanilla Townie.\n\nAbilities:\n- You have no abilities other than your vote.\n\nWin condition:\n- You win when all threats to the town have been eliminated and you survive to see it."
+    }
+  ],
+
+  "cop": [
+    {
+      "name": "Town Cop",
+      "banner": "Cop.png",
+      "description": "Welcome to FoCN Alpha. You are a Town Cop.\n\nAbilities:\n- Investigate: Each night phase, you may target one player in the game to investigate them. You will receive a result of \"Town\", \"Anti-town\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and you survive to see it."
+    }
+  ],
+
+  "one_shot_vigilante": [
+    {
+      "name": "Town 1-Shot Vigilante",
+      "banner": "1-Shot Vigilante.png",
+      "description": "Welcome to FoCN Alpha. You are a Town 1-Shot Vigilante.\n\nAbilities:\n- Kill: Once, at night, you may target another player in the game to attempt to kill them.\n\nWin condition:\n- You win when all threats to the town have been eliminated and you survive to see it."
+    }
+  ],
+
+  "mafia_goon": [
+    {
+      "name": "Mafia Goon",
+      "banner": "Goon.png",
+      "description": "Welcome to FoCN Alpha. You are a Mafia Goon.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- - You win when the Mafia obtain a majority with all threats eliminated and you survive to see it."
+    }
+  ],
+
+  "mafia_godfather": [
+    {
+      "name": "Mafia Godfather",
+      "banner": "Godfather.png",
+      "description": "Welcome to FoCN Alpha. You are a Mafia Godfather.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Investigation Immune: You will appear as innocent to any alignment checks.\n\nWin condition:\n- - You win when the Mafia obtain a majority with all threats eliminated and you survive to see it."
+    }
+  ],
+
+  "serial_killer": [
+    {
+      "name": "Serial Killer",
+      "banner": "Serial Killer.png",
+      "description": "Welcome to FoCN Alpha. You are a Serial Killer.\n\nAbilities:\n- Kill: Each night phase, you may target another player in the game to attempt to kill them.\n\nWin condition:\n- You win when you are the last player alive."
+    }
+  ]
+
+}
