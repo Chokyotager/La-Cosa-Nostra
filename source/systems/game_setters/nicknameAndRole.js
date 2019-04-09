@@ -13,7 +13,6 @@ module.exports = async function (client, config, roles) {
     var member = guild.members.get(roles[i].id);
 
     if (member === undefined) {
-      console.log("Exception with role id.");
       continue;
     };
 

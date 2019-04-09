@@ -30,9 +30,7 @@ async function setRoleOf (channel, id, perms) {
 
   var member = channel.guild.members.get(id);
 
-  if (member === undefined) {
-    console.log("Exception occured in assigning permissions, debugging roles? You should not see this otherwise.");
-  } else {
+  if (member) {
     await channel.overwritePermissions(member, perms);
   };
 
