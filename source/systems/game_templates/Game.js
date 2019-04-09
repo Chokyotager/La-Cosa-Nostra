@@ -1323,7 +1323,11 @@ module.exports = class {
   }
 
   save () {
-    this.timer.save();
+    this.timer.save(...arguments);
+  }
+
+  tentativeSave () {
+    this.timer.tentativeSave(...arguments);
   }
 
   async saveAsynchronously () {

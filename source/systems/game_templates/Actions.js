@@ -122,6 +122,8 @@ module.exports = class {
       this.execute("instant");
     };
 
+    this.game.tentativeSave();
+
     return actionable;
 
   }

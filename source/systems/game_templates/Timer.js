@@ -266,7 +266,31 @@ module.exports = class {
 
   }
 
-  save () {
+  tentativeSave (silent=true) {
+
+    // Save the game after requests stop coming in
+    if (this._tentativeSaveTimeout) {
+
+      clearTimeout(this._tentativeSaveTimeout);
+      delete this._tentativeSaveTimeout;
+
+    };
+
+    var timer = this;
+
+    this._tentativeSaveTimeout = setTimeout(function () {
+
+      if (!silent) {
+        console.log("Tentative save executed.");
+      };
+
+      timer.save(true);
+
+    }, 50);
+
+  }
+
+  save (silent=true) {
     // Save all components
 
     // Clone Game instance to savable
@@ -314,7 +338,9 @@ module.exports = class {
       fs.writeFileSync(__dirname + "/../../../data/game_cache/players/" + id + ".save", encode(string));
     };
 
-    console.log("Saved game.");
+    if (!silent) {
+      console.log("Saved game.");
+    };
 
     function encode (string) {
       if (config["encode-cache"]) {
@@ -371,7 +397,7 @@ module.exports.load = function (client, config) {
 
   // Reinstantiate deleted properties
   var outcome = game.reinstantiate(this, players);
-  
+
   if (!outcome) {
     return null;
   };
