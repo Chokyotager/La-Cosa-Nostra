@@ -1,0 +1,83 @@
+{
+
+  "vanilla_townie": [
+    {
+      "name": "Town Vanilla",
+      "banner": "Town Vanilla.png",
+      "description": "Welcome to 2d3. You are a Town Vanilla.\n\nAbilities:\n- You have no abilities other than your vote.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "cop": [
+    {
+      "name": "Town Cop",
+      "banner": "Town Cop.png",
+      "description": "Welcome to 2d3. You are a Town Cop.\n\nAbilities:\n- Investigate: Each night phase, you may target one player in the game to investigate them. You will receive a result of \"Town\", \"Anti-town\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "jailkeeper": [
+    {
+      "name": "Town Jailkeeper",
+      "banner": "Town Jailkeeper.png",
+      "description": "Welcome to 2d3. You are a Town Jailkeeper.\n\nAbilities:\n- Jail: Each night phase, you may target one player in the game to stop all actions to and from them other than your own.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "neapolitan": [
+    {
+      "name": "Town Neapolitan",
+      "banner": "Town Neapolitan.png",
+      "description": "Welcome to 2d3. You are a Town Neapolitan.\n\nAbilities:\n- Investigate: Each night phase, you may target one player in the game to investigate them. You will receive a result of whether or not they are a Town Vanilla, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "rolecop": [
+    {
+      "name": "Town Rolecop",
+      "banner": "Town Rolecop.png",
+      "description": "Welcome to 2d3. You are a Town Rolecop.\n\nAbilities:\n- Check: Each night phase, you may target one player in the game to check them. You will receive a result of which power role they are, or \"no result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "doctor": [
+    {
+      "name": "Town Doctor",
+      "banner": "Town Doctor.png",
+      "description": "Welcome to 2d3. You are a Town Doctor.\n\nAbilities:\n- Heal: Each night phase, you may target one player in the game to heal them. They will be protected from a single kill. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "roleblocker": [
+    {
+      "name": "Town Roleblocker",
+      "banner": "Town Roleblocker.png",
+      "description": "Welcome to 2d3. You are a Town Roleblocker.\n\nAbilities:\n- Roleblock: Each night phase, you may target another player in the game to attempt to block them from performing any night actions.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "mafia_goon": [
+    {
+      "name": "Mafia Goon",
+      "banner": "Mafia Goon.png",
+      "description": "Welcome to 2d3. You are a Mafia Goon.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_roleblocker": [
+    {
+      "name": "Mafia Roleblocker",
+      "banner": "Mafia Roleblocker.png",
+      "description": "Welcome to 2d3. You are a Mafia Roleblocker.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Roleblock: Each night phase, you may target another player in the game to attempt to block them from performing any night actions. You may use this together with the factional kill.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_rolecop": [
+    {
+      "name": "Mafia Rolecop",
+      "banner": "Mafia Rolecop.png",
+      "description": "Welcome to 2d3. You are a Mafia Rolecop.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Check: Each night phase, you may target one player in the game to check them. You will receive a result of which power role they are, or \"No Result\".\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ]
+
+}

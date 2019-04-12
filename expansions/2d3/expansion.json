@@ -1,0 +1,29 @@
+{
+
+  "name": "2d3",
+  "type": "Setup",
+  "description": "A newbie Mafia setup.",
+
+  "link": "https://wiki.mafiascum.net/index.php?title=2d3",
+
+  "authors": ["Cabd", "Newbie Discussion Group"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [
+      "-lcn/*"
+    ],
+
+    "attributes": [
+      "-lcn/*"
+    ]
+
+  },
+
+  "dependencies": ["forum-auxiliaries"]
+
+}
