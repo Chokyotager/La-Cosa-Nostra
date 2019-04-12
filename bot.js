@@ -26,8 +26,7 @@ client.on("ready", function () {
 
   var login_time = process.uptime() * 1000;
 
-  auxils.readline(client, config, commands);
-  auxils.eventhandler(client, config);
+  ready();
 
   client.user.setPresence({
     status: "online",
@@ -183,6 +182,20 @@ client.on("disconnect", function (close_event) {
   };
 
 });
+
+// Ready
+function ready () {
+
+  if (!process.ready) {
+
+    auxils.readline(client, config, commands);
+    auxils.eventhandler(client, config);
+
+    process.ready = true;
+
+  };
+
+};
 
 // Autoload
 function autoload () {
