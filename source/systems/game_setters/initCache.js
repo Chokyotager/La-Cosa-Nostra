@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 var fs = require("fs");
 
 module.exports = function (client, config) {
@@ -7,7 +9,7 @@ module.exports = function (client, config) {
   for (var i = 0; i < directories.length; i++) {
     if (!fs.existsSync(directories[i])) {
       fs.mkdirSync(directories[i]);
-      console.log("[Routine] created cache directories.");
+      logger.log(2, "[Routine] created cache directories.");
     };
   };
 

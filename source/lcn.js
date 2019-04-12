@@ -32,7 +32,7 @@ for (var i = 0; i < module.exports.expansions.length; i++) {
 };
 
 // Enforce defaults on parameters
-var enforce_default = ["bot-token", "server-id", "command-prefix", "automatically-load-saves", "encode-cache", "merge-configs", "playing"];
+var enforce_default = ["bot-token", "server-id", "command-prefix", "automatically-load-saves", "encode-cache", "merge-configs", "playing", "console-log-level", "file-log-level"];
 
 for (var i = 0; i < enforce_default.length; i++) {
 

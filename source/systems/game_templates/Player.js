@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 var actionables = require("../actionables.js");
 var attributes = require("../attributes.js");
 
@@ -371,7 +373,7 @@ module.exports = class {
       try {
         this.role.start(this);
       } catch (err) {
-        console.log(err);
+        logger.log(4, err);
       };
 
     };
@@ -386,7 +388,7 @@ module.exports = class {
         try {
           attribute.start(this);
         } catch (err) {
-          console.log(err);
+          logger.log(4, err);
         };
 
       };
@@ -576,7 +578,7 @@ module.exports = class {
     // Count number of roles assigned before
     this.flavour_role = current[index].name;
 
-    console.log("Flavour: %s, Role: %s", this.flavour_role, this.role_identifier);
+    logger.log(1, "Flavour: %s, Role: %s", this.flavour_role, this.role_identifier);
 
   }
 
@@ -599,7 +601,7 @@ module.exports = class {
       try {
         this.executeRoutine(runnable);
       } catch (err) {
-        console.log(err);
+        logger.log(4, err);
       };
 
     };
@@ -632,7 +634,7 @@ module.exports = class {
 
     } catch (err) {
 
-      console.log(err);
+      logger.log(4, err);
       return null;
 
     }
@@ -681,7 +683,7 @@ module.exports = class {
       try {
         attributes[attribute].start(this, addable);
       } catch (err) {
-        console.log(err);
+        logger.log(4, err);
       };
 
     };

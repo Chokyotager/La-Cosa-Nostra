@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 var lcn = require("../../../source/lcn.js");
 
 var configurations = {
@@ -95,7 +97,7 @@ var configurations = {
 module.exports = function (playing_config) {
 
   if (playing_config.roles) {
-    console.log("[Primrose C9++] Not running setup randomiser as roles have been defined.");
+    logger.log(2, "[Primrose C9++] Not running setup randomiser as roles have been defined.");
 
     var override = {flavour: "primrose-c9++"};
     return lcn.auxils.objectOverride(playing_config, override);
@@ -173,7 +175,7 @@ module.exports = function (playing_config) {
   var townies = new Array(21 - setup.length).fill("vanilla_townie");
   setup = setup.concat(townies);
 
-  console.log("[Expanded Primrose C9++] Running setup: %s; rolled: %s", letters.join(""), numbers.join(", "));
+  logger.log(2, "[Expanded Primrose C9++] Running setup: %s; rolled: %s", letters.join(""), numbers.join(", "));
 
   var override = {roles: setup, flavour: "primrose-c9++", generated: {numbers: numbers, letters: letters}};
 

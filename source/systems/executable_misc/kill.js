@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 module.exports = async function (game, role) {
 
   var client = game.client;
@@ -14,7 +16,7 @@ module.exports = async function (game, role) {
   var member = guild.members.get(role.id);
 
   if (member === undefined) {
-    console.log("Trying to kill undefined user. Debugging?");
+    logger.log(3, "Trying to kill undefined user. Debugging?");
     return null;
   };
 

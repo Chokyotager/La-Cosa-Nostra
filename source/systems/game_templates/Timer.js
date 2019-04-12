@@ -1,6 +1,9 @@
 // mediate the day/night cycles, set intervals
 
 // this class is NOT meant to be serialised
+
+var logger = process.logger;
+
 var crypto = require("crypto");
 var fs = require("fs");
 
@@ -63,7 +66,7 @@ module.exports = class {
     var designated = this.game.next_action;
 
     if (this.game.state === "ended") {
-      console.log("Did not prime as game has ended.");
+      logger.log(2, "Did not prime as game has ended.");
       return null;
     };
 
@@ -80,7 +83,7 @@ module.exports = class {
       var delta = this.game.next_action.getTime() - current.getTime();
     };
 
-    console.log("Primer: set D/N mediator delta to: %s", delta);
+    logger.log(1, "Primer: set D/N mediator delta to: %s", delta);
 
     this.designated = designated;
     this.primed = current;
@@ -101,7 +104,7 @@ module.exports = class {
 
   async step () {
 
-    console.log("Step fired.");
+    logger.log(2, "Step fired.");
     var next_action = await this.game.step();
 
     // TEMP: set to not fire next step for obvious reasons
@@ -119,7 +122,7 @@ module.exports = class {
 
   async fastforward () {
 
-    console.log("Fastforwarded.");
+    logger.log(2, "Fastforwarded.");
     var next_action = await this.game.step(true);
 
     if (next_action === null) {
@@ -265,7 +268,7 @@ module.exports = class {
 
   }
 
-  tentativeSave (silent=true) {
+  tentativeSave (silent=false) {
 
     // Save the game after requests stop coming in
     if (this._tentativeSaveTimeout) {
@@ -280,7 +283,7 @@ module.exports = class {
     this._tentativeSaveTimeout = setTimeout(function () {
 
       if (!silent) {
-        console.log("Tentative save executed.");
+        logger.log(1, "Tentative save executed.");
       };
 
       timer.save(true);
@@ -289,7 +292,7 @@ module.exports = class {
 
   }
 
-  save (silent=true) {
+  save (silent=false) {
     // Save all components
 
     // Clone Game instance to savable
@@ -338,7 +341,7 @@ module.exports = class {
     };
 
     if (!silent) {
-      console.log("Saved game.");
+      logger.log(1, "Saved game.");
     };
 
     function encode (string) {

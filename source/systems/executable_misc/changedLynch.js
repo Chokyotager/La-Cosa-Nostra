@@ -1,6 +1,8 @@
 var texts = require("./text/texts.js");
 var format = require("./__formatter.js");
 
+var logger = process.logger;
+
 module.exports = async function (game, from, to) {
 
   var client = game.client;
@@ -15,7 +17,7 @@ module.exports = async function (game, from, to) {
   var message = texts.changed_lynch;
 
   if (voted === undefined) {
-    console.log("Undefined member on voted user. Debugging?");
+    logger.log(1, "Undefined member on voted user. Debugging?");
     return null;
   };
 

@@ -2,20 +2,27 @@ var Discord = require("discord.js");
 var client = new Discord.Client();
 var fs = require("fs");
 
+var version = JSON.parse(fs.readFileSync(__dirname + "/package.json"));
+
+var logger = new (require("./source/systems/game_templates/Logger.js"))(__dirname + "/log.txt");
+process.logger = logger;
+
 var lcn = require("./source/lcn.js");
+
+var config = lcn.config;
+
+logger.setLogLevel(config["console-log-level"], config["file-log-level"]);
 
 var auxils = lcn.auxils;
 var commands = lcn.commands;
 var game = lcn.game;
-
-var config = lcn.config;
 
 client.options.disableEveryone = true;
 
 var load_time = process.uptime() * 1000;
 
 client.on("ready", function () {
-  console.log("Foxgloves La Cosa Nostra ready.");
+  logger.log(2, "Foxflower La Cosa Nostra [%s] ready.", version.version);
 
   var login_time = process.uptime() * 1000;
 
@@ -24,7 +31,7 @@ client.on("ready", function () {
 
   client.user.setPresence({
     status: "online",
-    game: {name: "Foxgloves LCN v0.1", type: "PLAYING"}
+    game: {name: "Foxflower LCN " + version.version, type: "PLAYING"}
   });
 
   var save_status = "NONE ATTEMPTED";
@@ -35,7 +42,7 @@ client.on("ready", function () {
 
   var total_load_time = process.uptime() * 1000;
   var stats = [lcn.expansions.length, lcn.expansions.map(x => x.expansion.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.win_conditions).length, Object.keys(lcn.commands.role).length, load_time, login_time - load_time, total_load_time - login_time, save_status, total_load_time];
-  console.log("\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s unique win condition(s);\nLoaded %s command handle(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms [%s];\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
+  logger.log(2, "\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s unique win condition(s);\nLoaded %s command handle(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms [%s];\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
 
 });
 
@@ -165,11 +172,11 @@ client.on("disconnect", function (close_event) {
 
   };
 
-  console.log(close_event.reason);
+  logger.log(3, "Close event: ", close_event.reason);
 
   if (config["auto-reconnect"]) {
 
-    console.log("Automatic restart script initialised.");
+    logger.log(3, "Automatic restart script initialised.");
     // Attempt reconnection
     client.login(config["bot-token"]);
 
@@ -183,7 +190,7 @@ function autoload () {
   var saved = fs.existsSync(__dirname + "/data/game_cache/game.save");
 
   if (!saved) {
-    console.log("\x1b[1m%s\x1b[0m", "No game save found.");
+    logger.log(2, "\x1b[1m%s\x1b[0m", "No game save found.");
     return "\x1b[1m\x1b[34mNO SAVE FOUND\x1b[0m";
   };
 
@@ -191,13 +198,13 @@ function autoload () {
   var timer = game.templates.Timer.load(client, config);
 
   if (!timer) {
-    console.log("\x1b[1m%s\x1b[0m", "Did not restore save.");
+    logger.log(2, "\x1b[1m%s\x1b[0m", "Did not restore save.");
     return "\x1b[1m\x1b[31mFAILED\x1b[0m";
   };
 
   process.timer = timer;
 
-  console.log("\x1b[1m%s\x1b[0m", "Restored save.");
+  logger.log(2, "\x1b[1m%s\x1b[0m", "Restored save.");
 
   return "\x1b[1m\x1b[32mSUCCESSFUL\x1b[0m";
 

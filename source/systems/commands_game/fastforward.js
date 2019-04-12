@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 module.exports = async function (game, message, params) {
 
   var config = game.config;
@@ -18,7 +20,7 @@ module.exports = async function (game, message, params) {
   };
 
   if (ratio <= 0.5) {
-    console.warn("The fast forward ratio is ≤ 0.5, be noted of anti-sense parity fast forwards.");
+    logger.log(3, "The fast forward ratio is ≤ 0.5, be noted of anti-sense parity fast forwards.");
   };
 
   var player = game.getPlayerById(message.author.id);

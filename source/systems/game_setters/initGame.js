@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 // Main functional
 var assignRoles = require("./assignRoles.js");
 var createGame = require("./createGame.js");
@@ -28,7 +30,7 @@ module.exports = async function (client, config) {
 
     delete process.timer;
 
-    console.log("Destroyed previous Timer instance.");
+    logger.log(2, "Destroyed previous Timer instance.");
   };
 
   var new_config = configModifier(config);
@@ -62,6 +64,8 @@ module.exports = async function (client, config) {
   timer.save();
 
   game.postPrimeLog();
+
+  logger.log(2, "Game Timer instance created.");
 
   process.timer = timer;
 

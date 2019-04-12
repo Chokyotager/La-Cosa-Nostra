@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 var auxils = require("../auxils.js");
 var attributes = require("../attributes.js");
 
@@ -46,7 +48,7 @@ module.exports = async function (message, params, config) {
 
     } catch (err) {
 
-      console.log(err);
+      logger.log(4, err);
       await message.channel.send(":x: Invalid JSON tags string.");
       return null;
 

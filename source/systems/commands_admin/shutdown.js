@@ -1,3 +1,5 @@
+var logger = process.logger;
+
 module.exports = async function (message, params, config) {
   await message.channel.send(":computer: Shutting down...");
 
@@ -6,10 +8,10 @@ module.exports = async function (message, params, config) {
   client.user.setPresence({
     status: 'offline'
   });
-  
+
   client.destroy();
 
-  console.log("Bot shut down");
+  logger.log(2, "Bot shut down");
 
   process.exit();
 

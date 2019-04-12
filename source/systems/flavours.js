@@ -1,5 +1,7 @@
 // Accounts for the flavours API
 
+var logger = process.logger;
+
 var fs = require("fs");
 
 var expansions = require("./expansions.js");
@@ -12,7 +14,7 @@ var flavours_dir = __dirname + "/../flavours/";
 if (!fs.existsSync(flavours_dir)) {
 
   fs.mkdirSync(flavours_dir);
-  console.log("[Error] Flavours folder not found, made one instead!");
+  logger.log(3, "[Error] Flavours folder not found, made one instead!");
 
 };
 

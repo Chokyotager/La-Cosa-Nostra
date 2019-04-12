@@ -2,6 +2,8 @@
 Set the nickname and the roles here
 */
 
+var logger = process.logger;
+
 module.exports = async function (client, config, roles) {
   var guild = client.guilds.get(config["server-id"]);
   var alive_role = guild.roles.find(x => x.name === config["permissions"]["alive"]);
@@ -29,7 +31,7 @@ module.exports = async function (client, config, roles) {
       await member.addRole(alive_role);
       await member.setNickname("[" + roles[i].alphabet + "] " + name);
     } catch (err) {
-      console.log("Permissions name error. The owner of the server is playing? Not a big deal. Just remember to nick yourself.");
+      logger.log(3, "Permissions name error. The owner of the server is playing? Not a big deal. Just remember to nick yourself.");
     };
 
   };

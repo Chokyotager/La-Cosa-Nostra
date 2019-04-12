@@ -1,7 +1,9 @@
+var logger = process.logger;
+
 module.exports = async function (client, config, roles) {
   // Set permissions to view channels
 
-  console.log("Setting permissions.");
+  logger.log(2, "Setting permissions.");
 
   var read_perms = config["base-perms"]["read"];
   var post_perms = config["base-perms"]["post"];

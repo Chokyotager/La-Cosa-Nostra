@@ -1,5 +1,7 @@
 // Stores all the executable actions
 
+var logger = process.logger;
+
 var actionables = require("../actionables.js"); // for now
 var crypto = require("crypto");
 var Player = require("./Player.js");
@@ -347,7 +349,7 @@ module.exports = class {
       var run = actionables[action.identifier];
 
       if (!run) {
-        console.warn("Bad undefined function in actions: " + action.identifier + "!");
+        logger.log(3, "Bad undefined function in actions: " + action.identifier + "!");
         i++;
         continue;
       };
@@ -360,7 +362,7 @@ module.exports = class {
           var result = run(action, game, params);
           return result;
         } catch (err) {
-          console.log(err);
+          logger.log(4, err);
           return false;
         };
 

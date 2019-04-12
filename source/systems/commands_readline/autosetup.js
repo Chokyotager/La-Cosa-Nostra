@@ -1,11 +1,13 @@
+var logger = process.logger;
+
 module.exports = async function (client, config) {
 
   // Run auto setup
-  console.log("Executing auto-setup.");
+  logger.log(2, "Executing auto-setup.");
 
   var guild = client.guilds.find(x => x.id === config["server-id"]);
 
-  console.log("Creating roles as per config.");
+  logger.log(2, "Creating roles as per config.");
 
   // Create individual roles
 
@@ -24,7 +26,7 @@ module.exports = async function (client, config) {
     var role = await createRole(permissions[key], position);
   };
 
-  console.log("Creating text channels as per config.");
+  logger.log(2, "Creating text channels as per config.");
 
   var channels = config.channels;
 
@@ -32,7 +34,7 @@ module.exports = async function (client, config) {
     await createChannel(channels[key], "text");
   };
 
-  console.log("Creating category channels as per config.");
+  logger.log(2, "Creating category channels as per config.");
 
   var categories = config.categories;
 
@@ -46,13 +48,13 @@ module.exports = async function (client, config) {
 
     if (guild.roles.some(x => x.name === name)) {
 
-      console.log("Role %s already exists, not creating.", name);
+      logger.log(2, "Role %s already exists, not creating.", name);
       return null;
 
     };
 
     var role = await guild.createRole({name: name, position: position});
-    console.log("Created role %s (position %s).", name, position);
+    logger.log(2, "Created role %s (position %s).", name, position);
 
     return role;
 
@@ -62,13 +64,13 @@ module.exports = async function (client, config) {
 
     if (guild.channels.some(x => x.name === name && x.type === type)) {
 
-      console.log("Channel %s (%s) already exists, not creating.", name, type);
+      logger.log(2, "Channel %s (%s) already exists, not creating.", name, type);
       return null;
 
     };
 
     var channel = await guild.createChannel(name, type);
-    console.log("Created channel %s (%s)", name, type);
+    logger.log(2, "Created channel %s (%s)", name, type);
 
     return channel;
 

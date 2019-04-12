@@ -4,6 +4,8 @@ is initialised, the roles should
 already be defined
 */
 
+var logger = process.logger;
+
 var executable = require("../executable.js");
 var alphabets = require("../alpha_table.js");
 
@@ -272,7 +274,7 @@ module.exports = class {
     reaction.remove(user);
 
     if (!this.isAlive(user.id)) {
-      console.log(user.id + " tried to vote on the trial although they are either dead or not in the game!");
+      logger.log(3, user.id + " tried to vote on the trial although they are either dead or not in the game!");
       await user.send(":x: You are not alive and in the game, please do not vote in the trials! If you try that again, I will have you kicked.");
       return null;
     };
@@ -292,7 +294,7 @@ module.exports = class {
     if (alphabet === "nl") {
 
       if (!this.config["game"]["lynch"]["no-lynch-option"]) {
-        console.log(user.id + " tried voting no-lynch using the reaction poll but no-lynches are disabled!");
+        logger.log(3, user.id + " tried voting no-lynch using the reaction poll but no-lynches are disabled!");
         await user.send(":x: The no-lynch vote is disabled.");
         return null;
       };
@@ -309,7 +311,7 @@ module.exports = class {
 
       // Bug check
       if (!voted_against.status.alive) {
-        console.log("Dead player voted on!");
+        logger.log(3, "Dead player voted on!");
         await user.send(":x: You voted on a dead player! Sorry man, but the dude is already dead!");
         return null;
       };
@@ -1359,13 +1361,13 @@ module.exports = class {
       for (var i = 0; i < errors.length; i++) {
 
         if (errors[i].items.length > 0) {
-          console.log("\nError loading type " + errors[i].type + ":");
+          logger.log(3, "\nError loading type " + errors[i].type + ":");
           console.table(errors[i].items);
         };
 
       };
 
-      console.log("\nStopped save reload due to role/attribute incompatibilities. Make sure expansions required for this save can be loaded (you can also check config/playing.json's \"expansions\" field). Restart the bot when ready. Key \"uninstantiate\" to delete saves.\n");
+      logger.log(3, "\nStopped save reload due to role/attribute incompatibilities. Make sure expansions required for this save can be loaded (you can also check config/playing.json's \"expansions\" field). Restart the bot when ready. Key \"uninstantiate\" to delete saves.\n");
 
       return false;
     };
@@ -1375,7 +1377,7 @@ module.exports = class {
     };
 
     if (this.players_tracked !== players.length) {
-      console.warn("The players' save files have been removed/deleted!");
+      logger.log(3, "The players' save files have been removed/deleted!");
     };
 
     this.players_tracked = players.length;
@@ -1506,7 +1508,7 @@ module.exports = class {
 
   endGame () {
 
-    console.log("Game ended!");
+    logger.log(2, "Game ended!");
 
     executable.conclusion.endGame(this);
 
@@ -1529,7 +1531,7 @@ module.exports = class {
     if (this.win_log) {
       executable.misc.postWinLog(this, this.win_log.faction, this.win_log.caption);
     } else {
-      console.warn("The win log has not been primed!");
+      logger.log(3, "The win log has not been primed!");
     };
   }
 
@@ -1659,7 +1661,7 @@ module.exports = class {
     var flavour = flavours[flavour_identifier];
 
     if (!flavour) {
-      console.warn("Invalid flavour " + flavour_identifier + "! Defaulting to no flavour.");
+      logger.log(3, "Invalid flavour " + flavour_identifier + "! Defaulting to no flavour.");
       return null;
     };
 
