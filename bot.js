@@ -157,6 +157,26 @@ client.on("guildMemberAdd", function (member) {
 
 });
 
+client.on("disconnect", function (close_event) {
+
+  if (process.timer) {
+
+    process.timer.save();
+
+  };
+
+  console.log(close_event.reason);
+
+  if (config["auto-reconnect"]) {
+
+    console.log("Automatic restart script initialised.");
+    // Attempt reconnection
+    client.login(config["bot-token"]);
+
+  };
+
+});
+
 // Autoload
 function autoload () {
   // Check for game save

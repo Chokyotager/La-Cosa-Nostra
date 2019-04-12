@@ -140,7 +140,6 @@ module.exports = class {
     // Autosave
 
     if (this.ticks % config["ticks"]["autosave-ticks"] === 0) {
-      console.log("Autosaving...");
       this.save();
     };
 
