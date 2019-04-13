@@ -14,7 +14,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":no_entry_sign: You may roleblock a player tonight using the faction kill.\n\nUse `" + config["command-prefix"] + "roleblock <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":raised_back_of_hand: You may jail a player tonight using the faction kill.\n\nUse `" + config["command-prefix"] + "jail <alphabet/name/nobody>` to select your target.");
 
 };
 

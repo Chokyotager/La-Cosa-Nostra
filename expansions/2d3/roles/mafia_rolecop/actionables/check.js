@@ -24,7 +24,7 @@ module.exports = function (actionable, game, params) {
       break;
 
     case "rolecop":
-      var display_role = "Cop";
+      var display_role = "Rolecop";
       break;
 
     case "mafia_rolecop":

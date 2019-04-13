@@ -12,7 +12,7 @@ module.exports = function (game, message, params) {
   // Run checks, etc
 
   if (params[0] === undefined) {
-    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "roleblock <alphabet/username/nobody>` instead!");
+    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "jail <alphabet/username/nobody>` instead!");
     return null;
   };
 
@@ -22,7 +22,7 @@ module.exports = function (game, message, params) {
   actions.delete(x => x.from === from.identifier && x.identifier === "jailkeeper/jail");
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
-    message.channel.send(":no_entry_sign: You have decided not to roleblock anyone tonight.");
+    message.channel.send(":raised_back_of_hand: You have decided not to jail anyone tonight.");
     return null;
   };
 

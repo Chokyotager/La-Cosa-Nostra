@@ -28,7 +28,7 @@
     {
       "name": "Town Neapolitan",
       "banner": "Town Neapolitan.png",
-      "description": "Welcome to 2d3. You are a Town Neapolitan.\n\nAbilities:\n- Investigate: Each night phase, you may target one player in the game to investigate them. You will receive a result of whether or not they are a Town Vanilla, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to 2d3. You are a Town Neapolitan.\n\nAbilities:\n- Investigate: Each night phase, you may target one player in the game to investigate them. You will receive a result of whether or not they are a Town Vanilla in the form of \"True\", \"False\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
@@ -36,7 +36,7 @@
     {
       "name": "Town Rolecop",
       "banner": "Town Rolecop.png",
-      "description": "Welcome to 2d3. You are a Town Rolecop.\n\nAbilities:\n- Check: Each night phase, you may target one player in the game to check them. You will receive a result of which power role they are, or \"no result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to 2d3. You are a Town Rolecop.\n\nAbilities:\n- Check: Each night phase, you may target one player in the game to check them. You will receive a result of which power role they are, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 

@@ -13,9 +13,9 @@ module.exports = function (actionable, game, params) {
   var target = game.getPlayerByIdentifier(actionable.to);
 
   if (target.role_identifier === "vanilla_townie") {
-    game.addMessage(from, ":mag: Your target is a __Town Vanilla__.");
+    game.addMessage(from, ":mag: You got the result __True__.");
   } else {
-    game.addMessage(from, ":mag: Your target is not a __Town Vanilla__.");
+    game.addMessage(from, ":mag: Your got the result __False__..");
   };
 
 };

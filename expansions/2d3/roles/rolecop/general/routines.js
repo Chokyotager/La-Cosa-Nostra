@@ -14,7 +14,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":mag: You may investigate a player tonight.\n\nUse `" + config["command-prefix"] + "investigate <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":mag: You may check a player tonight.\n\nUse `" + config["command-prefix"] + "check <alphabet/name/nobody>` to select your target.");
 
 };
 

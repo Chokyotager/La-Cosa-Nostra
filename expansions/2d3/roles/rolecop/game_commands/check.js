@@ -12,37 +12,37 @@ module.exports = function (game, message, params) {
   // Run checks, etc
 
   if (params[0] === undefined) {
-    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "investigate <alphabet/username/nobody>` instead!");
+    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "check <alphabet/username/nobody>` instead!");
     return null;
   };
 
   var to = game.getPlayerMatch(params[0]);
   var from = game.getPlayerById(message.author.id);
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "cop/investigate");
+  actions.delete(x => x.from === from.identifier && x.identifier === "rolecop/check");
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
-    message.channel.send(":mag: You have decided not to investigate anyone tonight.");
+    message.channel.send(":mag: You have decided not to check anyone tonight.");
     return null;
   };
 
   to = to.player;
 
   if (!to.isAlive()) {
-    message.channel.send(":x: You cannot investigate a dead player!" + rs.misc.sarcasm(true));
+    message.channel.send(":x: You cannot check a dead player!" + rs.misc.sarcasm(true));
     return null;
   };
 
   if (to.id === message.author.id) {
 
-    message.channel.send(":x: You cannot investigate yourself!" + rs.misc.sarcasm(true));
+    message.channel.send(":x: You cannot check yourself!" + rs.misc.sarcasm(true));
 
     return null;
 
   } else {
 
-    game.addAction("cop/investigate", ["cycle"], {
-      name: "Cop-investigation",
+    game.addAction("rolecop/check", ["cycle"], {
+      name: "Rolecop-check",
       expiry: 1,
       from: message.author.id,
       to: to.id
@@ -52,7 +52,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  message.channel.send(":mag: You have decided to investigate **" + mention + "** tonight.");
+  message.channel.send(":mag: You have decided to check **" + mention + "** tonight.");
 
 };
 

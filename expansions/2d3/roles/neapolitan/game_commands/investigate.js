@@ -19,7 +19,7 @@ module.exports = function (game, message, params) {
   var to = game.getPlayerMatch(params[0]);
   var from = game.getPlayerById(message.author.id);
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "cop/investigate");
+  actions.delete(x => x.from === from.identifier && x.identifier === "neapolitan/investigate");
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":mag: You have decided not to investigate anyone tonight.");
@@ -41,8 +41,8 @@ module.exports = function (game, message, params) {
 
   } else {
 
-    game.addAction("cop/investigate", ["cycle"], {
-      name: "Cop-investigation",
+    game.addAction("neapolitan/investigate", ["cycle"], {
+      name: "Neapolitan-investigation",
       expiry: 1,
       from: message.author.id,
       to: to.id

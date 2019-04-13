@@ -9,8 +9,9 @@ A game by **Cabd** and **Newbie Discussion Group**.
 
 ### Differences:
 - Roleblock actions cannot be roleblocked.
+- Roleblockers may however be jailed - in which their roleblock will fail.
 - Role descriptions have been updated.
-- Mafia chat is only open at night - nightchat for Town is disabled
+- Mafia chat is only open at night - nightchat for Town is disabled.
 
 ### Acknowledgements:
 - HKCaper
