@@ -6,7 +6,7 @@ module.exports = function (actionable, game, params) {
 
   var vigilante = game.getPlayerByIdentifier(actionable.from);
 
-  var outcome = rs.prototypes.powerfulAttack(...arguments);
+  var outcome = rs.prototypes.basicAttack(...arguments);
 
   vigilante.misc.kills_left--;
 
