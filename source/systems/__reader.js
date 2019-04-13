@@ -1,13 +1,21 @@
 var fs = require("fs");
 
-module.exports = function (prefix, extension=".js") {
+module.exports = function (prefix, extension=".js", directory=__dirname) {
 
-  var folders = fs.readdirSync(__dirname);
+  if (!fs.existsSync(directory)) {
+    return null;
+  };
+
+  if (!fs.lstatSync(directory).isDirectory()) {
+    return null;
+  };
+
+  var folders = fs.readdirSync(directory);
   var ret = new Object();
 
   // Get parent systems directory
   for (var i = 0; i < folders.length; i++) {
-    var entry = __dirname + "/" + folders[i];
+    var entry = directory + "/" + folders[i];
     var folder_name_length = folders[i].length;
 
     if (fs.lstatSync(entry).isDirectory() && folders[i].startsWith(prefix)) {
@@ -24,7 +32,7 @@ module.exports = function (prefix, extension=".js") {
         };
 
       };
-      
+
       ret[folders[i].substring(prefix.length, folder_name_length)] = parent;
 
     };

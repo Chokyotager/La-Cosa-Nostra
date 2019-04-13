@@ -6,7 +6,7 @@ module.exports = function (array) {
   var array = Array.from(array);
 
   if (array.length > 1) {
-    array[array.length - 1] = "and " + array[array.length - 1];
+    array[array.length - 1] = "or " + array[array.length - 1];
   };
 
   return array.join(", ");
