@@ -1,7 +1,7 @@
 var reader = require("./__reader.js");
 var fs = require("fs");
 
-var main = reader("commands_", ".js");
+var main = reader("commands_", ".js", __dirname);
 
 var expansions = require("./expansions.js");
 

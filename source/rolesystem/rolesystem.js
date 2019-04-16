@@ -1,7 +1,7 @@
 var reader = require("../systems/__reader.js");
 var auxils = require("../systems/auxils.js");
 
-var rolesystem = reader("rolesystem_", ".js");
+var rolesystem = reader("rolesystem_", ".js", __dirname);
 
 var expansions = require("../systems/expansions.js");
 
