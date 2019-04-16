@@ -386,7 +386,7 @@ module.exports = class {
       if (attribute.start) {
 
         try {
-          attribute.start(this);
+          attribute.start(this, this.attributes[i]);
         } catch (err) {
           logger.log(4, err);
         };
