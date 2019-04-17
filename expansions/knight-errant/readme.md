@@ -8,8 +8,8 @@ A game by **Alduskkel**.
 
 ### Differences:
 - Roleblock actions cannot be roleblocked.
-- Serial killers are to choose their perks on Day 0 instead of pre-game - failure to do so will result in no perk granted.
-- Some role descriptions have been updated.
+- Jail actions cannot be roleblocked, and cannot be blocked by jail.
+- Role descriptions have been updated.
 
 ### Acknowledgements:
 - Kroppeb
