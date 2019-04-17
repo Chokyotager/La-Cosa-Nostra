@@ -10,7 +10,6 @@ module.exports = async function (client, config) {
 
   deleteCaches(client, config);
 
-  client.destroy();
-  client.login(config["bot-token"]);
+  process.setStatus(client);
 
 };

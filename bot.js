@@ -28,10 +28,7 @@ client.on("ready", function () {
 
   ready();
 
-  client.user.setPresence({
-    status: "online",
-    game: {name: "Foxflower LCN " + version.version, type: "PLAYING"}
-  });
+  process.setStatus(client);
 
   var save_status = "NONE ATTEMPTED";
 
@@ -224,3 +221,12 @@ function autoload () {
 };
 
 client.login(config["bot-token"]);
+
+process.setStatus = function (client) {
+
+  client.user.setPresence({
+    status: "online",
+    game: {name: "Foxflower LCN " + version.version, type: "PLAYING"}
+  });
+
+};

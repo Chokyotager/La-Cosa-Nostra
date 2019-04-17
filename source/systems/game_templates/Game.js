@@ -1003,8 +1003,9 @@ module.exports = class {
     var cause_of_death_config = this.config["game"]["cause-of-death"];
     var exceptions = cause_of_death_config["exceptions"];
 
-    var hide_day = (cause_of_death_config["hide-day"] && this.isDay());
-    var hide_night = (cause_of_death_config["hide-night"] && !this.isDay());
+    // Inverted
+    var hide_day = (cause_of_death_config["hide-day"] && !this.isDay());
+    var hide_night = (cause_of_death_config["hide-night"] && this.isDay());
 
     for (var i = 0; i < unique.length; i++) {
 
@@ -1026,7 +1027,7 @@ module.exports = class {
             };
           };
 
-          if (hide_day || hide_night || exempt) {
+          if (!(hide_day || hide_night) || exempt) {
             reasons.push(registers[j].reason);
           };
 
