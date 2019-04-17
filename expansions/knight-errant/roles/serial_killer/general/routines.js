@@ -31,7 +31,7 @@ module.exports = function (player) {
   if (abilities.length > 0) {
 
     abilities = abilities.map((x, i) => (i+1) + ". " + x.attribute.name + " [x " + x.tags.uses + "]");
-    player.game.sendPeriodPin(channel, ":exclamation: You currently have the following **non-passive** limited-use abilities:\n\n```fix\n" + abilities.join("\n") + "\n```\nYou may use an ability in conjunction with the kill. To obtain information on an ability and how to use it (if applicable), use `!ability <power name>`.");
+    player.game.sendPeriodPin(channel, ":exclamation: You currently have the following **non-passive** limited-use abilities:\n\n```fix\n" + abilities.join("\n") + "\n```\nYou may use an ability __in conjunction__ with the kill. To obtain information on an ability and how to use it (if applicable), use `!ability <power name>`.");
 
   } else {
 

@@ -36,7 +36,7 @@
     {
       "name": "Town Bulletproof",
       "banner": "Bulletproof.png",
-      "description": "Welcome to Knight-Errant. You are a Town Bulletproof.\n\nAbilities:\n- Bulletproof: You may not be killed at night.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Knight-Errant. You are a Town Bulletproof.\n\nAbilities:\n- Bulletproof: You may not be killed at night by regular kills.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
@@ -60,7 +60,7 @@
     {
       "name": "Town Mason",
       "banner": "Mason.png",
-      "description": "Welcome to Knight-Errant. You are a Town Mason.\n\nAbilities:\n- Masons: You and the other mason(s) all know each other to be town. During the night, you may communicate.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+      "description": "Welcome to Knight-Errant. You are a Town Mason.\n\nAbilities:\n- Masons: You and the other mason know each other to be town. During the night, you may communicate.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
     }
   ],
 
@@ -108,7 +108,7 @@
     {
       "name": "Mafia Bulletproof",
       "banner": "Mafia Bulletproof.png",
-      "description": "Welcome to Knight-Errant. You are a Mafia Bulletproof.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Bulletproof: You may not be killed at night.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+      "description": "Welcome to Knight-Errant. You are a Mafia Bulletproof.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Bulletproof: You may not be killed at night by regular kills.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
     }
   ],
 
@@ -124,7 +124,7 @@
     {
       "name": "Serial Killer",
       "banner": "Serial Killer.png",
-      "description": "Welcome to Knight-Errant. You are a Serial Killer.\n\nAbilities:\n- Limited-Use Abilities: You are granted special limited-use abilities at the start of the game depending on the role distribution which you may use accordingly.\n- Kill: Each night phase, you may target another player in the game to attempt to kill them.\n- Strong Kill: Once, at night, instead of using your normal kill, you may target a player to deal an unstoppable kill on them.\n\nWin condition:\n- You win when you are the last player alive."
+      "description": "Welcome to Knight-Errant. You are a Serial Killer.\n\nAbilities:\n- Limited-Use Abilities: You are granted special limited-use abilities at the start of the game depending on the role distribution which you may use accordingly in conjunction with the kill.\n- Kill: Each night phase, you may target another player in the game to attempt to kill them.\n- Strong Kill: Once, at night, instead of using your normal kill, you may target a player to deal an unstoppable kill on them.\n\nWin condition:\n- You win when you are the last player alive."
     }
   ]
 

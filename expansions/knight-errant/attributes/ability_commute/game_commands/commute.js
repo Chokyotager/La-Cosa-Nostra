@@ -31,7 +31,8 @@ module.exports = function (game, message, params) {
     expiry: 1,
     meta: {type: "ability"},
     from: message.author.id,
-    to: message.author.id
+    to: message.author.id,
+    priority: 0.01
   });
 
 };
