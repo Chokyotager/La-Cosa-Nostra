@@ -1,0 +1,13 @@
+{
+
+  "name": "Arbitrary",
+
+  "modular": true,
+
+  "modular-details": {
+
+    "cluster": "arbitrary"
+
+  }
+
+}
