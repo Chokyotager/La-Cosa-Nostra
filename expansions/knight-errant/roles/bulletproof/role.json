@@ -1,0 +1,29 @@
+{
+  "role-name": "Town Bulletproof",
+
+  "alignment": "town",
+  "class": "unclassified",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 1,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+		"redirection-immunity": 0,
+		"kidnap-immunity": 0,
+    "priority": 5,
+    "vote-offset": 0,
+		"vote-magnitude": 1
+  },
+
+  "investigation": ["Town Bulletproof"],
+  "secondary-roles": null,
+
+  "tags": [],
+
+  "reveal-role-on-interrogation": false,
+
+  "win-condition": "town"
+}

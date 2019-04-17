@@ -1,0 +1,18 @@
+{
+
+  "name": "Heal",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "ability",
+
+    "display-field": [
+      {"name": "Type", "description": "Action"},
+      {"name": "Command", "description": "heal <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Protects the target from one attack."}
+    ]
+
+  }
+
+}

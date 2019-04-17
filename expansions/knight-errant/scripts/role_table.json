@@ -1,0 +1,6 @@
+[
+  [{"role-identifier": "three_shot_commuter", "ability": "ability_commute"}, {"role-identifier": "mafia_bulletproof", "ability": "ability_bulletproof"}, {"role-identifier": "gunsmith", "ability": "ability_gunsmith"}, {"role-identifier": "mafia_roleblocker", "ability": "ability_roleblock"}],
+  [{"role-identifier": "mafia_godfather", "ability": "ability_investigation_immunity"}, {"role-identifier": "cop", "ability": "ability_investigate"}, {"role-identifier": "mafia_even_night_watcher", "ability": "ability_watch"}, {"role-identifier": "tracker", "ability": "ability_track"}],
+  [{"role-identifier": "jailkeeper", "ability": "ability_jail"}, {"role-identifier": "mafia_roleblocker", "ability": "ability_roleblock"}, {"role-identifier": "bulletproof", "ability": "ability_bulletproof"}, {"role-identifier": "mafia_bulletproof", "ability": "ability_bulletproof"}],
+  [{"role-identifier": "mafia_even_night_watcher", "ability": "ability_watch"}, {"role-identifier": "roleblocker", "ability": "ability_roleblock"}, {"role-identifier": "mafia_godfather", "ability": "ability_investigation_immunity"}, {"role-identifier": "doctor", "ability": "ability_heal"}]
+]

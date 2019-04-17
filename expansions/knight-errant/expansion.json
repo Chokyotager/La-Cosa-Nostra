@@ -1,0 +1,30 @@
+{
+
+  "name": "Knight-Errant",
+  "type": "Setup",
+  "description": "A semi-open setup uses a chess knight move in a matrix to determine the setup.",
+
+  "link": "https://wiki.mafiascum.net/index.php?title=Knight-Errant",
+
+  "authors": ["Alduskkel"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [
+      "-lcn/*"
+    ],
+
+    "attributes": [
+      "-lcn/*",
+      "lcn/arbitrary"
+    ]
+
+  },
+
+  "dependencies": ["forum-auxiliaries"]
+
+}

@@ -1,0 +1,131 @@
+{
+
+  "vanilla_townie": [
+    {
+      "name": "Vanilla Townie",
+      "banner": "Vanilla Townie.png",
+      "description": "Welcome to Knight-Errant. You are a Vanilla Townie.\n\nAbilities:\n- You have no abilities other than your vote.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "cop": [
+    {
+      "name": "Town Cop",
+      "banner": "Cop.png",
+      "description": "Welcome to Knight-Errant. You are a Town Cop.\n\nAbilities:\n- Investigate: Each night phase, you may target one player in the game to investigate them. You will receive a result of \"Town\", \"Anti-town\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "doctor": [
+    {
+      "name": "Town Doctor",
+      "banner": "Doctor.png",
+      "description": "Welcome to Knight-Errant. You are a Town Doctor.\n\nAbilities:\n- Heal: Each night phase, you may target one player in the game to heal them. They will be protected from a single kill. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "three_shot_commuter": [
+    {
+      "name": "Town 3-Shot Commuter",
+      "banner": "3-Shot Commuter.png",
+      "description": "Welcome to Knight-Errant. You are a Town 3-Shot Commuter.\n\nAbilities:\n- Commute: Three times during the game, at night, you may choose to commute. All actions on you the nights which you commute on will fail.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "bulletproof": [
+    {
+      "name": "Town Bulletproof",
+      "banner": "Bulletproof.png",
+      "description": "Welcome to Knight-Errant. You are a Town Bulletproof.\n\nAbilities:\n- Bulletproof: You may not be killed at night.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "gunsmith": [
+    {
+      "name": "Town Gunsmith",
+      "banner": "Gunsmith.png",
+      "description": "Welcome to Knight-Errant. You are a Town Gunsmith.\n\nAbilities:\n- Investigate: Each night phase, you may target another player in the game to see if they are a cop, jailkeeper, serial killer, or a member of the mafia. You will get the result of \"True\", \"False\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "tracker": [
+    {
+      "name": "Town Tracker",
+      "banner": "Tracker.png",
+      "description": "Welcome to Knight-Errant. You are a Town Tracker.\n\nAbilities:\n- Track: Each night phase, you may target another player in the game to see who they visit that night, showing up as \"nobody\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "mason": [
+    {
+      "name": "Town Mason",
+      "banner": "Mason.png",
+      "description": "Welcome to Knight-Errant. You are a Town Mason.\n\nAbilities:\n- Masons: You and the other mason(s) all know each other to be town. During the night, you may communicate.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "roleblocker": [
+    {
+      "name": "Town Roleblocker",
+      "banner": "Roleblocker.png",
+      "description": "Welcome to Knight-Errant. You are a Town Roleblocker.\n\nAbilities:\n- Roleblock: Each night phase, you may target another player in the game to attempt to block them from performing any night actions.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "jailkeeper": [
+    {
+      "name": "Town Jailkeeper",
+      "banner": "Jailkeeper.png",
+      "description": "Welcome to Knight-Errant. You are a Town Jailkeeper.\n\nAbilities:\n- Jail: Each night phase, you may target one player in the game to jail them. All actions to and from them other than your own will fail for that night. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "mafia_goon": [
+    {
+      "name": "Mafia Goon",
+      "banner": "Mafia Goon.png",
+      "description": "Welcome to Knight-Errant. You are a Mafia Goon.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_roleblocker": [
+    {
+      "name": "Mafia Roleblocker",
+      "banner": "Mafia Roleblocker.png",
+      "description": "Welcome to Knight-Errant. You are a Mafia Roleblocker.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Roleblock: Each night phase, you may target another player in the game to attempt to block them from performing any night actions.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_even_night_watcher": [
+    {
+      "name": "Mafia Even-Night Watcher",
+      "banner": "Mafia Even-Night Watcher.png",
+      "description": "Welcome to Knight-Errant. You are a Mafia Even-Night Watcher.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Watch: On even night phases, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_bulletproof": [
+    {
+      "name": "Mafia Bulletproof",
+      "banner": "Mafia Bulletproof.png",
+      "description": "Welcome to Knight-Errant. You are a Mafia Bulletproof.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Bulletproof: You may not be killed at night.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_godfather": [
+    {
+      "name": "Mafia Godfather",
+      "banner": "Mafia Godfather.png",
+      "description": "Welcome to Knight-Errant. You are a Mafia Godfather.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Investigation Immune: You will appear as innocent to any alignment checks.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "serial_killer": [
+    {
+      "name": "Serial Killer",
+      "banner": "Serial Killer.png",
+      "description": "Welcome to Knight-Errant. You are a Serial Killer.\n\nAbilities:\n- Limited-Use Abilities: You are granted special limited-use abilities at the start of the game depending on the role distribution which you may use accordingly.\n- Kill: Each night phase, you may target another player in the game to attempt to kill them.\n- Strong Kill: Once, at night, instead of using your normal kill, you may target a player to deal an unstoppable kill on them.\n\nWin condition:\n- You win when you are the last player alive."
+    }
+  ]
+
+}

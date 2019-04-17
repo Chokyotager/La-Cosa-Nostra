@@ -1,0 +1,17 @@
+{
+
+  "name": "Bulletproof",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "ability",
+
+    "display-field": [
+      {"name": "Type", "description": "Passive"},
+      {"name": "Description", "description": "Protects the user from lethal actions."}
+    ]
+
+  }
+
+}

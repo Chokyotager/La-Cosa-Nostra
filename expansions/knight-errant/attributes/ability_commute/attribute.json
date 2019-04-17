@@ -1,0 +1,19 @@
+{
+
+  "name": "Commute",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "ability",
+
+    "display-field": [
+      {"name": "Type", "description": "Action"},
+      {"name": "Command", "description": "commute"},
+      {"name": "Command", "description": "deselect"},
+      {"name": "Description", "description": "Stops all night actions onto the user."}
+    ]
+
+  }
+
+}

@@ -1,0 +1,18 @@
+{
+
+  "name": "Investigate",
+
+  "modular": true,
+
+  "modular-details": {
+    "cluster": "ability",
+
+    "display-field": [
+      {"name": "Type", "description": "Action"},
+      {"name": "Command", "description": "investigate <alphabet/name/nobody>"},
+      {"name": "Description", "description": "Gets the targets’ role name."}
+    ]
+
+  }
+
+}
