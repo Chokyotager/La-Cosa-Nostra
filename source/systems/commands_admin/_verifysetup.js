@@ -16,19 +16,29 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
-  var names = new Array();
+  if (players !== "auto") {
 
-  for (var i = 0; i < players.length; i++) {
+    var names = new Array();
 
-    var member = guild.members.find(x => x.id === players[i]);
+    for (var i = 0; i < players.length; i++) {
 
-    if (!member) {
-      names.push("undef'd player (" + players[i] + ")");
-      continue;
+      var member = guild.members.find(x => x.id === players[i]);
+
+      if (!member) {
+        names.push("undef'd player (" + players[i] + ")");
+        continue;
+      };
+
+      // Run
+      names.push(member.displayName + " (" + players[i] + ")");
+
     };
 
-    // Run
-    names.push(member.displayName + " (" + players[i] + ")");
+  } else {
+
+    var members = guild.members.filter(x => x.roles.some(y => y.name === config["permissions"]["pre"]));
+
+    var names = members.map(x => x.displayName + " (" + x.id + ")");
 
   };
 

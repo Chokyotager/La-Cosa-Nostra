@@ -10,6 +10,16 @@ module.exports = function (client, config) {
   var playing = config["playing"];
   var players = playing["players"];
 
+  var guild = client.guilds.find(x => x.id === config["server-id"]);
+
+  if (players === "auto") {
+
+    var members = guild.members.filter(x => x.roles.some(y => y.name === config["permissions"]["pre"]));
+
+    players = members.map(x => x.id);
+
+  };
+
   var roles = playing["shuffle"] ? auxils.cryptographicShuffle(playing["roles"]) : playing["roles"];
 
   if (roles.length !== players.length) {

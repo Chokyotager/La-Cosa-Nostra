@@ -35,6 +35,9 @@ module.exports = async function (client, config) {
 
   var new_config = configModifier(config);
 
+  // assign roles first
+  var roles = assignRoles(client, new_config);
+
   await deletePrivate(client, new_config);
 
   // Delete (or rename) previous cache
@@ -42,9 +45,6 @@ module.exports = async function (client, config) {
 
   // Initialise cache
   initCache(client, new_config);
-
-  // assign roles first
-  var roles = assignRoles(client, new_config);
 
   // Create private channels
   var [mafia_channel, private_channels] = await createPrivate(client, new_config, roles);

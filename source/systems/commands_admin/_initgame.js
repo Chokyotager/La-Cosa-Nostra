@@ -1,10 +1,22 @@
+var logger = process.logger;
+
 var initGame = require("../game_setters/initGame.js");
 
 module.exports = async function (message, params, config) {
 
   await message.channel.send(":ok: Creating game.");
 
-  await initGame(message.client, config);
+  try {
+
+    await initGame(message.client, config);
+
+  } catch (err) {
+
+    logger.log(4, "Game creation failed: \n" + err);
+    await message.channel.send(":x: Failed to create game. Run `" + config["command-prefix"] + "_verifysetup` to troubleshoot. Please check the console for full details.");
+    return null;
+
+  };
 
   await message.channel.send(":ok: Game creation complete.");
 
