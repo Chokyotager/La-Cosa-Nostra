@@ -2,7 +2,7 @@
 
 module.exports = function (player) {
 
-  if (player.game.actions.find(x => x.identifier === "a/ability_investigate/roleblock_noresult")) {
+  if (player.game.actions.find(x => x.from === player.identifier && x.identifier === "a/ability_investigate/roleblock_noresult")) {
 
     return null;
 

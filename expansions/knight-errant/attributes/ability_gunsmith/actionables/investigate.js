@@ -16,7 +16,7 @@ module.exports = function (actionable, game, params) {
   var immunity = target.getStat("detection-immunity", Math.max);
 
   // Not immune
-  if (immunity >= 1 || !rs.knight_errant.investigationImmunity(target)) {
+  if (immunity >= 1 || rs.knight_errant.investigationImmunity(target)) {
 
     game.addMessage(from, ":mag: You got the result of __False__.");
 

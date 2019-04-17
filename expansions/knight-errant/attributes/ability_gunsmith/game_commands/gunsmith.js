@@ -54,7 +54,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  message.channel.send(":mag: You have decided to investigate **" + mention + "** tonight.");
+  message.channel.send(":mag: You have decided to gunsmith investigate **" + mention + "** tonight.");
 
 };
 

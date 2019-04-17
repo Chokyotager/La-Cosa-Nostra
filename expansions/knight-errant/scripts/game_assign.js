@@ -6,6 +6,9 @@ var auxils = lcn.auxils;
 
 var role_table = JSON.parse(fs.readFileSync(__dirname + "/role_table.json"));
 
+// Transpose
+role_table = role_table[0].map((col, i) => role_table.map(row => row[i]));
+
 module.exports = function (playing_config) {
 
   if (playing_config.roles) {
@@ -119,7 +122,7 @@ function knightMatrix (dimensions=[4, 4], move_directions=[2, 1]) {
 
             var new_indices = combination_indices.concat(combination_pos);
 
-            doStep(1 - axis, new_pos, step + 1, move.letter + name, new_indices);
+            doStep(1 - axis, new_pos, step + 1, name + move.letter, new_indices);
 
           };
 

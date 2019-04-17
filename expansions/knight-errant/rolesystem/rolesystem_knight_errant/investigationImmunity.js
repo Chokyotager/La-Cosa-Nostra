@@ -12,7 +12,7 @@ module.exports = function (player) {
 
   for (var i = 0; i < attributes.length; i++) {
 
-    if (attributes[i].identifier !== "arbitrary" && x.tags.type === "investigation_immunity") {
+    if (attributes[i].identifier !== "arbitrary" && attributes[i].tags.type === "investigation_immunity") {
       continue;
     };
 

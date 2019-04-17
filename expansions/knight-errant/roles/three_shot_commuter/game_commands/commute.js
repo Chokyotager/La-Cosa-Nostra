@@ -2,7 +2,7 @@
 
 var lcn = require("../../../../../source/lcn.js");
 
-var rs = lcn.rs;
+var rs = lcn.rolesystem;
 
 module.exports = function (game, message, params) {
 

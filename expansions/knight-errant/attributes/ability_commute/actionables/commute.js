@@ -7,7 +7,7 @@ module.exports = function (actionable, game, params) {
   var target = game.getPlayerByIdentifier(actionable.to);
 
   rs.prototypes.basicKidnap.reason = "abducted";
-  var outcome = rs.prototypes.basicKidnap(...arguments);
+  var outcome = rs.prototypes.basicCommute(...arguments);
 
   rs.modular.attributeDecrement(...arguments);
 

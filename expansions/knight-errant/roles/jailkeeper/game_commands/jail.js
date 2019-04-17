@@ -52,7 +52,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  message.channel.send(":raised_hand: You have decided to jail **" + mention + "** tonight.");
+  message.channel.send(":raised_back_of_hand: You have decided to jail **" + mention + "** tonight.");
 
 };
 
