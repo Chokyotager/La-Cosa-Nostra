@@ -34,6 +34,15 @@ module.exports = function (actionable, game, params) {
   // Detonation is astral
   rs.prototypes.unstoppableAttack(...arguments, true);
 
+  target.setDisplayRole("Hidden");
+
+  game.addAction("revolutionary/reveal_role", ["cycle"], {
+    name: "Revolutionary-reveal",
+    expiry: 1,
+    from: target,
+    to: target
+  });
+
   // Remove defusion message
   game.actions.delete(x => x.identifier === "revolutionary/defused_message" && x.from === actionable.from && x.to === actionable.to);
 

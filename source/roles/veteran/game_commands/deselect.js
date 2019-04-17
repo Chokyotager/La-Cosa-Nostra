@@ -16,7 +16,7 @@ module.exports = function (game, message, params) {
     return null;
   };
 
-  actions.delete(x => x.from === from.identifier && x.identifier === "marshal/marshal");
+  actions.delete(x => x.from === from.identifier && x.identifier === "veteran/alert");
 
   message.channel.send(":triangular_flag_on_post: You have decided not to go on alert tonight.");
 
