@@ -10,12 +10,18 @@ module.exports = async function (game) {
 
     for (var i = 0; i < mafia.length; i++) {
 
+      if (!mafia[i].getSpecialChannels().some(x => x.id === channel.id)) {
+        mafia[i].addSpecialChannel(channel);
+      };
+
       var member = mafia[i].getGuildMember();
+
       if (!member) {
         continue;
       };
 
       await channel.overwritePermissions(member, read_perms);
+
     };
 
   };

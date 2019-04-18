@@ -109,7 +109,7 @@ module.exports = class {
 
   };
 
-  getChannel(name) {
+  getChannel (name) {
     var guild = this.getGuild();
 
     if (!this.channels[name]) {
@@ -1587,10 +1587,9 @@ module.exports = class {
     executable.misc.postDelayNotice(this);
   }
 
-  substitute (id1, id2) {
+  substitute (id1, id2, detailed_substitution) {
 
-    var player = this.getPlayerById(id1);
-    player.substitute(id2);
+    return executable.admin.substitute(this, id1, id2, detailed_substitution);
 
   };
 

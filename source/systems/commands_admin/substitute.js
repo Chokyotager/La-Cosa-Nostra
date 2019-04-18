@@ -10,11 +10,10 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
-  process.timer.game.substitute(params[0], params[1]);
+  await process.timer.game.substitute(params[0], params[1], true);
   process.timer.game.save();
 
-  await message.channel.send(":ok: Save substitution complete (" + params[0] + " → " + params[1] + ").");
-
-  await message.channel.send(":exclamation: Because the substitution feature is still in beta, please:\n(1) Manually assign roles\n(2) Manually assign nickname\n(3) Manually assign channels\n\n**The completed substitution only accounts for meta-votes.**");
+  await message.channel.send(":ok: Substitution complete (" + params[0] + " → " + params[1] + ").");
+  await message.channel.send(":exclamation: Please ensure that the substituted player has correct access to all the channels.");
 
 };
