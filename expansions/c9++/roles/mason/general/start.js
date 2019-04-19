@@ -68,6 +68,8 @@ module.exports = function (player) {
         tags: ["permanent"]
       });
 
+      players[i].addSpecialChannel(channel);
+
     };
 
     await channel.send("**This is the Masons' chat.**\n\nThis chat is open to involved parties only at night.");

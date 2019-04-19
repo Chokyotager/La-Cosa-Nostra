@@ -82,6 +82,9 @@ module.exports = function (player) {
     player.misc.lover_channel = channel.id;
     matched.misc.lover_channel = channel.id;
 
+    player.addSpecialChannel(channel);
+    matched.addSpecialChannel(channel);
+
     await channel.send("**This is the Lovers' chat.**\n\nThis chat is open to both parties only at night.");
 
     game.setChannel(name, channel);

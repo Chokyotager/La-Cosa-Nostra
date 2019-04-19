@@ -61,6 +61,8 @@ module.exports = function (player) {
       // Add channels
       players[i].misc.mason_channel = channel.id;
 
+      players[i].addSpecialChannel(channel);
+
       game.addAction("mason/lock_chats_on_death", ["killed"], {
         from: players[i],
         to: players[i],
