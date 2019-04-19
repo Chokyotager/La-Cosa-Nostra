@@ -52,6 +52,8 @@ module.exports = function (actionable, game, params) {
 
   };
 
+  rs.modular.attributeDecrement(...arguments);
+
 };
 
 module.exports.TAGS = ["drivable", "roleblockable", "visit"];
