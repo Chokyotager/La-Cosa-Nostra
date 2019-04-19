@@ -14,7 +14,13 @@ module.exports = function (client, config) {
 
   if (players === "auto") {
 
-    var members = guild.members.filter(x => x.roles.some(y => y.name === config["permissions"]["pre"]));
+    var members = guild.members.filter(x => x.roles.some(y => y.name === config["permissions"]["pre"])).array();
+
+    members.sort(function (a, b){
+        if (a.displayName.toLowerCase() < b.displayName.toLowerCase()) { return -1; }
+        if (a.displayName.toLowerCase() > b.displayName.toLowerCase()) { return 1; }
+        return 0;
+    });
 
     players = members.map(x => x.id);
 

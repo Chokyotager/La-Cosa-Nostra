@@ -36,7 +36,13 @@ module.exports = async function (message, params, config) {
 
   } else {
 
-    var members = guild.members.filter(x => x.roles.some(y => y.name === config["permissions"]["pre"]));
+    var members = guild.members.filter(x => x.roles.some(y => y.name === config["permissions"]["pre"])).array();
+
+    members.sort(function (a, b){
+        if (a.displayName.toLowerCase() < b.displayName.toLowerCase()) { return -1; }
+        if (a.displayName.toLowerCase() > b.displayName.toLowerCase()) { return 1; }
+        return 0;
+    });
 
     var names = members.map(x => x.displayName + " (" + x.id + ")");
 
