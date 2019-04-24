@@ -14,10 +14,6 @@ module.exports = function (actionable, game, params) {
     return false;
   };
 
-  if (params.circumstances.astral) {
-    return false;
-  };
-
   if (!self.misc.blood_wrought_killed) {
 
     self.misc.blood_wrought_killed = true;
