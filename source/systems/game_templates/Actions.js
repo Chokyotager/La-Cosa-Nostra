@@ -32,9 +32,9 @@ module.exports = class {
 
     // Actions are calculated relative to the step
 
-    var allowed = ["cycle", "chat", "lynch", "nightkilled",
-    "attacked", "killed", "visit", "roleblock", "postcycle",
-    "instant", "outvisit", "retrovisit", "retrocycle", "miscellaneous"];
+    var allowed = ["cycle", "chat", "lynch", "attacked",
+    "killed", "visit", "roleblock", "postcycle", "instant",
+    "outvisit", "retrovisit", "retrocycle", "arbitrary"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -111,7 +111,7 @@ module.exports = class {
       trigger: ["cycle"]
     };*/
 
-    // triggers: cycle, chat, lynch, nightkilled, attacked
+    // triggers: cycle, chat, lynch, arbitrary, attacked
 
     this.actions.push(actionable);
 
@@ -279,7 +279,7 @@ module.exports = class {
 
     // Actions: [from, to, game]
     // Returns: boolean
-    // If true for chat, lynch, nightkilled types, subtract one
+    // If true for chat, lynch, arbitrary types, subtract one
     // from expiration
 
     // Create loop identifier
@@ -371,7 +371,7 @@ module.exports = class {
       var rerun = false;
 
       // Non-routine triggers
-      if (["chat", "lynch", "nightkill", "attacked", "killed", "visit", "roleblock", "outvisit", "retrovisit", "miscellaneous"].includes(type)) {
+      if (["chat", "lynch", "attacked", "killed", "visit", "roleblock", "outvisit", "retrovisit", "arbitrary"].includes(type)) {
         var target = action.target || action.to;
 
         var check = params.target;

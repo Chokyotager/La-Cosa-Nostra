@@ -2,12 +2,15 @@ module.exports = function (actionable, game, params, astral=false, broadcast_off
 
   var attacked = game.getPlayerByIdentifier(actionable.to);
 
-  game.execute("attacked", {attacker: actionable.from,
+  var attack_parameters = {attacker: actionable.from,
     target: actionable.to,
     priority: actionable.priority,
     strength: 3,
+    astral: astral,
     reason: module.exports.reason,
-    secondary_reason: module.exports.secondary_reason});
+    secondary_reason: module.exports.secondary_reason};
+
+  game.execute("attacked", attack_parameters);
 
   if (!astral) {
 
@@ -22,7 +25,8 @@ module.exports = function (actionable, game, params, astral=false, broadcast_off
 
   if (stat < 3) {
     // Kill the player
-    game.kill(attacked, module.exports.reason, module.exports.secondary_reason, broadcast_offset);
+    attack_parameters.type = "attack";
+    game.kill(attacked, module.exports.reason, module.exports.secondary_reason, broadcast_offset, attack_parameters);
     return true;
   } else {
     return false;

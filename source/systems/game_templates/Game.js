@@ -890,7 +890,7 @@ module.exports = class {
 
   }
 
-  kill (role, reason, secondary_reason, broadcast_position_offset=0) {
+  kill (role, reason, secondary_reason, broadcast_position_offset=0, circumstances=new Object()) {
 
     // Secondary reason is what the player sees
     // Can be used to mask death but show true
@@ -905,7 +905,7 @@ module.exports = class {
 
   }
 
-  silentKill (role, reason, secondary_reason, broadcast_position_offset=0) {
+  silentKill (role, reason, secondary_reason, broadcast_position_offset=0, circumstances=new Object()) {
 
     // Work in progress, should remove emote
     /*
@@ -917,7 +917,7 @@ module.exports = class {
     // Secondary reason is what the player sees
     // Can be used to mask death but show true
     // reason of death to the player killed
-    this.execute("killed", {target: role.identifier});
+    this.execute("killed", {target: role.identifier, circumstances: circumstances});
     executable.misc.kill(this, role);
     this.primeDeathMessages(role, reason, secondary_reason, broadcast_position_offset);
 
