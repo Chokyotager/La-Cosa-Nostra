@@ -58,7 +58,7 @@ module.exports = async function (player, stagger=800) {
     send = send.replace(/{;alignment}/g, cpl(role["alignment"] + "-" + cpl(role["class"])));
   };
 
-  send = send.replace(/{;description}/g, flavour_role["description"] || role["description"]);
+  send = send.replace(/{;description}/g, flavour_role["secondary-description"] || flavour_role["description"] || role["description"]);
   send = send.replace(/{;player_id}/g, player.id);
 
   if (flavour && flavour_info["show-role-equivalent"] && flavour_role["name"] !== role["role-name"]) {
