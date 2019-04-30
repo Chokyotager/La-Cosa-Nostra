@@ -18,6 +18,6 @@ module.exports = function (player) {
 
 };
 
-module.exports.ALLOW_DEAD = true;
+module.exports.ALLOW_DEAD = false;
 module.exports.ALLOW_NIGHT = true;
 module.exports.ALLOW_DAY = false;
