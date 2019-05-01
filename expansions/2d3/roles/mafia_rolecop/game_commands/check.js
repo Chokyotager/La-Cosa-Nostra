@@ -53,6 +53,7 @@ module.exports = function (game, message, params) {
   };
 
   message.channel.send(":mag: You have decided to check **" + mention + "** tonight.");
+  game.getChannel("mafia").send(":exclamation: **" + from.getDisplayName() + "** is checking **" + mention + "** tonight.");
 
 };
 
