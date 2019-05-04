@@ -1,0 +1,29 @@
+{
+  "role-name": "1-shot Escort",
+
+  "alignment": "town",
+  "class": "support",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 1,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+		"redirection-immunity": 0,
+		"kidnap-immunity": 0,
+    "priority": 1,
+    "vote-offset": 0,
+		"vote-magnitude": 1
+  },
+
+  "investigation": ["Escort", "Consort", "Jack of all Trades"],
+  "secondary-roles": null,
+
+  "tags": [],
+
+  "reveal-role-on-interrogation": false,
+
+  "win-condition": "town"
+}
