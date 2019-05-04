@@ -1,8 +1,8 @@
 You are one to be feared.
 
-Every night, you may tag a bomb on a player. This bomb will come together with a context which comes with a minimum word length, consonants, and a minimum consonant fulfilment.
+Every night, you may tag a bomb on a player. This bomb will come together with a context which comes with a minimum word length, letters, and a minimum letter fulfilment.
 
-If your target says a word of the minimum word length with at least some of the consonants as specified in any of the public chats the next day, the bomb will detonate immediately, dealing them an Unstoppable attack.
+If your target says a word of the minimum word length with at least some of the letters as specified in any of the public chats the next day, the bomb will detonate immediately, dealing them an Unstoppable attack.
 
 Your target is not informed that a bomb has been planted on them and the bomb will deactivate the next night if it did not blow up, notifying them.
 

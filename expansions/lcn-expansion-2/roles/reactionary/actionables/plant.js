@@ -13,8 +13,22 @@ module.exports = function (actionable, game, params) {
   // Generate context
   var difficulty = Math.round(Math.random() * 7) + 5;
 
-  var fulfill = Math.min(Math.ceil((12 - difficulty) / 2) + 2, difficulty);
-  var consonants = auxils.shuffle(text.consonants).splice(0, fulfill + 2).sort();
+  var fulfil = Math.min(Math.floor((12 - difficulty) / 2) + 2, difficulty);
+
+  if (fulfil > 3) {
+
+    var vowels_allowed = fulfil - 3;
+
+    var consonants = auxils.shuffle(text.consonants).splice(0, fulfil + Math.min(2 - vowels_allowed, 0));
+    var vowels = auxils.shuffle(text.vowels).splice(0, vowels_allowed);
+
+    var letters = consonants.concat(vowels).sort();
+
+  } else {
+
+    var letters = auxils.shuffle(text.consonants).splice(0, fulfil + 2).sort();
+
+  };
 
   game.execute("visit", {visitor: actionable.from,
     target: actionable.to,
@@ -25,7 +39,7 @@ module.exports = function (actionable, game, params) {
     name: "Reactionary-detonate",
     from: actionable.from,
     to: actionable.to,
-    context: {difficulty: difficulty, fulfill: fulfill, consonants: consonants},
+    context: {difficulty: difficulty, fulfil: fulfil, letters: letters},
     expiry: 2
   });
 
@@ -40,7 +54,7 @@ module.exports = function (actionable, game, params) {
 
   var attacker = game.getPlayerByIdentifier(actionable.from);
 
-  attacker.getPrivateChannel().send(":bomb: The minimum word length is **" + difficulty + "**, the consonants are " + auxils.pettyFormat(consonants.map(x => "`" + x + "`")) + ", of which your target needs to say at least **" + fulfill + "** to explode.");
+  attacker.getPrivateChannel().send(":bomb: The minimum word length is **" + difficulty + "**, the letters are " + auxils.pettyFormat(letters.map(x => "`" + x + "`")) + ", of which your target needs to say at least **" + fulfil + "** to explode.");
 
 };
 

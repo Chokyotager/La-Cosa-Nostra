@@ -26,26 +26,31 @@ module.exports = function (actionable, game, params) {
   for (var i = 0; i < words.length; i++) {
 
     var word = words[i].toLowerCase().split("");
+
+    if (word.length < context.difficulty) {
+      continue;
+    };
+
     var hits = new Array();
 
-    for (var j = 0; j < context.consonants.length; j++) {
+    for (var j = 0; j < context.letters.length; j++) {
 
-      var consonant = context.consonants[j];
+      var letter = context.letters[j];
 
-      console.log(consonant);
+      console.log(letter);
 
-      if (hits.includes(consonant)) {
+      if (hits.includes(letter)) {
         continue;
       };
 
-      if (word.includes(consonant)) {
-        hits.push(consonant);
+      if (word.includes(letter)) {
+        hits.push(letter);
         continue;
       };
 
     };
 
-    if (hits.length >= context.fulfill) {
+    if (hits.length >= context.fulfil) {
       condition = true;
       break;
     };

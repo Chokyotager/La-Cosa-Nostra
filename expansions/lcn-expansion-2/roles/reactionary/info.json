@@ -3,8 +3,8 @@
   "thumbnail": "https://i.pinimg.com/originals/b6/d7/97/b6d797c1cf1899b2bd6788de2368b49b.jpg",
 
   "abilities": ["Choose to attach a bomb on a player every night",
-                "Bomb comes with a minimum length, consonant and number of consonants to hit",
-                "If target says a word fulfilling the minimum length criteria, and has x number of unique consonants in the same word in any of the main chats the next they, they explode immediately"],
+                "Bomb comes with a minimum length, letter and number of letters to hit",
+                "If target says a word fulfilling the minimum length criteria, and has x number of unique letters in the same word in any of the main chats the next they, they explode immediately"],
 
   "attributes": ["Target does not know that a bomb has been attached to them",
                 "However, they are notified when the bomb is deactivated"]
