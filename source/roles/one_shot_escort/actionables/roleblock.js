@@ -30,7 +30,7 @@ module.exports = function (actionable, game, params) {
 
   };
 
-  from.misc.escorts_left--;
+  roleblocker.misc.escorts_left--;
 
 };
 

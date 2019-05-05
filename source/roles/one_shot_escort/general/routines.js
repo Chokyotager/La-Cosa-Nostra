@@ -12,7 +12,15 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":wine_glass: You may choose to roleblock a player tonight.\n\nUse `" + config["command-prefix"] + "roleblock <alphabet/name/nobody>` to select your target.");
+  if (player.misc.escorts_left > 0) {
+
+    player.game.sendPeriodPin(channel, ":wine_glass: You may choose to roleblock a player tonight.\n\nUse `" + config["command-prefix"] + "roleblock <alphabet/name/nobody>` to select your target.");
+
+  } else {
+
+    player.game.sendPeriodPin(channel, ":wine_glass: You have used up all your roleblocks.");
+
+  }
 
 };
 
