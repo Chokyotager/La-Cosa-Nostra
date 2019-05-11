@@ -1,5 +1,7 @@
 var auxils = require("../auxils.js");
 var role_info = require("../roles.js");
+var flavours = require("../flavours.js");
+
 var win_conditions = require("../win_conditions.js");
 
 var Discord = require("discord.js");
@@ -20,13 +22,13 @@ for (var key in role_info) {
     ret[info.alignment][info.class] = new Array();
   };
 
-  ret[info.alignment][info.class].push(info["role-name"]);
+  ret[info.alignment][info.class].push({id: key, name: info["role-name"]});
 
 };
 
 module.exports = async function (message, params, config) {
 
-  var roles = Object.keys(role_info);
+  var flavour_identifier = (process.timer && process.timer.game) ? process.timer.game.flavour_identifier : config["playing"]["flavour"];
 
   if (params.length < 1) {
     var sendable = new String();
@@ -37,7 +39,27 @@ module.exports = async function (message, params, config) {
 
       for (var category in ret[alignment]) {
 
-        sendable += "\n" + cpl(category) + ": " + ret[alignment][category].join(", ");
+        if (flavour_identifier) {
+
+          var role_names = ret[alignment][category].map(x => {
+
+            var role = flavours[flavour_identifier]["roles"][x.id];
+
+            if (!role) {
+              return x.name;
+            };
+
+            return role.map(x => x.name).join("/");
+
+          });
+
+        } else {
+
+          var role_names = ret[alignment][category].map(x => x.name);
+
+        };
+
+        sendable += "\n" + cpl(category) + ": " + role_names.join(", ");
 
       };
 
@@ -50,6 +72,42 @@ module.exports = async function (message, params, config) {
     await message.channel.send(sendable);
 
     return null;
+
+  };
+
+  var roles = new Array();
+  for (var key in role_info) {
+
+    var role = role_info[key];
+
+    if (flavour_identifier && flavours[flavour_identifier]["roles"][key]) {
+
+      var flavour_role = flavours[flavour_identifier]["roles"][key];
+
+      for (var i = 0; i < flavour_role.length; i++) {
+
+        roles.push({role_identifier: key,
+          name: flavour_role[i].name || role.role["role-name"],
+          description: flavour_role[i].description || role.description,
+          role_card: flavours[flavour_identifier].assets[flavour_role[i].banner] || role.role_card,
+          flavour: true,
+          role: role
+        });
+
+      };
+
+      continue;
+
+    };
+
+    roles.push({role_identifier: key,
+      name: role.role["role-name"],
+      description: role.description,
+      flavour: false,
+      role_card: role.role_card,
+      role: role
+    });
+
   };
 
   var action = (params[0] || "").toLowerCase();
@@ -67,7 +125,7 @@ module.exports = async function (message, params, config) {
   var distances = new Array();
   for (var i = 0; i < roles.length; i++) {
 
-    var distance = auxils.hybridisedStringComparison(selected.toLowerCase(), role_info[roles[i]]["role"]["role-name"].toLowerCase());
+    var distance = auxils.hybridisedStringComparison(selected.toLowerCase(), roles[i].name.toLowerCase());
     distances.push(distance);
 
   };
@@ -81,16 +139,17 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
-  var role_identifier = roles[best_match_index];
-  var role = role_info[role_identifier];
+  var role = roles[best_match_index];
 
   if (["info"].includes(action)) {
+
+    var standard_role = role.role;
 
     var embed = new Discord.RichEmbed();
 
     embed.setColor("BLUE");
-    embed.setTitle(role.role["role-name"]);
-    embed.setDescription("*" + cpl(role.role.alignment) + "-" + cpl(role.role.class) + "*");
+    embed.setTitle(role.name);
+    embed.setDescription("*" + cpl(standard_role.role.alignment) + "-" + cpl(standard_role.role.class) + "*");
 
     // Add role information
     //embed.addBlankField();
@@ -99,20 +158,23 @@ module.exports = async function (message, params, config) {
     var kidnap_stats = ["None", "Basic", "Unstoppable"];
     var cardinal = ["No", "Yes", "Yes (special)", "No (special)"];
 
-    embed.addField("General Priority", role.role.stats["priority"], true);
-    embed.addField("Defense", def_stats[role.role.stats["basic-defense"]], true);
-    embed.addField("Roleblock Immunity", cardinal[role.role.stats["roleblock-immunity"]], true);
-    embed.addField("Detection Immunity", cardinal[role.role.stats["detection-immunity"]], true);
-    embed.addField("Control Immunity", cardinal[role.role.stats["control-immunity"]], true);
-    embed.addField("Redirection Immunity", cardinal[role.role.stats["redirection-immunity"]], true);
-    embed.addField("Kidnap Immunity", kidnap_stats[role.role.stats["kidnap-immunity"]], true);
-    embed.addField("Vote Magnitude", role.role.stats["vote-magnitude"], true);
+    embed.addField("General Priority", standard_role.role.stats["priority"], true);
+    embed.addField("Defense", def_stats[standard_role.role.stats["basic-defense"]], true);
+    embed.addField("Roleblock Immunity", cardinal[standard_role.role.stats["roleblock-immunity"]], true);
+    embed.addField("Detection Immunity", cardinal[standard_role.role.stats["detection-immunity"]], true);
+    embed.addField("Control Immunity", cardinal[standard_role.role.stats["control-immunity"]], true);
+    embed.addField("Redirection Immunity", cardinal[standard_role.role.stats["redirection-immunity"]], true);
+    embed.addField("Kidnap Immunity", kidnap_stats[standard_role.role.stats["kidnap-immunity"]], true);
+    embed.addField("Vote Magnitude", standard_role.role.stats["vote-magnitude"], true);
 
-    if (role.info) {
-      var info = role.info;
+    var info_display = role.flavour && !flavours[flavour_identifier]["info"]["display-standard-role-details"];
 
-      var cond1 = info.abilities && info.abilities.length > 0;
-      var cond2 = info.attributes && info.attributes.length > 0;
+    if (standard_role.info && !info_display) {
+
+      var info = standard_role.info;
+
+      var cond1 = standard_role.abilities && info.abilities.length > 0;
+      var cond2 = standard_role.attributes && info.attributes.length > 0;
 
       if (cond1 || cond2) {embed.addBlankField();};
 
@@ -136,8 +198,8 @@ module.exports = async function (message, params, config) {
 
     };
 
-    if (win_conditions[role.role["win-condition"]] && win_conditions[role.role["win-condition"]].DESCRIPTION) {
-      embed.addField("Win Condition", win_conditions[role.role["win-condition"]].DESCRIPTION, false);
+    if (win_conditions[standard_role.role["win-condition"]] && win_conditions[standard_role.role["win-condition"]].DESCRIPTION) {
+      embed.addField("Win Condition", win_conditions[standard_role.role["win-condition"]].DESCRIPTION, false);
     };
 
     await message.channel.send(embed);
@@ -147,7 +209,7 @@ module.exports = async function (message, params, config) {
 
     var send = ":pencil: Description for **{;role}**:\n```fix\n{;description}```";
 
-    send = send.replace(new RegExp("{;role}", "g"), role.role["role-name"]);
+    send = send.replace(new RegExp("{;role}", "g"), role.name);
     send = send.replace(new RegExp("{;description}", "g"), role.description);
 
     await message.channel.send(send);

@@ -17,19 +17,19 @@ module.exports = async function (message, params, config) {
 
     key = params[i].toLowerCase();
 
-    if (key.startsWith("-")) {
-
-      // Exclude
-      var check = key.substring(1, Infinity);
-      actions.forEach(x => (x.action.tags.includes(check) || x.action.triggers.includes(check)) ? x.used = false : null);
-
-    } else if (key === "-*") {
+    if (key === "-*") {
 
       actions.forEach(x => x.used = false);
 
+    } else if (key.startsWith("-")) {
+
+      // Exclude
+      var check = key.substring(1, Infinity);
+      actions.forEach(x => (x.action.tags.includes(check) || x.action.triggers.includes(check) || x.action.identifier.includes(check)) ? x.used = false : null);
+
     } else {
 
-      actions.forEach(x => (x.action.tags.includes(key) || x.action.triggers.includes(key)) ? x.used = true : null);
+      actions.forEach(x => (x.action.tags.includes(key) || x.action.triggers.includes(key) || x.action.identifier.includes(key)) ? x.used = true : null);
 
     };
 

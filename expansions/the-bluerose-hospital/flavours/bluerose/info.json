@@ -12,6 +12,8 @@
 
   "post-role-card-and-description-on-death": true,
 
+  "display-standard-role-details": false,
+
   "step-names": ["Lucifer", "Somnus"]
 
 }

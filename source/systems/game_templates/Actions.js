@@ -34,7 +34,7 @@ module.exports = class {
 
     var allowed = ["cycle", "chat", "lynch", "attacked",
     "killed", "visit", "roleblock", "postcycle", "instant",
-    "outvisit", "retrovisit", "retrocycle", "arbitrary"];
+    "outvisit", "retrooutvisit", "retrovisit", "retrocycle", "arbitrary"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -44,6 +44,15 @@ module.exports = class {
     };
 
     var actionable = options;
+
+    if (triggers.includes("retrooutvisit")) {
+
+      if (triggers.length > 1) {
+        var err = "Retrooutvisit trigger cannot be combined.";
+        throw new Error(err);
+      };
+
+    };
 
     if (triggers.includes("retrovisit")) {
 
@@ -57,7 +66,7 @@ module.exports = class {
     if (triggers.includes("retrocycle")) {
 
       if (triggers.length > 1) {
-        var err = "Retrovisit trigger cannot be combined.";
+        var err = "Retrocycle trigger cannot be combined.";
         throw new Error(err);
       };
 
@@ -320,7 +329,7 @@ module.exports = class {
 
       action._scan.push(loop_id);
 
-      if (["cycle"].includes(type) && !action.triggers.includes("retrovisit") && !action.triggers.includes("retrocycle")) {
+      if (["cycle"].includes(type) && !action.triggers.includes("retrooutvisit") && !action.triggers.includes("retrovisit") && !action.triggers.includes("retrocycle")) {
 
         action.execution--;
         action.cycles++;
@@ -331,7 +340,7 @@ module.exports = class {
 
       };
 
-      if (["retrocycle"].includes(type) && (action.triggers.includes("retrovisit") || action.triggers.includes("retrocycle"))) {
+      if (["retrocycle"].includes(type) && (action.triggers.includes("retrooutvisit") || action.triggers.includes("retrovisit") || action.triggers.includes("retrocycle"))) {
 
         action.execution--;
         action.cycles++;
@@ -371,7 +380,7 @@ module.exports = class {
       var rerun = false;
 
       // Non-routine triggers
-      if (["chat", "lynch", "attacked", "killed", "visit", "roleblock", "outvisit", "retrovisit", "arbitrary"].includes(type)) {
+      if (["chat", "lynch", "attacked", "killed", "visit", "roleblock", "outvisit", "retrooutvisit", "retrovisit", "arbitrary"].includes(type)) {
         var target = action.target || action.to;
 
         var check = params.target;
@@ -441,13 +450,27 @@ module.exports = class {
     if (type === "cycle") {
 
       for (var i = 0; i < this.visit_log.length; i++) {
-        this.execute("retrovisit", this.visit_log[i]);
+
+        var visit_log = this.visit_log[i];
+
+        this.execute("retrovisit", visit_log);
+
+        var inverse_log = Object.assign(new Object(), visit_log);
+
+        inverse_log.visited = inverse_log.target;
+        inverse_log.target = inverse_log.visitor;
+
+        delete inverse_log.visitor;
+
+        this.execute("retrooutvisit", inverse_log);
+
       };
 
       this.execute("retrocycle");
 
       this.previous_visit_log = this.previous_visit_log.concat(this.visit_log);
       this.visit_log = new Array();
+
     };
 
     // Decrement those outside cycle

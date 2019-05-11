@@ -26,6 +26,8 @@ for (var i = 0; i < items.length; i++) {
 
 module.exports = function (message, params, config) {
 
+  var commands = require("../commands.js");
+
   // Check if host
   var extended = message.member.roles.some(x => x.name === config["permissions"]["admin"]);
 
@@ -45,7 +47,7 @@ module.exports = function (message, params, config) {
 
     var sub = commands[available[i]];
 
-    ret.push("**" + available[i] + "** commands: " + sub.sort().map(x => "`" + x + "`").join(", "));
+    ret.push("**" + available[i] + "** commands: " + Object.keys(sub).map(x => "`" + x + "`").join(", "));
 
   };
 

@@ -190,7 +190,7 @@ module.exports = class {
 
   }
 
-  async createTrialVote () {
+  async createTrialVote (load_preemptives=true) {
 
     var messages = await executable.misc.createTrialVote(this);
 
@@ -206,7 +206,11 @@ module.exports = class {
 
     this.instantiateTrialVoteCollector();
 
-    this.loadPreemptiveVotes();
+    if (load_preemptives) {
+
+      this.loadPreemptiveVotes();
+      
+    };
 
   }
 
