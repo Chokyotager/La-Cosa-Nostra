@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/Chokyotager/La-Cosa-Nostra",
   "dependencies": {
-    "discord.js": "~11.4.2",
+    "discord.js": "~11.5.0",
     "request": "~2.88.0",
-    "request-promise": "4.2.2"
+    "request-promise": "4.2.4"
   }
 }
