@@ -5,6 +5,6 @@ module.exports = function (message, params, config) {
     return null;
   };
 
-  message.channel.send(":raised_hand: **" + message.author.username + "** slapped **" + params.join(" ") + "**! Oof.");
+  message.channel.send(":raised_hand: **" + message.member.displayName + "** slapped **" + params.join(" ") + "**! Oof.");
 
 };

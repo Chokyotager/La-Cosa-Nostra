@@ -63,15 +63,17 @@ client.on("message", function (message) {
       return null;
     };
 
-    if (commands.unaffiliated[command] !== undefined) {
-      // Run command
-      commands.unaffiliated[command](message, edited, config);
-      return null;
-    };
+    for (var key in commands) {
 
-    if (commands.memes[command] !== undefined) {
-      commands.memes[command](message, edited, config);
-      return null;
+      if (["readline", "admin", "game", "role"].includes(key)) {
+        continue;
+      };
+
+      if (commands[key][command] !== undefined) {
+        commands[key][command](message, edited, config);
+        return null;
+      };
+
     };
 
     if (commands.admin[command] !== undefined) {

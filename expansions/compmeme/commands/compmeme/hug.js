@@ -5,6 +5,6 @@ module.exports = function (message, params, config) {
     return null;
   };
 
-  message.channel.send(":hugging: **" + message.author.username + "** hugged **" + params.join(" ") + "**! PDA much.");
+  message.channel.send(":hugging: **" + message.member.displayName + "** hugged **" + params.join(" ") + "**! PDA much.");
 
 };

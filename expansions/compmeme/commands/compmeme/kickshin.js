@@ -5,6 +5,6 @@ module.exports = function (message, params, config) {
     return null;
   };
 
-  message.channel.send(":boot: **" + message.author.username + "** just kicked **" + params.join(" ") + "** in the shin! Ouch.");
+  message.channel.send(":boot: **" + message.member.displayName + "** just kicked **" + params.join(" ") + "** in the shin! Ouch.");
 
 };
