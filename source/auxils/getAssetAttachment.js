@@ -1,7 +1,8 @@
 var Discord = require("discord.js");
-var assets = require("../systems/assets.js");
 
 module.exports = function (asset_name) {
+
+  var assets = require("../systems/assets.js");
 
   // Check flavour assets
   if (process.timer) {

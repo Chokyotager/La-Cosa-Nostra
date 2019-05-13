@@ -58,6 +58,7 @@ function getExpansions (identifiers, scanned=new Array()) {
     ret.push({identifier: identifier,
               expansion: expansion,
               additions: {
+                assets: attemptReaddir(directory + "/assets"),
                 roles: attemptReaddir(directory + "/roles"),
                 flavours: attemptReaddir(directory + "/flavours"),
                 role_win_conditions: attemptReaddir(directory + "/role_win_conditions"),
