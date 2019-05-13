@@ -52,9 +52,8 @@ module.exports = async function (client, config, roles) {
   };
 
   async function createPrivateChannel (name) {
-    var channel = await guild.createChannel(name, "text", [
-      {id: guild.id, deny: ["READ_MESSAGES"]}
-    ]);
+
+    var channel = await guild.createChannel(name, {type: "text", permissionOverwrites: [{id: guild.id, deny: ["READ_MESSAGES"]}], parent: cat_channel});
 
     var read_perms = config["base-perms"]["read"];
     var manage_perms = config["base-perms"]["manage"];
@@ -62,9 +61,9 @@ module.exports = async function (client, config, roles) {
     //await channel.overwritePermissions(everyone, {READ_MESSAGES: false, SEND_MESSAGES: false});
     await channel.overwritePermissions(spectator, read_perms);
     await channel.overwritePermissions(admin, manage_perms);
-    await channel.setParent(cat_channel.id);
 
     return channel;
+
   };
 
 };

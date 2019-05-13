@@ -343,7 +343,7 @@ module.exports = async function (game, message, params) {
 
       var category_name = expansion_config["cc-category-prefix"] + " " + String.fromCharCode(categories.length + 65);
 
-      empty_category = await guild.createChannel(category_name, "category", [{id: guild.id, deny: ["READ_MESSAGES"]}]);
+      empty_category = await guild.createChannel(category_name, {type: "category", permissionOverwrites: [{id: guild.id, deny: ["READ_MESSAGES"]}]});
       categories.push(empty_category.id);
 
       await setPermissions(empty_category, standard_permissions);
@@ -352,9 +352,7 @@ module.exports = async function (game, message, params) {
 
     // Create channel
 
-    var channel = await guild.createChannel(name, "text", [{id: guild.id, deny: ["READ_MESSAGES"]}]);
-
-    await channel.setParent(empty_category);
+    var channel = await guild.createChannel(name, {type: "text", permissionOverwrites: [{id: guild.id, deny: ["READ_MESSAGES"]}], parent: empty_category});
 
     players.sort(function (a, b) {
       if (a.alphabet < b.alphabet) { return -1; };

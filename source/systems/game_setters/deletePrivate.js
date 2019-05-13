@@ -15,8 +15,12 @@ module.exports = async function (client, config) {
   // but whatever it's "programming"
 
   var channels = cat_channel.children.array();
+
+  var cache = new Array();
   for (var i = 0; i < channels.length; i++) {
-    await channels[i].delete();
+    cache.push(channels[i].delete());
   };
+
+  await Promise.all(cache);
 
 };

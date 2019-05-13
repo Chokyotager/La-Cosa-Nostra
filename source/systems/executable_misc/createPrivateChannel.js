@@ -13,16 +13,10 @@ module.exports = async function (game, channel_name, permissions, position=-1) {
   permissions = [{target: spectator, permissions: config["base-perms"]["read"]},
                  {target: admin, permissions: config["base-perms"]["manage"]}].concat(permissions);
 
-  var channel = await guild.createChannel(channel_name, "text", [{id: guild.id, deny: ["READ_MESSAGES"]}]);
-
   var category = config["categories"]["private"];
   var cat_channel = client.channels.find(x => x.name === category && x.type === "category");
 
-  await channel.setParent(cat_channel.id);
-
-  if (position >= 0) {
-    await channel.setPosition(position);
-  };
+  var channel = await guild.createChannel(channel_name, {type: "text", permissionOverwrites: [{id: guild.id, deny: ["READ_MESSAGES"]}], parent: cat_channel, position: 0});
 
   // {target, permissions}
   for (var i = 0; i < permissions.length; i++) {
