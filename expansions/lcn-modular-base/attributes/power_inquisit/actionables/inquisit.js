@@ -11,12 +11,9 @@ module.exports = function (actionable, game, params) {
   // Recruit the player
   neighbour.misc.neighbour_players.push(recruit.identifier);
 
-  game.addAction("a/power_inquisit/lock_neighbour_chat_on_death", ["killed"], {
-    from: neighbour.identifier,
-    to: recruit.identifier,
-    expiry: Infinity,
-    tags: ["permanent"]
-  });
+  var channel = game.getChannelById(neighbour.misc.neighbour_channel);
+
+  recruit.addSpecialChannel(channel);
 
   game.addMessage(recruit, ":exclamation: You have recruited into a neighbourhood by **" + neighbour.getDisplayName() + "**.");
 

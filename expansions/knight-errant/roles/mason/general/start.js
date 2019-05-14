@@ -63,13 +63,6 @@ module.exports = function (player) {
 
       players[i].addSpecialChannel(channel);
 
-      game.addAction("mason/lock_chats_on_death", ["killed"], {
-        from: players[i],
-        to: players[i],
-        expiry: Infinity,
-        tags: ["permanent"]
-      });
-
     };
 
     await channel.send("**This is the Masons' chat.**\n\nThis chat is open to involved parties only at night.");

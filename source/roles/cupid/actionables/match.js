@@ -23,22 +23,6 @@ module.exports = function (actionable, game, params) {
     tags: ["permanent"]
   });
 
-  game.addAction("cupid/matched_lock_chats_on_death", ["killed"], {
-    from: one,
-    to: two,
-    matcher: matcher.identifier,
-    expiry: Infinity,
-    tags: ["permanent"]
-  });
-
-  game.addAction("cupid/matched_lock_chats_on_death", ["killed"], {
-    from: two,
-    to: one,
-    matcher: matcher.identifier,
-    expiry: Infinity,
-    tags: ["permanent"]
-  });
-
   // Mediator
   game.addAction("cupid/chat_mediator", ["postcycle"], {
     from: one,
@@ -79,6 +63,9 @@ module.exports = function (actionable, game, params) {
     one.misc.matched_lover_channel = channel.id;
     one.misc.matched_lover_initiator = true;
     two.misc.matched_lover_channel = channel.id;
+
+    one.addSpecialChannel(channel);
+    two.addSpecialChannel(channel);
 
   };
 

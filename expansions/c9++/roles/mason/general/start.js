@@ -61,13 +61,6 @@ module.exports = function (player) {
       // Add channels
       players[i].misc.mason_channel = channel.id;
 
-      game.addAction("mason/lock_chats_on_death", ["killed"], {
-        from: players[i],
-        to: players[i],
-        expiry: Infinity,
-        tags: ["permanent"]
-      });
-
       players[i].addSpecialChannel(channel);
 
     };
