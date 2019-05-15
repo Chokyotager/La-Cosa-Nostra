@@ -40,6 +40,22 @@ for (var i = 0; i < enforce_default.length; i++) {
   var key = enforce_default[i];
   config[key] = default_config[key];
 
+  Object.defineProperty(default_config, key, {
+    writable: false
+  });
+
+};
+
+var hide_properties = ["bot-token"];
+
+for (var i = 0; i < hide_properties.length; i++) {
+
+  var key = enforce_default[i];
+
+  Object.defineProperty(default_config, key, {
+    enumerable: false
+  });
+
 };
 
 module.exports.config = config;

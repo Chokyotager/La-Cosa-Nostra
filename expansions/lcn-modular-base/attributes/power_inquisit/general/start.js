@@ -49,3 +49,6 @@ module.exports = function (player) {
   };
 
 };
+
+module.exports.DO_NOT_RUN_ON_GAME_START = false;
+module.exports.DO_NOT_RUN_ON_ADDITION = false;

@@ -24,33 +24,44 @@ for (var i = 0; i < items.length; i++) {
   };
 };
 
-module.exports = function (message, params, config) {
+module.exports = async function (message, params, config) {
 
   var commands = require("../commands.js");
 
   // Check if host
   var extended = message.member.roles.some(x => x.name === config["permissions"]["admin"]);
 
-  var available = Object.keys(commands);
-
+  var extended_ret = new Array();
   var ret = new Array();
 
-  for (var i = 0; i < available.length; i++) {
+  for (var key in commands) {
 
-    if (["readline"].includes(available[i])) {
+    if (["readline", "role"].includes(key)) {
       continue;
     };
 
-    if (["admin"].includes(available[i]) && !extended) {
+    if (["admin", "saves"].includes(key) && !extended) {
       continue;
     };
 
-    var sub = commands[available[i]];
+    var sub = commands[key];
 
-    ret.push("**" + available[i] + "** commands: " + Object.keys(sub).map(x => "`" + x + "`").join(", "));
+    if (["admin", "saves"].includes(key)) {
+
+      extended_ret.push("**" + key + "** commands: " + Object.keys(sub).map(x => "`" + x + "`").join(", "));
+
+    } else {
+
+      ret.push("**" + key + "** commands: " + Object.keys(sub).map(x => "`" + x + "`").join(", "));
+
+    };
 
   };
 
-  message.channel.send("**LCN Commands Index" + (extended ? " [extended]" : "") + "** (prefix `" + config["command-prefix"] + "`)\n\n" + ret.join("\n\n"));
+  if (extended) {
+    ret = extended_ret.concat(["~~                                                                                                    ~~", ...ret]);
+  };
+
+  await message.channel.send("**LCN Commands Index" + (extended ? " [extended]" : "") + "** (prefix `" + config["command-prefix"] + "`)\n\n" + ret.join("\n\n"));
 
 };

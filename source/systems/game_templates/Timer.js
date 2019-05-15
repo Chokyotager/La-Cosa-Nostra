@@ -247,8 +247,11 @@ module.exports = class {
 
   destroy () {
 
+    logger.log(3, "Timer instance %s destroyed.", this.identifier);
+
     this.clearDayNightMediator();
     this.clearTick();
+    this.game.clearTrialVoteCollectors();
 
   }
 
@@ -268,7 +271,7 @@ module.exports = class {
 
   }
 
-  tentativeSave (silent=false) {
+  tentativeSave (silent=false, buffer_time=500) {
 
     // Save the game after requests stop coming in
     if (this._tentativeSaveTimeout) {
@@ -288,12 +291,14 @@ module.exports = class {
 
       timer.save(true);
 
-    }, 50);
+    }, buffer_time);
 
   }
 
   save (silent=false) {
     // Save all components
+
+    var salt = crypto.randomBytes(8).toString("hex");
 
     // Clone Game instance to savable
     var savable = Object.assign({}, this.game);
@@ -317,7 +322,12 @@ module.exports = class {
 
     delete savable.players;
 
-    savable.saved_at = new Date();
+    savable.last_save_date = new Date();
+
+    // Checksum
+    var checksum = auxils.hash(auxils.hash(JSON.stringify(savable, auxils.jsonInfinityCensor), "md5") + auxils.hash(savable.last_save_date.getTime().toString(), "md5"), "md5");
+
+    savable.checksum = checksum;
 
     // Save object
     fs.writeFileSync(__dirname + "/../../../data/game_cache/game.save", encode(JSON.stringify(savable, auxils.jsonInfinityCensor)));
@@ -334,10 +344,18 @@ module.exports = class {
       delete player.game;
       delete player.role;
 
+      player.last_save_date = new Date();
+
+      // Checksum
+      var checksum = auxils.hash(auxils.hash(JSON.stringify(player, auxils.jsonInfinityCensor), "md5") + auxils.hash(player.last_save_date.getTime().toString(), "md5"), "md5");
+
+      player.checksum = checksum;
+
       var string = JSON.stringify(player, auxils.jsonInfinityCensor);
 
       // Saved by Discord ID
       fs.writeFileSync(__dirname + "/../../../data/game_cache/players/" + id + ".save", encode(string));
+
     };
 
     if (!silent) {
@@ -361,6 +379,22 @@ module.exports.load = function (client, config) {
 
   save = decode(save);
 
+  var checksum = save.checksum;
+
+  delete save.checksum;
+
+  if (checksum !== auxils.hash(auxils.hash(JSON.stringify(save, auxils.jsonInfinityCensor), "md5") + auxils.hash(new Date(save.last_save_date).getTime().toString(), "md5"))) {
+
+    logger.log(4, "Main save has been tampered with. Caching incident.");
+
+    if (!save.tampered_load_times) {
+      save.tampered_load_times = new Array();
+    };
+
+    save.tampered_load_times.push(new Date());
+
+  };
+
   // Save is a game instance
   var game = new Game(client, config);
   game = Object.assign(game, save);
@@ -378,6 +412,22 @@ module.exports.load = function (client, config) {
     // Reload the save
     var string = fs.readFileSync(__dirname + "/../../../data/game_cache/players/" + player_saves[i], "utf8");
     player_save = decode(string);
+
+    var checksum = player_save.checksum;
+
+    delete player_save.checksum;
+
+    if (checksum !== auxils.hash(auxils.hash(JSON.stringify(player_save, auxils.jsonInfinityCensor), "md5") + auxils.hash(new Date(player_save.last_save_date).getTime().toString(), "md5"))) {
+
+      logger.log(4, "Save for %s has been tampered with. Caching incident.", player_saves[i]);
+
+      if (!player_save.tampered_load_times) {
+        player_save.tampered_load_times = new Array();
+      };
+
+      player_save.tampered_load_times.push(new Date());
+
+    };
 
     var player = new Player();
 
@@ -450,7 +500,7 @@ function formatDate (epoch) {
 
 }
 
-function decode (string) {
+function decode (string, toJSON=true) {
   var enc_test = /^encoded_base64\n/gm;
 
   if (enc_test.test(string)) {
@@ -459,6 +509,11 @@ function decode (string) {
     string = auxils.btoa(string);
   };
 
-  return JSON.parse(string, auxils.jsonReviver);
+
+  if (toJSON) {
+    return JSON.parse(string, auxils.jsonReviver);
+  } else {
+    return string;
+  };
 
 };

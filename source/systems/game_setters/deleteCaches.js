@@ -27,7 +27,7 @@ module.exports = function (client, config) {
 
   if (fs.existsSync(__dirname + "/../../../data/game_cache")) {
     fs.renameSync(__dirname + "/../../../data/game_cache", archive + "/game_cache_" + current_time.getTime());
-    logger.log(2, "Deleted all caches.");
+    logger.log(2, "Archived all caches.");
   };
 
 };

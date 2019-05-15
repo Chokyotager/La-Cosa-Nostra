@@ -1,5 +1,7 @@
 {
 
+  "default-display-flavour": true,
+
   "show-role-equivalent": false,
 
   "show-vanilla-banner": true,

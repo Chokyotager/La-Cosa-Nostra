@@ -8,6 +8,7 @@ module.exports = function (client, config) {
   var timer = Timer.load(client, config);
 
   process.timer = timer;
-  return timer;
+
+  console.log("Reinstantiated.");
 
 };

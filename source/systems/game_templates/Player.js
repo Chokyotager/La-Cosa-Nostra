@@ -371,9 +371,10 @@ module.exports = class {
     if (this.role.start !== undefined) {
 
       try {
-        this.role.start(this);
+        await this.role.start(this);
       } catch (err) {
-        logger.log(4, err);
+        logger.log(4, "Role start script error with player %s (%s) [%s]", this.identifier, this.getDisplayName(), this.role_identifier);
+        logger.logError(err);
       };
 
     };
@@ -385,10 +386,16 @@ module.exports = class {
 
       if (attribute.start) {
 
+        if (attribute.DO_NOT_RUN_ON_GAME_START === true) {
+          return null;
+        };
+
         try {
-          attribute.start(this, this.attributes[i]);
+          // Define truestart synchronisation
+          await attribute.start(this, this.attributes[i], true);
         } catch (err) {
-          logger.log(4, err);
+          logger.log(4, "Attribute start script error with player %s (%s) [%s]", this.identifier, this.getDisplayName(), this.attributes[i].identifier);
+          logger.logError(err);
         };
 
       };
@@ -601,7 +608,7 @@ module.exports = class {
       try {
         this.executeRoutine(runnable);
       } catch (err) {
-        logger.log(4, err);
+        logger.logError(err);
       };
 
     };
@@ -634,7 +641,7 @@ module.exports = class {
 
     } catch (err) {
 
-      logger.log(4, err);
+      logger.logError(err);
       return null;
 
     }
@@ -680,10 +687,16 @@ module.exports = class {
 
     if (attributes[attribute].start && this.game) {
 
+      if (attributes[attribute].DO_NOT_RUN_ON_ADDITION === true) {
+        return null;
+      };
+
       try {
-        attributes[attribute].start(this, addable);
+        // Define truestart synchronisation
+        attributes[attribute].start(this, addable, false);
       } catch (err) {
-        logger.log(4, err);
+        logger.log(4, "Attribute start script error with player %s (%s) [%s]", this.identifier, this.getDisplayName(), this.attributes[i].identifier);
+        logger.logError(err);
       };
 
     };

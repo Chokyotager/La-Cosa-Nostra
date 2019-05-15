@@ -74,7 +74,7 @@ module.exports = async function (message, params, config) {
 
     var order = [config.playing.roles, config.game, flavour, flavour_info];
 
-    var hash = crypto.createHash("sha256");
+    var hash = crypto.createHash("md5");
     for (var i = 0; i < order.length; i++) {
       var update = JSON.stringify(order[i], auxils.jsonInfinityCensor);
 

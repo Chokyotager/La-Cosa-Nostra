@@ -1,3 +1,5 @@
 module.exports = function (client, config) {
-  return process.timer.game.actions.actions;
+
+  console.log(process.timer.game.actions.actions);
+  
 };

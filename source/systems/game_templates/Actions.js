@@ -363,21 +363,27 @@ module.exports = class {
         continue;
       };
 
+      var rerun = false;
+
       function execute () {
 
         rerun = true;
 
         try {
+
           var result = run(action, game, params);
           return result;
+
         } catch (err) {
-          logger.log(4, err);
-          return false;
+
+          logger.logError(err);
+          logger.log(4, "[Error follow-up] attempted to destroy action %s to prevent snowballing.\nFrom: %s\nTo: %s", action.identifier, action.from, action.to);
+          // Attempts to destroy action in event of failure
+          return true;
+
         };
 
       };
-
-      var rerun = false;
 
       // Non-routine triggers
       if (["chat", "lynch", "attacked", "killed", "visit", "roleblock", "outvisit", "retrooutvisit", "retrovisit", "arbitrary"].includes(type)) {

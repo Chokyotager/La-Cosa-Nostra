@@ -24,6 +24,7 @@ module.exports = async function (client, config, roles) {
 
   // Create A-Z chats
   for (var i = 0; i < roles.length; i++) {
+
     resolvables.push(assignChannel(roles[i]));
 
     // Short hiatus to prevent ENOTFOUND connection error
@@ -51,18 +52,32 @@ module.exports = async function (client, config, roles) {
     return channel;
   };
 
-  async function createPrivateChannel (name) {
+  async function createPrivateChannel (name, assign_permissions_async=false) {
 
     var channel = await guild.createChannel(name, {type: "text", permissionOverwrites: [{id: guild.id, deny: ["READ_MESSAGES"]}], parent: cat_channel});
 
-    var read_perms = config["base-perms"]["read"];
-    var manage_perms = config["base-perms"]["manage"];
+    if (assign_permissions_async) {
 
-    //await channel.overwritePermissions(everyone, {READ_MESSAGES: false, SEND_MESSAGES: false});
-    await channel.overwritePermissions(spectator, read_perms);
-    await channel.overwritePermissions(admin, manage_perms);
+      assignPermissionsAsync();
+
+    } else {
+
+      await assignPermissionsAsync();
+
+    };
 
     return channel;
+
+    async function assignPermissionsAsync () {
+
+      var read_perms = config["base-perms"]["read"];
+      var manage_perms = config["base-perms"]["manage"];
+
+      //await channel.overwritePermissions(everyone, {READ_MESSAGES: false, SEND_MESSAGES: false});
+      await channel.overwritePermissions(spectator, read_perms);
+      await channel.overwritePermissions(admin, manage_perms);
+
+    };
 
   };
 

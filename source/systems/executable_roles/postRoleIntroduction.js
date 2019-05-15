@@ -1,7 +1,7 @@
 var Discord = require("discord.js");
 var pinMessage = require("../executable_misc/pinMessage.js");
 
-module.exports = async function (player, stagger=800) {
+module.exports = async function (player, stagger=300) {
 
   var client = player.game.client;
   var config = player.game.config;

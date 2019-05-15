@@ -1,7 +1,8 @@
 {
   "name": "La Cosa Nostra",
-  "description": "",
-  "version": "2.2.2",
+  "description": "A Mafia bot designed to run in Discord.",
+  "update-name": "Foxorchid",
+  "version": "3.1.0",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +11,8 @@
     "type": "git",
     "url": "https://github.com/Chokyotager/La-Cosa-Nostra"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Mafia", "Werewolf", "Discord"],
+  "author": "ChocoParrot",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Chokyotager/La-Cosa-Nostra/issues"
@@ -21,5 +22,7 @@
     "discord.js": "~11.5.0",
     "request": "~2.88.0",
     "request-promise": "4.2.4"
-  }
+  },
+  "engines": {"node" : ">=10.15.0"},
+  "engineStrict": true
 }

@@ -31,7 +31,7 @@ module.exports = async function (game, role) {
     var channel = guild.channels.get(special_channels[i].id);
 
     if (!channel) {
-      Logger.log(4, "Deleting undefined channel.");
+      logger.log(4, "Removing read perms from undefined channel.");
       continue;
     };
 

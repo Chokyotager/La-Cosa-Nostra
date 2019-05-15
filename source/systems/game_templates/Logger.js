@@ -8,7 +8,7 @@ module.exports = class {
     this.file_threshold = file_threshold;
 
     if (!fs.existsSync(file)) {
-      fs.writeFileSync(file, "█▀▀ █▀▀█ █░█ █▀▀ █░░ █▀▀█ █░░░█ █▀▀ █▀▀█\n█▀▀ █░░█ ▄▀▄ █▀▀ █░░ █░░█ █▄█▄█ █▀▀ █▄▄▀\n▀░░ ▀▀▀▀ ▀░▀ ▀░░ ▀▀▀ ▀▀▀▀ ░▀░▀░ ▀▀▀ ▀░▀▀\n\n[Log entry created " + new Date().toUTCString() + "]");
+      fs.writeFileSync(file, "█▀▀ █▀▀█ █░█ █▀▀█ █▀▀█ █▀▀ █░░█ ░▀░ █▀▀▄\n█▀▀ █░░█ ▄▀▄ █░░█ █▄▄▀ █░░ █▀▀█ ▀█▀ █░░█\n▀░░ ▀▀▀▀ ▀░▀ ▀▀▀▀ ▀░▀▀ ▀▀▀ ▀░░▀ ▀▀▀ ▀▀▀░\n\n[Log entry created " + new Date().toUTCString() + "]");
     };
 
     this.file = file;
@@ -46,6 +46,14 @@ module.exports = class {
       fs.writeFileSync(this.file, content);
 
     };
+
+  }
+
+  logError (error) {
+
+    var message = "[Error handled by catcher]\n1. Message: %s\n2. Stack: %s\n[End of error log]";
+
+    this.log(4, message, error.message, error.stack);
 
   }
 

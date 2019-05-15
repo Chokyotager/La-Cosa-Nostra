@@ -15,6 +15,9 @@ module.exports = async function (message, params, config) {
   // Do not load pre-emptives
   game.createTrialVote(false);
 
+  game.clearTrialVoteCollectors();
+  game.getPeriodLog().voting_halted = false;
+
   await message.channel.send(":ok: Trial vote recreated. Please ensure that reaction votes are functional.");
 
 };

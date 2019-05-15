@@ -28,7 +28,22 @@ for (var key in role_info) {
 
 module.exports = async function (message, params, config) {
 
-  var flavour_identifier = (process.timer && process.timer.game) ? process.timer.game.flavour_identifier : config["playing"]["flavour"];
+  var default_flavour = config["playing"]["flavour"];
+
+  if (!default_flavour) {
+
+    for (var key in flavours) {
+
+      if (flavours[key].info["default-display-flavour"] === true) {
+        default_flavour = key;
+        break;
+      };
+
+    };
+
+  };
+
+  var flavour_identifier = (process.timer && process.timer.game) ? process.timer.game.flavour_identifier : default_flavour;
 
   if (params.length < 1) {
     var sendable = new String();

@@ -12,7 +12,9 @@ module.exports = async function (message, params, config) {
 
   } catch (err) {
 
-    logger.log(4, "Game creation failed: \n" + err);
+    logger.log(4, "Game creation failed.");
+    logger.logError(err);
+    
     await message.channel.send(":x: Failed to create game. Run `" + config["command-prefix"] + "_verifysetup` to troubleshoot. Please check the console for full details.");
 
     process.setStatus(message.client);

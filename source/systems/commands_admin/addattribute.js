@@ -48,7 +48,7 @@ module.exports = async function (message, params, config) {
 
     } catch (err) {
 
-      logger.log(4, err);
+      logger.logError(err);
       await message.channel.send(":x: Invalid JSON tags string.");
       return null;
 

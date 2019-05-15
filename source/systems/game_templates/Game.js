@@ -209,7 +209,7 @@ module.exports = class {
     if (load_preemptives) {
 
       this.loadPreemptiveVotes();
-      
+
     };
 
   }
@@ -239,6 +239,19 @@ module.exports = class {
 
   }
 
+  clearTrialVoteCollectors () {
+
+    if (!this.temp.trial_collectors) {
+      return null;
+    };
+
+    // Remove promises to free up memory
+    for (var i = 0; i < this.temp.trial_collectors.length; i++) {
+      this.temp.trial_collectors[i].stop("Autocleared");
+    };
+
+  }
+
   clearTrialVoteReactions (remove_extra=true) {
 
     var period_log = this.getPeriodLog();
@@ -262,10 +275,7 @@ module.exports = class {
 
     };
 
-    // Remove promises to free up memory
-    for (var i = 0; i < this.temp.trial_collectors; i++) {
-      this.temp.trial_collectors[i].resolve("Autocleared");
-    };
+    this.clearTrialVoteCollectors();
 
   }
 
@@ -561,7 +571,7 @@ module.exports = class {
 
       this.__routines();
       this.cycle();
-      this.__start();
+      await this.__start();
 
       // Periodic updates are handled in roles/postRoleIntroduction
       // because of async issues
@@ -1176,7 +1186,7 @@ module.exports = class {
 
   }
 
-  __start () {
+  async __start () {
 
     this.state = "playing";
 
@@ -1188,15 +1198,18 @@ module.exports = class {
         continue;
       };
 
-      game_start(this);
+      await game_start(this);
 
     };
 
+    var cache = new Array();
     for (var i = 0; i < this.players.length; i++) {
-      this.players[i].start();
+      cache.push(this.players[i].start());
     };
 
     executable.misc.postGameStart(this);
+
+    await Promise.all(cache);
 
     if (!this.isDay() && !this.config["game"]["town"]["night-chat"]) {
 
@@ -1382,7 +1395,7 @@ module.exports = class {
     };
 
     if (this.players_tracked !== players.length) {
-      logger.log(3, "The players' save files have been removed/deleted!");
+      logger.log(4, "The players' save files have been removed/deleted!");
     };
 
     this.players_tracked = players.length;

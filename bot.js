@@ -2,16 +2,9 @@ var Discord = require("discord.js");
 var client = new Discord.Client();
 var fs = require("fs");
 
-var version = JSON.parse(fs.readFileSync(__dirname + "/package.json"));
-
-var logger = new (require("./source/systems/game_templates/Logger.js"))(__dirname + "/log.txt");
-process.logger = logger;
-
-var lcn = require("./source/lcn.js");
+var [logger, version, lcn] = require("./source/init.js")();
 
 var config = lcn.config;
-
-logger.setLogLevel(config["console-log-level"], config["file-log-level"]);
 
 var auxils = lcn.auxils;
 var commands = lcn.commands;
@@ -22,7 +15,7 @@ client.options.disableEveryone = true;
 var load_time = process.uptime() * 1000;
 
 client.on("ready", function () {
-  logger.log(2, "Foxflower La Cosa Nostra [%s] ready.", version.version);
+  logger.log(2, "%s La Cosa Nostra [%s] ready.", version["update-name"], version.version);
 
   var login_time = process.uptime() * 1000;
 
@@ -37,12 +30,12 @@ client.on("ready", function () {
   };
 
   var total_load_time = process.uptime() * 1000;
-  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.expansion.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.win_conditions).length, Object.keys(lcn.commands.role).length, Object.keys(lcn.assets).length, load_time, login_time - load_time, total_load_time - login_time, save_status, total_load_time];
+  var stats = [lcn.expansions.length, lcn.expansions.map(x => x.expansion.name).join(", "), Object.keys(lcn.roles).length, Object.keys(lcn.attributes).length, Object.keys(lcn.flavours).length, Object.keys(lcn.win_conditions).length, Object.keys(lcn.commands.role).length, Object.keys(lcn.assets).length, auxils.round(load_time), auxils.round(login_time - load_time), auxils.round(total_load_time - login_time), save_status, auxils.round(total_load_time, 2)];
   logger.log(2, "\n--- Statistics ---\n[Modules]\nLoaded %s expansion(s) [%s];\nLoaded %s role(s);\nLoaded %s attribute(s);\nLoaded %s flavour(s);\nLoaded %s unique win condition(s);\nLoaded %s command handle(s);\nLoaded %s non-flavour asset(s)\n\n[Startup]\nLoad: %sms;\nLogin: %sms;\nSave: %sms [%s];\nTotal: %sms\n-------------------\nEnter \"autosetup\" for auto-setup.\nEnter \"help\" for help.\n", ...stats);
 
 });
 
-client.on("message", function (message) {
+client.on("message", async function (message) {
 
   var content = message.content;
 
@@ -63,73 +56,94 @@ client.on("message", function (message) {
       return null;
     };
 
-    for (var key in commands) {
+    try {
 
-      if (["readline", "admin", "game", "role"].includes(key)) {
-        continue;
+      for (var key in commands) {
+
+        if (["readline", "admin", "saves", "game", "role"].includes(key)) {
+          continue;
+        };
+
+        if (commands[key][command] !== undefined) {
+          await commands[key][command](message, edited, config);
+          return null;
+        };
+
       };
 
-      if (commands[key][command] !== undefined) {
-        commands[key][command](message, edited, config);
+      if (commands.admin[command] !== undefined) {
+        // Check permissions
+        var member = message.member;
+
+        if (member.roles.some(x => x.name === config["permissions"]["admin"])) {
+          await commands.admin[command](message, edited, config);
+        } else {
+          message.channel.send(":x: You do not have sufficient permissions to use this command!");
+        };
+
         return null;
       };
 
-    };
+      if (commands.saves[command] !== undefined) {
+        // Check permissions
+        var member = message.member;
 
-    if (commands.admin[command] !== undefined) {
-      // Check permissions
-      var member = message.member;
+        if (member.roles.some(x => x.name === config["permissions"]["admin"])) {
+          await commands.saves[command](message, edited, config);
+        } else {
+          message.channel.send(":x: You do not have sufficient permissions to use this command!");
+        };
 
-      if (member.roles.some(x => x.name === config["permissions"]["admin"])) {
-        commands.admin[command](message, edited, config);
-      } else {
-        message.channel.send(":x: You do not have sufficient permissions to use this command!");
+        return null;
       };
 
-      return null;
-    };
+      if (commands.game[command] !== undefined) {
+        // Check if game is in progress
+        if (process.timer !== undefined) {
 
-    if (commands.game[command] !== undefined) {
-      // Check if game is in progress
-      if (process.timer !== undefined) {
+          var cond1 = process.timer.game.state === "pre-game" && commands.game[command].ALLOW_PREGAME === false;
+          var cond2 = process.timer.game.state === "playing" && commands.game[command].ALLOW_GAME === false;
+          var cond3 = process.timer.game.state === "ended" && commands.game[command].ALLOW_POSTGAME === false;
 
-        var cond1 = process.timer.game.state === "pre-game" && commands.game[command].ALLOW_PREGAME === false;
-        var cond2 = process.timer.game.state === "playing" && commands.game[command].ALLOW_GAME === false;
-        var cond3 = process.timer.game.state === "ended" && commands.game[command].ALLOW_POSTGAME === false;
+          if (!cond1 && !cond2 && !cond3) {
+            commands.game[command](process.timer.game, message, edited);
+          } else {
 
-        if (!cond1 && !cond2 && !cond3) {
-          commands.game[command](process.timer.game, message, edited);
-        } else {
+            if (cond1) {
+              message.channel.send(":x: That command cannot be used in the pre-game!");
+            } else if (cond2) {
+              message.channel.send(":x: That command cannot be used when the game is running!");
+            } else if (cond3) {
+              message.channel.send(":x: That command cannot be used in the post-game!");
+            };
 
-          if (cond1) {
-            message.channel.send(":x: That command cannot be used in the pre-game!");
-          } else if (cond2) {
-            message.channel.send(":x: That command cannot be used when the game is running!");
-          } else if (cond3) {
-            message.channel.send(":x: That command cannot be used in the post-game!");
           };
+
+        } else {
+          await message.channel.send(":x: There is no game in progress!");
+        };
+
+      };
+
+      // Run framework function
+      if (commands.role[command] !== undefined) {
+        // Check if game is in progress
+
+        if (process.timer !== undefined && process.timer.game.state === "playing") {
+
+          await commands.role[command](process.timer.game, message, edited);
 
         };
 
-      } else {
-        message.channel.send(":x: There is no game in progress!");
+        return null;
+
       };
 
-    };
+    } catch (err) {
 
-    // Run framework function
-    if (commands.role[command] !== undefined) {
-      // Check if game is in progress
-
-      if (process.timer !== undefined && process.timer.game.state === "playing") {
-
-        commands.role[command](process.timer.game, message, edited);
-
-      } else {
-        //message.channel.send(":x: There is no game in progress!");
-      };
-
-      return null;
+      logger.log(4, "Command execution error.");
+      logger.logError(err);
+      message.channel.send(":x: A code-level bot error occured. Please contact the bot administrator to check the console immediately.");
 
     };
 
@@ -142,7 +156,7 @@ client.on("guildMemberAdd", function (member) {
   var guild = client.guilds.get(config["server-id"]);
   var welcome = guild.channels.find(x => x.name === config["channels"]["welcome-channel"]);
 
-  if (welcome === undefined) {
+  if (!welcome) {
     return null;
   };
 
@@ -207,7 +221,17 @@ function autoload () {
   };
 
   // Load the save
-  var timer = game.templates.Timer.load(client, config);
+  try {
+
+    var timer = game.templates.Timer.load(client, config);
+
+  } catch (err) {
+
+    logger.log(4, "Restoration of save failed due to a load error, are the save files corrupted? Use \"reset\" if necessary.");
+    logger.logError(err);
+    return "\x1b[1m\x1b[31mERRORED - CHECK LOGS\x1b[0m";
+
+  };
 
   if (!timer) {
     logger.log(2, "\x1b[1m%s\x1b[0m", "Did not restore save.");
@@ -228,7 +252,7 @@ process.setStatus = function (client) {
 
   client.user.setPresence({
     status: "online",
-    game: {name: "Foxflower LCN " + version.version, type: "PLAYING"}
+    game: {name: version["update-name"] + " LCN " + version.version, type: "PLAYING"}
   });
 
 };
