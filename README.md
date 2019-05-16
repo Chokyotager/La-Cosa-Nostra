@@ -1,7 +1,7 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://https://github.com/Chokyotager/La-Cosa-Nostra"><img src="/display/generic-banner.png" alt="banner" /></a>
+    <a href="https://github.com/Chokyotager/La-Cosa-Nostra"><img src="/display/generic-banner.png" alt="banner" /></a>
   </p>
   <br />
   <p>
@@ -73,6 +73,14 @@ Some of the default expansion packs that come with the bot include (as listed in
 
 `expanded-primrose-c9++` - a further expanded C9++ setup but for 21 players
 
+`knight-errant` - an 18 player blind setup that is generated through a knight move.
+
+`2d3` - a 9 player beginner setup as seen on Mafiascum.
+
+`plaguetools` - a utility expansion pack for the plaguebearer
+
+`compmeme` - memes for your computer needs, sorry Silicon Valley!
+
 Simply go to `/configs/playing.json` and add your expansion pack as a list like such to load it:
 ```js
 {
@@ -92,16 +100,16 @@ Simply go to `/configs/playing.json` and add your expansion pack as a list like 
 *Note that `roles` is set to `null` so the expansion pack can automatically assign roles.*
 
 ## Wiki, Guides, and Developers
-For a more detailed guide on installation, how to make your own roles and setups, and the lot, visit our Wiki at https://github.com/Chokyotager/La-Cosa-Nostra/wiki
+For a more detailed guide on installation, how to make your own roles and setups, and the lot, **visit our Wiki** at https://github.com/Chokyotager/La-Cosa-Nostra/wiki
 
 We also have a forum dedicated to the LCN community. If you are a developer wanting to ask some development questions or to share your expansion packs, or if you just want to advertise your LCN server, go here: https://chocoparrot.com/forum
 
 ## Credits
 **Authors:** ChocoParrot & Hex4Nova
 
-**Alpha testers:** Justin, Lia
+**Alpha testers:** Justin (SpikedCoffee), Lia
 
-**Beta testers:** Ardvark8op, ShapeShifted, Les, Lia, Misode, Conjurer, Good Skele, Hex4Nova, Inffy
+**Beta testers:** Ardvark8op, ShapeShifted, Les (Fantome), Lia, Misode, Conjurer, Good Skele, Hex4Nova, Inffy
 
 **Special thanks:** Error, Fogalog, Inffy, Randium, Sai Kurogetsu, Alisha
 
