@@ -11,7 +11,11 @@
     "type": "git",
     "url": "https://github.com/Chokyotager/La-Cosa-Nostra"
   },
-  "keywords": ["Mafia", "Werewolf", "Discord"],
+  "keywords": [
+    "Mafia",
+    "Werewolf",
+    "Discord"
+  ],
   "author": "ChocoParrot",
   "license": "MIT",
   "bugs": {
@@ -23,6 +27,8 @@
     "request": "~2.88.0",
     "request-promise": "4.2.4"
   },
-  "engines": {"node" : ">=10.15.0"},
+  "engines": {
+    "node": ">=10.15.0"
+  },
   "engineStrict": true
 }
