@@ -66,11 +66,25 @@ function getExpansions (identifiers, scanned=new Array()) {
                 commands: commands
               },
               scripts: {
+
+                // Handles configuration on LOAD
                 start: attemptRequiring(directory + "/scripts/start.js"),
+
+                // Runs script when a game is primed
+                game_prime: attemptRequiring(directory + "/scripts/game_primed.js"),
+
+                // Runs script when a game is started
                 game_start: attemptRequiring(directory + "/scripts/game_start.js"),
+
+                // Runs script BEFORE a prime (usually to determine setup, return config)
                 game_assign: attemptRequiring(directory + "/scripts/game_assign.js"),
+
+                // Runs script on initialisation of the game object (same as prime, but before Mafia chat creation)
                 game_init: attemptRequiring(directory + "/scripts/game_init.js"),
+
+                // Runs script every cycle
                 cycle: attemptRequiring(directory + "/scripts/cycle.js")
+
               }});
 
   };

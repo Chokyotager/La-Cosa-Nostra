@@ -104,7 +104,7 @@ module.exports = class {
 
   async step () {
 
-    logger.log(2, "Step fired.");
+    logger.log(2, "Game step activated.");
     var next_action = await this.game.step();
 
     // TEMP: set to not fire next step for obvious reasons

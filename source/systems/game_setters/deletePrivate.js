@@ -18,7 +18,14 @@ module.exports = async function (client, config) {
 
   var cache = new Array();
   for (var i = 0; i < channels.length; i++) {
+
+    if (i % 3 === 0) {
+      await Promise.all(cache);
+      cache = new Array();
+    };
+
     cache.push(channels[i].delete());
+
   };
 
   await Promise.all(cache);

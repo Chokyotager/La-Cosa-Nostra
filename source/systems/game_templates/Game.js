@@ -80,23 +80,18 @@ module.exports = class {
 
   }
 
-  primeDesignatedTime () {
+  primeDesignatedTime (increment_factor=12) {
     // Always start day zero at closest 12pm/am
     var current = new Date();
+    var utc_hour = current.getUTCHours();
 
-    var hours = (12 - this.timezone) % 24;
-
-    if (hours <= current.getUTCHours()) {
-      // Next one at 00:00
-      hours += 12;
-    };
-
-    current.setUTCHours(hours, 0, 0, 0);
+    current.setUTCHours(increment_factor + this.timezone, 0, 0, 0);
 
     this.start_time = current;
     this.current_time = current;
 
     this.next_action = new Date(current);
+
   }
 
   setChannel (name, channel) {

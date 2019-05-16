@@ -43,7 +43,7 @@ module.exports = async function (client, config, roles) {
     var mafia = null;
   };
 
-  return await Promise.all([mafia, Promise.all(resolvables)]);
+  return await Promise.all([mafia, ...resolvables]);
 
   async function assignChannel (role) {
     var channel = await createPrivateChannel(role.alphabet);

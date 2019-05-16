@@ -14,8 +14,8 @@ var configModifier = require("./configModifier.js");
 
 module.exports = async function (client, config) {
 
-  if (config["time"]["timezone"] >= 12 || config["time"]["timezone"] < 0) {
-    var err = new Error("Timezone should be between 0-12, inclusive. All games always start at 12 mn/noon for that timezone.");
+  if (config["time"]["timezone"] > 12 || config["time"]["timezone"] <= -12) {
+    var err = new Error("Timezone should be between (-12 to 12]. All games always start at 12 midnight for that timezone.");
     throw err;
   };
 
@@ -53,7 +53,7 @@ module.exports = async function (client, config) {
   await setPermissions(client, new_config, roles);
   await setRolePermissions(client, new_config);
 
-  var [game, timer] = createGame(client, new_config, roles, mafia_channel);
+  var [game, timer] = await createGame(client, new_config, roles, mafia_channel);
 
   // create test vote
   //game.createVotes("development-chambers");

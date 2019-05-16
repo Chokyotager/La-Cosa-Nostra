@@ -196,6 +196,25 @@ client.on("disconnect", function (close_event) {
 
 });
 
+client.on("error", function (error) {
+
+  logger.log("[Websocket] Websocket connection error. Not fatal. Discord.js will attempt automatic reconnection, so there is nothing to worry about unless the log stops here.");
+  logger.logError(error);
+
+});
+
+client.on("resume", function () {
+
+  logger.log("[Websocket] Websocket connection has been resumed.");
+
+});
+
+client.on("warn", function (warning) {
+
+  logger.log(3, "[Discord.js warning] %s", warning);
+
+});
+
 // Ready
 function ready () {
 
