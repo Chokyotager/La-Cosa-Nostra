@@ -2,7 +2,7 @@
   "name": "la-cosa-nostra",
   "description": "A Mafia bot designed to run in Discord - beware the traitors and the lies!",
   "update-name": "Foxorchid",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "main": "foxorchid/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

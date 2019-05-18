@@ -31,7 +31,7 @@ for (var i = 0; i < roles.length; i++) {
   var expansion_identifier = role_info[0];
   var role = role_info[1];
 
-  if (expansion === "lcn") {
+  if (expansion_identifier === "lcn") {
 
     var directory = root + "/" + role;
 

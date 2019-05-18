@@ -39,7 +39,7 @@ for (var i = 0; i < flavours.length; i++) {
   var expansion_identifier = flavour_info[0];
   var flavour = flavour_info[1];
 
-  if (expansion === "lcn") {
+  if (expansion_identifier === "lcn") {
 
     var directory = flavours_dir + "/" + flavour;
 

@@ -27,7 +27,7 @@ for (var i = 0; i < attributes.length; i++) {
   var expansion_identifier = attribute_info[0];
   var attribute = attribute_info[1];
 
-  if (expansion === "lcn") {
+  if (expansion_identifier === "lcn") {
 
     var directory = attributes_dir + "/" + attribute;
 
