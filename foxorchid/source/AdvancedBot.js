@@ -11,9 +11,11 @@ module.exports = class extends EventEmitter {
 
     super();
 
+    var main_path = require.main.path;
+
     // Override defaults
-    directories["log"] = directories["log"] || __dirname + "/../log.txt";
-    directories["data"] = directories["data"] || __dirname + "/../data/";
+    directories["log"] = directories["log"] || main_path + "/log.txt";
+    directories["data"] = directories["data"] || main_path + "/data/";
 
     this.identifier = crypto.randomBytes(16).toString("hex");
     this.directories = directories;

@@ -1,3 +1,3 @@
 var config = require("../../source/systems/config_handler.js")("configuration.json", false);
 
-return config;
+module.exports = config;

@@ -15,6 +15,11 @@ client.options.disableEveryone = true;
 var load_time = process.uptime() * 1000;
 
 client.on("ready", function () {
+
+  if (!client.guilds.some(x => x.id === config["server-id"])) {
+    throw new Error("Invalid guild ID entered in the configuration.");
+  };
+
   logger.log(2, "%s La Cosa Nostra [%s] ready.", version["update-name"], version.version);
 
   var login_time = process.uptime() * 1000;
