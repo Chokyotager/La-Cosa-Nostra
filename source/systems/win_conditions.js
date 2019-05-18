@@ -24,10 +24,10 @@ for (var i = 0; i < scripts.length; i++) {
 
   var script_info = scripts[i].split("/");
 
-  var expansion = script_info[0];
+  var expansion_identifier = script_info[0];
   var script = script_info[1];
 
-  if (expansion === "lcn") {
+  if (expansion_identifier === "lcn") {
 
     var directory = scripts_dir + "/" + script;
 

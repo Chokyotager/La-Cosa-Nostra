@@ -11,7 +11,7 @@ module.exports = class extends EventEmitter {
 
     super();
 
-    var main_path = require.main.path;
+    var main_path = require.main.path || require.main.filename.substring(0, require.main.filename.lastIndexOf("/") + 1);
 
     // Override defaults
     directories["log"] = directories["log"] || main_path + "/log.txt";
