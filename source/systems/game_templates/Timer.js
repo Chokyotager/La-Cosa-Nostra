@@ -329,8 +329,10 @@ module.exports = class {
 
     savable.checksum = checksum;
 
+    var data_directory = process.directories["data"];
+
     // Save object
-    fs.writeFileSync(__dirname + "/../../../data/game_cache/game.save", encode(JSON.stringify(savable, auxils.jsonInfinityCensor)));
+    fs.writeFileSync(data_directory + "/game_cache/game.save", encode(JSON.stringify(savable, auxils.jsonInfinityCensor)));
 
     // All of players class should be serialisable without deletions
     for (var i = 0; i < players.length; i++) {
@@ -354,7 +356,7 @@ module.exports = class {
       var string = JSON.stringify(player, auxils.jsonInfinityCensor);
 
       // Saved by Discord ID
-      fs.writeFileSync(__dirname + "/../../../data/game_cache/players/" + id + ".save", encode(string));
+      fs.writeFileSync(data_directory + "/game_cache/players/" + id + ".save", encode(string));
 
     };
 
@@ -374,8 +376,11 @@ module.exports = class {
 };
 
 module.exports.load = function (client, config) {
+
+  var data_directory = process.directories["data"];
+
   // Loads
-  var save = fs.readFileSync(__dirname + "/../../../data/game_cache/game.save", "utf8");
+  var save = fs.readFileSync(data_directory + "/game_cache/game.save", "utf8");
 
   save = decode(save);
 
@@ -399,8 +404,10 @@ module.exports.load = function (client, config) {
   var game = new Game(client, config);
   game = Object.assign(game, save);
 
+  var data_directory = process.directories["data"];
+
   // Reload all players
-  var player_saves = fs.readdirSync(__dirname + "/../../../data/game_cache/players/");
+  var player_saves = fs.readdirSync(data_directory + "/game_cache/players/");
   var players = new Array();
 
   for (var i = 0; i < player_saves.length; i++) {
@@ -410,7 +417,7 @@ module.exports.load = function (client, config) {
     };
 
     // Reload the save
-    var string = fs.readFileSync(__dirname + "/../../../data/game_cache/players/" + player_saves[i], "utf8");
+    var string = fs.readFileSync(data_directory + "/game_cache/players/" + player_saves[i], "utf8");
     player_save = decode(string);
 
     var checksum = player_save.checksum;

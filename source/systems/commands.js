@@ -16,8 +16,7 @@ for (i = 0; i < expansions.length; i++) {
     };
 
     var commands = expansion.additions.commands[key];
-
-    var directory = __dirname + "/../../expansions/" + expansion.identifier + "/commands/" + key + "/";
+    var directory = expansion.expansion_directory + "/commands/" + key + "/";
 
     for (var j = 0; j < commands.length; j++) {
 

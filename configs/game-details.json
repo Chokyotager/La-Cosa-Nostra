@@ -65,9 +65,9 @@
   },
 
   "time": {
-    "timezone": 9,
-    "day": 29,
-    "night": 20
+    "timezone": 0,
+    "day": 24,
+    "night": 15
   },
 
   "message-checks": {

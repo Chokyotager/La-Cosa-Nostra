@@ -17,6 +17,8 @@ var expansions = require("../expansions.js");
 var auxils = require("../auxils.js");
 var flavours = require("../flavours.js");
 
+var lcn = require("../../lcn.js");
+
 module.exports = class {
 
   constructor (client, config) {
@@ -80,12 +82,12 @@ module.exports = class {
 
   }
 
-  primeDesignatedTime (increment_factor=12) {
+  primeDesignatedTime () {
     // Always start day zero at closest 12pm/am
     var current = new Date();
     var utc_hour = current.getUTCHours();
 
-    current.setUTCHours(increment_factor + this.timezone, 0, 0, 0);
+    current.setUTCHours(((utc_hour >= 12) ? 24 : 12) + this.timezone, 0, 0, 0);
 
     this.start_time = current;
     this.current_time = current;
@@ -1868,6 +1870,12 @@ module.exports = class {
       await channel.send(this.intro_messages[i].message);
 
     };
+
+  }
+
+  getAPI () {
+
+    return lcn;
 
   }
 

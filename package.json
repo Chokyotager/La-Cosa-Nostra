@@ -1,9 +1,9 @@
 {
-  "name": "La Cosa Nostra",
+  "name": "la-cosa-nostra",
   "description": "A Mafia bot designed to run in Discord.",
   "update-name": "Foxorchid",
   "version": "3.1.0",
-  "main": "bot.js",
+  "main": "foxorchid/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +14,8 @@
   "keywords": [
     "Mafia",
     "Werewolf",
-    "Discord"
+    "Discord",
+    "Discord-bot"
   ],
   "author": "ChocoParrot",
   "license": "MIT",

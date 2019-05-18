@@ -1,9 +1,10 @@
 var auxils = require("./auxils.js");
-var config = auxils.config_handler();
+var config = require("./config_handler.js")();
 
 var fs = require("fs");
 
-var expansions_dir = __dirname + "/../../expansions/";
+var expansion_directories = process.directories.expansions;
+
 var expansions = getExpansions(config.playing.expansions);
 
 module.exports = expansions;
@@ -25,13 +26,24 @@ function getExpansions (identifiers, scanned=new Array()) {
       return new Array();
     };
 
-    var directory = expansions_dir + identifier;
+    var viable_directories = new Array();
+    for (var j = 0; j < expansion_directories.length; j++) {
+      var expansion_directory = expansion_directories[j] + identifier;
 
-    var is_directory = fs.lstatSync(directory).isDirectory();
-
-    if (!is_directory) {
-      throw new Error("Expansion directory " + directory + " does not exist.");
+      if (fs.existsSync(expansion_directory) && fs.lstatSync(expansion_directory).isDirectory()) {
+        viable_directories.push(expansion_directory);
+      };
     };
+
+    if (viable_directories.length < 1) {
+      throw new Error("Expansion \"" + identifier + "\" does not exist.");
+    };
+
+    if (viable_directories.length > 1) {
+      throw new Error("Multiple instances of expansion \"" + identifier + "\" [" + viable_directories.join(", ") + "] have been found - can only load one!");
+    };
+
+    var directory = viable_directories[0];
 
     // Read information JSON
     var expansion = JSON.parse(fs.readFileSync(directory + "/expansion.json"));
@@ -55,7 +67,8 @@ function getExpansions (identifiers, scanned=new Array()) {
     };
 
     // Add information
-    ret.push({identifier: identifier,
+    ret.push({expansion_directory: directory,
+              identifier: identifier,
               expansion: expansion,
               additions: {
                 assets: attemptReaddir(directory + "/assets"),

@@ -1,12 +1,82 @@
 var fs = require("fs");
+var config_handler = require("./systems/config_handler.js");
+
+var primitive_config = config_handler("configuration.json", false);
 
 module.exports = function () {
 
+  process.directories = {
+    "log": __dirname + "/../log.txt",
+    "data": __dirname + "/../data/",
+    "expansions": [__dirname + "/../expansions/"]
+  };
+
+  // Subprocess handler (for NPM Foxorchid LCN)
+  if (primitive_config["allow-config-override-subprocess"]) {
+
+    // Check subprocesses
+    var args = Array.from(process.argv).splice(2);
+    if (args.length >= 2) {
+
+      var is_subprocess = args[0].toLowerCase() === "--subprocess";
+
+      if (is_subprocess) {
+
+        process.is_subprocess = true;
+
+        try {
+
+          var data = JSON.parse(args.splice(1).join(" "));
+
+          process.parent_data = data;
+
+          process.directories["log"] = data.directories["log"] || process.directories["log"];
+          process.directories["data"] = data.directories["data"] || process.directories["data"];
+
+          if (!data.directories["expansions"]) {
+
+            process.directories["expansions"] = process.directories["expansions"];
+
+          } else if (Array.isArray(data.directories["expansions"])) {
+
+            var has_default = data.directories["expansions"].some(x => x === "default");
+
+            if (has_default) {
+              process.directories["expansions"] = process.directories["expansions"].concat(data.directories["expansions"].filter(x => x === "default"));
+            } else {
+              process.directories["expansions"] = data.directories["expansions"];
+            };
+
+          } else {
+
+            process.directories["expansions"] = process.directories["expansions"].concat([data.directories["expansions"]]);
+
+          };
+
+        } catch (err) {
+
+          // Crash the program at this level
+          throw err;
+
+        };
+
+      };
+
+    };
+
+  };
 
   // Create logger
+  var log_directory = process.directories.log;
 
-  var logger = new (require("./systems/game_templates/Logger.js"))(__dirname + "/../log.txt");
+  var logger = new (require("./systems/game_templates/Logger.js"))(log_directory);
   process.logger = logger;
+
+  if (process.parent_data) {
+
+    logger.log(2, "Running LCN as a subprocess [PID: %s].", process.pid);
+
+  };
 
   process.on("unhandledRejection", function (error, promise) {
 
@@ -25,6 +95,8 @@ module.exports = function () {
   });
 
   var version = JSON.parse(fs.readFileSync(__dirname + "/../package.json"));
+
+  process.version_info = version;
 
   var lcn = require("./lcn.js");
 

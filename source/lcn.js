@@ -1,5 +1,6 @@
 // NOTE: the order matters!
 
+var config_handler = require("./systems/config_handler.js");
 var fs = require("fs");
 
 module.exports.auxils = require("./systems/auxils.js");
@@ -16,7 +17,7 @@ module.exports.actionables = require("./systems/actionables.js");
 module.exports.roles = require("./systems/roles.js");
 module.exports.assets = require("./systems/assets.js");
 
-var config = module.exports.auxils.config_handler();
+var config = config_handler();
 var default_config = config;
 
 for (var i = 0; i < module.exports.expansions.length; i++) {
@@ -33,7 +34,7 @@ for (var i = 0; i < module.exports.expansions.length; i++) {
 };
 
 // Enforce defaults on parameters
-var enforce_default = ["bot-token", "server-id", "command-prefix", "automatically-load-saves", "encode-cache", "merge-configs", "playing", "console-log-level", "file-log-level"];
+var enforce_default = ["bot-token", "server-id", "command-prefix", "automatically-load-saves", "encode-cache", "merge-configs", "playing", "console-log-level", "file-log-level", "allow-config-override-subprocess"];
 
 for (var i = 0; i < enforce_default.length; i++) {
 

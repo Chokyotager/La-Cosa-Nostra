@@ -36,7 +36,7 @@ for (var i = 0; i < flavours.length; i++) {
 
   var flavour_info = flavours[i].split("/");
 
-  var expansion = flavour_info[0];
+  var expansion_identifier = flavour_info[0];
   var flavour = flavour_info[1];
 
   if (expansion === "lcn") {
@@ -45,7 +45,8 @@ for (var i = 0; i < flavours.length; i++) {
 
   } else {
 
-    var directory = __dirname + "/../../expansions/" + expansion + "/flavours/" + flavour;
+    var expansion = expansions.find(x => x.identifier === expansion_identifier);
+    var directory = expansion.expansion_directory + "/flavours/" + flavour;
 
   };
 

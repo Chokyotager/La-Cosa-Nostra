@@ -9,7 +9,7 @@ for (i = 0; i < expansions.length; i++) {
 
   var expansion = expansions[i];
 
-  var directory = __dirname + "/../../expansions/" + expansion.identifier + "/rolesystem/";
+  var directory = expansion.expansion_directory + expansion.identifier + "/rolesystem/";
 
   var expansion_rolesystem = reader("rolesystem_", ".js", directory);
 

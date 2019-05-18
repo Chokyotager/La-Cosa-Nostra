@@ -28,7 +28,7 @@ for (var i = 0; i < roles.length; i++) {
 
   var role_info = roles[i].split("/");
 
-  var expansion = role_info[0];
+  var expansion_identifier = role_info[0];
   var role = role_info[1];
 
   if (expansion === "lcn") {
@@ -37,7 +37,8 @@ for (var i = 0; i < roles.length; i++) {
 
   } else {
 
-    var directory = __dirname + "/../../expansions/" + expansion + "/roles/" + role;
+    var expansion = expansions.find(x => x.identifier === expansion_identifier);
+    var directory = expansion.expansion_directory + "/roles/" + role;
 
   };
 

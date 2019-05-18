@@ -13,8 +13,8 @@ var expansion_assets = new Array();
 for (var i = 0; i < expansions.length; i++) {
 
   var expansion = expansions[i];
-
-  var directory = __dirname + "/../../expansions/" + expansion.identifier + "/assets/";
+  var directory = expansion.expansion_directory + "/assets/";
+  
   expansion.additions.assets.forEach(x => {
 
     expansion_assets.push({name: x, directory: directory});

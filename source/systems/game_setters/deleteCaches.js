@@ -11,22 +11,22 @@ module.exports = function (client, config) {
 
   var current_time = new Date();
 
-  var data = __dirname + "/../../../data";
+  var data_directory = process.directories["data"];
 
-  if (!fs.existsSync(data)) {
+  if (!fs.existsSync(data_directory)) {
     logger.log(2, "[Routine] Made Data directory because it didn't exist.");
-    fs.mkdirSync(data);
+    fs.mkdirSync(data_directory);
   };
 
-  var archive = __dirname + "/../../../data/archive/";
+  var archive = data_directory + "/archive/";
 
   if (!fs.existsSync(archive)) {
     logger.log(2, "[Routine] Made Archive directory because it didn't exist.");
     fs.mkdirSync(archive);
   };
 
-  if (fs.existsSync(__dirname + "/../../../data/game_cache")) {
-    fs.renameSync(__dirname + "/../../../data/game_cache", archive + "/game_cache_" + current_time.getTime());
+  if (fs.existsSync(data_directory + "/game_cache")) {
+    fs.renameSync(data_directory + "/game_cache", archive + "/game_cache_" + current_time.getTime());
     logger.log(2, "Archived all caches.");
   };
 

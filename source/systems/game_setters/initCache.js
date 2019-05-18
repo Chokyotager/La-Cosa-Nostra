@@ -4,7 +4,9 @@ var fs = require("fs");
 
 module.exports = function (client, config) {
 
-  var directories = [__dirname + "/../../../data", __dirname + "/../../../data/game_cache", __dirname + "/../../../data/game_cache/players"];
+  var data_directory = process.directories["data"];
+
+  var directories = [data_directory, data_directory + "/game_cache", data_directory + "/game_cache/players"];
 
   for (var i = 0; i < directories.length; i++) {
     if (!fs.existsSync(directories[i])) {
