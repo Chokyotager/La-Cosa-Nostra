@@ -4,6 +4,8 @@
 
   "command-prefix": "!",
   "automatically-load-saves": true,
+  
+  "allow-config-override-subprocess": true,
 
   "auto-reconnect": true,
 
