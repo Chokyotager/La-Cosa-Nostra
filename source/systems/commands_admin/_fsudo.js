@@ -17,7 +17,8 @@ module.exports = async function (message, params, config) {
 
   if (!member) {
     member = {
-      id: params[0]
+      id: params[0],
+      user: user
     };
   };
 
