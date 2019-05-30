@@ -9,6 +9,12 @@ module.exports = async function (game, message, params) {
 
   var self = game.getPlayerById(message.author.id);
 
+
+  if (!self) {
+    await message.channel.send(":x: You are not in the game!");
+    return null;
+  };
+
   if (!self.isAlive()) {
     await message.channel.send(":x: You have died and cannot vote!");
     return null;
