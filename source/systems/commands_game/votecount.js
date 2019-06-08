@@ -73,6 +73,21 @@ module.exports = async function (game, message, params) {
 
     };
 
+    var special_vote_types = game.getPeriodLog().special_vote_types;
+
+    for (var i = 0; i < special_vote_types.length; i++) {
+
+      var voters = special_vote_types[i].voters;
+      var vote_count = game.getSpecialVoteCount(special_vote_types[i].identifier);
+
+      var names = auxils.pettyFormat(voters.map(x => game.getPlayerByIdentifier(x.identifier).getDisplayName()));
+
+      names = voters.length > 0 ? ": " + names : "";
+
+      displays.push("**" + special_vote_types[i].name + "** (" + vote_count + ")" + names);
+
+    };
+
     return displays.join("\n");
 
   };

@@ -1,0 +1,25 @@
+{
+
+  "name": "Memes",
+  "type": "Commands",
+  "description": "Adds the old LCN meme commands.",
+
+  "link": null,
+
+  "authors": ["ChocoParrot"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}

@@ -8,6 +8,8 @@
 
   "display-role-equivalent-on-death": false,
 
+  "display-role-equivalent-in-win-log": false,
+
   "investigator-sees-flavour-role": false,
 
   "show-role-category": false,

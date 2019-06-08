@@ -11,14 +11,11 @@ var ret = new Object();
 
 var flavours_dir = __dirname + "/../flavours/";
 
-if (!fs.existsSync(flavours_dir)) {
-
-  fs.mkdirSync(flavours_dir);
-  logger.log(3, "[Error] Flavours folder not found, made one instead!");
-
+if (fs.existsSync(flavours_dir)) {
+  var flavours = fs.readdirSync(flavours_dir).map(x => "lcn/" + x);
+} else {
+  var flavours = new Array();
 };
-
-var flavours = fs.readdirSync(flavours_dir).map(x => "lcn/" + x);
 
 var rules = new Array();
 

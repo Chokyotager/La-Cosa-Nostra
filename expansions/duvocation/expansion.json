@@ -1,0 +1,29 @@
+{
+
+  "name": "Duvocation",
+  "type": "Setup",
+  "description": "Closed setup involving novel mechanics.",
+
+  "link": null,
+
+  "authors": ["PokeSvorlds"],
+
+  "overrides": {
+
+    "flavours": [
+      "+duvocation/*"
+    ],
+
+    "role_win_conditions": [],
+
+    "roles": [
+      "-lcn/*"
+    ],
+
+    "attributes": []
+
+  },
+
+  "dependencies": ["forum-auxiliaries"]
+
+}

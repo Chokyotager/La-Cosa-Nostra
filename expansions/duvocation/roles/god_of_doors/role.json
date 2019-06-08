@@ -1,0 +1,23 @@
+{
+  "role-name": "God of Doors",
+
+  "alignment": "town",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 0,
+    "roleblock-immunity": 0,
+    "detection-immunity": 0,
+    "control-immunity": 0,
+		"redirection-immunity": 0,
+		"kidnap-immunity": 0,
+    "priority": 10,
+    "vote-offset": 0,
+		"vote-magnitude": 1
+  },
+
+  "tags": [],
+
+  "win-condition": "town"
+}

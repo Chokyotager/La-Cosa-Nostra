@@ -30,6 +30,7 @@ module.exports = class {
   voteAgainst (identifier, magnitude=1) {
     // x votes against this player
     this.votes.push({identifier: identifier, magnitude: magnitude});
+    this.game.execute("vote", {target: identifier, voter: this.identifier});
   }
 
   toggleVotes (identifier, magnitude=1) {
@@ -46,6 +47,7 @@ module.exports = class {
     for (var i = 0; i < this.votes.length; i++) {
       if (this.votes[i].identifier === identifier) {
         this.votes.splice(i, 1);
+        this.game.execute("unvote", {target: identifier, voter: this.identifier});
         return true;
       };
     };
@@ -104,6 +106,7 @@ module.exports = class {
       "controlled": false,
       "silenced": false,
       "kidnapped": false,
+      "vote-blocked": false,
 
       "won": false,
       "can-win": true
@@ -212,6 +215,7 @@ module.exports = class {
     this.setStatus("controlled", false);
     this.setStatus("silenced", false);
     this.setStatus("kidnapped", false);
+    this.setStatus("vote-blocked", false);
 
   }
 
@@ -695,7 +699,7 @@ module.exports = class {
         // Define truestart synchronisation
         attributes[attribute].start(this, addable, false);
       } catch (err) {
-        logger.log(4, "Attribute start script error with player %s (%s) [%s]", this.identifier, this.getDisplayName(), this.attributes[i].identifier);
+        logger.log(4, "Attribute start script error with player %s (%s) [%s]", this.identifier, this.getDisplayName(), addable.identifier);
         logger.logError(err);
       };
 

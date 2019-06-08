@@ -56,6 +56,8 @@ module.exports = class {
 
     this.voting_halted = false;
 
+    this.game_config_override = new Object();
+
     // Timezone is GMT relative
     this.timezone = this.config.time.timezone;
 
@@ -87,7 +89,13 @@ module.exports = class {
     var current = new Date();
     var utc_hour = current.getUTCHours();
 
-    current.setUTCHours(((utc_hour >= 12) ? 24 : 12) + this.timezone, 0, 0, 0);
+    var now = new Date();
+
+    current.setUTCHours(-timezone, 0, 0, 0);
+
+    while (current.getTime() - now.getTime() < 0) {
+      current.setUTCHours(current.getUTCHours() + 24);
+    };
 
     this.start_time = current;
     this.current_time = current;
@@ -295,12 +303,23 @@ module.exports = class {
 
     var alphabet = reversed[emote];
 
+    // Count the vote
+    var voter = this.getPlayerById(user.id);
+
+    // Cycle through special vote types
+    var special_vote_types = this.getPeriodLog().special_vote_types;
+    for (var i = 0; i < special_vote_types.length; i++) {
+      var vote_type = special_vote_types[i];
+
+      if (emote.name === vote_type.emote) {
+        this.toggleVote(voter, vote_type.identifier, true);
+        return null;
+      };
+    };
+
     if (alphabet === undefined) {
       return null;
     };
-
-    // Count the vote
-    var voter = this.getPlayerById(user.id);
 
     if (alphabet === "nl") {
 
@@ -333,22 +352,35 @@ module.exports = class {
 
   }
 
-  toggleVote (voter, voted_against) {
+  toggleVote (voter, voted_against, special_vote=false) {
     // Post corresponding messages
 
     if (this.voting_halted) {
-      return false;
+      return null;
     };
 
-    var no_lynch_vote = voted_against === "nl";
+    if (voter.getStatus("vote-blocked")) {
+      return null;
+    };
+
+    var no_lynch_vote = voted_against === "nl" && !special_vote;
     var voted_no_lynch = this.isVotingNoLynch(voter.identifier);
+
+    // Check for (a) singular (b) total lynch counts
+    var special_vote_types = this.getPeriodLog().special_vote_types;
+    var special_votes_from = special_vote_types.filter(x => x.voters.some(y => y.identifier === voter.identifier));
+    var voted_singular = special_votes_from.some(x => x.singular);
 
     var magnitude = voter.getVoteMagnitude();
 
     if (no_lynch_vote) {
 
+      if (voted_singular) {
+        return false;
+      };
+
       // NL vote is independent
-      var has_voted = this.votesFrom(voter.identifier).length > 0;
+      var has_voted = (this.votesFrom(voter.identifier).length + special_votes_from.length) > 0;
 
       if (has_voted) {
         return false;
@@ -370,15 +402,19 @@ module.exports = class {
 
       this.__checkLynchAnnouncement("nl", before_votes, after_votes);
 
-    } else {
+    } else if (!special_vote) {
 
       if (voted_no_lynch) {
         return false;
       };
 
+      if (voted_singular) {
+        return false;
+      };
+
       var already_voting = voted_against.isVotedAgainstBy(voter.identifier);
 
-      if (!already_voting && this.votesFrom(voter.identifier).length >= this.getLynchesAvailable()) {
+      if (!already_voting && (this.votesFrom(voter.identifier).length + special_votes_from.length) >= this.getLynchesAvailable()) {
         // New vote, check if exceeds limit
         return false;
       };
@@ -399,6 +435,33 @@ module.exports = class {
 
       this.__checkLynchAnnouncement(voted_against.identifier, before_votes, after_votes);
 
+    } else {
+      // Special vote
+
+      special_vote = special_vote_types.find(x => x.identifier === voted_against);
+
+      if (voted_no_lynch) {
+        return false;
+      };
+
+      // Check already voting
+      var already_voting = special_vote.voters.some(x => x.identifier === voter.identifier);
+
+      if (!already_voting && ((this.votesFrom(voter.identifier).length + special_votes_from.length) >= this.getLynchesAvailable() || voted_singular)) {
+        // New vote, check if exceeds limit
+        return false;
+      };
+
+      // Toggle votes
+      if (already_voting) {
+        // Remove special vote
+        special_vote.voters = special_vote.voters.filter(x => x.identifier !== voter.identifier);
+        this.execute("unvote", {target: "s/" + voted_against, voter: voter.identifier});
+      } else {
+        special_vote.voters.push({identifier: voter.identifier, magnitude: magnitude});
+        this.execute("vote", {target: "s/" + voted_against, voter: voter.identifier});
+      };
+
     };
 
     this.__reloadTrialVoteMessage();
@@ -406,11 +469,25 @@ module.exports = class {
     // Save file
     this.save();
 
-    if (this.hammerActive()) {
+    if (this.hammerActive() && !this.voting_halted) {
       this.__checkLynchHammer();
     };
 
     return true;
+
+  }
+
+  addSpecialVoteType (identifier, name, emote, singular) {
+
+    // {reaction, name, singular}
+    var period_log = this.getPeriodLog();
+    period_log.special_vote_types.push({
+      identifier: identifier,
+      name: name,
+      emote: emote,
+      singular: singular,
+      voters: new Array()
+    });
 
   }
 
@@ -546,8 +623,6 @@ module.exports = class {
 
     // this.config.time.day
 
-    this.voting_halted = true;
-
     var addition = this.state === "pre-game" ? 0 : 1;
 
     if (adjust_to_current_time) {
@@ -579,6 +654,8 @@ module.exports = class {
       this.execute("postcycle", {period: this.period});
 
     } else if (this.state === "playing") {
+
+      this.voting_halted = true;
 
       // Print period in private channel
       await this.messagePeriodicUpdate(1);
@@ -621,9 +698,9 @@ module.exports = class {
     };
 
     // Save
-    this.save();
-
     this.voting_halted = false;
+
+    this.save();
 
     return this.next_action;
 
@@ -1066,11 +1143,22 @@ module.exports = class {
 
     var display = new Array();
 
+    if (!this.previously_uploaded_role_info) {
+      this.previously_uploaded_role_info = new Array();
+    };
+
     for (var i = 0; i < role_identifiers.length; i++) {
       var player = this.getPlayerByIdentifier(role_identifiers[i]);
 
-      if (!player.misc.role_cleaned) {
+      var flavour = this.getGameFlavour();
+      var exception = this.previously_uploaded_role_info.includes(player.role_identifier) && flavour && flavour.info["do-not-repost-duplicate-cards"] === true;
+
+      if (!player.misc.role_cleaned && !exception) {
         display.push(player);
+      };
+
+      if (!this.previously_uploaded_role_info.includes(player.role_identifier)) {
+        this.previously_uploaded_role_info.push(player.role_identifier);
       };
 
     };
@@ -1218,6 +1306,18 @@ module.exports = class {
 
     };
 
+    for (var i = expansions.length - 1; i >= 0; i--) {
+
+      var game_secondary_start = expansions[i].scripts.game_secondary_start;
+
+      if (!game_secondary_start) {
+        continue;
+      };
+
+      await game_secondary_start(this);
+
+    };
+
   }
 
   __routines () {
@@ -1247,7 +1347,8 @@ module.exports = class {
       "trial_vote": null,
       "no_lynch_vote": new Array(),
       "period": this.period,
-      "pins": new Array()
+      "pins": new Array(),
+      "special_vote_types": new Array()
     };
 
   }
@@ -1358,6 +1459,16 @@ module.exports = class {
   reinstantiate (timer, players) {
     this.timer = timer;
     this.players = players;
+
+    if (this.game_config_override) {
+
+      this.config.game = auxils.objectOverride(this.config.game, this.game_config_override);
+
+    } else {
+
+      this.game_config_override = new Object();
+
+    };
 
     // Check role/attribute incompatibility
     var incompatible = new Array();
@@ -1552,6 +1663,10 @@ module.exports = class {
 
   primeWinLog (faction, caption) {
     this.win_log = {faction: faction, caption: caption};
+  }
+
+  getRolesChannel () {
+    return this.getGuild().channels.find(x => x.name === this.config["channels"]["roles"]);
   }
 
   getLogChannel () {
@@ -1795,10 +1910,28 @@ module.exports = class {
 
   }
 
+  getSpecialVoteCount (identifier) {
+
+    var special_vote = this.getPeriodLog().special_vote_types.find(x => x.identifier === identifier);
+
+    if (!special_vote) {
+      return null;
+    };
+
+    var count = new Number();
+    for (var i = 0; i < special_vote.voters.length; i++) {
+      count += special_vote.voters[i].magnitude;
+    };
+
+    return count;
+
+  }
+
   addNoLynchVote (identifier, magnitude) {
     var no_lynch_vote = this.getPeriodLog()["no_lynch_vote"];
 
     no_lynch_vote.push({identifier: identifier, magnitude: magnitude});
+    this.execute("vote", {target: "nl", voter: identifier});
   }
 
   clearNoLynchVotesBy (identifier) {
@@ -1812,6 +1945,10 @@ module.exports = class {
         no_lynch_vote.splice(i, 1);
         cleared = true;
       };
+    };
+
+    if (cleared) {
+      this.execute("unvote", {target: "nl", voter: identifier});
     };
 
     return cleared;
@@ -1868,6 +2005,18 @@ module.exports = class {
 
       var channel = this.getChannelById(this.intro_messages[i].channel_id);
       await channel.send(this.intro_messages[i].message);
+
+    };
+
+  }
+
+  setGameConfigOverride (game_config, update_immediately=true) {
+
+    this.game_config_override = auxils.objectOverride(this.game_config_override, game_config);
+
+    if (update_immediately) {
+
+      this.config.game = auxils.objectOverride(this.config.game, this.game_config_override);
 
     };
 

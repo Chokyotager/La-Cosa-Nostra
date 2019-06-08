@@ -34,7 +34,8 @@ module.exports = class {
 
     var allowed = ["cycle", "chat", "lynch", "attacked",
     "killed", "visit", "roleblock", "postcycle", "instant",
-    "outvisit", "retrooutvisit", "retrovisit", "retrocycle", "arbitrary"];
+    "outvisit", "retrooutvisit", "retrovisit", "retrocycle", "vote",
+    "unvote", "arbitrary", "miscellaneous"];
 
     for (var i = 0; i < triggers.length; i++) {
       if (!allowed.includes(triggers[i])) {
@@ -79,17 +80,23 @@ module.exports = class {
     actionable.tags = actionable.tags || new Array();
     actionable.meta = actionable.meta || new Object();
 
+    if (actionable.tags.includes("system")) {
+      actionable.from = "*";
+      actionable.to = "*";
+    };
+
     if (actionable.from !== "*") {
       var from = this.game.getPlayer(actionable.from);
+      var implicit_priority = from.getStat("priority", Math.max);
       actionable.from = from.identifier;
+    } else {
+      var implicit_priority = 0;
     };
 
     if (actionable.to !== "*") {
       var to = this.game.getPlayer(actionable.to);
       actionable.to = to.identifier;
     };
-
-    var implicit_priority = from.getStat("priority", Math.max);
 
     actionable.priority = actionable.priority || implicit_priority;
 
@@ -386,7 +393,7 @@ module.exports = class {
       };
 
       // Non-routine triggers
-      if (["chat", "lynch", "attacked", "killed", "visit", "roleblock", "outvisit", "retrooutvisit", "retrovisit", "arbitrary"].includes(type)) {
+      if (["chat", "lynch", "attacked", "killed", "visit", "roleblock", "outvisit", "retrooutvisit", "retrovisit", "vote", "unvote", "arbitrary", "miscellaneous"].includes(type)) {
         var target = action.target || action.to;
 
         var check = params.target;

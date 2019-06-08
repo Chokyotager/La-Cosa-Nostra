@@ -14,11 +14,6 @@ var configModifier = require("./configModifier.js");
 
 module.exports = async function (client, config) {
 
-  if (config["time"]["timezone"] > 12 || config["time"]["timezone"] <= -12) {
-    var err = new Error("Timezone should be between (-12 to 12]. All games always start at 12 midnight for that timezone.");
-    throw err;
-  };
-
   await client.user.setPresence({
     status: "dnd",
     game: {name: "setting up...", type: "PLAYING"}

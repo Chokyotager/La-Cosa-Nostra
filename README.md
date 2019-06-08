@@ -89,7 +89,7 @@ Some of the default expansion packs that come with the bot include (as listed in
 
 `you-die-you-lose` - self-explanatory
 
-`the-anarchy-of-sol`, `zodiac-mafia` & `the-bluerose-hospital` - closed setups, designed by myself with a few other hosts
+`the-anarchy-of-sol`, `zodiac-mafia`, `the-bluerose-hospital` & `Duvocation` - closed setups, designed by myself with a few other hosts
 
 `c9++` - the C9++ semi-open game by Fiasco [as seen in Mafiascum](https://wiki.mafiascum.net/index.php?title=C9%2B%2B)
 
@@ -105,11 +105,13 @@ Some of the default expansion packs that come with the bot include (as listed in
 
 `compmeme` - memes for your computer needs, sorry Silicon Valley!
 
+`meme` - old LCN memes
+
 Simply go to `/configs/playing.json` and add your expansion pack as a list like such to load it:
 ```js
 {
   "playing": {
-    "players": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"],
+    "players": "auto",
 
     "roles": null,
 

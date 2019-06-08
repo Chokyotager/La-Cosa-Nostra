@@ -1,3 +1,5 @@
+var auxils = require("../auxils.js");
+
 module.exports = async function (game, message, params) {
 
   var config = game.config;
@@ -20,6 +22,8 @@ module.exports = async function (game, message, params) {
     return null;
   };
 
+  var special_vote_types = game.getPeriodLog().special_vote_types;
+
   if (params.length < 1) {
     // Unvote everybody
     var voted = game.getVotesBy(self.identifier);
@@ -32,6 +36,12 @@ module.exports = async function (game, message, params) {
       game.toggleVote(self, "nl");
     };
 
+    for (var i = 0; i < special_vote_types.length; i++) {
+      if (special_vote_types[i].voters.some(x => x.identifier === self.identifier)) {
+        game.toggleVote(self, special_vote_types[i].identifier, true);
+      };
+    };
+
     return null;
   };
 
@@ -39,19 +49,48 @@ module.exports = async function (game, message, params) {
 
   var player = game.getPlayerMatch(target);
 
-  if (player.score < 0.7) {
+  // Check special votes
+  var special_vote_types = game.getPeriodLog().special_vote_types;
+  var max_score = {score: 0};
+  for (var i = 0; i < special_vote_types.length; i++) {
+
+    var value = auxils.hybridisedStringComparison(special_vote_types[i].name, target);
+
+    if (value > max_score.score) {
+      max_score.score = value;
+      max_score.special_vote = special_vote_types[i];
+    };
+
+  };
+
+  if (player.score < 0.7 && max_score.score < 0.7) {
     await message.channel.send(":x: I cannot find that player!");
     return null;
   };
 
-  player = player.player;
+  if (player.score > max_score.score) {
 
-  if (!player.isVotedAgainstBy(self.identifier)) {
-    await message.channel.send(":x: You are not currently voting on **" + player.getDisplayName() + "**!");
-    return null;
+    player = player.player;
+
+    if (!player.isVotedAgainstBy(self.identifier)) {
+      await message.channel.send(":x: You are not currently voting on **" + player.getDisplayName() + "**!");
+      return null;
+    };
+
+    game.toggleVote(self, player);
+
+  } else {
+
+    var special_vote = max_score.special_vote;
+
+    if (!special_vote.voters.some(x => x.identifier === self.identifier)) {
+      await message.channel.send(":x: You are not currently voting on the **" + special_vote.name + "**!");
+      return null;
+    };
+
+    game.toggleVote(self, special_vote.identifier, true);
+
   };
-
-  game.toggleVote(self, player);
 
 };
 

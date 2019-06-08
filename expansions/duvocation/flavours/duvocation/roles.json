@@ -1,0 +1,121 @@
+{
+
+  "follower_of_3": [{
+    "name": "Follower of the 3-Faced God",
+    "banner": "Follower of the 3-Faced God.png",
+    "description": "Welcome to the Duvocation. You are a Follower of the 3-Faced God.\n\nAs a dedicated follower of the god of three faces, you have been given three blessings with which to share his glory. You can pass on these boons to other individuals at night, though they are not strong on their own.\n\nThree times during the game you can endow another player with restraint (roleblock), vigor (influence), or security (protection).\n\nWin condition:\n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are are a Follower of the 3-Faced God.\n\nThree times at night you can bless another player with restraint (roleblock), vigor (influence), or security (protection). However, your boons are too weak for effect on their own.\n\nWin condition:\n- You win with all threats to the Town eliminated."
+  }],
+
+  "follower_of_the_skeptic_god": [{
+    "name": "Follower of the Skeptic God",
+    "banner": "Follower of the Skeptic God.png",
+    "description": "Welcome to the Duvocation. You are a Follower of the Skeptic God.\n\nYou have come to the Duvocation not to advocate a policy or further any cause, but merely to investigate. Unconvinced of the existence of gods, you wish to determine for yourself the truth of the issue. Your also hear someone killed the “God of Humans”, which sounds bad for you as a human, so maybe you’ll investigate that while you’re at it.\n\nEvery night you may inspect an individual, and determine their identity.\n\nWin condition: \n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are a Follower of the Skeptic God.\n\nEvery night you may inspect an individual, and determine their identity.\n\nWin condition: \n- You win with all threats to the Town eliminated."
+  }],
+
+  "follower_of_the_truth_god": [{
+    "name": "Follower of the Truth God",
+    "banner": "Follower of the Truth God.png",
+    "description": "Welcome to the Duvocation. You are a Follower of the Truth God.\n\nThe truth is, truth is subjective. What is a truth to one person is an untruth to another. Therefore, that truth is, in truth, the only truth you can find and the only truth you can work to find, the subjective truth depending on the bearer of that truth’s perspective!\n\nOn odd nights you may choose someone to work for. On the following night, that individual will choose who you inspect, and you will find their alignment.\n\nWin condition:\n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are a Follower of the Truth God.\n\nOn odd nights you may choose someone to work for. On the following night, that individual will choose who you inspect, and you will find their alignment.\n\nWin condition: \n- You win with all threats to the Town eliminated."
+  }],
+
+  "follower_of_the_god_of_prosperity": [{
+    "name": "Follower of the God of Prosperity",
+    "banner": "Follower of the God of Prosperity.png",
+    "description": "Welcome to the Duvocation. You are a Follower of the Prosperity God.\n\nYou follow the god of your choice for obvious reasons: altruism, generosity, believing in the good nature of people. Everyone should have the chance to flourish and grow, and help others on that same journey. So you do your best to follow that ideal and protect others from misfortune.\n\nYou make good luck charms. You currently have 5, and would make one during each day but the Arbiter God will not allow you to be distracted during the trials. You can give them out to individuals at night, and the charms will protect from a harmful action.\n\nWin condition: \n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are a Follower of the God of Prosperity.\n\nYou have a hobby of making good luck charms. You currently have 5, and would make one during each day but the Arbiter God will not allow you to be distracted during the trials. You can give them out to individuals at night, and the charms will protect from a harmful action.\n\nWin condition: \n- You win with all threats to the Town eliminated."
+  }],
+
+  "god_of_war": [{
+    "name": "God of War",
+    "banner": "God of War.png",
+    "description": "Welcome to the Duvocation. You are the God of War.\n\nYou’ve been very involved in human affairs for the last couple hundreds of years, so much so that you didn’t even come to the last Duvocation. But this one you had a good feeling about, and as it turns out your feeling was right, as the first war involving gods for a long time looks to be breaking out. It’ll be fun to kill gods instead of only humans for a bit.\n\nOnce per game you can override the lynch and end the day by killing a person yourself.\n\nWin condition:\n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are the God of War.\n\nOnce per game you can override the lynch and end the day by choosing to kill a person yourself.\n\nWin condition: \n- You win with all threats to the Town eliminated."
+  }],
+
+  "god_of_revenge": [{
+    "name": "God of Revenge",
+    "banner": "God of Revenge.png",
+    "description": "Welcome to the Duvocation. You are the God of Revenge.\n\nEvery bad deed deserves another. Your brand of justice may be offbeat to some, but no one can claim it isn’t fair. It is still looked down on enough you mostly keep to yourself, only giving your help to others upon request.\n\nThree times per game you can prepare for an attack. If such an event occurs you will release a strong burst of energy upon your death, killing all visitors.\n\nWin condition: \n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are the God of Revenge.\n\nThree times per game you can prepare for an attack. If such an event occurs you will release a strong burst of energy upon your death, killing all visitors.\n\nWin condition: \n- You win with all threats to the Town eliminated."
+  }],
+
+  "god_of_beasts": [{
+    "name": "God of Beasts",
+    "banner": "God of Beasts.png",
+    "description": "Welcome to the Duvocation. You are the God of Beasts.\n\nThere are many animals and you do care for them all, but your specialty is the especially ferocious ones. Speciality does not mean mastery though, as you refuse to fully domesticate them out of their natural wild state. You do still have more influence over them and can guide or restrain them, though too much restraining will make them follow your directions less.\n\nEvery night you can imbue a beast with power and direct it to attack a player. The first night there will be a 20% chance of failure, and that will rise 10% every night you do not feed your beasts.\n\nWin condition: \n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are the God of Beasts.\n\nEvery night you can imbue a beast with power and direct it to attack a player. The first night there will be a 20% chance of failure, and that will rise 10% every night you do not feed your beasts.\n\nWin condition: \n- You win with all threats to the Town eliminated."
+  }],
+
+  "god_of_doors": [{
+    "name": "God of Doors",
+    "banner": "God of Doors.png",
+    "description": "Welcome to the Duvocation. You are the God of Doors.\n\nA sentinel who sees much, but who is often sidelined. Much more of the world revolves around doors than people realize, and that is your domain. You specialize in knowing connections and relations between people, but what you see can be used for many a purpose.\n\nEvery night you can choose an individual, and watch both their door and what doors they go through. You will get one result for who they visited, and one result of who visited them. You will not know which is which.\n\nWin condition: \n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are the God of Doors.\n\nEvery night you can choose an individual, and watch both their door and what doors they go through. You will get one result for who they visited, and one result of who visited them. You will not know which is which.\n\nWin condition: \n- You win with all threats to the Town eliminated."
+  }],
+
+  "god_of_lies": [{
+    "name": "God of Lies",
+    "banner": "God of Lies.png",
+    "description": "Welcome to the Duvocation. You are the God of Lies.\n\nSeeing light without dark will blind anyone, and render all sight useless. In the same way, hearing only truth dulls the senses and makes the mind worthless. You keep that balance, and sharpen people’s minds and instincts by your actions.\n\nOnce per day (or twice per day if the watchful eye of the Arbiter God is gone) you can forge a vote by another player. It will appear like, and be, a normal vote but it cannot be changed or overridden unless you retract your false vote.\n\nWin condition: \n- You win with all threats to the Town eliminated.",
+    "secondary-description": "Welcome to the Duvocation. You are the God of Lies.\n\nOnce per day (or twice per day if the watchful eye of the Arbiter God is gone) you can forge a vote by another player. It will appear like, and be, a normal vote but it cannot be changed or overridden unless you retract your false vote.\n\nWin condition:\n- You win with all threats to the Town eliminated."
+  }],
+
+  "unknown_god": [{
+    "name": "???",
+    "banner": "Unknown God.png",
+    "description": "Welcome to the Duvocation. You are an unknown god.\n\nYou were imprisoned many years ago before the earth was created, and in that time lost your body as well as any knowledge of your previous identity. Deranged after being released in secret from your prison, you are determined to kill or overthrow all those who opposed you or disagree with your now extreme views.\n\nYou have no form, and as a result all non-lethal actions used directly on you will be nulled, giving no result and having no outcome.\n\nWin condition: \n- You win with control over the Duvocation in the form of at least 50% of the votes.",
+    "secondary-description": "Welcome to the Duvocation. You are an unknown god.\n\nYou have no defined form, so any non-lethal action used directly on you will be nulled, giving no result and having no outcome.\n\nWin condition: \n- You win with control over the Duvocation in the form of at least 50% of the votes."
+  }],
+
+  "twin_love_god": [{
+    "name": "God of Passion",
+    "banner": "God of Passion.png",
+    "description": "Welcome to the Duvocation. You are the God of Passion.\n\nThe god of passion, ruled by passion. There has long since been an established system for the gods and humans to follow, but it has always lacked the intensity of emotion you so value. When you came across the usurpers with their mania for their goals you could not help but admire them some, and helping them has in turn made your desires stronger as they once were.\n\nYour passion towards your partners is overwhelming. If one of you or the God of Lust dies, the other will too. Additionally, you or your lover can share that passion once per game and cause two players to fall in love with the same caveat.\n\nWin condition: \n- You win with control over the Duvocation in the form of at least 50% of the votes.",
+    "secondary-description": "Welcome to the Duvocation. You are the God of Passion.\n\nYour passion towards your partners is overwhelming. If one of you or the God of Passion dies, the other will too. Once per game you or the God of Passion can choose two individuals, and if those individuals are alive in the morning, they will fall in love, committing suicide if the other dies.\n\nWin condition:\n- You win with control over the Duvocation in the form of at least 50% of the votes."
+  },
+  {
+    "name": "God of Lust",
+    "banner": "God of Lust.png",
+    "description": "Welcome to the Duvocation. You are the God of Lust.\n\nThe latest of the God of Passion’s partners, you were mostly dragged in by association. You don’t mind too much however, politics are not your area of interest. That’s mostly the pelvic region. \n\nIf one of you or the God of Passion dies, the other will too. Once per game you or the God of Passion can choose two individuals, and if those individuals are alive in the morning, they will fall in love, committing suicide if the other dies.\n\nWin condition: \n- You win with control over the Duvocation in the form of at least 50% of the votes.",
+    "secondary-description": "Welcome to the Duvocation. You are the God of Lust.\n\nIf one of you or the God of Passion dies, the other will too. Once per game you or the God of Passion can choose two individuals, and if those individuals are alive in the morning, they will fall in love, committing suicide if the other dies.\n\nWin condition:\n- You win with control over the Duvocation in the form of at least 50% of the votes."
+  }],
+
+  "4_faced_god": [{
+    "name": "4-Faced God",
+    "banner": "4-Faced God.png",
+    "description": "Welcome to the Duvocation. You are the 4-Faced God.\n\nYou are the true mastermind behind this incident. For hundreds of years you have passed yourself off as a benevolent god, gathering many followers under the guise of the 3-Faced God. But your ambition for praise and attention has only grown, and you began to scheme to overtake control of both humans and the gods.\n\nYou have a wide variety of curses, of which you can use one per night: 2x security (protect), 2x vigor (influence), 2x restraint (roleblock), 1x damnation (strong kill).\nYou also can keep tabs on your followers, divining their numbers and the status of the blessings you have given them at the start of each night. However since they are now being used in opposition of you, you will randomly visit a follower and revoke one of their remaining blessing at the end of each night.\n\nWin condition:\n- You win with control over the Duvocation in the form of at least 50% of the votes."
+  }],
+
+  "mafia_follower_of_the_chaos_god": [{
+    "name": "Mafia Follower of the Chaos God",
+    "banner": "Mafia Follower of the Chaos God.png",
+    "description": "Welcome to the Duvocation. You are a Follower of Chaos God.\n\nChaos chaos! There’s too much order in the current system of gods and humans, so how about we destroy that system! You likely won’t stay loyal to whoever fills the power gap but you’re not one to worry about complex plans or the future.\n\nEvery night you can exert your power, forcing any actions from an individual to target who you choose.\n\nWin condition:\n- You win with control over the Duvocation in the form of at least 50% of the votes.",
+    "secondary-description": "Welcome to the Duvocation. You are a Follower of Chaos God.\n\nEvery night you can exert your power, forcing any actions from an individual to target who you choose.\n\nWin condition: \n- You win with control over the Duvocation in the form of at least 50% of the votes."
+  }],
+
+  "follower_of_the_chaos_god": [{
+    "name": "Follower of the Chaos God",
+    "banner": "Follower of the Chaos God.png",
+    "description": "Welcome to the Duvocation. You are a Follower of the Chaos God\n\nRegardless of the outcome of this little squabble, it’s a perfect time for you to slip around mostly unnoticed. There’s plenty of chaos already, and you’re certainly going to add more.\n\nYou have no abilities for the time being, but will gain a nightkill when the Arbiter God is disposed of.\n\nWin condition: \n- Your goal is to get rid of the Arbiter God’s stabilizing presence, and then kill two players.",
+    "secondary-description": "Welcome to the Duvocation. You are a Follower of the Chaos God.\n\nYou have no abilities for the time being, but will gain a nightkill when the Arbiter God is disposed of.\n\nWin condition: \n- Your goal is to get rid of the Arbiter God’s stabilizing presence, and then kill two players."
+  }],
+
+  "demigod_apple": [{
+    "name": "Demigod of Apple Juice",
+    "banner": "Demigod of Apple Juice.png",
+    "description": "Welcome to the Duvocation. You are the Demigod of Apple Juice.\n\nYou have come to the Duvocation not for policy discussion or political intrigue, but instead you came determined to spread the magnificence of apple juice. Your main roadblock has always been your mortal enemy, the Demigod of Orange Juice, but you know apple juice is the better drink. If you share it with others, they will surely agree, and spread the word to everyone they know! \n\nEvery day you cheerfully prepare a master glass of apple juice, delivering it to someone at night. Being the best glass of juice to exist, they are convinced to support you and your juice. Additionally, if the Arbiter God is disposed of, you have the time to make one extra glass and deliver it to someone during the day.\n\nWin condition: \n- Have more apple juice supporters alive at the end of the game than orange juice supporters.",
+    "secondary-description": "Welcome to the Duvocation. You are the Demigod of Apple Juice.\n\nEvery day you cheerfully prepare a master glass of apple juice, delivering it to someone at night. Being the best glass of juice to exist, they are convinced to help support you and your juice. Additionally, if the Arbiter God is disposed of, you have the time to make one extra glass and deliver it to someone during the day.\n\nWin condition: \n- Have more apple juice supporters alive at the end of the game than orange juice supporters."
+  }],
+
+  "demigod_orange": [{
+    "name": "Demigod of Orange Juice",
+    "banner": "Demigod of Orange Juice.png",
+    "description": "Welcome to the Duvocation. You are the Demigod of Orange Juice.\n\nOrange juice has always been more popular than apple juice, largely due to your marketing abilities. However, one of your corporate spies recently told you the Demigod of Apple Juice was planning to appeal directly to the influencers at this Duvocation, and you don’t plan to get complacent and let them take the edge.\n\nEvery day you have a master glass of orange juice made, and each night you can have it delivered to an individual. It is the best glass of juice in the world, and so the deliveree will support your fare. Additionally, if the Arbiter God is disposed of, you have the time to make one extra glass and deliver it to someone during the day.\n\nWin condition: \n- Have more orange juice supporters alive at the end of the game than apple juice supporters.",
+    "secondary-description": "Welcome to the Duvocation. You are the Demigod of Orange Juice.\n\nEvery day you have a master glass of orange juice made, and each night you can have it delivered to an individual. It is the best glass of juice in the world, and so the deliveree will support your fare. Additionally, if the Arbiter God is disposed of, you have the time to make one extra glass and deliver it to someone during the day.\n\nWin condition: \n- Have more orange juice supporters alive at the end of the game than apple juice supporters."
+  }]
+
+
+}

@@ -49,9 +49,10 @@ module.exports = function (message, params, config) {
     return null;
   };
 
-  members = members.filter(x => x.score >= members[0].score - 0.05);
+  members = members.filter(x => x.score >= members[0].score - 0.02);
 
   for (var i = 0; i < members.length; i++) {
+    
     var embed = new Discord.RichEmbed();
 
     var member = members[i].member;

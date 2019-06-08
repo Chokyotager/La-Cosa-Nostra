@@ -7,7 +7,13 @@ module.exports = async function (message, params, config) {
   var current = new Date();
   var utc_hour = current.getUTCHours();
 
-  current.setUTCHours(((utc_hour >= 12) ? 24 : 12) + timezone, 0, 0, 0);
+  var now = new Date();
+
+  current.setUTCHours(-timezone, 0, 0, 0);
+
+  while (current.getTime() - now.getTime() < 0) {
+    current.setUTCHours(current.getUTCHours() + 24);
+  };
 
   var next_action = new Date(current);
 

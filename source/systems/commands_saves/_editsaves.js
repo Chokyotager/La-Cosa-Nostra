@@ -44,7 +44,13 @@ module.exports = async function (message, params, config) {
 
   try {
 
-    var value = JSON.parse(params.splice(1, Infinity).join(" "), auxils.jsonReviver);
+    var value = params.splice(1, Infinity).join(" ");
+
+    if (value.toLowerCase() === "delete") {
+      value = "____delete@@";
+    } else {
+      value = JSON.parse(value, auxils.jsonReviver);
+    };
 
   } catch (err) {
 
@@ -61,7 +67,16 @@ module.exports = async function (message, params, config) {
 
     // Recursive
     if (region.length < 1) {
-      json = value;
+
+      if (value === "____delete@@") {
+
+        delete json;
+
+      } else {
+
+        json = value;
+
+      };
       //console.log(json);
       return json;
     };
@@ -75,7 +90,11 @@ module.exports = async function (message, params, config) {
 
   timer.save();
 
-  var output = ":ok: Set and saved value for `" + region.join(".") + "` to:\n```js\n" + util.inspect(value, false, 0, false) + "```";
+  if (value === "____delete@@") {
+    var output = ":ok: Deleted and saved value for `" + region.join(".") + "`";
+  } else {
+    var output = ":ok: Set and saved value for `" + region.join(".") + "` to:\n```js\n" + util.inspect(value, false, 0, false) + "```";
+  };
 
   if (output.length < 2000) {
 

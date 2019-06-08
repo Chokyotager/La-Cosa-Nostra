@@ -108,9 +108,9 @@ module.exports = function () {
 
   if (version.engineStrict) {
 
-    var version_comparison = auxils.compareVersion(process.versions.node, version.engines.node.replace(/[>|=]/g, ""));
+    var version_comparison = auxils.compareVersion(process.versions.node, version.engines.node);
 
-    if (version_comparison < 0) {
+    if (!version_comparison) {
       var error = new Error("Failed to initialise due to incompatible Node version. You are using version " + process.versions.node + ", please use " + version.engines.node + " instead.");
       throw error;
     };

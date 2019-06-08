@@ -26,11 +26,19 @@ module.exports = async function (game) {
   var messages = [message];
   var alive = game.getAlivePlayers();
 
-  var reactions = alive.map(x => x.alphabet);
+  var reactions = alive.map(x => alphabets[x.alphabet.toLowerCase()]);
 
   if (no_lynch_option) {
     // No lynch reaction trigger
-    reactions.push("NL");
+    reactions.push(alphabets["nl"]);
+  };
+
+  var special_vote_types = game.getPeriodLog().special_vote_types;
+
+  for (var i = 0; i < special_vote_types.length; i++) {
+    if (special_vote_types[i].emote) {
+      reactions.push(special_vote_types[i].emote);
+    };
   };
 
   for (var i = 0; i < reactions.length; i += chunk) {
@@ -38,11 +46,8 @@ module.exports = async function (game) {
 
     if (i === 0) {
       for (var j = 0; j < current.length; j++) {
-        var alpha = current[j].toLowerCase();
 
-        var reaction = alphabets[alpha];
-
-        await message.react(reaction);
+        await message.react(current[j]);
 
       };
     } else {
@@ -52,11 +57,8 @@ module.exports = async function (game) {
       messages.push(message);
 
       for (var j = 0; j < current.length; j++) {
-        var alpha = current[j].toLowerCase();
 
-        var reaction = alphabets[alpha];
-
-        await message.react(reaction);
+        await message.react(current[j]);
 
       };
 
@@ -110,6 +112,21 @@ module.exports = async function (game) {
       names = voters.length > 0 ? ": " + names : "";
 
       displays.push("**No-lynch** (" + vote_count + ")" + names);
+
+    };
+
+    var special_vote_types = game.getPeriodLog().special_vote_types;
+
+    for (var i = 0; i < special_vote_types.length; i++) {
+
+      var voters = special_vote_types[i].voters;
+      var vote_count = game.getSpecialVoteCount(special_vote_types[i].identifier);
+
+      var names = auxils.pettyFormat(voters.map(x => game.getPlayerByIdentifier(x.identifier).getDisplayName()));
+
+      names = voters.length > 0 ? ": " + names : "";
+
+      displays.push("**" + special_vote_types[i].name + "** (" + vote_count + ")" + names);
 
     };
 

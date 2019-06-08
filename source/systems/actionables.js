@@ -5,10 +5,31 @@
 
 var fs = require("fs");
 
+var expansions = require("./expansions.js");
 var attributes = require("./attributes.js");
 var roles = require("./roles.js");
 
 var actionables = new Object();
+
+var usable_directory = __dirname + "/../global_actionables";
+
+var global_actionables = cycle(usable_directory);
+for (var i = 0; i < global_actionables.length; i++) {
+  var key = "g/" + global_actionables[i].substring(usable_directory.length + 1, global_actionables[i].length - 3);
+  actionables[key] = require(global_actionables[i]);
+};
+
+for (var i = 0; i < expansions.length; i++) {
+
+  var usable_directory = expansions[i].expansion_directory + "/global_actionables";
+
+  var global_actionables = cycle(usable_directory);
+  for (var j = 0; j < global_actionables.length; j++) {
+    var key = "g/" + global_actionables[j].substring(usable_directory.length + 1, global_actionables[j].length - 3);
+    actionables[key] = require(global_actionables[j]);
+  };
+
+};
 
 for (role in roles) {
 

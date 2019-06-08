@@ -66,6 +66,17 @@ function getExpansions (identifiers, scanned=new Array()) {
 
     };
 
+    if (expansion["compatibility"]) {
+
+      var compatible = auxils.compareVersion(process.version_info.version, expansion["compatibility"]);
+
+      if (!compatible) {
+        var err = new Error("Incompatible expansion pack \"" + identifier + "\" - expansion version is for " + expansion["compatibility"] + " however LCN is on " + process.version_info.version + ".");
+        throw err;
+      };
+
+    };
+
     // Add information
     ret.push({expansion_directory: directory,
               identifier: identifier,
@@ -88,6 +99,9 @@ function getExpansions (identifiers, scanned=new Array()) {
 
                 // Runs script when a game is started
                 game_start: attemptRequiring(directory + "/scripts/game_start.js"),
+
+                // Runs script when a game is started, after all chats are assigned
+                game_secondary_start: attemptRequiring(directory + "/scripts/game_secondary_start.js"),
 
                 // Runs script BEFORE a prime (usually to determine setup, return config)
                 game_assign: attemptRequiring(directory + "/scripts/game_assign.js"),

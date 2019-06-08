@@ -1,0 +1,75 @@
+{
+
+  "messages": {
+
+    "game-start": "**Welcome to the Duvocation.**\n\nEvery 200 years the gods and many humans of this realm meet in a gathering called the Duvocation. However, as has not happened for thousands of years, it has gone bad this year, and an important god has been slain. All members of the assembly can meet and talk during the day as the truth of this disruption is discussed.\nThe Arbiter God usually helps to solve issues and mediate agreements, but has agreed to organize the discussion and trials for this Duvocation.",
+    "whisper-log": "**This is the Billboard.**\n\nThis channel is normally used for whispers, but since whispers are disabled in this game, this channel has become a secondary discussion channel. Players are advised to direct the purpose of this channel to suit their needs.",
+    "mafia": "**This is the Mafia Chat.**\n\nThis channel is open night and day for members of the Mafia to communicate.",
+
+    "opening-quote": "*The body of the God of Humans was discovered and evidence of a plot against the current order of gods and humans has been found.\nThe truth will be explored and may your efforts in aiding or resisting that search bear fruit.*",
+    "daytime-quote": "**It is now daytime. The trial has now begun.**",
+    "nighttime-quote": "**Night has descended. This chat is now locked until Daytime starts. Remember to use your night actions if you intend to!**",
+    "no-summary": "*Nothing of interest happened.*",
+
+    "singular-lynch": ":skull_crossbones: {;player} has been banished, losing their vote in the Duvocation and any divine connections they had.",
+    "plural-lynch": ":skull_crossbones: {;players} have been lynched.",
+    "abstain-lynch": "**The congregation has decided not to banish anyone for the day.**",
+
+    "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game."
+
+  },
+
+  "game": {
+
+    "mafia": {
+      "has-chat": true,
+      "chat-name": "mafia",
+      "night-only": false
+    },
+
+    "town": {
+      "night-chat": false
+    },
+
+    "day-zero": true,
+    "lynch-ratio-floored": 0,
+
+    "lynch": {
+      "top-voted-lynch": false,
+      "top-voted-lynch-minimum-votes": 0,
+
+      "tied-random": false,
+
+      "allow-hammer": false,
+      "no-lynch-option": false
+    },
+
+    "minimum-lynch-votes": 2,
+    "minimum-nolynch-votes": 2,
+    "minimum-trials": 1,
+
+    "last-wills": {
+      "allow": false,
+      "character-count-limit": 800
+    },
+
+    "whispers": {
+      "allow": false,
+
+      "night": false,
+      "day": true,
+
+      "broadcast": true,
+
+      "allow-dead": false
+    },
+
+    "cause-of-death": {
+      "hide-day": false,
+      "hide-night": true,
+      "exceptions": ["modkill"]
+    }
+
+  }
+
+}
