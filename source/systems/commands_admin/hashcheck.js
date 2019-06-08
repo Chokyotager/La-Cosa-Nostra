@@ -4,9 +4,14 @@ var crypto = require("crypto");
 var main_dir = __dirname + "/../../../";
 
 var ignore = ["configuration/", ".git"];
-var gitignore_options = fs.readFileSync(main_dir + ".gitignore", "utf8").split("\n").filter(x => !x.startsWith("#") && x !== "");
 
-ignore = ignore.concat(gitignore_options);
+if (fs.existsSync(main_dir + ".gitignore")) {
+
+  var gitignore_options = fs.readFileSync(main_dir + ".gitignore", "utf8").split("\n").filter(x => !x.startsWith("#") && x !== "");
+
+  ignore = ignore.concat(gitignore_options);
+  
+};
 
 var hash_type = "sha256";
 
