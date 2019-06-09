@@ -91,7 +91,7 @@ module.exports = class {
 
     var now = new Date();
 
-    current.setUTCHours(-timezone, 0, 0, 0);
+    current.setUTCHours(-this.timezone, 0, 0, 0);
 
     while (current.getTime() - now.getTime() < 0) {
       current.setUTCHours(current.getUTCHours() + 24);

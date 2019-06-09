@@ -147,6 +147,12 @@
           "description": "Used to refer to continous debate between players on multiple perspectives at the same time, usually going on for hours."},
 
   "OMGUS": {"term": "Oh My God, You Suck (for voting for me)",
-            "description": "Shorthand for a player voting another player because the latter voted them."}
+            "description": "Shorthand for a player voting another player because the latter voted them."},
+
+  "RID": {"term": "Role IDentifier",
+          "description": "An attribute of an action that involves guessing the target's role name for it to succeed.",
+          "example": "A RID kill that involves guessing 60% of the target's role name correctly before execution."},
+
+  "Ascetic": {"description": "A role modifier in which the holder cannot be targeted by a specific range of actions, or any action at all."}
 
 }
