@@ -26,8 +26,14 @@ module.exports = function (actionable, game, params) {
   if (immunity < 1) {
 
     // Vagrant
-    if (target.role_identifier === "vagrant") {
-      game.addMessage(from, responses["mafia"]);
+    if (immunity < 0) {
+
+      if (target.role.alignment === "town") {
+        game.addMessage(from, responses["mafia"]);
+      } else {
+        game.addMessage(from, responses["town"]);
+      };
+
       return null;
     };
 

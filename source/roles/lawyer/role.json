@@ -1,29 +1,29 @@
 {
-  "role-name": "Vagrant",
+  "role-name": "Lawyer",
 
-  "alignment": "town",
+  "alignment": "mafia",
   "class": "support",
 
-  "see-mafia-chat": false,
+  "see-mafia-chat": true,
 
   "stats": {
     "basic-defense": 0,
     "roleblock-immunity": 0,
-    "detection-immunity": -1,
+    "detection-immunity": 0,
     "control-immunity": 0,
 		"redirection-immunity": 0,
 		"kidnap-immunity": 0,
-    "priority": 3,
+    "priority": 2,
     "vote-offset": 0,
 		"vote-magnitude": 1
   },
 
-  "investigation": ["Vagrant"],
+  "investigation": ["Lawyer"],
   "secondary-roles": null,
 
   "tags": [],
 
   "reveal-role-on-interrogation": false,
 
-  "win-condition": "town"
+  "win-condition": "mafia"
 }
