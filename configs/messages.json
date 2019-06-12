@@ -18,7 +18,7 @@
 
 
     "welcome-dm-message": null,
-    "welcome-message": ":wave: Hi {;member}! Welcome to La Cosa Nostra!"
+    "welcome-message": null
 
   }
 }
