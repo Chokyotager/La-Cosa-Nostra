@@ -20,7 +20,7 @@ module.exports = function (actionable, game, params) {
   var target = game.getPlayerByIdentifier(actionable.to);
 
   // Check roles
-  var immunity = target.getStat("detection-immunity", Math.max);
+  var immunity = target.getStat("detection-immunity");
 
   // Not immune
   if (immunity < 1) {
