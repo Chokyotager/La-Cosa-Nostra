@@ -10,7 +10,14 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
+  var game = process.timer.game;
+
   await process.timer.game.substitute(params[0], params[1], true);
+
+  if (game.isDay()) {
+    game.__reloadTrialVoteMessage();
+  };
+
   process.timer.game.save();
 
   await message.channel.send(":ok: Substitution complete (" + params[0] + " → " + params[1] + ").");
