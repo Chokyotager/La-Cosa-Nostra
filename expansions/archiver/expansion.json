@@ -1,0 +1,25 @@
+{
+
+  "name": "Archiver",
+  "type": "Utility",
+  "description": "A semi-open setup designed to randomise the field.",
+
+  "link": null,
+
+  "authors": ["ChocoParrot"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}
