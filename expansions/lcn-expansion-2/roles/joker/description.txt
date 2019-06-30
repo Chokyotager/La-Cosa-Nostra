@@ -1,0 +1,5 @@
+Lynch, lynch, lynch!
+
+Your goal is simple - get lynched.
+
+The last person who voted you will get killed together with you upon being lynched. If you are the last person to vote yourself, an additional kill does not occur.

@@ -1,5 +1,5 @@
 {
-  "role-name": "Mason",
+  "role-name": "Neighbouriser",
 
   "alignment": "town",
   "class": "support",
@@ -13,12 +13,12 @@
     "control-immunity": 0,
 		"redirection-immunity": 0,
 		"kidnap-immunity": 0,
-    "priority": 5,
+    "priority": 4,
     "vote-offset": 0,
 		"vote-magnitude": 1
   },
 
-  "investigation": ["Mason"],
+  "investigation": ["Neighbouriser"],
   "secondary-roles": null,
 
   "tags": [],
