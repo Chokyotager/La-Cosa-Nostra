@@ -110,7 +110,10 @@ function getExpansions (identifiers, scanned=new Array()) {
                 game_init: attemptRequiring(directory + "/scripts/game_init.js"),
 
                 // Runs script every cycle
-                cycle: attemptRequiring(directory + "/scripts/cycle.js")
+                cycle: attemptRequiring(directory + "/scripts/cycle.js"),
+
+                // Runs after systems have been loaded
+                init: attemptRequiring(directory + "/scripts/init.js")
 
               }});
 

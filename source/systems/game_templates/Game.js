@@ -84,7 +84,7 @@ module.exports = class {
 
   }
 
-  primeDesignatedTime () {
+  primeDesignatedTime (change_start=true) {
     // Always start day zero at closest 12pm/am
     var current = new Date();
     var utc_hour = current.getUTCHours();
@@ -97,7 +97,10 @@ module.exports = class {
       current.setUTCHours(current.getUTCHours() + 24);
     };
 
-    this.start_time = current;
+    if (change_start) {
+      this.start_time = current;
+    };
+
     this.current_time = current;
 
     this.next_action = new Date(current);

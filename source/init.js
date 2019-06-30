@@ -117,6 +117,20 @@ module.exports = function () {
 
   };
 
+  var expansions = lcn.expansions;
+
+  for (var i = expansions.length - 1; i >= 0; i--) {
+
+    var init_script = expansions[i].scripts.game_init;
+
+    if (!init_script) {
+      continue;
+    };
+
+    init_script(lcn, version);
+
+  };
+
   return [logger, version, lcn];
 
 };

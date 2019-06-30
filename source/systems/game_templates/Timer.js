@@ -75,7 +75,7 @@ module.exports = class {
     if (delta < 0) {
 
       // Recalculate
-      this.game.primeDesignatedTime();
+      this.game.primeDesignatedTime(true);
 
       // Alert players
       this.game.postDelayNotice();
