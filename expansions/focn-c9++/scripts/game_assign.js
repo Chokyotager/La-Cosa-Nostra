@@ -42,7 +42,7 @@ var configurations = {
     "2": ["mafia_goon", "mafia_roleblocker", "mafia_godfather"],
     "3": ["mafia_goon", "mafia_goon", "mafia_roleblocker", "serial_killer"],
     "4": ["mafia_goon", "mafia_goon", "mafia_roleblocker"],
-    "5": ["mafia_goon", "mafia_roleblocker", "serial_killer"],
+    "5": ["mafia_goon", "mafia_godfather", "serial_killer"],
     "6": ["mafia_goon", "mafia_godfather"],
     "7": ["mafia_goon", "mafia_godfather", "serial_killer"]
   }
