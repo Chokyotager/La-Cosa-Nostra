@@ -37,8 +37,6 @@ module.exports = function (actionable, game, params) {
 
       var letter = context.letters[j];
 
-      console.log(letter);
-
       if (hits.includes(letter)) {
         continue;
       };

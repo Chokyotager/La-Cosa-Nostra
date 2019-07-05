@@ -1,0 +1,27 @@
+{
+
+  "name": "LCN Combination Pack",
+  "type": "Utility",
+  "description": "Adds the standard LCN expansion packs",
+
+  "compatibility": ">=4.1.5",
+
+  "link": null,
+
+  "authors": ["ChocoParrot"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": ["memes", "compmeme", "archiver"]
+
+}

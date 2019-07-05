@@ -1,4 +1,5 @@
 var lcn = require("../../../../../source/lcn.js");
+var logger = process.logger;
 
 var rs = lcn.rolesystem;
 
@@ -25,7 +26,7 @@ module.exports = function (actionable, game, params) {
   var member = player.getGuildMember();
 
   if (!member) {
-    console.log("Attempting to set read-only chat permissions to non-existent Mafia!");
+    logger.log(3, "Attempting to set read-only chat permissions to non-existent Mafia!");
     return true;
   };
 

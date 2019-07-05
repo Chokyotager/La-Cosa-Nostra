@@ -121,7 +121,7 @@ module.exports = function () {
 
   for (var i = expansions.length - 1; i >= 0; i--) {
 
-    var init_script = expansions[i].scripts.game_init;
+    var init_script = expansions[i].scripts.init;
 
     if (!init_script) {
       continue;
