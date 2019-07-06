@@ -1,0 +1,13 @@
+{
+
+  "name": "Kill",
+
+  "modular": true,
+
+  "modular-details": {
+
+    "cluster": "envoy"
+
+  }
+
+}

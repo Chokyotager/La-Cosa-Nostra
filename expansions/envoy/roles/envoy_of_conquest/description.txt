@@ -1,0 +1,11 @@
+You are the Envoy Of Conquest, sent here to destroy this place and clean out all the sinners, controlling their minds.
+
+Every night, you may target a player, making them visit a random player and use their abilities on them, if they have any. The target will be notified at the next day that they have been controlled. Your abilities will grow as one of the envoys of the Horsemen of the Apocalypse dies.
+
+One dead envoy - You are given a roleblock immunity.
+Two dead envoys - You are given one basic attack, but you may still use your previous actions on other targets.
+Three dead envoys - You are given an infinite amount of unstoppable attacks. Gain the full control on your target. Your target deals basic attack to the person they visit. You may still use your previous actions on other targets.
+
+You may communicate with other envoys every night.
+
+Your goal is to reach the majority with other envoys without any threat to your team.

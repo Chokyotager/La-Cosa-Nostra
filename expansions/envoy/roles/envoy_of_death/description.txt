@@ -1,0 +1,11 @@
+You are the Envoy Of Death, sent here to destroy this place and clean out all the sinners, killing people one by one.
+
+Every night, you may attack a target with a basic attack. Your abilities will grow as one of the envoys of the Horsemen of the Apocalypse dies.
+
+One dead envoy - You are given one unstoppable attack.
+Two dead envoys - You are given a roleblock immunity.
+Three dead envoys - Instead of basic attack, you will deal an unstoppable attack towards the target and the people that visit your target.
+
+You may communicate with other envoys every night.
+
+Your goal is to reach the majority with other envoys without any threat to your team.

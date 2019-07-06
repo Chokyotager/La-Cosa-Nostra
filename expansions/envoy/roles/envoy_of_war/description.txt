@@ -1,0 +1,11 @@
+You are the Envoy Of War, sent here to destroy this place and clean out all the sinners, faking the information.
+
+Every night, you may target a player, which makes one of the Town Investigative roles that visits your target will be given the wrong information. Your abilities will grow as one of the envoys of the Horsemen of the Apocalypse dies.
+
+One dead envoy - You are given a roleblock immunity, also gain a detection immunity.
+Two dead envoys - You are given one unstoppable attack, but you may still use your previous actions on other targets.
+Three dead envoys - You are given an infinite amount of unstoppable attacks. No investigative role can see you visiting someone.
+
+You may communicate with other envoys every night.
+
+Your goal is to reach the majority with other envoys without any threat to your team.

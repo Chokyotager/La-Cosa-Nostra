@@ -1,0 +1,13 @@
+{
+
+  "name": "Strongkill",
+
+  "modular": true,
+
+  "modular-details": {
+    
+    "cluster": "envoy"
+
+  }
+
+}

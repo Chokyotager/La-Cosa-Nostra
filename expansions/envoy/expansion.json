@@ -1,0 +1,27 @@
+{
+
+  "name": "Envoy",
+  "type": "Expansion",
+  "description": "An evil faction that grows stronger as it is threatened",
+
+  "compatibility": ">=4.1.5",
+
+  "link": null,
+
+  "authors": ["Good Skele"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}

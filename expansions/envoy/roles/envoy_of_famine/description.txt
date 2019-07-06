@@ -1,0 +1,11 @@
+You are the Envoy of Famine, sent here to destroy this place and clean out all the sinners, weakening them in the worst way - Deadly hunger.
+
+Every night, you may choose a target, roleblocking them and blocking their vote at the next day. Your abilities will grow as one of the envoys of the Horsemen of the Apocalypse dies.
+
+One dead envoy - You are given a roleblock immunity.
+Two dead envoys - You are given 2 poison uses, if the target is not cured of the poison on the night of the poisoning and the next, they will be dealt an Unstoppable attack. but you may still use your previous actions on other targets.
+Three dead envoys - You are given an infinite amount of unstoppable attacks, but you may still use your previous actions on other targets.
+
+You may communicate with other envoys every night.
+
+Your goal is to reach the majority with other envoys without any threat to your team.
