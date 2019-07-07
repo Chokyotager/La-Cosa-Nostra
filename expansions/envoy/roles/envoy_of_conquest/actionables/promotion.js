@@ -27,9 +27,11 @@ module.exports = function (actionable, game, params) {
       break;
 
     case 2:
+      game.addMessage(envoy, ":exclamation: You have gained a basic attack!");
       break;
 
     case 3:
+      game.addMessage(envoy, ":exclamation: You have gained an unlimited number of unstoppable attacks! Your targets now deal a basic attack to those that they visit!");
       break;
 
   };

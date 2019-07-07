@@ -22,16 +22,17 @@ module.exports = function (actionable, game, params) {
   switch (envoy.promotion_status) {
 
     case 1:
-      envoy.setPermanentStat("detection-immunity", 1, "set");
-      envoy.setPermanentStat("roleblock-immunity", 1, "set");
-      game.addMessage(envoy, ":exclamation: You have gained roleblock and detection immunity!");
+      game.addMessage(envoy, ":exclamation: You have gained an unstoppable attack!");
       break;
 
     case 2:
       envoy.setPermanentStat("roleblock-immunity", 1, "set");
+      game.addMessage(envoy, ":exclamation: You have gained roleblock immunity!");
       break;
 
     case 3:
+      envoy.misc.unstoppable_attacks = true;
+      game.addMessage(envoy, ":exclamation: Your attacks are now unstoppable!");
       break;
 
   };

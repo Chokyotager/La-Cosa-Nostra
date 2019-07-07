@@ -4,11 +4,19 @@ var rs = lcn.rolesystem;
 
 module.exports = function (actionable, game, params) {
 
-  rs.prototypes.basicAttack.reason = "murdered";
-
-  var outcome = rs.prototypes.basicAttack(...arguments);
-
   var from = game.getPlayerByIdentifier(actionable.from);
+
+  if (!from.misc.unstoppable_attacks) {
+
+    rs.prototypes.basicAttack.reason = "murdered";
+    var outcome = rs.prototypes.basicAttack(...arguments);
+
+  } else {
+
+    rs.prototypes.unstoppableAttack.reason = "murdered";
+    var outcome = rs.prototypes.unstoppableAttack(...arguments);
+
+  };
 
   if (!outcome) {
 
