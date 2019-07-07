@@ -8,6 +8,8 @@ module.exports = function (actionable, game, params) {
 
   if (!from.misc.unstoppable_attacks) {
 
+    // Kill all visitors
+
     rs.prototypes.basicAttack.reason = "murdered";
     var outcome = rs.prototypes.basicAttack(...arguments);
 

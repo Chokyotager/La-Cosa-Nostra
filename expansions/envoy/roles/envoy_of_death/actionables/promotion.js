@@ -22,6 +22,7 @@ module.exports = function (actionable, game, params) {
   switch (envoy.promotion_status) {
 
     case 1:
+      rs.modular.addModule("strongkill");
       game.addMessage(envoy, ":exclamation: You have gained an unstoppable attack!");
       break;
 
@@ -32,7 +33,7 @@ module.exports = function (actionable, game, params) {
 
     case 3:
       envoy.misc.unstoppable_attacks = true;
-      game.addMessage(envoy, ":exclamation: Your attacks are now unstoppable!");
+      game.addMessage(envoy, ":exclamation: Your attacks are now unstoppable and will be inflicted on those who visit your target!");
       break;
 
   };

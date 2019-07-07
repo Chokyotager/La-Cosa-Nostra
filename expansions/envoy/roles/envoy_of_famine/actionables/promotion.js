@@ -27,10 +27,12 @@ module.exports = function (actionable, game, params) {
       break;
 
     case 2:
+      rs.modular.addModule("poison", 2);
       game.addMessage(envoy, ":exclamation: You have gained two poison uses!");
       break;
 
     case 3:
+      rs.modular.addModule("strongkill", Infinity);
       game.addMessage(envoy, ":exclamation: You have gained an infinite number of unstoppable attacks!");
       break;
 

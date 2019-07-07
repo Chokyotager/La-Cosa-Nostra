@@ -4,7 +4,7 @@ Every night, you may target a player, which makes one of the Town Investigative 
 
 One dead envoy - You are given a roleblock immunity, also gain a detection immunity.
 Two dead envoys - You are given one unstoppable attack, but you may still use your previous actions on other targets.
-Three dead envoys - You are given an infinite amount of unstoppable attacks. No investigative role can see you visiting someone.
+Three dead envoys - You are given an infinite amount of unstoppable attacks.
 
 You may communicate with other envoys every night.
 
