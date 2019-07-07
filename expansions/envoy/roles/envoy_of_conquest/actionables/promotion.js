@@ -32,6 +32,7 @@ module.exports = function (actionable, game, params) {
       break;
 
     case 3:
+      envoy.misc.control_attack_targets = true;
       rs.modular.addModule("strongkill", Infinity);
       game.addMessage(envoy, ":exclamation: You have gained an unlimited number of unstoppable attacks! Your targets now deal a basic attack to those that they visit!");
       break;

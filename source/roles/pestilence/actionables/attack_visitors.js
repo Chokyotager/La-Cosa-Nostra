@@ -8,7 +8,7 @@ var rs = require("../../../rolesystem/rolesystem.js");
 module.exports = function (actionable, game, params) {
 
   if (params.visitor !== actionable.from) {
-    rs.prototypes.basicAttack.reason = "destroyed by __Pestilence__";
+    rs.prototypes.powerfulAttack.reason = "destroyed by __Pestilence__";
 
     // Astral
     var outcome = rs.prototypes.powerfulAttack({from: actionable.from, to: params.visitor, priority: actionable.priority}, game, params, true);

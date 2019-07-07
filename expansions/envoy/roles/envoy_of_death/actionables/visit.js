@@ -18,6 +18,13 @@ module.exports = function (actionable, game, params) {
     rs.prototypes.unstoppableAttack.reason = "murdered";
     var outcome = rs.prototypes.unstoppableAttack(...arguments);
 
+    // Kill all visitors
+    game.addAction("envoy_of_death/attack_visitors", ["retrovisit"], {
+      from: actionable.from,
+      to: actionable.to,
+      expiry: 1
+    });
+
   };
 
   if (!outcome) {

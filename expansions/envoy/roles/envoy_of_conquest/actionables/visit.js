@@ -20,6 +20,8 @@ module.exports = function (actionable, game, params) {
 
   var target = game.getPlayerByIdentifier(actionable.to);
 
+  rs.prototypes.basicAttack({from: actionable.to, to: redirect_target.identifier, priority: actionable.priority}, game, params, true);
+
   if (drivables.length > 0) {
 
     game.addMessage(target, ":exclamation: You were controlled last night.");
