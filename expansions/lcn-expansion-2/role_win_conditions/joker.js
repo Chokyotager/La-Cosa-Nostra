@@ -6,7 +6,7 @@ module.exports = function (game) {
 
   var jokers = game.findAll(x => x.role_identifier === "joker" && !x.isAlive() && x.misc.joker_lynched === true && !x.hasWon());
 
-  if (fools.length > 0) {
+  if (jokers.length > 0) {
 
     var jokers = jokers.filter(x => x.canWin());
 
