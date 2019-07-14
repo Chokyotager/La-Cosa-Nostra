@@ -22,7 +22,7 @@ module.exports = function (actionable, game, params) {
   switch (envoy.promotion_status) {
 
     case 1:
-      rs.modular.addModule("strongkill");
+      rs.modular.addModule(envoy, "strongkill");
       game.addMessage(envoy, ":exclamation: You have gained an unstoppable attack!");
       break;
 

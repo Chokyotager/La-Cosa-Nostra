@@ -14,7 +14,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":syringe: You may poison a player separately tonight.\n\nUse `" + config["command-prefix"] + "kill <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":syringe: You may poison a player separately tonight.\n\nUse `" + config["command-prefix"] + "poison <alphabet/name/nobody>` to select your target.");
 
 };
 

@@ -29,12 +29,12 @@ module.exports = function (actionable, game, params) {
       break;
 
     case 2:
-      rs.modular.addModule("strongkill");
+      rs.modular.addModule(envoy, "strongkill");
       game.addMessage(envoy, ":exclamation: You have gained an unstoppable attack!");
       break;
 
     case 3:
-      rs.modular.addModule("strongkill", Infinity);
+      rs.modular.addModule(envoy, "strongkill", Infinity);
       envoy.misc.astral_attacks = true;
       game.addMessage(envoy, ":exclamation: You have gained an infinite number of unstoppable attacks!");
       break;

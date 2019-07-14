@@ -14,7 +14,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":knife: You may use your strong kill on a player separately tonight.\n\nUse `" + config["command-prefix"] + "kill <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":knife: You may use your strong kill on a player separately tonight.\n\nUse `" + config["command-prefix"] + "strongkill <alphabet/name/nobody>` to select your target.");
 
 };
 
