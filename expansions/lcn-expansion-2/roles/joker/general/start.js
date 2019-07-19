@@ -2,7 +2,7 @@
 
 module.exports = function (player) {
 
-  player.misc.fool_lynched = false;
+  player.misc.joker_lynched = false;
 
   player.game.addAction("joker/lynched", ["lynch"], {
     from: player,

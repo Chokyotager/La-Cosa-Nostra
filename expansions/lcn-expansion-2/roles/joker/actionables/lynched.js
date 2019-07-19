@@ -6,7 +6,7 @@ module.exports = function (actionable, game, params) {
 
   var self = game.getPlayerByIdentifier(actionable.from);
 
-  self.misc.fool_lynched = true;
+  self.misc.joker_lynched = true;
 
   game.addMessage(self, ":exclamation: You successfully got yourself lynched!");
 
