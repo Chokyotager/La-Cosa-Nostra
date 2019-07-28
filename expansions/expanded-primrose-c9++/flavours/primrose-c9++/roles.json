@@ -1,0 +1,163 @@
+{
+
+  "vanilla_townie": [
+    {
+      "name": "Vanilla Townie",
+      "banner": "Vanilla Townie.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Vanilla Townie.\n\nAbilities:\n- You have no abilities other than your vote.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "cop": [
+    {
+      "name": "Town Cop",
+      "banner": "Cop.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Cop.\n\nAbilities:\n- Investigate: Each night phase, you may target one player in the game to investigate them. You will receive a result of \"Town\", \"Anti-town\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "one_shot_cop": [
+    {
+      "name": "Town 1-Shot Cop",
+      "banner": "1-Shot Cop.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town 1-Shot Cop.\n\nAbilities:\n- Investigate: Once, at night, you may target one player in the game to investigate them. You will receive a result of \"Town\", \"Anti-town\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "doctor": [
+    {
+      "name": "Town Doctor",
+      "banner": "Doctor.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Doctor.\n\nAbilities:\n- Heal: Each night phase, you may target one player in the game to heal them. They will be protected from a single kill. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "one_shot_doctor": [
+    {
+      "name": "Town 1-Shot Doctor",
+      "banner": "1-Shot Doctor.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town 1-Shot Doctor.\n\nAbilities:\n- Heal: Once, at night, you may target one player in the game to heal them. They will be protected from a single kill. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "vigilante": [
+    {
+      "name": "Town Vigilante",
+      "banner": "Vigilante.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Vigilante.\n\nAbilities:\n- Kill: Each night phase, you may target another player in the game to attempt to kill them.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "one_shot_vigilante": [
+    {
+      "name": "Town 1-Shot Vigilante",
+      "banner": "1-Shot Vigilante.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town 1-Shot Vigilante.\n\nAbilities:\n- Kill: Once, at night, you may target another player in the game to attempt to kill them.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "innocent_child": [
+    {
+      "name": "Town Innocent Child",
+      "banner": "Innocent Child.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Innocent Child.\n\nAbilities:\n- Reveal: On Day 1, you will be publicly confirmed to be town.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "mason": [
+    {
+      "name": "Town Mason",
+      "banner": "Mason.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Mason.\n\nAbilities:\n- Masons: You and the other mason(s) all know each other to be town. During the night, you may communicate.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "roleblocker": [
+    {
+      "name": "Town Roleblocker",
+      "banner": "Roleblocker.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Roleblocker.\n\nAbilities:\n- Roleblock: Each night phase, you may target another player in the game to attempt to block them from performing any night actions.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "one_shot_roleblocker": [
+    {
+      "name": "Town 1-Shot Roleblocker",
+      "banner": "1-Shot Roleblocker.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town 1-Shot Roleblocker.\n\nAbilities:\n- Roleblock: Once, at night, you may target another player in the game to attempt to block them from performing any night actions.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "tracker": [
+    {
+      "name": "Town Tracker",
+      "banner": "Tracker.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Tracker.\n\nAbilities:\n- Track: Each night phase, you may target another player in the game to see who they visit that night, showing up as \"nobody\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "one_shot_tracker": [
+    {
+      "name": "Town 1-Shot Tracker",
+      "banner": "1-Shot Tracker.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town 1-Shot Tracker.\n\nAbilities:\n- Track: Once, at night, you may target another player in the game to see who they visit that night, showing up as \"nobody\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "watcher": [
+    {
+      "name": "Town Watcher",
+      "banner": "Watcher.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town Watcher.\n\nAbilities:\n- Watch: Each night phase, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "one_shot_watcher": [
+    {
+      "name": "Town 1-Shot Watcher",
+      "banner": "1-Shot Watcher.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Town 1-Shot Watcher.\n\nAbilities:\n- Watch: Once, at night, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+    }
+  ],
+
+  "mafia_goon": [
+    {
+      "name": "Mafia Goon",
+      "banner": "Goon.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Mafia Goon.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_roleblocker": [
+    {
+      "name": "Mafia Roleblocker",
+      "banner": "Mafia Roleblocker.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Mafia Roleblocker.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Roleblock: Each night phase, you may target another player in the game to attempt to block them from performing any night actions.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_two_shot_janitor": [
+    {
+      "name": "Mafia 2-Shot Janitor",
+      "banner": "2-Shot Janitor.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Mafia 2-Shot Janitor.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Clean: Once, at night, you may target another player to hide their role if they are killed on the same night. If they do not die, the clean action is not counted as used.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "mafia_godfather": [
+    {
+      "name": "Mafia Godfather",
+      "banner": "Godfather.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Mafia Godfather.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Investigation Immune: You will appear as innocent to any alignment checks.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
+  "serial_killer": [
+    {
+      "name": "Serial Killer",
+      "banner": "Serial Killer.png",
+      "description": "Welcome to Expanded Primrose C9++. You are a Serial Killer.\n\nAbilities:\n- Choice: During the first day, you must choose between being either Investigation Immune or 1-shot Bulletproof. Failing to do so will give you no perks.\n- Kill: Each night phase, you may target another player in the game to attempt to kill them.\n\nWin condition:\n- You win when you are the last player alive."
+    }
+  ]
+
+}

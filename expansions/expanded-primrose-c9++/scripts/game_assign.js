@@ -78,12 +78,12 @@ var configurations = {
   },
 
   "T": {
-    "0": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_roleblocker", "mafia_one_shot_janitor"],
-    "1": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_roleblocker", "mafia_one_shot_janitor", "serial_killer"],
+    "0": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_roleblocker", "mafia_two_shot_janitor"],
+    "1": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_roleblocker", "mafia_two_shot_janitor", "serial_killer"],
     "2": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "mafia_roleblocker"],
     "3": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "mafia_roleblocker", "serial_killer"],
-    "4": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "mafia_one_shot_janitor"],
-    "5": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "mafia_one_shot_janitor", "serial_killer"],
+    "4": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "mafia_two_shot_janitor"],
+    "5": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "mafia_two_shot_janitor", "serial_killer"],
     "6": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather"],
     "7": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "mafia_godfather", "serial_killer"],
     "8": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon", "mafia_goon"],
@@ -99,7 +99,7 @@ module.exports = function (playing_config) {
   if (playing_config.roles) {
     logger.log(2, "[Primrose C9++] Not running setup randomiser as roles have been defined.");
 
-    var override = {flavour: "primrose-c9++"};
+    var override = {flavour: "expanded-primrose-c9++"};
     return lcn.auxils.objectOverride(playing_config, override);
   };
 

@@ -16,7 +16,8 @@
 
     "roles": [
       "c9++/*",
-      "primrose-c9++/*"
+      "primrose-c9++/*",
+      "-primrose-c9++/mafia_one_shot_janitor"
     ],
 
     "attributes": [
