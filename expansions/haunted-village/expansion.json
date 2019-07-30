@@ -1,0 +1,27 @@
+{
+
+  "name": "Haunted Village",
+  "type": "Setup",
+  "description": "Adds the Haunted Village setup.",
+
+  "compatibility": ">=4.1.4",
+
+  "link": "https://wiki.mafiascum.net/index.php?title=Haunted_Village",
+
+  "authors": ["MiniDeathStar", "Something_Smart"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": ["forum-auxiliaries"]
+
+}

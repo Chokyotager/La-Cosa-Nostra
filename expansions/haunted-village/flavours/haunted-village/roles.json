@@ -1,0 +1,130 @@
+{
+  "villager": [
+    {
+      "name": "Villager",
+      "banner": "Villager.png",
+      "description": "Welcome to Haunted Village. You are a Villager.\n\nAbilities:\n- You have no abilities other than your vote.\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "priest": [
+    {
+      "name": "Priest",
+      "banner": "Priest.png",
+      "description": "Welcome to Haunted Village. You are a Priest.\n\nAbilities:\n- Holy Water: Each night phase, you may assess a player with holy water. You will get a result of \"Favourable\" (Village-sided), \"Unfavourable\" (Anti-Village) or \"No Result\".\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "witch_hunter": [
+    {
+      "name": "Witch Hunter",
+      "banner": "Witch Hunter.png",
+      "description": "Welcome to Haunted Village. You are a Witch Hunter.\n\nAbilities:\n- Holy Water: Once during the game at night, you may assess a player with holy water. You will get a result of \"Favourable\" (Village-sided), \"Unfavourable\" (Anti-Village) or \"No Result\".\nLightning Bolt: Once during the game at night, you may strike a player with a bolt of lightning in an attempt to kill them.\nStalk: Once during the game at night, you may choose to stalk a player. You will know who your target visited the next day, or \"No Result\".\nAbility Preservation (passive): Should you target an invisible target or are roleblocked, your respective ability is not counted as used.\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "sorceress": [
+    {
+      "name": "Sorceress",
+      "banner": "Sorceress.png",
+      "description": "Welcome to Haunted Village. You are a Sorceress.\n\nAbilities:\n- Lightning Bolt: Each night phase, you may strike a player with a bolt of lightning in an attempt to kill them.\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "enchantress": [
+    {
+      "name": "Enchantress",
+      "banner": "Enchantress.png",
+      "description": "Welcome to Haunted Village. You are an Enchantress.\n\nAbilities:\n- Spell Shield: Each night phase, you may cast a spell on a player. This will protect your target from harmful magical abilities, but will not stop normal kills.\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "healer": [
+    {
+      "name": "Healer",
+      "banner": "Healer.png",
+      "description": "Welcome to Haunted Village. You are a Healer.\n\nAbilities:\n- Heal: Each night phase, you may heal a player. This will prevent them from being killed that night through normal means.\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "angel": [
+    {
+      "name": "Angel",
+      "banner": "Angel.png",
+      "description": "Welcome to Haunted Village. You are an Angel.\n\nAbilities:\n- Smite: Should you die by any means, you may choose to smite an individual. This will kill them if they are Undead or ghost-possessed the next game cycle.\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "trickster": [
+    {
+      "name": "Trickster",
+      "banner": "Trickster.png",
+      "description": "Welcome to Haunted Village. You are a Trickster.\n\nAbilities:\n- Invisibility: Each night phase, you may choose to turn invisible. This will protect you against all night actions except strong kills. You may only do so on non-consecutive nights.\n\nWin condition:\n- You win when all threats to the Village have been eliminated and there is at least one village-sided player alive."
+    }
+  ],
+
+  "ghoul": [
+    {
+      "name": "Ghoul",
+      "banner": "Ghoul.png",
+      "description": "Welcome to Haunted Village. You are a Ghoul.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ],
+
+  "vampire": [
+    {
+      "name": "Vampire",
+      "banner": "Vampire.png",
+      "description": "Welcome to Haunted Village. You are a Vampire.\n\nAbilities:\n- Occupy: Each night phase, you may choose to occupy a player. This will prevent them from using any role actions.\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ],
+
+  "death_knight": [
+    {
+      "name": "Death Knight",
+      "banner": "Death Knight.png",
+      "description": "Welcome to Haunted Village. You are a Death Knight.\n\nAbilities:\n- Dark Ward: Each night, you may ward a target. Should your target die, the ward will kill the killers.\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ],
+
+  "ghost": [
+    {
+      "name": "Ghost",
+      "banner": "Ghost.png",
+      "description": "Welcome to Haunted Village. You are a Ghost.\n\nAbilities:\n- Possess: Each night phase, you may choose to possess a player. This will make them show up as an Undead to any investigative roles checking them for that night.\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ],
+
+  "zombie": [
+    {
+      "name": "Zombie",
+      "banner": "Zombie.png",
+      "description": "Welcome to Haunted Village. You are a Zombie.\n\nAbilities:\n- Reanimation (passive): Should you be lynched, you will rise from the dead the next dawn, provided another Undead exists. When dead and awaiting reanimation, you cannot be put to rest by any means. You will also not reanimate if doing so will endgame the remaining players.\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ],
+
+  "banshee": [
+    {
+      "name": "Banshee",
+      "banner": "Banshee.png",
+      "description": "Welcome to Haunted Village. You are a Banshee.\n\nAbilities:\n- Death Wail: Each night phase, instead of performing a factional kill, you may use your wail. The wail will kill through invisibility and healing, but is blocked by an Enchanter's spell shield. You may not wail on consecutive nights.\n- Factional Communication: Each night phase, you may communicate with your group.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ],
+
+  "immortal": [
+    {
+      "name": "Immortal",
+      "banner": "Immortal.png",
+      "description": "Welcome to Haunted Village. You are an Immortal.\n\nAbilities:\n- Detection Immunity (passive): You are sided with the Undead, however investigative roles will see you as being sided with the Village. You may also not be smitted by an angel unless possessed.\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ],
+
+  "witch": [
+    {
+      "name": "Witch",
+      "banner": "Witch.png",
+      "description": "Welcome to Haunted Village. You are a Witch.\n\nAbilities:\n- Foresight: Every night, you may use foresight on a player to know their role the next day.\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n\nWin condition:\n- You win when the Undead obtains a majority with all threats eliminated."
+    }
+  ]
+
+}
