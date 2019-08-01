@@ -23,6 +23,7 @@ module.exports = function (game, message, params) {
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":no_entry_sign: You have decided not to roleblock anyone tonight.");
+    game.getChannel("mafia").send(":exclamation: **" + from.getDisplayName() + "** is not roleblocking anyone tonight.");
     return null;
   };
 

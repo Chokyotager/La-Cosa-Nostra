@@ -23,6 +23,7 @@ module.exports = function (game, message, params) {
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":no_entry: You have decided not to use the factional kill.");
+    game.getChannel("mafia").send(":exclamation: **" + from.getDisplayName() + "** has decided not to kill anyone tonight. No kill will be attempted if no further action is submitted.");
     return null;
   };
 

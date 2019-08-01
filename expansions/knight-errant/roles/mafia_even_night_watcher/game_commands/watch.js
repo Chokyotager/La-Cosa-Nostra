@@ -27,6 +27,7 @@ module.exports = function (game, message, params) {
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":mag: You have decided not to watch anyone tonight.");
+    game.getChannel("mafia").send(":exclamation: **" + from.getDisplayName() + "** is not watching anyone tonight.");
     return null;
   };
 
