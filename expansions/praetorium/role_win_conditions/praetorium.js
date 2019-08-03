@@ -4,7 +4,15 @@ var auxils = lcn.auxils;
 
 module.exports = function (game) {
 
+  // Non-deviant (cabinet) praetorium only
+  var praetorium_members = game.findAll(x => x.role.alignment === "Praetorium");
+  var recruited_members = praetorium_members.filter(x => x.role["win-condition"] === "deviant_praetorium");
 
+  if (recruited_members <= 3) {
+
+    return true;
+
+  };
 
 };
 
