@@ -54,7 +54,7 @@ module.exports = async function (message, params, config) {
 
   } catch (err) {
 
-    await message.channel.send(":x: Invalid property.\n```fix" + err.message + "```");
+    await message.channel.send(":x: Invalid property.\n```fix\n" + err.message + "```");
     return null;
 
   };
