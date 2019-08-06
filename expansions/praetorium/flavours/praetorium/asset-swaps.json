@@ -1,3 +1,6 @@
 [
-  
+  {"from": "game-start.jpg", "to": "The Praetorium.png"},
+  {"from": "town-wins.jpg", "to": "Town wins.png"},
+  {"from": "praetorium-wins.jpg", "to": "Praetorium wins.png"},
+  {"from": "deviant-praetorium-wins.jpg", "to": "Deviant Praetorium wins.png"}
 ]
