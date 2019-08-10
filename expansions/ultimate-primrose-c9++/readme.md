@@ -1,3 +1,4 @@
+![Banner](flavours/primrose-c9++/assets/Banner.png?raw=true)
 ## Ultimate Primrose C9++
 An ultimate C9++ game by **ChocoParrot**, based off **Fiasco**'s setup.
 [Game info is attached as PDF]
