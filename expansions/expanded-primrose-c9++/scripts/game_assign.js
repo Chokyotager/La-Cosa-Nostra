@@ -99,7 +99,7 @@ module.exports = function (playing_config) {
   if (playing_config.roles) {
     logger.log(2, "[Primrose C9++] Not running setup randomiser as roles have been defined.");
 
-    var override = {flavour: "expanded-primrose-c9++"};
+    var override = {flavour: "primrose-c9++"};
     return lcn.auxils.objectOverride(playing_config, override);
   };
 
