@@ -152,6 +152,14 @@
     }
   ],
 
+  "mafia_rolecop": [
+    {
+      "name": "Mafia Rolecop",
+      "banner": "Rolecop.png",
+      "description": "Welcome to Ultimate Primrose C9++. You are a Mafia Rolecop.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Factional Kill: Each night phase, you may send a member of your group to target another player in the game, attempting to kill them.\n- Check: Each night phase, you may check a player to discover their role the next morning.\n\nWin condition:\n- You win when the Mafia obtain a majority with all threats eliminated."
+    }
+  ],
+
   "serial_killer": [
     {
       "name": "Serial Killer",
