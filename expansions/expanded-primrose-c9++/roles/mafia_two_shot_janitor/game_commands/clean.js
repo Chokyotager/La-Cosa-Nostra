@@ -25,7 +25,7 @@ module.exports = function (game, message, params) {
 
   var to = game.getPlayerMatch(params[0]);
 
-  actions.delete(x => (x.from === from.identifier && x.identifier === "mafia_one_shot_janitor/clean"));
+  actions.delete(x => (x.from === from.identifier && x.identifier === "mafia_two_shot_janitor/clean"));
 
   if (to.score < 0.7 || params[0].toLowerCase() === "nobody") {
     message.channel.send(":paperclip: You have decided not to clean anyone tonight.");
@@ -50,7 +50,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  game.addAction("mafia_one_shot_janitor/clean", ["cycle"], {
+  game.addAction("mafia_two_shot_janitor/clean", ["cycle"], {
     name: "Janitor-clean",
     expiry: 1,
     from: message.author.id,

@@ -9,7 +9,7 @@ module.exports = function (actionable, game, params) {
     priority: actionable.priority,
     reason: "Janitor-clean"});
 
-  game.addAction("mafia_one_shot_janitor/clean_role", ["killed"], {
+  game.addAction("mafia_two_shot_janitor/clean_role", ["killed"], {
     name: "Janitor-clean-role",
     expiry: 2,
     from: actionable.from,
