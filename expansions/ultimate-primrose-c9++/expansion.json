@@ -10,7 +10,9 @@
 
   "overrides": {
 
-    "flavours": [],
+    "flavours": [
+      "+ultimate-primrose-c9++/*"
+    ],
 
     "role_win_conditions": [],
 

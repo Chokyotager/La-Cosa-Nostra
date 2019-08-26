@@ -83,8 +83,8 @@ var configurations = {
   "T": {
     "0": ["mafia_goon", "mafia_goon", "mafia_rolecop", "mafia_godfather", "mafia_two_shot_janitor", "mafia_roleblocker"],
     "1": ["mafia_goon", "mafia_rolecop", "mafia_godfather", "mafia_two_shot_janitor", "mafia_roleblocker", "serial_killer", "arsonist"],
-    "2": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_two_shot_janitor", "mafia_roleblocker", "arsonist"],
-    "3": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_two_shot_janitor", "mafia_roleblocker", "serial_killer"],
+    "2": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_rolecop", "mafia_roleblocker", "arsonist"],
+    "3": ["mafia_goon", "mafia_goon", "mafia_godfather", "mafia_rolecop", "mafia_roleblocker", "serial_killer"],
     "4": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_two_shot_janitor", "mafia_roleblocker", "arsonist"],
     "5": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_two_shot_janitor", "mafia_roleblocker", "serial_killer"],
     "6": ["mafia_goon", "mafia_goon", "mafia_goon", "mafia_two_shot_janitor", "mafia_rolecop", "arsonist"],
