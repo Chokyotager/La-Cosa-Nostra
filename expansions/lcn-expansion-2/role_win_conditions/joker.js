@@ -10,7 +10,7 @@ module.exports = function (game) {
 
     var jokers = jokers.filter(x => x.canWin());
 
-    game.setWins(winners);
+    game.setWins(jokers);
     return true;
   };
 
