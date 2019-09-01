@@ -81,7 +81,11 @@ module.exports = async function (game, id1, id2, detailed_substitution=true) {
     };
 
     cache.push(channel.overwritePermissions(aft_member, permissions.serialize()));
-    cache.push(channel.permissionOverwrites.find(x => x.id === bef_member.id).delete());
+
+    var override = channel.permissionOverwrites.find(x => x.id === bef_member.id);
+    if (override) {
+      cache.push(override.delete());
+    };
 
   };
 
