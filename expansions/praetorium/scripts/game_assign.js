@@ -17,7 +17,7 @@ module.exports = function (playing_config) {
 
   // Define setup
 
-  var setup = ["praetor", "cleric", "mason", "mason"];
+  var setup = ["praetor", "cleric", "quaestor", "mason", "mason"];
 
   var outcome = auxils.cryptoRandom();
   if (outcome < 0.5) {

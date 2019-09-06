@@ -15,7 +15,7 @@
   "emissary": [{
     "name": "Emissary",
     "banner": "Emissary.png",
-    "description": "Welcome to the Praetorium. You are an Emissary.\n\nTraits and abilities:\n- Impart: Every night, you may impart with a recruited member of the Praetorium to communicate with them in private for that night.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+    "description": "Welcome to the Praetorium. You are an Emissary.\n\nTraits and abilities:\n- Impart: Every night, you may impart with a member of the Praetorium to recruit them to a special chat.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
   }],
 
   "zealot": [{

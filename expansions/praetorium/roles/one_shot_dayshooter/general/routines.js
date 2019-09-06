@@ -20,7 +20,7 @@ module.exports = function (player) {
 
   } else {
 
-    player.game.sendPeriodPin(channel, ":gun: You do not have any bullets left.")
+    player.game.sendPeriodPin(channel, ":gun: You do not have any bullets left.");
 
   };
 
