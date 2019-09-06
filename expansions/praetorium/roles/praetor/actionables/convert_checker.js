@@ -16,6 +16,6 @@ module.exports = function (actionable, game, params) {
   };
 
   // Add log
-  praetor.misc.praetor_conversions.push({interval: game.period, successful: false});
+  praetor.misc.praetor_conversions.push({interval: game.period, successful: false, target: actionable.to});
 
 };

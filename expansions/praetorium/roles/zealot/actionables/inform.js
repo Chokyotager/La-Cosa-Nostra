@@ -34,10 +34,12 @@ module.exports = function (actionable, game, params) {
       var visit_log = game.actions.visit_log;
       var visitor_names = new Array();
 
-      for (var i = 0; i < visit_log.length; i++) {
-        if (visit_log[i].target === praetor.identifier) {
+      var praetor_target = game.getPlayerByIdentifier(log.target);
+
+      for (var j = 0; j < visit_log.length; j++) {
+        if (visit_log[j].target === praetor_target.identifier) {
           // Target
-          var visitor = game.getPlayerByIdentifier(visit_log[i].visitor);
+          var visitor = game.getPlayerByIdentifier(visit_log[j].visitor);
           visitor_names.push("**" + visitor.getDisplayName() + "**");
         };
       };
@@ -45,9 +47,9 @@ module.exports = function (actionable, game, params) {
       visitor_names.sort();
 
       if (visitor_names.length > 0) {
-        game.addMessage(":exclamation: Praetor **" + praetor.getDisplayName() + "**'s conversion was unsuccessful. Last night, " + auxils.pettyFormat(visitor_names) + " visited the praetor.");
+        game.addMessage(":exclamation: Praetor **" + praetor.getDisplayName() + "**'s conversion was unsuccessful. Last night, " + auxils.pettyFormat(visitor_names) + " visited the praetor's target.");
       } else {
-        game.addMessage(":exclamation: Praetor **" + praetor.getDisplayName() + "**'s conversion was unsuccessful. Last night, nobody visited the praetor.");
+        game.addMessage(":exclamation: Praetor **" + praetor.getDisplayName() + "**'s conversion was unsuccessful. Last night, nobody visited the praetor's target.");
       };
 
     };
