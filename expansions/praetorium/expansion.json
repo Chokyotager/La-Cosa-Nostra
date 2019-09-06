@@ -16,12 +16,16 @@
 
     "role_win_conditions": [],
 
-    "roles": [],
+    "roles": [
+      "-lcn/*"
+    ],
 
-    "attributes": []
+    "attributes": [
+      "-lcn/*"
+    ]
 
   },
 
-  "dependencies": []
+  "dependencies": ["forum-auxiliaries"]
 
 }

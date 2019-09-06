@@ -3,31 +3,31 @@
   "praetor": [{
     "name": "Praetor",
     "banner": "Praetorium.png",
-    "description": "Welcome to The Praetorium. You are the Praetor.\n\nTraits and abilities:\n- Revelation: You are publicly known to be the Praetor.\n- Recruitment: Every night, you may recruit a player to turn them into a Recruited Member of the Praetorium.\n- Invincible: You may not be lynched or killed by any means.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
-  }],
-
-  "emissary": [{
-    "name": "Emissary",
-    "banner": "Emissary.png",
-    "description": "Welcome to The Praetorium. You are an Emissary.\n\nTraits and abilities:\n- Communicate: Every night, you may communicate with a recruited member of the Praetorium in private.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+    "description": "Welcome to the Praetorium. You are the Praetor.\n\nTraits and abilities:\n- Revelation: You are publicly known to be the Praetor.\n- Recruitment: Every night, you may recruit a player to turn them into a Recruited Member of the Praetorium.\n- Invincible: You may not be lynched or killed by any means.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
   }],
 
   "quaestor": [{
     "name": "Quaestor",
     "banner": "Quaestor.png",
-    "description": "Welcome to The Praetorium. You are a Quaestor.\n\nTraits and abilities:\n- Accolade: Every night, you may accolade a non-Praetorium member a role, which can be that of a cop, a vigilante, or a roleblocker of your choice. Failure to do so for three nights per game will result in your identity being revealed publicly.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+    "description": "Welcome to the Praetorium. You are a Quaestor.\n\nTraits and abilities:\n- Ordain: Every night, you may ordain a player to prevent them from using their night action, effectively roleblocking them.\n- Cloak: You may choose to cloak into any role and be revealed as that role upon your death, unless you are shot by a Dayshooter.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+  }],
+
+  "emissary": [{
+    "name": "Emissary",
+    "banner": "Emissary.png",
+    "description": "Welcome to the Praetorium. You are an Emissary.\n\nTraits and abilities:\n- Impart: Every night, you may impart with a recruited member of the Praetorium to communicate with them in private for that night.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
   }],
 
   "zealot": [{
     "name": "Zealot",
     "banner": "Zealot.png",
-    "description": "Welcome to The Praetorium. You are a Zealot.\n\nTraits and abilities:\n- Foresight (passive): At the beginning of each day, you will learn if the Praetor's recruitment was successful. If the Praetor's recruitment was unsuccessful, you will learn the name of the person who blocked it.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+    "description": "Welcome to the Praetorium. You are a Zealot.\n\nTraits and abilities:\n- Foresight (passive): At the beginning of each day, you will learn if the Praetor's recruitment was successful. If the Praetor's recruitment was unsuccessful, you will learn the name of the person who blocked it.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
   }],
 
   "cleric": [{
     "name": "Cleric",
     "banner": "Cleric.png",
-    "description": "Welcome to The Praetorium. You are a Cleric.\n\nTraits and abilities:\n- Sacrifice: Every night, you may attempt to kill a recruited member of the Praetorium.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+    "description": "Welcome to the Praetorium. You are a Cleric.\n\nTraits and abilities:\n- Sacrifice: Every night, you may attempt to kill a recruited member of the Praetorium.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
   }]
 
 }

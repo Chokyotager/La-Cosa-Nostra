@@ -1,0 +1,29 @@
+{
+  "role-name": "Arsonist",
+
+  "alignment": "neutral",
+  "class": "unclassified",
+
+  "see-mafia-chat": false,
+
+  "stats": {
+    "basic-defense": 1,
+    "roleblock-immunity": 0,
+    "detection-immunity": 1,
+    "control-immunity": 0,
+		"redirection-immunity": 0,
+		"kidnap-immunity": 0,
+    "priority": 5,
+    "vote-offset": 0,
+		"vote-magnitude": 1
+  },
+
+  "investigation": ["Arsonist"],
+  "secondary-roles": null,
+
+  "tags": [],
+
+  "reveal-role-on-interrogation": true,
+
+  "win-condition": "arsonist"
+}

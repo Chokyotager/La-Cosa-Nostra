@@ -1,0 +1,7 @@
+[
+  ["emissary", {"identifier": "vanilla_townie", "attributes": [{"identifier": "apostate"}]}, "one_shot_dayshooter", "tracker", "quaestor"],
+  ["watcher", "zealot", "vigilante", "quaestor", {"identifier": "vanilla_townie", "attributes": [{"identifier": "apostate"}]}],
+  ["one_shot_dayshooter", "doctor", "cleric", "jailkeeper", "vigilante"],
+  ["roleblocker", "quaestor", "cop", "zealot", "cop"],
+  ["quaestor", "cop", "tracker", "doctor", "emissary"]
+]
