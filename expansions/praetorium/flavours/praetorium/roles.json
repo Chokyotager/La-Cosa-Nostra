@@ -1,33 +1,99 @@
 {
 
+  "vanilla_townie": [{
+    "name": "Vanilla Townie",
+    "banner": "Vanilla Townie.png",
+    "description": "Welcome to the Praetorium. You are a Vanilla Townie.\n\nAbilities:\n- You have no abilities other than your vote.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "mason": [{
+    "name": "Town Mason",
+    "banner": "Mason.png",
+    "description": "Welcome to the Praetorium. You are a Town Mason.\n\nAbilities:\n- Masons: You and the other mason know each other to be town. During the night, you may communicate.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "tracker": [{
+    "name": "Town Tracker",
+    "banner": "Tracker.png",
+    "description": "Welcome to the Praetorium. You are a Town Tracker.\n\nAbilities:\n- Track: Each night phase, you may target another player in the game to see who they visit that night, showing up as \"nobody\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "watcher": [{
+    "name": "Town Watcher",
+    "banner": "Watcher.png",
+    "description": "Welcome to the Praetorium. You are a Town Watcher.\n\nAbilities:\n- Watch: Each night phase, you may target another player in the game to see who visits them that night, or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "cop": [{
+    "name": "Town Cop",
+    "banner": "Cop.png",
+    "description": "Welcome to the Praetorium. You are a Town Cop.\n\nAbilities:\n- Investigate: Once, at night, you may target one player in the game to investigate them. You will receive a result of \"Town\", \"Anti-town\", or \"No Result\".\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "jailkeeper": [{
+    "name": "Town Jailkeeper",
+    "banner": "Cop.png",
+    "description": "Welcome to the Praetorium. You are a Town Jailkeeper.\n\nAbilities:\n- Jail: Each night phase, you may target one player in the game to jail them. All actions to and from them other than your own will fail for that night. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "doctor": [{
+    "name": "Town Doctor",
+    "banner": "Doctor.png",
+    "description": "Welcome to the Praetorium. You are a Town Doctor.\n\nAbilities:\n- Heal: Each night phase, you may target one player in the game to heal them. They will be protected from a single kill. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "roleblocker": [{
+    "name": "Town Roleblocker",
+    "banner": "Roleblocker.png",
+    "description": "Welcome to the Praetorium. You are a Town Roleblocker.\n\nAbilities:\n- Roleblock: Each night phase, you may target another player in the game to attempt to block them from performing any night actions.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "vigilante": [{
+    "name": "Town Vigilante",
+    "banner": "Vigilante.png",
+    "description": "Welcome to the Praetorium. You are a Town Vigilante.\n\nAbilities:\n- Kill: Each night phase, you may target another player in the game to attempt to kill them.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
+  "one_shot_dayshooter": [{
+    "name": "Town 1-Shot Dayshooter",
+    "banner": "1-Shot Dayshooter.png",
+    "description": "Welcome to the Praetorium. You are a Town 1-Shot Dayshooter.\n\nAbilities:\n- Shoot: Once, during the day, you may publicly shoot a player to kill them. Their role will not be revealed until the end of the day.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
+  }],
+
   "praetor": [{
     "name": "Praetor",
     "banner": "Praetorium.png",
-    "description": "Welcome to the Praetorium. You are the Praetor.\n\nTraits and abilities:\n- Revelation: You are publicly known to be the Praetor.\n- Recruitment: Every night, you may recruit a player to turn them into a Recruited Member of the Praetorium.\n- Invincible: You may not be lynched or killed by any means.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
-  }],
-
-  "quaestor": [{
-    "name": "Quaestor",
-    "banner": "Quaestor.png",
-    "description": "Welcome to the Praetorium. You are a Quaestor.\n\nTraits and abilities:\n- Ordain: Every night, you may ordain a player to prevent them from using their night action, effectively roleblocking them.\n- Cloak: You may choose to cloak into any role and be revealed as that role upon your death, unless you are shot by a Dayshooter.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
-  }],
-
-  "emissary": [{
-    "name": "Emissary",
-    "banner": "Emissary.png",
-    "description": "Welcome to the Praetorium. You are an Emissary.\n\nTraits and abilities:\n- Impart: Every night, you may impart with a member of the Praetorium to recruit them to a special chat.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
-  }],
-
-  "zealot": [{
-    "name": "Zealot",
-    "banner": "Zealot.png",
-    "description": "Welcome to the Praetorium. You are a Zealot.\n\nTraits and abilities:\n- Foresight (passive): At the beginning of each day, you will learn if the Praetor's recruitment was successful. If the Praetor's recruitment was unsuccessful, you will learn the name of the person who blocked it.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+    "description": "Welcome to the Praetorium. You are the Praetor.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Conversion: Each night phase, you may convert a player to turn them into a recruited member of the Praetorium\n- Reveal: You are publicly revealed to be the Praetor at the start of the game.\n- Invincible: You cannot be killed by any means so long as a member of your cabinet is alive.\n- Lynchproof: You cannot be lynched.\n- Roleblock and kidnap-proof: You cannot be roleblocked or kidnapped.\n\nWin condition:\n- You win when everyone alive is Praetorium-aligned, there are fewer than three recruited Praetorium members, and all secondary threats to the Praetorium have been destroyed."
   }],
 
   "cleric": [{
     "name": "Cleric",
     "banner": "Cleric.png",
-    "description": "Welcome to the Praetorium. You are a Cleric.\n\nTraits and abilities:\n- Sacrifice: Every night, you may attempt to kill a recruited member of the Praetorium.\nFactional Communication: You may communicate with members of the Praetorium Cabinet every night in private.\n\nWin condition:\n- You win when every single member alive is aligned to the Praetorium, with no more than three recruited members, in which case you will lose."
+    "description": "Welcome to the Praetorium. You are a Cleric.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Sacrifice: Every night, you may attempt to kill a recruited member of the Praetorium.\n\nWin condition:\n- You win when everyone alive is Praetorium-aligned, there are fewer than three recruited Praetorium members, and all secondary threats to the Praetorium have been destroyed."
+  }],
+
+  "quaestor": [{
+    "name": "Quaestor",
+    "banner": "Quaestor.png",
+    "description": "Welcome to the Praetorium. You are a Quaestor.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Ordain: Every night, you may ordain a player to prevent them from using their night action, effectively roleblocking them.\n- Cloak: You may choose to cloak into any role and be revealed as that role upon your death, unless you are shot by a Dayshooter, in which your true role will be revealed at the end of the day.\n\nWin condition:\n- You win when everyone alive is Praetorium-aligned, there are fewer than three recruited Praetorium members, and all secondary threats to the Praetorium have been destroyed."
+  }],
+
+  "emissary": [{
+    "name": "Emissary",
+    "banner": "Emissary.png",
+    "description": "Welcome to the Praetorium. You are an Emissary.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Impart: Every night, you may impart with a member of the Praetorium to recruit them to a special chat.\n\nWin condition:\n- You win when everyone alive is Praetorium-aligned, there are fewer than three recruited Praetorium members, and all secondary threats to the Praetorium have been destroyed."
+  }],
+
+  "zealot": [{
+    "name": "Zealot",
+    "banner": "Zealot.png",
+    "description": "Welcome to the Praetorium. You are a Zealot.\n\nAbilities:\n- Foresight (passive): At the beginning of each day, you will learn if the Praetor's recruitment was successful. If the Praetor's recruitment was unsuccessful, you will learn the names of everyone who visited the Praetor’s target that night without fail.\n\nWin condition:\n- You win when everyone alive is Praetorium-aligned, there are fewer than three recruited Praetorium members, and all secondary threats to the Praetorium have been destroyed."
+  }],
+
+  "arsonist": [{
+    "name": "Arsonist",
+    "banner": "Arsonist.png",
+    "description": "Welcome to the Praetorium. You are an Arsonist.\n\nAbilities:\n- Choice: During the first day, you must choose between being either Investigation Immune or 1-shot Bulletproof. Failing to do so will give you no perks.\n- Douse: Every night, you may douse a player in gasoline.\n- Ignite: Every night, you may choose to ignite instead, dealing an unstoppable attack to all doused players.\n- Apostate: You cannot be converted by the Praetorium.\n\nWin condition:\n- You win when you are the last player alive."
   }]
 
 }
