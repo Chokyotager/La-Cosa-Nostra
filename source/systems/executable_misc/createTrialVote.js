@@ -77,6 +77,11 @@ module.exports = async function (game) {
       if (roles[i].status.alive) {
         // Get display role
 
+        if (roles[i].getStatus("lynch-proof")) {
+          displays.push("<@" + roles[i].id + "> (\\✖)");
+          continue;
+        };
+
         // Get people voting against
         var voting_against = roles[i].votes;
         var concat = new Array();

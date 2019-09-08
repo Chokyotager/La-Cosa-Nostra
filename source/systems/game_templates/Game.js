@@ -220,6 +220,8 @@ module.exports = class {
 
     };
 
+    await this.__reloadTrialVoteMessage();
+
   }
 
   async instantiateTrialVoteCollector () {
@@ -413,6 +415,10 @@ module.exports = class {
 
       if (voted_singular) {
         return false;
+      };
+
+      if (voted_against.getStatus("lynch-proof")) {
+        return null;
       };
 
       var already_voting = voted_against.isVotedAgainstBy(voter.identifier);

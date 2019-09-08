@@ -101,6 +101,7 @@ module.exports = class {
 
     this.status = {
       "alive": true,
+      "lynch-proof": false,
 
       "roleblocked": false,
       "controlled": false,

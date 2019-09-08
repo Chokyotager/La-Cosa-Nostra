@@ -14,7 +14,7 @@
 		"redirection-immunity": 1,
 		"kidnap-immunity": 1,
     "priority": 5,
-    "vote-offset": -999,
+    "vote-offset": 0,
 		"vote-magnitude": 1
   },
 
