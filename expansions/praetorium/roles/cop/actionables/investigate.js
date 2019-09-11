@@ -4,8 +4,7 @@ var rs = lcn.rolesystem;
 
 var responses = {
   neutral: ":mag: Your target is __Anti-town__.",
-  cult: ":mag: Your target is __Anti-town__.",
-  mafia: ":mag: Your target is __Anti-town__.",
+  praetorium: ":mag: Your target is __Anti-town__.",
   town: ":mag: Your target is __Town__.",
 
   role: ":mag: Your target's role is **{;role}**."
