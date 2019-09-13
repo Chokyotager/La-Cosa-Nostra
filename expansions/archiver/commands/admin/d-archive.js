@@ -76,15 +76,13 @@ module.exports = async function (message, params, config) {
 
     var message_amount = new Number();
 
-    var load_message = null;
-
     // Index
     for (var i = 0; i < channels.length; i++) {
 
       var channel = channels[i];
 
       // Log
-      logger.log(2, "[Archiver] \x1b[1mSerialising %s/%s channels.\x1b[0m", i + 1, channels.length);
+      console.log("\x1b[1mSerialising %s/%s channels.\x1b[0m", i + 1, channels.length);
       var output = await serialiseChannel(channel);
 
       returnable.channels.push({
@@ -110,8 +108,8 @@ module.exports = async function (message, params, config) {
         var addable = {id: channel.guild.id, name: channel.guild.name, icon_url: channel.guild.iconURL, icon: null};
 
         if (addable.icon_url) {
-          logger.log(2, "[Archiver] Downloading profile picture of guild icon %s", channel.guild.id);
-          addable.icon = await request(addable.icon_url);
+          console.log("Downloading profile picture of guild icon %s", channel.guild.id);
+          addable.icon = await download(addable.icon_url);
         };
 
         returnable.guilds.push(addable);
@@ -128,28 +126,27 @@ module.exports = async function (message, params, config) {
         addable.id = id;
 
         if (addable.avatar) {
-          addable.avatar_displayable = await request(addable.avatar);
+          console.log("Downloading profile picture of user %s", addable.id);
+          addable.avatar_displayable = await download(addable.avatar);
         };
 
         returnable.users.push(addable);
 
       };
 
-      if (!load_message) {
-        load_message = await message.channel.send(":exclamation: Finished serialising channel **" + channel.name + "** (" + channel.id + ") [" + (i + 1)+ "/" + channels.length +"]");
-      } else {
-        await load_message.edit(":exclamation: Finished serialising channel **" + channel.name + "** (" + channel.id + ") [" + (i + 1)+ "/" + channels.length +"]");
-      };
-
     };
 
-    await message.channel.send(":exclamation: Logged " + returnable.categories.length + " category/(ies), " + returnable.channels.length + " channel(s), " + returnable.users.length + " user(s), " + message_amount + " message(s). Saving...");
-
-    logger.log(2, "[Archiver] \x1b[1mLogged %s category/(ies), %s channel(s), %s user(s), %s message(s)\x1b[0m", returnable.categories.length, returnable.channels.length, returnable.users.length, message_amount);
+    console.log("\x1b[1mLogged %s category/(ies), %s channel(s), %s user(s), %s message(s)\x1b[0m", returnable.categories.length, returnable.channels.length, returnable.users.length, message_amount);
 
     return returnable;
 
   };
+
+  /*
+  if (user.displayAvatarURL) {
+    console.log("Downloading profile picture of user %s", user.id)
+    storage.users[user.id].avatar_displayable = await request(user.displayAvatarURL);
+  };*/
 
   async function serialiseChannel (channel) {
 
@@ -164,7 +161,7 @@ module.exports = async function (message, params, config) {
 
       var message = messages[i];
 
-      if (message.createdTimestamp < truncate_time) {
+      if (message.createdTimestamp < config["truncate"]) {
         break;
       };
 
@@ -193,9 +190,9 @@ module.exports = async function (message, params, config) {
         for (var j = 0; j < attachments.length; j++) {
           var attachment = attachments[j];
 
-          logger.log(2, "[Archiver] Downloading attachment %s, %s [%s bytes]", attachment.filename, attachment.id, attachment.filesize);
+          console.log("Downloading attachment %s, %s [%s bytes]", attachment.filename, attachment.id, attachment.filesize);
 
-          var data = await request(attachment.url);
+          var data = await download(attachment.url);
           pushable.attachments.push({id: attachment.url, data: data, filename: attachment.filename, filesize: attachment.filesize});
         };
 
@@ -226,10 +223,10 @@ module.exports = async function (message, params, config) {
         id = messages[99].id;
       };
 
-      logger.log(2, "[Archiver] Indexed %s", messages[99].createdAt);
+      console.log("Indexed %s", messages[99].createdAt);
 
-      if (messages[99].createdTimestamp < truncate_time) {
-        logger.log(2, "[Archiver] Truncated.");
+      if (messages[99].createdTimestamp < config["truncate"]) {
+        console.log("Truncated.");
         break;
       };
 
@@ -244,6 +241,12 @@ module.exports = async function (message, params, config) {
     var messages = (await channel.fetchMessages({limit: 100, before: from})).array();
 
     return messages;
+
+  };
+
+  async function download (uri) {
+
+    return await request({uri: uri, encoding: null}).toString("binary");
 
   };
 
