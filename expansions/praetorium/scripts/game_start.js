@@ -9,6 +9,16 @@ module.exports = async function (game) {
     return null;
   };
 
+  game.addAction("g/praetorium/convert", ["cycle"], {
+    priority: 0.000001,
+    tags: ["system", "permanent"]
+  });
+
+  game.addAction("g/praetorium/kill", ["cycle"], {
+    priority: 0.00001,
+    tags: ["system", "permanent"]
+  });
+
   var channel_name = "cabinet";
 
   var cabinet = game.findAll(x => x.role.alignment === "praetorium");

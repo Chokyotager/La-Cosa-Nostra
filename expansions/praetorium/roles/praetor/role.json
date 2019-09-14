@@ -13,7 +13,7 @@
     "control-immunity": 1,
 		"redirection-immunity": 1,
 		"kidnap-immunity": 1,
-    "priority": 5,
+    "priority": 6,
     "vote-offset": 0,
 		"vote-magnitude": 1
   },

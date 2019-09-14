@@ -28,6 +28,8 @@ module.exports = function (actionable, game, params) {
   target.role.alignment = "praetorium";
   target.role["win-condition"] = "deviant_praetorium";
 
+  target.misc.praetorium_converted = true;
+
   game.addMessage(target, ":candle: You have been converted to be a recruited member of the Praetorium.");
 
   pushable.successful = true;

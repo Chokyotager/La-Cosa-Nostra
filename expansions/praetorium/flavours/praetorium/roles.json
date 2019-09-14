@@ -32,7 +32,7 @@
 
   "jailkeeper": [{
     "name": "Town Jailkeeper",
-    "banner": "Cop.png",
+    "banner": "Jailkeeper.png",
     "description": "Welcome to the Praetorium. You are a Town Jailkeeper.\n\nAbilities:\n- Jail: Each night phase, you may target one player in the game to jail them. All actions to and from them other than your own will fail for that night. You may not target yourself.\n\nWin condition:\n- You win when all threats to the town have been eliminated and there is at least one town player alive."
   }],
 
@@ -62,8 +62,8 @@
 
   "praetor": [{
     "name": "Praetor",
-    "banner": "Praetorium.png",
-    "description": "Welcome to the Praetorium. You are the Praetor.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Conversion: Each night phase, you may convert a player to turn them into a recruited member of the Praetorium\n- Reveal: You are publicly revealed to be the Praetor at the start of the game.\n- Invincible: You cannot be killed by any means so long as a member of your cabinet is alive.\n- Lynchproof: You cannot be lynched.\n- Roleblock and kidnap-proof: You cannot be roleblocked or kidnapped.\n\nWin condition:\n- You win when everyone alive is Praetorium-aligned, there are fewer than three recruited Praetorium members, and all secondary threats to the Praetorium have been destroyed."
+    "banner": "Praetor.png",
+    "description": "Welcome to the Praetorium. You are the Praetor.\n\nAbilities:\n- Factional Communication: Each night phase, you may communicate with your group.\n- Conversion: Each night phase, you may convert a player to turn them into a recruited member of the Praetorium\n- Reveal: You are publicly revealed to be the Praetor at the start of the game.\n- Invincible: You cannot be killed by any means so long as a member of your cabinet is alive.\n- Lynchproof: You cannot be lynched.\n- Roleblock and kidnap-proof: You cannot be roleblocked or kidnapped.\n- Astral: Your actions cannot be tracked or watched.\n\nWin condition:\n- You win when everyone alive is Praetorium-aligned, there are fewer than three recruited Praetorium members, and all secondary threats to the Praetorium have been destroyed."
   }],
 
   "cleric": [{

@@ -20,7 +20,7 @@ module.exports = function (actionable, game, params) {
   for (var i = 0; i < praetors.length; i++) {
 
     var praetor = praetors[i];
-    var log = praetors.misc.find(x => x.interval = game.period - 1);
+    var log = praetor.misc.find(x => x.interval = game.period - 1);
 
     if (!log) {
       continue;
