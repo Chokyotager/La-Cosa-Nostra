@@ -6,11 +6,11 @@ module.exports = function (game) {
 
   // Non-deviant (cabinet) praetorium only
   var praetorium_members = game.findAll(x => x.role.alignment === "Praetorium");
-  var recruited_members = praetorium_members.filter(x => x.role["win-condition"] === "deviant_praetorium");
+  var recruited_members = praetorium_members.filter(x => x.role["win-condition"] === "deviant_praetorium" && x.isAlive());
 
   if (recruited_members < 5) {
 
-    var winners = praetorium_members.filter(x => x.canWin());
+    var winners = praetorium_members.concat(recruited_members).filter(x => x.canWin());
 
     // Revolutionaries win
     game.setWins(winners);
