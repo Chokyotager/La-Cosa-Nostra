@@ -59,7 +59,7 @@ module.exports = function (playing_config) {
 
     var town_to_pick = 3;
     for (var i = 0; i < town_to_pick; i++) {
-      var role = auxils.cryptographicChoice(town_roles);
+      var role = auxils.cryptographicChoice(other_roles);
       setup.push(role);
     };
 
