@@ -4,10 +4,6 @@ var auxils = lcn.auxils;
 
 module.exports = function (actionable, game, params) {
 
-  if (!game.isDay()) {
-    return null;
-  };
-
   var cabinet_alive = game.findAll(x => x.role["win-condition"] === "praetorium" && x.isAlive());
 
   if (cabinet_alive.filter(x => x.role_identifier !== "praetor").length < 1) {
