@@ -15,7 +15,7 @@ module.exports = function (actionable, game, params) {
     case "bulletproof":
       arsonist.addAttribute("protection", Infinity, {amount: 2});
       arsonist.misc.can_pick = false;
-      channel.send(":exclamation: You have chosen the 1-shot bulletproof perk.");
+      channel.send(":exclamation: You have chosen the 2-shot bulletproof perk.");
       break;
 
     case "investigation":

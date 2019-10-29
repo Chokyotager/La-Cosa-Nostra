@@ -11,6 +11,6 @@ module.exports = function (player) {
 
   player.misc.can_pick = true;
 
-  player.addIntroMessage(":exclamation: Please pick a perk before the day ends.\n\n:exclamation: Enter `" + player.game.config["command-prefix"] + "pick <bulletproof/investigation>` to do so. This action is irreversible and failure to do so before the day ends will result in a perk forfeit.\n\n:one: **Bulletproof** - 1-Shot Bulletproof\n:two: **Investigation** - Investigation Immunity");
+  player.addIntroMessage(":exclamation: Please pick a perk before the day ends.\n\n:exclamation: Enter `" + player.game.config["command-prefix"] + "pick <bulletproof/investigation>` to do so. This action is irreversible and failure to do so before the day ends will result in a perk forfeit.\n\n:one: **Bulletproof** - 2-Shot Bulletproof\n:two: **Investigation** - Investigation Immunity");
 
 };
