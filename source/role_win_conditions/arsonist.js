@@ -2,15 +2,23 @@ var auxils = require("../systems/auxils.js");
 
 module.exports = function (game) {
 
-  game.getLogChannel().send("**Arsonist wins.**");
+  var alive = game.findAll(x => x.isAlive());
+  var arsonist = game.findAll(x => x.role_identifier === "arsonist" && x.isAlive());
 
-  // Have to manually set the win
-  var winners = game.findAll(x => x.role_identifier === "arsonist" && x.isAlive() && x.canWin());
+  if (arsonist.length >= (alive.length / 2)) {
 
-  game.setWins(winners);
+    var winners = arsonist.filter(x => x.canWin());
 
-  game.getMainChannel().send(auxils.getAssetAttachment("arsonist-wins.png"));
-  game.primeWinLog("arsonist", "Wearing a half-smile as an expression, the Arsonist has burned the Town into oblivion.");
+    game.setWins(winners);
+    game.getMainChannel().send(auxils.getAssetAttachment("arsonist-wins.png"));
+    game.primeWinLog("arsonist", "Wearing a half-smile as an expression, the Arsonist has burned the Town into oblivion.");
+
+    /* Return true to stop the game/checks
+    depending on the configuration below. */
+
+    return true;
+
+  };
 
   /* Return true to stop the game/checks
   depending on the configuration below. */
