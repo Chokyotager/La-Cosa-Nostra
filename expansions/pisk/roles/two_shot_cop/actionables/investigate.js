@@ -30,6 +30,9 @@ module.exports = function (actionable, game, params) {
     if (target.role["reveal-role-on-interrogation"] === true) {
       var response = responses["role"].replace(new RegExp("{;role}", "g"), target.role["role-name"]);;
       game.addMessage(from, response);
+    } else if (target.role_identifier === "miller") {
+      var response = responses["mafia"];
+      game.addMessage(from, response);
     } else {
       var response = responses[target.role.alignment];
       game.addMessage(from, response ? response : responses["town"]);
