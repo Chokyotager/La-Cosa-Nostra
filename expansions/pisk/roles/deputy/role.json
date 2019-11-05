@@ -1,5 +1,5 @@
 {
-  "role-name": "Town 2-Shot Cop",
+  "role-name": "Town Deputy",
 
   "alignment": "town",
   "class": "unclassified",
@@ -18,8 +18,10 @@
 		"vote-magnitude": 1
   },
 
-  "investigation": ["Town 2-Shot Cop"],
+  "investigation": ["Deputy"],
   "secondary-roles": null,
+
+  "tags": [],
 
   "reveal-role-on-interrogation": false,
 
