@@ -1,7 +1,7 @@
 {
   "role-name": "Mafia Jailer",
 
-  "alignment": "town",
+  "alignment": "mafia",
   "class": "unclassified",
 
   "see-mafia-chat": false,
