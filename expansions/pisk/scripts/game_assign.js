@@ -15,8 +15,8 @@ var town_configuration = {
   },
 
   "I": {
-    "1": ["2_shot_cop"],
-    "2": ["2_shot_cop"],
+    "1": ["two_shot_cop"],
+    "2": ["two_shot_cop"],
     "3": ["cop"],
     "4": ["cop", "miller"],
     "5": ["cop", "deputy", "miller"],
@@ -50,13 +50,13 @@ var mafia_configuration = [
   {letter: "I", minimum: 3, role: "mafia_godfather"},
   {letter: "S", minimum: 5, role: "mafia_rolecop"},
   {letter: "K", minimum: 5, role: "mafia_bulletproof"},
-  {letter: "P", minimum: 3, role: "mafia_hooker"}
+  {letter: "P", minimum: 3, role: "mafia_hooker"},
   {letter: "S", minimum: 3, role: "mafia_two_shot_janitor"},
   {letter: "I", minimum: 2, role: "mafia_neapolitan"},
   {letter: "K", minimum: 3, role: "mafia_doctor"}
 ];
 
-var fields = Object.keys(field);
+var fields = Object.keys(town_configuration);
 
 module.exports = function (playing_config) {
 
@@ -76,7 +76,7 @@ module.exports = function (playing_config) {
     var numeral = Math.ceil(auxils.cryptoRandom() * fields.length);
 
     // Add roles
-    setup = setup.concat(field[numeral]);
+    setup = setup.concat(town_configuration[field][numeral.toString()]);
     letters = letters.concat(numeral);
 
   };
@@ -134,7 +134,7 @@ module.exports = function (playing_config) {
 
   };
 
-  while (mafia_prs < 1) {
+  while (mafia_prs > 0) {
     setup.push("mafia_goon");
     mafia_prs--;
   };
@@ -143,6 +143,8 @@ module.exports = function (playing_config) {
   var townies = new Array(16 - setup.length).fill("vanilla_townie");
 
   logger.log(2, "[PISK] Running setup: {%s}", auxils.pettyFormat(setup));
+
+  setup = setup.concat(townies);
 
   var override = {roles: setup, flavour: "pisk"};
 

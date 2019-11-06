@@ -2,7 +2,7 @@
 
   "messages": {
 
-    "game-start": "**Welcome to C9++.**\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
+    "game-start": "**Welcome to PISK.**\nThis is the general chat channel and the primary platform for gameplay discussion. All players are able to see this channel.",
     "whisper-log": "**This is the Billboard.**\n\nThis channel is normally used for whispers, but since whispers are disabled in this game, this channel has become a secondary discussion channel. Players are advised to direct the purpose of this channel to suit their needs.",
     "mafia": "**This is the Mafia Chat.**\n\nThis channel is only open at night for members of the Mafia to communicate.",
 
@@ -11,8 +11,8 @@
     "nighttime-quote": "**Night has descended. This chat is now locked until Daytime starts. Remember to use your night actions if you intend to!**",
     "no-summary": "*Nothing of interest happened.*",
 
-    "singular-lynch": ":skull_crossbones: {;player} is dragged to the gallows. Blood spurts all over the place as the carotid artery disintegrates. They have been lynched.",
-    "plural-lynch": ":skull_crossbones: {;players} is dragged to the gallows. Blood spurts everywhere. They have been lynched.",
+    "singular-lynch": ":skull_crossbones: {;player} is dragged, screaming and struggling to the shooting range. Within half a second, a dozen live rounds were fired simultaneously, putting obvious puncture holes in their chest.",
+    "plural-lynch": ":skull_crossbones: {;players} are dragged, screaming and struggling to the shooting range. Within half a second, a dozen live rounds were fired simultaneously, putting obvious puncture holes in their chests.",
     "abstain-lynch": "**The Town has abstained on lynches for the day.**",
 
     "game-over": "**Game over!**\n\nThis channel is now open to everyone who has participated in the game."

@@ -3,168 +3,168 @@
     {
       "name": "Bulletproof",
       "banner": "Town Bulletproof.png",
-      "description": "bulletproof,Bulletproof,Town Bulletproof.png\\nWelcome to PISK. You are a Town Bulletproof.\\n\\nAbilities:\\n-Bulletproof: You will not die from lethal attacks.\\n-1-shot: You can only use your ability once during the game.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Bulletproof.\n\nAbilities:\n-Bulletproof: You will not die from lethal attacks.\n-1-shot: You can only use your ability once during the game.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "bodyguard": [
     {
       "name": "Bodyguard",
       "banner": "Town Bodyguard.png",
-      "description": "bodyguard,Bodyguard,Town Bodyguard.png\\nWelcome to PISK. You are a Town Bodyguard.\\n\\nAbilities:\\n-Bodyguard: During the nights you may visit a player, if that player is attacked you will die in their place\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Bodyguard.\n\nAbilities:\n-Bodyguard: During the nights you may visit a player, if that player is attacked you will die in their place\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "doctor": [
     {
       "name": "Doctor",
       "banner": "Town Doctor.png",
-      "description": "doctor,Doctor,Town Doctor.png\\nWelcome to PISK. You are a Town Doctor.\\n\\nAbilities:\\n-Protect: During the nights you may visit a player and protect that player from all lethal attacks.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Doctor.\n\nAbilities:\n-Protect: During the nights you may visit a player and protect that player from all lethal attacks.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "two_shot_cop": [
     {
       "name": "Town 2-Shot Cop",
       "banner": "Town 2-Shot Cop.png",
-      "description": "two_shot_cop,Town 2-Shot Cop,Town 2-Shot Cop.png\\nWelcome to PISK. You are a Town 2-Shot Cop.\\n\\nAbilities:\\n-Investigate: During the night you may visit a player and get a report on their alignment in the form of “Guilty”, “Not-Guilty” or “No Result”.\\n-2-shot: You may only use your ability twice during the game.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town 2-Shot Cop.\n\nAbilities:\n-Investigate: During the night you may visit a player and get a report on their alignment in the form of “Guilty”, “Not-Guilty” or “No Result”.\n-2-shot: You may only use your ability twice during the game.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "cop": [
     {
       "name": "Town Cop",
       "banner": "Town Cop.png",
-      "description": "cop,Town Cop,Town Cop.png\\nWelcome to PISK. You are a Town Cop.\\n\\nAbilities:\\n-Investigate: During the night you may visit a player and get a report on their alignment in the form of “Guilty”, “Not-Guilty” or “No Result”.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Cop.\n\nAbilities:\n-Investigate: During the night you may visit a player and get a report on their alignment in the form of “Guilty”, “Not-Guilty” or “No Result”.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "deputy": [
     {
       "name": "Town Deputy",
       "banner": "Town Deputy.png",
-      "description": "deputy,Town Deputy,Town Deputy.png\\nWelcome to PISK. You are a Town Deputy.\\n\\nAbilities:\\n-Investigate: During the night you may visit a player and get a report on their alignment in the form of “Guilty”, “Not-Guilty” or “Proven”.\\n-Deputy: You may not use your ability until the cop has died.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Deputy.\n\nAbilities:\n-Investigate: During the night you may visit a player and get a report on their alignment in the form of “Guilty”, “Not-Guilty” or “Proven”.\n-Deputy: You may not use your ability until the cop has died.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "tracker": [
     {
       "name": "Town Tracker",
       "banner": "Town Tracker.png",
-      "description": "tracker,Town Tracker,Town Tracker.png\\nWelcome to PISK. You are a Town Tracker.\\n\\nAbilities:\\n-Track: During the night you may visit a player and will get a report of who they visit during the night.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Tracker.\n\nAbilities:\n-Track: During the night you may visit a player and will get a report of who they visit during the night.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "watcher": [
     {
       "name": "Town Watcher",
       "banner": "Town Watcher.png",
-      "description": "watcher,Town Watcher,Town Watcher.png\\nWelcome to PISK. You are a Town Watcher.\\n\\nAbilities:\\n-Watch: During the night you may visit a player and will get a report of who visits that player.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Watcher.\n\nAbilities:\n-Watch: During the night you may visit a player and will get a report of who visits that player.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "bomb": [
     {
       "name": "Town Bomb",
       "banner": "Town Bomb.png",
-      "description": "bomb,Town Bomb,Town Bomb.png\\nWelcome to PISK. You are a Town Bomb.\\n\\nAbilities:\\n-Bomb: If you are killed during the night, you will kill your killer.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Bomb.\n\nAbilities:\n-Bomb: If you are killed during the night, you will kill your killer.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "one_shot_vigilante": [
     {
       "name": "Town 1-Shot Vigilante",
       "banner": "Town 1-Shot Vigilante.png",
-      "description": "one_shot_vigilante,Town 1-Shot Vigilante,Town 1-Shot Vigilante.png\\nWelcome to PISK. You are a Town 1-Shot Vigilante.\\n\\nAbilities:\\n-Kill: During the night you may kill a player.\\n-1-shot: You may only use your ability once during the game\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town 1-Shot Vigilante.\n\nAbilities:\n-Kill: During the night you may kill a player.\n-1-shot: You may only use your ability once during the game\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "two_shot_vigilante": [
     {
       "name": "Town 2-Shot Vigilante",
       "banner": "Town 2-Shot Vigilante.png",
-      "description": "two_shot_vigilante,Town 2-Shot Vigilante,Town 2-Shot Vigilante.png\\nWelcome to PISK. You are a Town 2-Shot Vigilante.\\n\\nAbilities:\\n-Kill: During the night you may kill a player.\\n-2-shot: You may only use your ability twice during the game\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town 2-Shot Vigilante.\n\nAbilities:\n-Kill: During the night you may kill a player.\n-2-shot: You may only use your ability twice during the game\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "vigilante": [
     {
       "name": "Town Vigilante",
       "banner": "Town Vigilante.png",
-      "description": "vigilante,Town Vigilante,Town Vigilante.png\\nWelcome to PISK. You are a Town Vigilante.\\n\\nAbilities:\\n-Kill: During the night you may kill a player.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Town Vigilante.\n\nAbilities:\n-Kill: During the night you may kill a player.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "vanilla_townie": [
     {
       "name": "Vanilla Townie",
       "banner": "Vanilla Townie.png",
-      "description": "vanilla_townie,Vanilla Townie,Vanilla Townie.png\\nWelcome to PISK. You are a Vanilla Townie.\\n\\nAbilities:\\n-You have no special abilities; your ability is your vote and voice.\\n\\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+      "description": "Welcome to PISK. You are a Vanilla Townie.\n\nAbilities:\n-You have no special abilities; your ability is your vote and voice.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
   "mafia_strongman": [
     {
       "name": "Mafia Strongman",
       "banner": "Mafia Strongman.png",
-      "description": "mafia_strongman,Mafia Strongman,Mafia Strongman.png\\nWelcome to PISK. You are a Mafia Strongman.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Strongkill: You may use the factional kill in addition to your strongkill ability to kill a player, no matter what.\\n2-shot: You may only use your ability twice during the game.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Strongman.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Strongkill: You may use the factional kill in addition to your strongkill ability to kill a player, no matter what.\n2-shot: You may only use your ability twice during the game.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_godfather": [
     {
       "name": "Mafia Godfather",
       "banner": "Mafia Godfather.png",
-      "description": "mafia_godfather,Mafia Godfather,Mafia Godfather.png\\nWelcome to PISK. You are a Mafia Godfather.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Godfather: On Cop reports you show up as “Not-Guilty”.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Godfather.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Godfather: On Cop reports you show up as “Not-Guilty”.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_hooker": [
     {
       "name": "Mafia Hooker",
       "banner": "Mafia Hooker.png",
-      "description": "mafia_hooker,Mafia Hooker,Mafia Hooker.png\\nWelcome to PISK. You are a Mafia Hooker.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Roleblock: During the night you may roleblock a player, which will block their action during the night.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Hooker.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Roleblock: During the night you may roleblock a player, which will block their action during the night.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_bulletproof": [
     {
       "name": "Mafia Bulletproof",
       "banner": "Mafia Bulletproof.png",
-      "description": "mafia_bulletproof,Mafia Bulletproof,Mafia Bulletproof.png\\nWelcome to PISK. You are a Mafia Bulletproof.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Bulletproof: You will not die from lethal attacks.\\n-1-shot: You can only use your ability once during the game.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Bulletproof.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Bulletproof: You will not die from lethal attacks.\n-1-shot: You can only use your ability once during the game.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_jailer": [
     {
       "name": "Mafia Jailer",
       "banner": "Mafia Jailer.png",
-      "description": "mafia_jailer,Mafia Jailer,Mafia Jailer.png\\nWelcome to PISK. You are a Mafia Jailer.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Jail: During the night you may Jail a player, which will make that player blocked and untargetable.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Jailer.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Jail: During the night you may Jail a player, which will make that player blocked and untargetable.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_two_shot_janitor": [
     {
       "name": "Mafia 2-Shot Janitor",
       "banner": "Mafia 2-Shot Janitor.png",
-      "description": "mafia_two_shot_janitor,Mafia 2-Shot Janitor,Mafia 2-Shot Janitor.png\\nWelcome to PISK. You are a Mafia 2-Shot Janitor.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Janitor: You may use the factional kill in addition to your janitor ability to make a player’s role not show up upon death if they die that night.\\n-2-shot: You may only use your ability twice during the game.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia 2-Shot Janitor.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Janitor: You may use the factional kill in addition to your janitor ability to make a player’s role not show up upon death if they die that night.\n-2-shot: You may only use your ability twice during the game.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_neapolitan": [
     {
       "name": "Mafia Neapolitan",
       "banner": "Mafia Neapolitan.png",
-      "description": "mafia_neapolitan,Mafia Neapolitan,Mafia Neapolitan.png\\nWelcome to PISK. You are a Mafia Neapolitan.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Neapolitan: During the night you may investigate a player and decide if they’re Vanilla Townie or not.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Neapolitan.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Neapolitan: During the night you may investigate a player and decide if they’re Vanilla Townie or not.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_doctor": [
     {
       "name": "Mafia Doctor",
       "banner": "Mafia Doctor.png",
-      "description": "mafia_doctor,Mafia Doctor,Mafia Doctor.png\\nWelcome to PISK. You are a Mafia Doctor.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Protect: During the nights you may visit a player and protect that player from all lethal attacks.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Doctor.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Protect: During the nights you may visit a player and protect that player from all lethal attacks.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_rolecop": [
     {
       "name": "Mafia Rolecop",
       "banner": "Mafia Rolecop.png",
-      "description": "mafia_rolecop,Mafia Rolecop,Mafia Rolecop.png\\nWelcome to PISK. You are a Mafia Rolecop.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Role-Investigate: During the night you may visit a player and get a report on what the role they possess.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Rolecop.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Role-Investigate: During the night you may visit a player and get a report on what the role they possess.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "mafia_watcher": [
     {
       "name": "Mafia Watcher",
       "banner": "Mafia Watcher.png",
-      "description": "mafia_watcher,Mafia Watcher,Mafia Watcher.png\\nWelcome to PISK. You are a Mafia Watcher.\\n\\nAbilities:\\n-Factional kill: During the night one of the faction-members may kill a player.\\n-Factional Communication: During the night you may communicate with your faction-members.\\n-Watch: During the night you may visit a player and will get a report of who visits that player.\\n-Unwatchable: As long as you use your watch-ability, you will not appear in any report made by other Watcher.\\n\\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+      "description": "Welcome to PISK. You are a Mafia Watcher.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n-Watch: During the night you may visit a player and will get a report of who visits that player.\n-Unwatchable: As long as you use your watch-ability, you will not appear in any report made by other Watcher.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
     }
   ],
   "serial_killer": [
     {
       "name": "Serial Killer",
       "banner": "Serial Killer.png",
-      "description": "serial_killer,Serial Killer,Serial Killer.png\\nWelcome to PISK. You are a Serial Killer.\\n\\nAbilities:\\n-Kill: During the night you may kill a player.\\n-Choice: During the first day you must choose between either revealing as “Not-Guilty” on Cop Reports or being 1-shot Bulletproof.\\n\\nWin Condition: You are one of the last player alive, or nothing can stop you from becoming it."
+      "description": "Welcome to PISK. You are a Serial Killer.\n\nAbilities:\n-Kill: During the night you may kill a player.\n-Choice: During the first day you must choose between either revealing as “Not-Guilty” on Cop Reports or being 1-shot Bulletproof.\n\nWin Condition: You are one of the last player alive, or nothing can stop you from becoming it."
     }
   ]
 }

@@ -1,5 +1,7 @@
-var rs = require("../../../rolesystem/rolesystem.js");
-var auxils = require("../../../systems/auxils.js");
+var lcn = require("../../../../../source/lcn.js");
+
+var rs = lcn.rolesystem;
+var auxils = lcn.auxils;
 
 module.exports = function (actionable, game, params) {
 
