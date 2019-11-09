@@ -1,0 +1,10 @@
+{
+
+  "thumbnail": "https://i.pinimg.com/originals/cc/ce/39/ccce39889a243dc8c5f4fc22892167b5.jpg",
+
+  "abilities": ["Choose to convert a player at night once during the game"],
+
+  "attributes": ["Will die after converting a player",
+                 "Player will be converted to a Pyromaniac"]
+
+}

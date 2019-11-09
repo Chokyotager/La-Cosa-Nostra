@@ -1,0 +1,5 @@
+You are what they call "kamikaze".
+
+Once during the game at night, you may convert a player to become Mafia. You will die if the conversion is successful.
+
+The converted player will turn into a Pyromaniac.
