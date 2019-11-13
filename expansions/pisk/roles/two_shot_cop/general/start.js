@@ -2,7 +2,7 @@
 
 module.exports = function (player) {
 
-  player.game.addAction("one_shot_cop/roleblock_noresult", ["roleblock"], {
+  player.game.addAction("two_shot_cop/roleblock_noresult", ["roleblock"], {
     from: player,
     to: player,
     expiry: Infinity,

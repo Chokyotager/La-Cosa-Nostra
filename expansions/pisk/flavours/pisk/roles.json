@@ -90,6 +90,13 @@
       "description": "Welcome to PISK. You are a Vanilla Townie.\n\nAbilities:\n-You have no special abilities; your ability is your vote and voice.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
+  "mafia_goon": [
+    {
+      "name": "Mafia Goon",
+      "banner": "Mafia Goon.png",
+      "description": "Welcome to PISK. You are a Mafia Goon.\n\nAbilities:\n-Factional kill: During the night one of the faction-members may kill a player.\n-Factional Communication: During the night you may communicate with your faction-members.\n\nWin Condition: You win when the Mafia controls at least half of the votes, and all the threats to the Mafia has been eliminated."
+    }
+  ],
   "mafia_strongman": [
     {
       "name": "Mafia Strongman",
@@ -166,5 +173,5 @@
       "banner": "Serial Killer.png",
       "description": "Welcome to PISK. You are a Serial Killer.\n\nAbilities:\n-Kill: During the night you may kill a player.\n-Choice: During the first day you must choose between either revealing as “Not-Guilty” on Cop Reports or being 1-shot Bulletproof.\n\nWin Condition: You are one of the last player alive, or nothing can stop you from becoming it."
     }
-  ]
+  ],
 }
