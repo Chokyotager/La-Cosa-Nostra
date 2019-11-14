@@ -173,5 +173,5 @@
       "banner": "Serial Killer.png",
       "description": "Welcome to PISK. You are a Serial Killer.\n\nAbilities:\n-Kill: During the night you may kill a player.\n-Choice: During the first day you must choose between either revealing as “Not-Guilty” on Cop Reports or being 1-shot Bulletproof.\n\nWin Condition: You are one of the last player alive, or nothing can stop you from becoming it."
     }
-  ],
+  ]
 }
