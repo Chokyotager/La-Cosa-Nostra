@@ -37,7 +37,7 @@ module.exports = async function (message, params, config) {
   var savable = JSON.stringify(output);
   savable = zlib.deflateSync(savable);
 
-  fs.writeFileSync(save_directory, savable.toString("base64"));
+  fs.writeFileSync(save_directory, savable);
   var file_size = fs.statSync(save_directory).size / 1000000;
 
   logger.log(2, "[Archiver] Saved file to %s [%s MB]", save_directory, file_size);
