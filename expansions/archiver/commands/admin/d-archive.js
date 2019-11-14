@@ -38,7 +38,7 @@ module.exports = async function (message, params, config) {
   savable = zlib.deflateSync(savable);
 
   fs.writeFileSync(save_directory, savable);
-  var file_size = fs.statSync(save_directory).size / 1000000;
+  var file_size = fs.statSync(save_directory).size / 100000;
 
   logger.log(2, "[Archiver] Saved file to %s [%s MB]", save_directory, file_size);
 
@@ -178,7 +178,7 @@ module.exports = async function (message, params, config) {
         storage.users[user.id] = {
           username: user.username,
           discriminator: user.discriminator,
-          avatar: user.displayAvatarURL,
+          avatar: user.displayAvatarURL.replace(/\?size=[0-9]{1,}/g, "?size=128"),
           bot: user.bot,
           avatar_displayable: null,
           display_name: member ? member.displayName : null,
@@ -251,7 +251,12 @@ module.exports = async function (message, params, config) {
 
   async function download (uri) {
 
-    return await request({uri: uri, encoding: null}).toString("binary");
+    try {
+      return await request({uri: url, encoding: null});
+    } catch (err) {
+      console.log("Error downloading %s, skipping", url);
+      return null;
+    };
 
   };
 
