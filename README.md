@@ -1,7 +1,7 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://github.com/Chokyotager/La-Cosa-Nostra"><img src="/display/generic-banner.png" alt="banner" /></a>
+    <a href="https://github.com/Chokyotager/La-Cosa-Nostra"><img src="/display/generic-banner-2.png" alt="banner" /></a>
   </p>
   <br />
   <p>
