@@ -560,6 +560,10 @@ module.exports = class {
 
     this.role = executable.roles.getRole(this.role_identifier);
 
+    if (!this.role.tags) {
+      this.role.tags = new Array();
+    };
+
   }
 
   instantiateFlavour () {

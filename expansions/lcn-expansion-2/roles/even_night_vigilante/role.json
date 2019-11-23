@@ -18,10 +18,8 @@
 		"vote-magnitude": 1
   },
 
-  "investigation": ["Coroner", "Sheriff", "Revolutionary"],
+  "investigation": [],
   "secondary-roles": null,
-
-  "tags": ["deputy_replaceable"],
 
   "reveal-role-on-interrogation": false,
 
