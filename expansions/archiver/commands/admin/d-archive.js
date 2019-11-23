@@ -245,7 +245,7 @@ module.exports = async function (message, params, config) {
 
     var messages = (await channel.fetchMessages({limit: 100, before: from})).array();
 
-    return messages;
+    return messages.reverse();
 
   };
 
