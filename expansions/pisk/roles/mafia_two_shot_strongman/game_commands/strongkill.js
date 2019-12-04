@@ -12,7 +12,7 @@ module.exports = function (game, message, params) {
   // Run checks, etc
 
   if (params[0] === undefined) {
-    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "roleblock <alphabet/username/nobody>` instead!");
+    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "strongkill <alphabet/username/nobody>` instead!");
     return null;
   };
 

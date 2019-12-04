@@ -14,7 +14,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":no_entry_sign: You may roleblock a player tonight instead of using the factional kill.\n\nUse `" + config["command-prefix"] + "roleblock <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":no_entry: You may strongkill a player tonight instead of using the factional kill.\n\nUse `" + config["command-prefix"] + "strongkill <alphabet/name/nobody>` to select your target.");
 
 };
 
