@@ -252,9 +252,9 @@ module.exports = async function (message, params, config) {
   async function download (uri) {
 
     try {
-      return await request({uri: url, encoding: null});
+      return await request({uri: uri, encoding: null});
     } catch (err) {
-      console.log("Error downloading %s, skipping", url);
+      console.log("Error downloading %s, skipping", uri);
       return null;
     };
 
