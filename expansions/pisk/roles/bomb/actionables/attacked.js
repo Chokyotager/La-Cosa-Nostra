@@ -13,7 +13,7 @@ module.exports = function (actionable, game, params) {
   var temp_defense = attacked.getTemporaryStats()["basic-defense"];
 
   var cond1 = strength <= defense;
-  var cond2 = defense >= temp_defense;
+  var cond2 = strength <= temp_defense;
 
   if (cond1 && cond2) {
 
@@ -23,4 +23,3 @@ module.exports = function (actionable, game, params) {
   };
 
 };
-module.exports.INSTANT_FOR_DAY = true;
