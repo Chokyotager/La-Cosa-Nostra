@@ -90,6 +90,13 @@
       "description": "Welcome to PISK. You are a Vanilla Townie.\n\nAbilities:\n-You have no special abilities; your ability is your vote and voice.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
     }
   ],
+  "miller": [
+    {
+      "name": "Vanilla Townie",
+      "banner": "Vanilla Townie.png",
+      "description": "Welcome to PISK. You are a Vanilla Townie.\n\nAbilities:\n-You have no special abilities; your ability is your vote and voice.\n\nWin Condition: You win when all threats to town has been eliminated and there is at least one member of town left."
+    }
+  ],
   "mafia_goon": [
     {
       "name": "Mafia Goon",
