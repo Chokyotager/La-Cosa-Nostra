@@ -166,7 +166,7 @@ module.exports = async function (message, params, config) {
 
       var message = messages[i];
 
-      if (message.createdTimestamp < config["truncate"]) {
+      if (message.createdTimestamp < truncate_time) {
         break;
       };
 
@@ -230,7 +230,7 @@ module.exports = async function (message, params, config) {
 
       console.log("Indexed %s", messages[99].createdAt);
 
-      if (messages[99].createdTimestamp < config["truncate"]) {
+      if (messages[99].createdTimestamp < truncate_time) {
         console.log("Truncated.");
         break;
       };
@@ -245,7 +245,7 @@ module.exports = async function (message, params, config) {
 
     var messages = (await channel.fetchMessages({limit: 100, before: from})).array();
 
-    return messages.reverse();
+    return messages;
 
   };
 
