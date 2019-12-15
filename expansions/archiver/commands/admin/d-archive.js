@@ -18,6 +18,7 @@ module.exports = async function (message, params, config) {
 
   if (!params[0].endsWith(".dsave")) {
     await message.channel.send(":x: The name of the save directory should end with `.dsave`!");
+    return null;
   };
 
   var truncate_time = params[1] * 1000;
