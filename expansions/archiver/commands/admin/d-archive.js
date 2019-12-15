@@ -16,10 +16,14 @@ module.exports = async function (message, params, config) {
     return null;
   };
 
+  if (!params[0].endsWith(".dsave")) {
+    await message.channel.send(":x: The name of the save directory should end with `.dsave`!");
+  };
+
   var truncate_time = params[1] * 1000;
   var channel_ids = params.splice(2, Infinity);
 
-  await message.channel.send(":hourglass_flowing_sand: Archiving the channels into a file. Please be patient.");
+  var status_message = await message.channel.send(":hourglass_flowing_sand: Archiving the channels into a file. Please be patient. [*Initialising*]");
 
   var start_time = new Date();
 
@@ -83,6 +87,7 @@ module.exports = async function (message, params, config) {
 
       // Log
       console.log("\x1b[1mSerialising %s/%s channels.\x1b[0m", i + 1, channels.length);
+      await status_message.edit(":hourglass_flowing_sand: Archiving the channels into a file. Please be patient. [**" + (i + 1) + "/" + channels.length + "**]");
       var output = await serialiseChannel(channel);
 
       returnable.channels.push({
