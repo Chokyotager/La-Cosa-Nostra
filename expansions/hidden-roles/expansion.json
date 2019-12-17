@@ -1,0 +1,25 @@
+{
+
+  "name": "Hidden Roles",
+  "type": "Expansion",
+  "description": "Hides the roles of all players in the main logbook upon death.",
+
+  "link": null,
+
+  "authors": ["ChocoParrot"],
+
+  "overrides": {
+
+    "flavours": [],
+
+    "role_win_conditions": [],
+
+    "roles": [],
+
+    "attributes": []
+
+  },
+
+  "dependencies": []
+
+}
