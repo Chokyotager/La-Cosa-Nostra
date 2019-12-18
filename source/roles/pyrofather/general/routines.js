@@ -1,11 +1,9 @@
-var lcn = require("../../../../../source/lcn.js");
+var auxils = require("../../../systems/auxils.js");
 
 // Routines
 // Runs every cycle
 
 // Function should be synchronous
-
-var auxils = lcn.auxils;
 
 module.exports = function (player) {
 

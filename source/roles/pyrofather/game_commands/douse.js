@@ -1,8 +1,4 @@
-var lcn = require("../../../../../source/lcn.js");
-
-// Register heal
-
-var rs = lcn.rolesystem;
+var rs = require("../../../rolesystem/rolesystem.js");
 
 module.exports = function (game, message, params) {
 
