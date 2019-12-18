@@ -19,6 +19,7 @@
     "roles": [
       "-lcn/*",
       "*/pyromaniac",
+      "*/pyrofather",
       "*/marksman",
       "*/investigator",
       "*/escort",
