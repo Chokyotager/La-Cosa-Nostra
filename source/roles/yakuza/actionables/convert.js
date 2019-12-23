@@ -16,7 +16,7 @@ module.exports = function (actionable, game, params) {
 
   // Kill the yakuza
   rs.prototypes.unstoppableAttack.reason = "found having committed suicide from a __conversion__";
-  rs.prototypes.unstoppableAttack({to: actionable.from, from: actionable.to}, game, params);
+  rs.prototypes.unstoppableAttack({to: actionable.from, from: actionable.from}, game, params);
 
 };
 
