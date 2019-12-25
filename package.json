@@ -28,8 +28,8 @@
   "dependencies": {
     "discord.js": "~11.5.0",
     "request": "~2.88.0",
-    "request-promise": "4.2.4",
-    "semver": "~6.3.0"
+    "request-promise": "~4.2.5",
+    "semver": "~7.1.1"
   },
   "engines": {
     "node": ">=10.15.0"
