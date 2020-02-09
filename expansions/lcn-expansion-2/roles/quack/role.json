@@ -1,5 +1,5 @@
 {
-  "role-name": "Ice Cream Man",
+  "role-name": "Quack",
 
   "alignment": "mafia",
   "class": "support",
@@ -13,13 +13,15 @@
     "control-immunity": 0,
 		"redirection-immunity": 0,
 		"kidnap-immunity": 0,
-    "priority": 4,
+    "priority": 3,
     "vote-offset": 0,
 		"vote-magnitude": 1
   },
 
-  "investigation": ["Ice Cream Man"],
+  "investigation": ["Doctor", "Quack", "Serial Killer"],
   "secondary-roles": null,
+
+  "tags": [],
 
   "reveal-role-on-interrogation": false,
 

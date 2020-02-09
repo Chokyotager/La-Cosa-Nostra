@@ -1,0 +1,11 @@
+{
+
+  "thumbnail": null,
+
+  "abilities": ["Protect a player at night"],
+
+  "attributes": ["Grants a Powerful defense",
+                "Removes poison",
+                "Can only protect self once"]
+
+}
