@@ -3,7 +3,9 @@
 
 // Function should be synchronous
 
-var auxils = require("../../../systems/auxils.js");
+var lcn = require("../../../../../source/lcn.js");
+
+var auxils = lcn.auxils;
 
 module.exports = function (player) {
 
