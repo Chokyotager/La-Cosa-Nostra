@@ -4,7 +4,7 @@
   "alignment": "mafia",
   "class": "support",
 
-  "see-mafia-chat": false,
+  "see-mafia-chat": true,
 
   "stats": {
     "basic-defense": 0,
