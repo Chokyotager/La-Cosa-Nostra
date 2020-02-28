@@ -1,5 +1,5 @@
 {
-  "role-name": "Quack",
+  "role-name": "Remnant",
 
   "alignment": "mafia",
   "class": "support",
@@ -13,13 +13,15 @@
     "control-immunity": 0,
 		"redirection-immunity": 0,
 		"kidnap-immunity": 0,
-    "priority": 3,
+    "priority": 5,
     "vote-offset": 0,
 		"vote-magnitude": 1
   },
 
-  "investigation": ["Doctor", "Quack", "Serial Killer"],
+  "investigation": ["Veteran", "Mafioso", "Remnant"],
   "secondary-roles": null,
+
+  "tags": [],
 
   "reveal-role-on-interrogation": false,
 
