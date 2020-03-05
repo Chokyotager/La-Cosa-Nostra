@@ -1681,7 +1681,7 @@ module.exports = class {
   getLogChannel () {
     return this.getGuild().channels.find(x => x.name === this.config["channels"]["log"]);
   }
-
+``
   getMainChannel () {
     return this.getGuild().channels.find(x => x.name === this.config["channels"]["main"]);
   }

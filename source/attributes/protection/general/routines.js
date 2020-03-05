@@ -1,6 +1,4 @@
-var lcn = require("../../../../../source/lcn.js");
-
-var auxils = lcn.auxils;
+var auxils = require("../../../systems/auxils.js");
 
 module.exports = function (player) {
 
