@@ -153,6 +153,9 @@
           "description": "An attribute of an action that involves guessing the target's role name for it to succeed.",
           "example": "A RID kill that involves guessing 60% of the target's role name correctly before execution."},
 
-  "Ascetic": {"description": "A role modifier in which the holder cannot be targeted by a specific range of actions, or any action at all."}
+  "Ascetic": {"description": "A role modifier in which the holder cannot be targeted by a specific range of actions, or any action at all."},
+
+  "Sav": {"description": "Being a long-term retard and an attention whore",
+          "example": "Pulling a Sav in Mafia is never going to get you anywhere with emotional appeal."}
 
 }
