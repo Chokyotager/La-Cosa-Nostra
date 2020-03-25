@@ -1,16 +1,7 @@
-![Banner](flavours/c9++/assets/Banner.png?raw=true)
-## C9++
-A game by **Fiasco**.
-[https://wiki.mafiascum.net/index.php?title=C9%2B%2B]
+![Banner](flavours/viva-la-revolucion/assets/Banner.png?raw=true)
+## Viva La Revolucion
+A game by **The Metaphorical Boat**, coded by **ChocoParrot**.
 
 ### Features:
-- Procedurally generated setup with random number rolls.
-- The stronger the Town, the stronger the Mafia.
-
-### Differences:
-- Roleblock actions cannot be roleblocked.
-- Serial killers are to choose their perks on Day 0 instead of pre-game - failure to do so will result in no perk granted.
-- Some role descriptions have been updated.
-
-### Acknowledgements:
-- HKCaper
+- Open setup with three chaotic roles
+- Chaotic roles have to be the last to survive to win
