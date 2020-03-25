@@ -1,0 +1,5 @@
+Fighting fire is not as simple as it sounds, but you have seen all kinds of inferno.
+
+Every night, you are able to extinguish a player. This will remove gasoline from them. You may also target yourself.
+
+Both you and your target will be notified of the extinguishing if it is successful.

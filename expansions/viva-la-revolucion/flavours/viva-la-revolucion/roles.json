@@ -1,0 +1,65 @@
+{
+  "anarchist": [
+    {
+      "name": "Anarchist",
+      "banner": "Anarchist.png",
+      "description": "Welcome to Viva La Revolución. You are an Anarchist.\n\nAbilities:\n- Plant: Every night, you may plant a bomb on a player. The bomb will explode two nights later, inclusive of the night in which it was planted.\n- 1-shot Invincibility: You are immune to a single attack.\n\nWin Condition: You win when you are the last player alive."
+    }
+  ],
+  "arsonist": [
+    {
+      "name": "Arsonist",
+      "banner": "Arsonist.png",
+      "description": "Welcome to Viva La Revolución. You are an Arsonist.\n\nAbilities:\n- Douse: Every night, you may douse a player in gasoline.\n- Ignite: Every night, instead of dousing, you may choose to ignite, dealing an attack to all doused players.\n- 1-shot Invincibility: You are immune to a single attack.\n\nWin Condition: You win when you are the last player alive."
+    }
+  ],
+  "mafia_vigilante": [
+    {
+      "name": "Mafia Vigilante",
+      "banner": "Mafia Vigilante.png",
+      "description": "Welcome to Viva La Revolución. You are a Mafia Vigilante.\n\nAbilities:\n- Shoot: Every night, you may shoot a player\n- 1-shot Invincibility: You are immune to a single attack.\n\nWin Condition: You win when you are the last player alive."
+    }
+  ],
+  "vanilla_townie": [
+    {
+      "name": "Vanilla Townie",
+      "banner": "Vanilla Townie.png",
+      "description": "Welcome to Viva La Revolución. You are a Vanilla Townie.\n\nAbilities:\n- Vote: You have no abilities other than your vote.\n\nWin condition: Eliminate all threats to the Town."
+    }
+  ],
+  "bulletproof_bomb_defuser": [
+    {
+      "name": "Bomb Defuser",
+      "banner": "Bomb Defuser.png",
+      "description": "Welcome to Viva La Revolución. You are a Mafia Vigilante.\n\nAbilities:\n- Shoot: Every night, you may shoot a player\n- 1-shot Invincibility: You are immune to a single attack.\n\nWin Condition: You win when you are the last player alive."
+    }
+  ],
+  "bombproof_bomb_defuser": [
+    {
+      "name": "Bomb Defuser",
+      "banner": "Bomb Defuser.png",
+      "description": "Welcome to Viva La Revolución. You are a Bomb Defuser.\n\nAbilities:\n- Defuse: Every night, you may visit a player to defuse a bomb.\n- Bomb-proof: You cannot be killed by a bomb yourself.\n\nWin condition: Eliminate all threats to the Town."
+    }
+  ],
+  "bulletproof_doctor": [
+    {
+      "name": "Doctor",
+      "banner": "Doctor.png",
+      "description": "Welcome to Viva La Revolución. You are a Doctor.\n\nAbilities:\n- Protect: Every night, you may protect a player to prevent them from being killed by a gun.\n- Bulletproof: You cannot be killed by a bullet yourself.\n\nWin condition: Eliminate all threats to the Town."
+    }
+  ],
+  "fireproof_firefighter": [
+    {
+      "name": "Firefighter",
+      "banner": "Firefighter.png",
+      "description": "Welcome to Viva La Revolución. You are a Firefighter.\n\nAbilities:\n- Extinguish: Every night, you may visit a player to remove gasoline from them.\n- Fireproof: You cannot be killed by an arsonist's fire yourself.\n\nWin condition: Eliminate all threats to the Town."
+    }
+  ],
+  "tracker": [
+    {
+      "name": "Tracker",
+      "banner": "Tracker.png",
+      "description": "Welcome to Viva La Revolución. You are a Tracker.\n\nAbilities:\n- Track: Every night, you may track a player to see who they visited.\n\nWin condition: Eliminate all threats to the Town."
+    }
+  ]
+}
