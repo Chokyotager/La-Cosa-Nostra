@@ -14,7 +14,7 @@ module.exports = function (player) {
   // Nighttime actions
   var channel = player.getPrivateChannel();
 
-  player.game.sendPeriodPin(channel, ":pill: You may choose to heal a player tonight.\n\nUse `" + config["command-prefix"] + "heal <alphabet/name/nobody>` to select your target.");
+  player.game.sendPeriodPin(channel, ":pill: You may choose to protect a player tonight.\n\nUse `" + config["command-prefix"] + "protect <alphabet/name/nobody>` to select your target.");
 
 };
 

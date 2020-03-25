@@ -12,7 +12,7 @@ module.exports = function (game, message, params) {
   // Run checks, etc
 
   if (params[0] === undefined) {
-    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "heal <alphabet/username/nobody>` instead!");
+    message.channel.send(":x: Wrong syntax! Please use `" + config["command-prefix"] + "protect <alphabet/username/nobody>` instead!");
     return null;
   };
 
@@ -29,17 +29,12 @@ module.exports = function (game, message, params) {
   to = to.player;
 
   if (!to.isAlive()) {
-    message.channel.send(":x: You cannot heal a dead player!" + rs.misc.sarcasm(true));
+    message.channel.send(":x: You cannot protect a dead player!" + rs.misc.sarcasm(true));
     return null;
   };
 
   if (to.id === message.author.id) {
     // Do stuff
-
-    if (to.misc.doc_self_heals < 1) {
-      message.channel.send(":x: You have used up all your self-heals! Try healing someone else!");
-      return null;
-    };
 
     var mention = "yourself";
 
@@ -63,7 +58,7 @@ module.exports = function (game, message, params) {
 
   };
 
-  message.channel.send(":syringe: You have decided to heal **" + mention + "** tonight.");
+  message.channel.send(":syringe: You have decided to protect **" + mention + "** tonight.");
 
 };
 
