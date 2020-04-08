@@ -5,11 +5,11 @@ var auxils = lcn.auxils;
 module.exports = function (game) {
 
   var alive = game.findAll(x => x.isAlive());
-  var anarchists = game.findAll(x => x.role_identifier === "anarchist" && x.isAlive());
+  var arsonists = game.findAll(x => x.role_identifier === "arsonist" && x.isAlive());
 
-  if (anarchists.length >= (alive.length / 2)) {
+  if (arsonists.length >= (alive.length / 2)) {
 
-    var winners = anarchists.filter(x => x.canWin());
+    var winners = arsonists.filter(x => x.canWin());
 
     game.setWins(winners);
     game.getMainChannel().send(auxils.getAssetAttachment("arsonist-wins.png"));
@@ -36,7 +36,7 @@ module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
 
 // Accepts function
 // Should key in wrt to player
-module.exports.ELIMINATED = [];
+module.exports.ELIMINATED = ["mafia", "anarchist"];
 module.exports.SURVIVING = ["arsonist"];
 
 module.exports.PREVENT_CHECK_ON_WIN = ["mafia", "anarchist"];

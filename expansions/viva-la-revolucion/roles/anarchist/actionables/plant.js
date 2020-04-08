@@ -14,6 +14,8 @@ module.exports = function (actionable, game, params) {
     priority: actionable.priority,
     reason: "Anarchist-bomb"});
 
+  var target = game.getPlayerByIdentifier(actionable.to);
+
   if (target.role_identifier !== "bombproof_bomb_defuser") {
 
     game.addAction("anarchist/bomb", ["cycle"], {
@@ -26,6 +28,8 @@ module.exports = function (actionable, game, params) {
       priority: 12,
       tags: ["bomb"]
     });
+
+    console.log("PLANT");
 
   };
 

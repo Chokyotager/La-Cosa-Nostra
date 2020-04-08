@@ -36,7 +36,7 @@ module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
 
 // Accepts function
 // Should key in wrt to player
-module.exports.ELIMINATED = [];
+module.exports.ELIMINATED = ["mafia", "arsonist"];
 module.exports.SURVIVING = ["anarchist"];
 
 module.exports.PREVENT_CHECK_ON_WIN = ["mafia", "arsonist"];

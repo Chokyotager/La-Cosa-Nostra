@@ -35,7 +35,7 @@ module.exports = function (game) {
 
   } finally {
 
-    if (game.players.some(x => x.isAlive() && ["mafia_vigilante", "arsonist", "anarchist"].includes(x.role_identifier))) {
+    if (game.players.some(x => x.isAlive() && ["mafia_vigilante", "arsonist", "anarchist", "serial_killer"].includes(x.role_identifier))) {
       return false;
     };
 
@@ -64,7 +64,7 @@ module.exports.CHECK_ONLY_WHEN_GAME_ENDS = false;
 
 // Accepts function
 // Should key in wrt to player
-module.exports.ELIMINATED = ["neutral-killing", "revolutionary", "reactionary", "alien", "plaguebearer", "pestilence", "epi_plaguebearer", "epi_pestilence", "cult", "serial_killer"];
+module.exports.ELIMINATED = ["neutral-killing", "revolutionary", "reactionary", "alien", "plaguebearer", "pestilence", "cult", "serial_killer", ];
 module.exports.SURVIVING = ["town"];
 
 module.exports.PREVENT_CHECK_ON_WIN = [];

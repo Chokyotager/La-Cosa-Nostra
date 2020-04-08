@@ -1,12 +1,10 @@
-var lcn = require("../../../../../source/lcn.js");
-
-var auxils = lcn.auxils;
+var auxils = require("../../../systems/auxils.js");
 
 module.exports = function (player) {
 
   var config = player.game.config;
 
-  player.setGameStat("basic-defense", 2, Math.max);
+  player.setGameStat("basic-defense", 4, Math.max);
 
 };
 

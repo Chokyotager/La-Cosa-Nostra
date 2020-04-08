@@ -12,7 +12,7 @@ module.exports = function (actionable, game, params) {
     return null;
   };
 
-  rs.prototypes.unstoppableAttack.reason = "exploded";
+  rs.prototypes.powerfulAttack.reason = "exploded";
 
   var outcome = rs.prototypes.powerfulAttack(...arguments);
 

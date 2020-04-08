@@ -1,18 +1,16 @@
-var lcn = require("../../../../../source/lcn.js");
-
-var rs = lcn.rolesystem;
+var rs = require("../../../rolesystem/rolesystem.js");
 
 module.exports = function (actionable, game, params) {
 
   var player = game.getPlayerByIdentifier(actionable.from);
   var attributes = player.attributes;
 
-  if (!player.attributes.some(x => x.identifier === "protection")) {
-    // Remove protection
+  if (!player.attributes.some(x => x.identifier === "invincibility")) {
+    // Remove invincibility
     player.setGameStat("basic-defense", 0, "set");
 
     // Remove attacked primer
-    game.actions.delete(x => x.identifier === "a/protection/attacked" && x.from === actionable.from);
+    game.actions.delete(x => x.identifier === "a/invincibility/attacked" && x.from === actionable.from);
     return true;
   };
 
@@ -20,7 +18,7 @@ module.exports = function (actionable, game, params) {
 
   for (var i = 0; i < attributes.length; i++) {
 
-    if (attributes[i].identifier !== "protection") {
+    if (attributes[i].identifier !== "invincibility") {
       continue;
     };
 
