@@ -14,6 +14,6 @@ module.exports = function (actionable, game, params) {
 
   rs.prototypes.powerfulAttack.reason = "exploded";
 
-  var outcome = rs.prototypes.powerfulAttack(...arguments);
+  var outcome = rs.prototypes.powerfulAttack(...arguments, true);
 
 };
